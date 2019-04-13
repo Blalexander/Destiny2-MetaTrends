@@ -1,7 +1,8 @@
-import React from 'react'
+import React, {  useState } from 'react'
+import GameHistory from './GameHistory';
 
 export default function Guardians(props) {
-  if(props[0] == undefined) {
+  if(props[0] === undefined) {
     return null;
   }
 
@@ -39,7 +40,10 @@ export default function Guardians(props) {
   }
 
   return (
-    <GuardianList />
+    <>
+      <GuardianList />
+      <GameHistory {...props}/>
+    </>
   )
 }
 

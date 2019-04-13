@@ -5,7 +5,7 @@ import './App2.css';
 
 import Searchbar from './components/Searchbar';
 // import Guardians from './components/Guardians';
-import WeaponDetails from './components/Weapon-details';
+// import WeaponDetails from './components/Weapon-details';
 
 class App extends Component {
 
@@ -21,10 +21,6 @@ class App extends Component {
         </header>
         <section>
           <Searchbar />
-        </section>
-
-        <section>
-          <WeaponDetails />
         </section>
       </main>
     );
