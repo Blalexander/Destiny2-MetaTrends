@@ -1,32 +1,162 @@
-.App {
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.4;
+}
+
+html {
+  box-shadow: inset 0 0 85px rgba(0, 0, 0, 0.4);
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+
+
+/*-------------- SearchBar ---------------*/
+#playerSearchForm {
+  border: 3px solid black;
+  background-color: whitesmoke;
+/*   box-shadow: inset 0 0 4px #000; */
+  box-shadow: 0 0 5px #000;
+  margin-bottom: 5vh;
+  padding-top: 2vh;
   text-align: center;
+  height: 7vh;
+  width: 100vw;
+  font-size: x-large;
+  position: relative;
+  left:-18px;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+
+/*--------------- Guardians ----------------*/
+#accountContainer {
+  box-shadow: inset 0 0 100px #000;
+/*   float: left; */
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  background: rgba(0,0,0,.5);
+  width: 85vw;
+  margin-left: 6vw;
+  padding-bottom: 2vh;
+/*   flex-direction: column; */
+/*   flex-flow: column wrap; */
+/*   flex-flow: row nowrap; */
+  justify-content: space-evenly;
+/*   align-items:center; */
+/*   margin-top: 8vh; */
+/*   height: 70vh; */
+  border: 1px solid black;
+/*   background-color: white; */
+/*   overflow-y: scroll; */
+}
+
+#accountName {
+  text-shadow: 1px 1px 1px #000, 4px 4px 4px black;
+/*   padding-left: 1vw; */
+  padding: 1vh;
+  position: absolute;
+  margin-top: 0;
+  background: rgba(0,0,0,.6);
+  color: white;
+  font-size:x-large;
+  width: inherit;
+  height: 5vh;
+}
+
+#accountsGuardians {
+  display: flex;
+  flex-flow: row nowrap;
+  margin-top: 7vh;
+}
+
+.guardianContainer {
+  height: 20vh;
+  width: 20vw;
+  border: 5px dashed orange;
+}
+
+
+
+/*---------------- Weapons ---------------------*/
+#weaponDetails {
+  box-shadow: inset 0 0 100px #000;
+  border: 1px solid black;
+  width: 85vw;
+  height: 50vh;
+  margin-top: 5vh;
+/*   margin-bottom: 5vh; */
+  margin-left: 6vw;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  flex-flow: row nowrap;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  background: rgba(0,0,0,.5);
+}
+
+#listItemContainer {
+  height: 95%;
+  width: 95%;
+  border: 5px dashed red;
+/*   text-decoration: none; */
+  list-style: none;
+}
+
+.listItem {
+  text-decoration: none;
+  border: 3px dashed pink;
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.wepNameTypeImage {
+  border: 1px dashed white;
+  background: rgba(0,0,0,.7);
+  height: 100%;
+  width: 20%;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.weaponName {
+  text-shadow: 1px 1px 1px #000, 4px 4px 4px black;
+/*   color: white; */
+  font-size: x-large;
+  margin-top: 1vh;
+  margin-left: 1vw;
+  margin-bottom: 0;
+/*   display: block; */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.weaponType {
+  text-shadow: 1px 1px 1px #000, 4px 4px 4px black;
+/*   color: white; */
+  font-size: large;
+  margin-top: 0;
+  margin-left: 1vw;
+/*   display: block; */
+}
+
+.weaponImage {
+/*   float: left; */
+  display: flex;
+  width: 12vw;
+  height: 15vh;
+/*   margin-top: 2vh; */
+  margin-left: 2vw;
+  border: 3px solid gold;
+  border-radius: 5px;
+}
+
+.weaponStats {
+  border: 1px solid green;
+  height: auto;
+  width: 80%;
 }

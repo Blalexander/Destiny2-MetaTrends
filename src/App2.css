@@ -1,0 +1,109 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.4;
+}
+
+html {
+  box-shadow: inset 0 0 85px rgba(0, 0, 0, 0.4);
+  height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+
+
+
+/*-------------- SearchBar ---------------*/
+#playerSearchForm {
+  border: 3px solid black;
+  background-color: whitesmoke;
+/*   box-shadow: inset 0 0 4px #000; */
+  box-shadow: 0 0 5px #000;
+  margin-bottom: 5vh;
+  padding-top: 2vh;
+  text-align: center;
+  height: 7vh;
+  width: 100vw;
+  font-size: x-large;
+  position: -webkit-sticky;
+  position: sticky;
+  left:-18px;
+}
+
+
+/*--------------- Guardians ----------------*/
+#accountContainer {
+/*   box-shadow: inset 0 0 100px #000; */
+/*   float: left; */
+  position: absolute;
+  bottom: 0;
+  display: flex;
+/*   background: rgba(0,0,0,.5); */
+  width: 85vw;
+  margin-left: 6vw;
+  padding-bottom: 2vh;
+/*   align-self: flex-end; */
+/*   flex-direction: column; */
+/*   flex-flow: column wrap; */
+/*   flex-flow: row nowrap; */
+  justify-content: space-evenly;
+/*   align-items:center; */
+/*   margin-top: 8vh; */
+/*   height: 70vh; */
+/*   border: 1px solid black; */
+/*   background-color: white; */
+/*   overflow-y: scroll; */
+}
+
+#accountName {
+  text-shadow: 1px 1px 1px #000, 4px 4px 4px black;
+/*   padding-left: 1vw; */
+  padding: 1vh;
+  position: absolute;
+  bottom: 0;
+  margin-top: 0;
+  background: rgba(0,0,0,.6);
+  color: white;
+  font-size:x-large;
+  width: inherit;
+  height: 5vh;
+}
+
+#accountsGuardians {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  margin-top: 7vh;
+  margin-bottom: 5vh;
+  width: 100%;
+}
+
+.guardianContainer {
+  height: 20vh;
+  width: 20vw;
+  border: 5px dashed orange;
+}
+
+.guardian1:hover {
+  height: 70vh;
+  width: 70vw;
+  transition: 1s;
+}
+
+.guardian2:hover {
+  height: 70vh;
+  width: 70vw;
+  transition: 1s;
+}
+
+.guardian3:hover {
+  height: 70vh;
+  width: 70vw;
+  transition: 1s;
+}
