@@ -1,4 +1,4 @@
-import React, {  useState } from 'react'
+import React, {  useState, useEffect } from 'react'
 import GameHistory from './GameHistory';
 
 export default function Guardians(props) {
@@ -6,16 +6,20 @@ export default function Guardians(props) {
     return null;
   }
 
+  // const [gameHistoryStyling, setGameHistoryStyling] = useState('');
   const basePath = props[0].characters.data;
   const basePathCharactersData = Object.keys(basePath);
+  let i = 0;
+
 
   function Guardian(props) {
     const guardianId = props.value;
     const pathShortcut = basePath[guardianId];
     const characterTypeValues = ["Titan", "Hunter", "Warlock"];
+    i++;
 
     return (
-      <div className="guardian1 guardianContainer" style={{backgroundImage: `url(${"https://www.bungie.net" + pathShortcut.emblemBackgroundPath})`}}>
+      <div className="guardian1 guardianContainer" value={i} style={{backgroundImage: `url(${"https://www.bungie.net" + pathShortcut.emblemBackgroundPath})`}}>
         <div id="guardianLevel">{pathShortcut.baseCharacterLevel}</div>
         <div id="guardianLightLevel">{pathShortcut.light}</div>
         <div id="guardianRace"></div>
@@ -31,7 +35,6 @@ export default function Guardians(props) {
 
     return (
       <section id="accountContainer">
-        <div id="accountName">{props[0][0].displayName}</div>
         <section id="accountsGuardians">
           {listOfGuardians}
         </section>
@@ -42,7 +45,7 @@ export default function Guardians(props) {
   return (
     <>
       <GuardianList />
-      <GameHistory {...props}/>
+      <GameHistory {...props} />
     </>
   )
 }

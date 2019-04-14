@@ -85,14 +85,13 @@ html {
 }
 
 .guardianContainer {
-  height: 20vh;
+  height: 10vh;
   width: 20vw;
   border: 5px dashed orange;
 }
 
 .guardian1:hover {
-  height: 70vh;
-  width: 70vw;
+  transform: scale(2, 2);
   transition: 1s;
 }
 
@@ -106,4 +105,14 @@ html {
   height: 70vh;
   width: 70vw;
   transition: 1s;
+}
+
+
+/*-----------------Ganme Histories------------------*/
+#gameHistoryContainer {
+  border: 2px dashed gray;
+  height: 80vh;
+  width: 85vw;
+  display: flex;
+  margin-left: 6vw;
 }
