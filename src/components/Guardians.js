@@ -1,4 +1,4 @@
-import React, {  useState, useEffect } from 'react'
+import React, {  useState } from 'react'
 import GameHistory from './GameHistory';
 
 export default function Guardians(props) {
@@ -11,15 +11,12 @@ export default function Guardians(props) {
   const basePathCharactersData = Object.keys(basePath);
   let i = 0;
 
-  // useEffect(() => {
-  //   console.log("useEffect running!");
-  // }, [gameHistoryStyling]);
-
 
   function handleHistoryStyling(e) {
     e.preventDefault();
-    console.log("Being hovered!", e.target[0].value);
-    setGameHistoryStyling(e.target[0].value);
+    let idGrabber = e.target[0].value;
+    console.log("Being hovered!", idGrabber);
+    setGameHistoryStyling([idGrabber, props[idGrabber]]);
   }
 
   function Guardian(props) {
