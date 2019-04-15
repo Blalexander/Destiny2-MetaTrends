@@ -6,11 +6,21 @@ export default function Guardians(props) {
     return null;
   }
 
-  // const [gameHistoryStyling, setGameHistoryStyling] = useState('');
+  const [gameHistoryStyling, setGameHistoryStyling] = useState(0);
   const basePath = props[0].characters.data;
   const basePathCharactersData = Object.keys(basePath);
   let i = 0;
 
+  // useEffect(() => {
+  //   console.log("useEffect running!");
+  // }, [gameHistoryStyling]);
+
+
+  function handleHistoryStyling(e) {
+    e.preventDefault();
+    console.log("Being hovered!", e.target[0].value);
+    setGameHistoryStyling(e.target[0].value);
+  }
 
   function Guardian(props) {
     const guardianId = props.value;
@@ -19,18 +29,19 @@ export default function Guardians(props) {
     i++;
 
     return (
-      <div className="guardian1 guardianContainer" value={i} style={{backgroundImage: `url(${"https://www.bungie.net" + pathShortcut.emblemBackgroundPath})`}}>
-        <div id="guardianLevel">{pathShortcut.baseCharacterLevel}</div>
-        <div id="guardianLightLevel">{pathShortcut.light}</div>
-        <div id="guardianRace"></div>
-        <div id="guardianClass">{characterTypeValues[pathShortcut.classType]}</div>
-      </div>
+      <form onSubmit={handleHistoryStyling}>
+        <button className="guardianContainer" value={i} style={{backgroundImage: `url(${"https://www.bungie.net" + pathShortcut.emblemBackgroundPath})`}}>
+        <p className="guardianLevel">{pathShortcut.baseCharacterLevel}</p>
+        <p className="guardianLightLevel">{pathShortcut.light}</p>
+        <p className="guardianClass">{characterTypeValues[pathShortcut.classType]}</p>
+        </button>
+      </form>
     )
   }
 
   function GuardianList() {
     const listOfGuardians = basePathCharactersData.map((guardianMapId) => 
-      <Guardian value={guardianMapId}/>
+      <Guardian key={guardianMapId} value={guardianMapId}/>
     );
 
     return (
@@ -45,7 +56,7 @@ export default function Guardians(props) {
   return (
     <>
       <GuardianList />
-      <GameHistory {...props} />
+      <GameHistory {...gameHistoryStyling} />
     </>
   )
 }
