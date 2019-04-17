@@ -1,6 +1,7 @@
 import React, {  useState } from 'react';
 import { API_BASE_URL } from '../config';
 import Guardians from './Guardians';
+import GameHistory from './GameHistory';
 
 
 //Coppertop#1657
@@ -41,6 +42,14 @@ const Searchbar = () => {
     .then(payload => {
       PGCRs = payload;
       console.log(PGCRs);
+      // PGCRs.Response.activities.forEach(activity => {
+      //   if(activity.activityHash == "1153409123") {
+      //     console.log(activity);
+      //   }
+      //   else {
+      //     console.log("-")
+      //   }
+      // })
       setCharacterData(PGCRs);
     })
     .catch(err => {
@@ -65,6 +74,7 @@ const Searchbar = () => {
         </form>
 
         <Guardians {...characterData}/>
+        <GameHistory {...characterData}/>
       </div>
   )
 }

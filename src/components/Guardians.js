@@ -1,4 +1,4 @@
-import React, {  useState } from 'react'
+import React, { useState } from 'react'
 import GameHistory from './GameHistory';
 
 export default function Guardians(props) {
@@ -15,7 +15,7 @@ export default function Guardians(props) {
   function handleHistoryStyling(e) {
     e.preventDefault();
     let idGrabber = e.target[0].value;
-    console.log("Being hovered!", idGrabber);
+    console.log("Being clicked!", idGrabber);
     setGameHistoryStyling([idGrabber, props[idGrabber]]);
   }
 
@@ -43,6 +43,7 @@ export default function Guardians(props) {
 
     return (
       <section id="accountContainer">
+      <div id="accountName">{props[0][0].displayName}</div>
         <section id="accountsGuardians">
           {listOfGuardians}
         </section>
@@ -53,10 +54,16 @@ export default function Guardians(props) {
   return (
     <>
       <GuardianList />
-      <GameHistory {...gameHistoryStyling} />
     </>
   )
 }
+
+// return (
+//   <>
+//     <GuardianList />
+//     <GameHistory {...gameHistoryStyling} />
+//   </>
+// )
 
 
 
