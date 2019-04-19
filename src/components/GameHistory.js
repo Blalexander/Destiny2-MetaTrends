@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Line, Bar, Polar} from 'react-chartjs-2';
+import {Line, Bar, Pie} from 'react-chartjs-2';
 
 
 export default function GameHistory(props) {
@@ -7,7 +7,7 @@ export default function GameHistory(props) {
     return null;
   }
 
-  let dateMapper = props[1].map(eachDate => {
+  let dateMapper = props[2].map(eachDate => {
     return eachDate._id.date
   });
 
@@ -43,7 +43,7 @@ export default function GameHistory(props) {
   let warlockHolder = [];
 
 
-  const polarClassesMapper = props[1].forEach(eachScore => {
+  const PieClassesMapper = props[2].forEach(eachScore => {
     if(eachScore._id.class === "Titan") {
       return titanIterator += eachScore.count;
     }
@@ -53,10 +53,11 @@ export default function GameHistory(props) {
     else if(eachScore._id.class === "Warlock") {
       return warlockIterator += eachScore.count;
     }
+    // return [titanIterator, hunterIterator, warlockIterator]
   });
   
 
-  const classesOTMapper = props[1].forEach(eachScore => { //3X shorter than it should be compared to dates
+  const classesOTMapper = props[2].forEach(eachScore => { //3X shorter than it should be compared to dates
     if(eachScore._id.class === "Titan") {
       titanHolder.push(eachScore.count);
       return titanHolder;
@@ -72,7 +73,7 @@ export default function GameHistory(props) {
   });
 
   // console.log("dateMapper: ", dateMapper, "scoreMapper: ", scoreMapper, "weaponMapper: ", weaponMapper)
-  // console.log("dateMapper: ", dateMapper, "polarClassesMapper: ", polarClassesMapper, "classesOTMapper: ", classesOTMapper)
+  // console.log("dateMapper: ", dateMapper, "PieClassesMapper: ", PieClassesMapper, "classesOTMapper: ", classesOTMapper)
   console.log("revisedDateMapper: ", revisedDateMapper, "titans: ", titanIterator, "hunters: ", hunterIterator, "warlocks: ", warlockIterator)
 
   const [chartDates, setChartDates] = useState(revisedDateMapper);
@@ -80,13 +81,13 @@ export default function GameHistory(props) {
   // const [chartWeapon, setChartWeapon] = useState(weaponMapper);
   // const [chartKds, setChartKds] = useState(kdMapper);
   // const [uniqueWeapons, setUniqueWeapons] = useState(distinctValues);
-  // const [polarClasses, setPolarClasses] = useState(polarClassesMapper);
+  const [PieClasses, setPieClasses] = useState(PieClassesMapper);
   const [classesOT, setClassesOT] = useState();
 
   
 
 
-  const [classesPolarChart, setClassesPolarChart] = useState({
+  const [classesPieChart, setClassesPieChart] = useState({
     labels: ['Titan', 'Hunter', 'Warlock'],
     datasets: [
       {
@@ -123,9 +124,9 @@ export default function GameHistory(props) {
 
   return (
     <div id="gameHistoryContainer" value={props}>
-      <section className="currentClassPop polar">
-        <Polar
-          data={classesPolarChart}
+      <section className="currentClassPop Pie">
+        <Pie
+          data={classesPieChart}
           options={{ maintainAspectRatio: true }}
         />
         <Line
