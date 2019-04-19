@@ -111,7 +111,7 @@ html {
 /*-----------------Ganme Histories------------------*/
 #gameHistoryContainer {
   border: 2px dashed gray;
-  height: 80vh;
+  height: 60vh;
   width: 85vw;
   display: flex;
   margin-left: 6vw;

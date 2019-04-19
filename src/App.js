@@ -6,6 +6,7 @@ import './App2.css';
 import Searchbar from './components/Searchbar';
 // import Guardians from './components/Guardians';
 // import WeaponDetails from './components/Weapon-details';
+// import Chart from './components/Chart';
 
 class App extends Component {
 
