@@ -72,6 +72,18 @@ export default function GameHistory(props) {
     }
   });
 
+
+  //create a new array for each weapon that holds it's count value
+  // const dataSetHolder = [];
+  const wepPopMapper = props[4].map(eachItem => {
+    return {label: eachItem._id, data: eachItem.count}
+  })
+
+  const wepCountMapper = props[4].map(eachItem => {
+    return eachItem.count
+  })
+
+  console.log("wepPopMapper: ", wepPopMapper)
   // console.log("dateMapper: ", dateMapper, "scoreMapper: ", scoreMapper, "weaponMapper: ", weaponMapper)
   // console.log("dateMapper: ", dateMapper, "PieClassesMapper: ", PieClassesMapper, "classesOTMapper: ", classesOTMapper)
   console.log("revisedDateMapper: ", revisedDateMapper, "titans: ", titanIterator, "hunters: ", hunterIterator, "warlocks: ", warlockIterator)
@@ -81,8 +93,10 @@ export default function GameHistory(props) {
   // const [chartWeapon, setChartWeapon] = useState(weaponMapper);
   // const [chartKds, setChartKds] = useState(kdMapper);
   // const [uniqueWeapons, setUniqueWeapons] = useState(distinctValues);
-  const [PieClasses, setPieClasses] = useState(PieClassesMapper);
-  const [classesOT, setClassesOT] = useState();
+  // const [PieClasses, setPieClasses] = useState(PieClassesMapper);
+  // const [classesOT, setClassesOT] = useState();
+  const wepNames = useState(wepPopMapper);
+  const wepCount = useState(wepCountMapper);
 
   
 
@@ -121,6 +135,10 @@ export default function GameHistory(props) {
     ]
   })
 
+  const [currentWeaponPopularity] = useState({
+    datasets: wepNames
+  })
+
 
   return (
     <div id="gameHistoryContainer" value={props}>
@@ -129,14 +147,18 @@ export default function GameHistory(props) {
           data={classesPieChart}
           options={{ maintainAspectRatio: true }}
         />
+      </section>
+      <section className="classPopOT line">
         <Line
           data={classesOTChart}
           options={{ maintainAspectRatio: true }}
         />
       </section>
-      <section className="classPopOT line">
-      </section>
       <section className="currentWepPop bar">
+        <Bar
+          data={currentWeaponPopularity}
+          options={{ maintainAspectRatio: true }}
+        />
       </section>
       <section className="wepPopOT line">
       </section>
