@@ -1,7 +1,6 @@
 import React, {  useState } from 'react';
 import { API_BASE_URL } from '../config';
 import Guardians from './Guardians';
-import GameHistory from './GameHistory';
 
 
 //Coppertop#1657
@@ -61,21 +60,20 @@ const Searchbar = () => {
   }
 
   return (
-      <div>
-        <form id="playerSearchForm" onSubmit={handleSubmit}>
-          <label>Type in your Xbox, Playstation, or Battlenet ID here</label>
-          <input id="formTextInput" name="searchedName" type="text" value={searchedName} onChange={e => setSearchedName(e.target.value)} />
-          <select id="membershipTypeSelector" name="membershipType" value={membershipType} onChange={e => setMembershipType(e.target.value)}>
-            <option value="4">Blizzard</option>
-            <option value="2">PSN</option>
-            <option value="1">Xbox</option>
-          </select>
-          <button id="playerSearchButton" type="submit" value="Submit">Search</button>
-        </form>
+    <div>
+      <form id="playerSearchForm" onSubmit={handleSubmit}>
+        <label>Type in your Xbox, Playstation, or Battlenet ID here</label>
+        <input id="formTextInput" name="searchedName" type="text" value={searchedName} onChange={e => setSearchedName(e.target.value)} />
+        <select id="membershipTypeSelector" name="membershipType" value={membershipType} onChange={e => setMembershipType(e.target.value)}>
+          <option value="4">Blizzard</option>
+          <option value="2">PSN</option>
+          <option value="1">Xbox</option>
+        </select>
+        <button id="playerSearchButton" type="submit" value="Submit">Search</button>
+      </form>
 
-        <Guardians {...characterData}/>
-        <GameHistory {...characterData}/>
-      </div>
+      <Guardians {...characterData}/>
+    </div>
   )
 }
 

@@ -10,7 +10,7 @@ body {
 }
 
 html {
-  box-shadow: inset 0 0 85px rgba(0, 0, 0, 0.4);
+/*   box-shadow: inset 0 0 85px rgba(0, 0, 0, 0.4); */
   height: 100vh;
   width: 100vw;
   overflow-x: hidden;
@@ -22,10 +22,10 @@ html {
 /*-------------- SearchBar ---------------*/
 #playerSearchForm {
   border: 3px solid black;
-  background-color: whitesmoke;
+/*   background-color: whitesmoke; */
 /*   box-shadow: inset 0 0 4px #000; */
-  box-shadow: 0 0 5px #000;
-  margin-bottom: 5vh;
+/*   box-shadow: 0 0 5px #000; */
+  margin-bottom: 1vh;
   padding-top: 2vh;
   text-align: center;
   height: 7vh;
@@ -35,6 +35,24 @@ html {
   position: sticky;
   left:-18px;
 }
+
+
+
+/*-------------- Directory Buttons ---------------*/
+.directoryButtons {
+  border: 1px dashed black;
+  display: flex;
+  justify-content: center;
+}
+
+.stats-and-graphs {
+  margin-right: 2vw;
+}
+
+.weapon-chart {
+  margin-left: 2vw;
+}
+
 
 
 /*--------------- Guardians ----------------*/
@@ -91,7 +109,8 @@ html {
 }
 
 .guardian1:hover {
-  transform: scale(2, 2);
+  -webkit-transform: scale(2, 2);
+          transform: scale(2, 2);
   transition: 1s;
 }
 

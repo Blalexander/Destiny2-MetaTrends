@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import GameHistory from './GameHistory';
+import NavigationMenu from './NavigationMenu';
 
 export default function Guardians(props) {
   if(props[0] === undefined) {
     return null;
   }
 
-  const [gameHistoryStyling, setGameHistoryStyling] = useState(0);
+  const [NavigationMenuStyling, setNavigationMenuStyling] = useState(0);
   const basePath = props[0].characters.data;
   const basePathCharactersData = Object.keys(basePath);
   let i = 0;
@@ -16,7 +16,7 @@ export default function Guardians(props) {
     e.preventDefault();
     let idGrabber = e.target[0].value;
     console.log("Being clicked!", idGrabber);
-    setGameHistoryStyling([idGrabber, props[idGrabber]]);
+    setNavigationMenuStyling([idGrabber, props[idGrabber]]);
   }
 
   function Guardian(props) {
@@ -61,7 +61,7 @@ export default function Guardians(props) {
 // return (
 //   <>
 //     <GuardianList />
-//     <GameHistory {...gameHistoryStyling} />
+//     <NavigationMenu {...NavigationMenuStyling} />
 //   </>
 // )
 
