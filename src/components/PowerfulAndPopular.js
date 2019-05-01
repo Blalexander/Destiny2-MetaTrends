@@ -2,7 +2,7 @@ import React from 'react'
 
 function PowerfulAndPopular() {
   return (
-    <div>
+    <div className="powerfulAndPopular">
       I'm for Powerful & Popular Loadouts!
     </div>
   )
