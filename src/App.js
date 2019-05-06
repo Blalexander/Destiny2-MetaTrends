@@ -13,6 +13,7 @@ import NavigationMenu from './components/NavigationMenu';
 export default function App() {
   return (
     <main>
+      <div id="backgroundTransitions"></div>
       <header>
         <h1>Destiny MetaTrends</h1>
       </header>

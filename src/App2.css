@@ -5,8 +5,12 @@
 }
 
 body {
+  transition: 0.5s;
+/*   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.4)); */
+/*   box-shadow: inset 0 0 85px rgba(0, 0, 0, 0.4); */
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.4;
+  z-index: 0;
 }
 
 html {
@@ -16,6 +20,27 @@ html {
   overflow-x: hidden;
 }
 
+#backgroundTransitions {
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.2));
+  height: 100vh;
+  width: 150vw;
+/*   margin-left: -50vw; */
+  position: absolute;
+  z-index: -1;
+  overflow-x: hidden;
+}
+
+.removeBodyShadow {
+  transition: 0.7s;
+  margin-left: 0vw;
+}
+
+.bodyShadow {
+  transition: 0.7s;
+  margin-left: -50vw;
+/*   box-shadow: inset -50px 0 85px rgba(0, 0, 0, 0.4); */
+/*   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)); */
+}
 
 
 
@@ -23,6 +48,7 @@ html {
 #playerSearchForm {
   border: 3px solid black;
 /*   background-color: whitesmoke; */
+  background-color: white;
 /*   box-shadow: inset 0 0 4px #000; */
 /*   box-shadow: 0 0 5px #000; */
   margin-bottom: 1vh;
@@ -34,6 +60,7 @@ html {
   position: -webkit-sticky;
   position: sticky;
   left:-18px;
+  z-index: 1;
 }
 
 
@@ -51,6 +78,10 @@ html {
 
 .weapon-chart {
   margin-left: 2vw;
+}
+
+button {
+  background-color: white;
 }
 
 
@@ -128,7 +159,7 @@ html {
 
 
 
-
+/* -------------- Main Nav Container ------------- */
 .landingPageNavigation {
   display: flex;
   flex-flow: column wrap;
@@ -141,27 +172,90 @@ html {
 
 
 
+/* --------------- Nav Buttons ---------------- */
+.navButton {
+  width: 80vw;
+  height: 20vh;
+}
 
-.powerfulAndPopular {
+#powerfulAndPopular {
+/*   border: 1px dashed black; */
+  width: 80vw;
+  height: 20vh;
+}
+
+#classComparisons {
+/*   border: 1px dashed blue; */
+  width: 80vw;
+  height: 20vh;
+}
+
+#weaponCharts {
+/*   border: 1px dashed green; */
+  width: 80vw;
+  height: 20vh;
+}
+
+#historicalGraphs {
+/*   border: 1px dashed red; */
+  width: 80vw;
+  height: 20vh;
+}
+
+#powerfulAndPopularButton {
   border: 1px dashed black;
-  width: 80%;
-  height: 20vh;
 }
 
-.classComparisons {
+#classComparisonsButton {
   border: 1px dashed blue;
-  width: 80%;
-  height: 20vh;
 }
 
-.weaponCharts {
+#weaponChartsButton {
   border: 1px dashed green;
-  width: 80%;
-  height: 20vh;
 }
 
-.historicalGraphs {
+#historicalGraphsButton {
   border: 1px dashed red;
-  width: 80%;
-  height: 20vh;
+}
+
+.grantPriority {
+  transition: 0.5s;
+  position: absolute;
+  top: 20vh;
+  height: 80vh;
+  width: 85vw;
+}
+
+
+.moveToSide {
+/*   position: relative; */
+  transition: 0.5s;
+  height: 5vh;
+  width: 10vw;
+  top: 15vh;
+  margin-top: 9vh;
+  margin-left: -10vw;
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+}
+
+.resetFromSide {
+  transition: 0.5s;
+}
+
+.minimized {
+  display: none;
+}
+
+
+
+
+/* ---------------- Powerful & Popular --------------- */
+.hiding {
+  display: none;
+}
+
+.pnpBoxes {
+  height: 200px;
+  width: 200px;
 }

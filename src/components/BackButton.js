@@ -1,9 +1,27 @@
 import React from 'react'
 
 function BackButton() {
+  function handleBackButtonSubmit(event) {
+    event.preventDefault();
+    let resetElements = document.querySelectorAll('.navButton');
+    for(let i=0; i<resetElements.length; i++) {
+      resetElements[i].classList.add('resetFromSide');
+      resetElements[i].classList.remove('moveToSide');
+      resetElements[i].classList.remove('grantPriority');
+    }
+
+    document.getElementById("backgroundTransitions").classList.remove('bodyShadow');
+    document.getElementById("backgroundTransitions").classList.add('removeBodyShadow');
+    // document.body.classList.remove('bodyShadow');
+
+    document.getElementById('NavigationMenuContainer').classList.add('minimized');
+    document.getElementById('pnpContent').classList.add('hiding');
+  }
+
+
   return (
-    <form>
-      <button className="back-button">Back</button>
+    <form id="backButtonForm" onSubmit={handleBackButtonSubmit}>
+      <button type="submit" className="back-button">Back</button>
     </form>
   )
 }
