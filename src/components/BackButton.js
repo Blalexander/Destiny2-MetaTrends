@@ -14,8 +14,9 @@ function BackButton() {
     document.getElementById("backgroundTransitions").classList.add('removeBodyShadow');
     // document.body.classList.remove('bodyShadow');
 
-    document.getElementById('NavigationMenuContainer').classList.add('minimized');
+
     document.getElementById('pnpContent').classList.add('hiding');
+    document.getElementById('NavigationMenuContainer').classList.add('hiding');
   }
 
 

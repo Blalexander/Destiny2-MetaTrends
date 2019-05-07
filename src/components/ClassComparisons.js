@@ -16,7 +16,7 @@ export default function ClassComparisons() {
     document.getElementById("backgroundTransitions").classList.remove('removeBodyShadow');
     document.getElementById("backgroundTransitions").classList.add('bodyShadow');
 
-    document.getElementById('NavigationMenuContainer').classList.remove('minimized');
+    document.getElementById('NavigationMenuContainer').classList.remove('hiding');
   }
 
 
@@ -85,27 +85,47 @@ export default function ClassComparisons() {
     <form id="classComparisons" onSubmit={handleCCSubmit}>
       <button type="submit" id="classComparisonsButton" className="navButton">
       I'm for Class Comparisons!
-        <div id="NavigationMenuContainer" className="minimized">
+        <div id="NavigationMenuContainer" className="hiding">
           <section className="currentClassPop Pie">
             <Pie
               data={classesPieChart}
               options={{ maintainAspectRatio: false, responsive: false }}
             />
           </section>
-          <section className="classPopOT line">
-            <Line
-              data={classesOTChart}
-              options={{ maintainAspectRatio: false, responsive: false }}
-            />
-          </section>
-          <section className="currentWepPop bar">
-            <Bar
-              data={currentWeaponPopularity}
-              options={{ maintainAspectRatio: false, responsive: false }}
-            />
-          </section>
+          <section id="titanCC" className="CCcontainer"></section>
+          <section id="hunterCC" className="CCcontainer"></section>
+          <section id="warlockCC" className="CCcontainer"></section>
         </div>
       </button>
     </form>
   )
 }
+
+
+// return (
+//   <form id="classComparisons" onSubmit={handleCCSubmit}>
+//     <button type="submit" id="classComparisonsButton" className="navButton">
+//     I'm for Class Comparisons!
+//       <div id="NavigationMenuContainer" className="hiding">
+//         <section className="currentClassPop Pie">
+//           <Pie
+//             data={classesPieChart}
+//             options={{ maintainAspectRatio: false, responsive: false }}
+//           />
+//         </section>
+//         <section className="classPopOT line">
+//           <Line
+//             data={classesOTChart}
+//             options={{ maintainAspectRatio: false, responsive: false }}
+//           />
+//         </section>
+//         <section className="currentWepPop bar">
+//           <Bar
+//             data={currentWeaponPopularity}
+//             options={{ maintainAspectRatio: false, responsive: false }}
+//           />
+//         </section>
+//       </div>
+//     </button>
+//   </form>
+// )

@@ -252,10 +252,62 @@ button {
 
 /* ---------------- Powerful & Popular --------------- */
 .hiding {
-  display: none;
+  -webkit-transform: scaleY(0);
+          transform: scaleY(0);
 }
 
 .pnpBoxes {
+  border: 1px solid black;
   height: 200px;
   width: 200px;
+}
+
+#pnpContent {
+  display: inline-grid;
+  grid-template-columns: 300px 300px;
+  grid-gap: 100px;
+}
+
+#pnpContent [id*=twoweppop] {
+  background-color: green;
+}
+
+
+
+/* ------------ Class Comparisons --------------- */
+#NavigationMenuContainer {
+  display: grid;
+  height: inherit;
+  grid-template-columns: auto auto auto;
+/*   justify-content: center; */
+  grid-gap: 50px;
+  padding: 20px;
+}
+
+.CCcontainer {
+  width: 25vw;
+  height: 50vh;
+/*   border: 1px solid black; */
+}
+
+.currentClassPop {
+  margin: auto;
+  margin-top: 0;
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+
+#titanCC {
+  border-left: 1px solid red;
+  border-right: 1px solid red;
+}
+
+#hunterCC {
+  border-left: 1px solid blue;
+  border-right: 1px solid blue;
+}
+
+#warlockCC {
+  border-left: 1px solid gold;
+  border-right: 1px solid gold;
 }
