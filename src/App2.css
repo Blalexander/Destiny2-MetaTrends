@@ -235,8 +235,11 @@ button {
   top: 15vh;
   margin-top: 9vh;
   margin-left: -10vw;
+/*   transform: scaleX(.6); */
+/*   transition-delay: 0.5s;
+  transition-property: transform;
   -webkit-transform: rotate(-90deg);
-          transform: rotate(-90deg);
+          transform: rotate(-90deg); */
 }
 
 .resetFromSide {

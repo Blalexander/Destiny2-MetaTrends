@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {Line, Bar, Pie} from 'react-chartjs-2';
+// import {Line, Bar, Pie} from 'react-chartjs-2';
 import PowerfulAndPopular from './PowerfulAndPopular';
 import ClassComparisons from './ClassComparisons';
 import WeaponCharts from './WeaponCharts';
@@ -27,11 +27,17 @@ export default function NavigationMenu() {
       <div value={initialData}></div>
       <PowerfulAndPopular />
       <ClassComparisons />
-      <WeaponCharts />
+      <WeaponCharts {...initialData[3]}/>
       <HistoricalGraphs />
     </section>
   )
 }
+
+
+
+
+
+
 
 // return (
 //   <div id="NavigationMenuContainer" value={props}>

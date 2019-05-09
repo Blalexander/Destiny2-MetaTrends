@@ -26,6 +26,7 @@ export default function ClassComparisons() {
     datasets: [
       {
         data: [147, 223, 109],
+        // data: [50, 50, 50],
         backgroundColor: ['rgba(233, 11, 11, 0.6)', 'rgba(17, 17, 232, 0.6)', 'rgba(249, 160, 71, 0.6)'],
       },
     ]
@@ -76,7 +77,7 @@ export default function ClassComparisons() {
         data: [4],
         // backgroundColor: ['rgba(11, 22, 33, 0.6)', 'rgba(44, 55, 66, 0.6)'],
         borderColor: "gold"
-      }
+      },
     ]
   })
 
@@ -89,7 +90,7 @@ export default function ClassComparisons() {
           <section className="currentClassPop Pie">
             <Pie
               data={classesPieChart}
-              options={{ maintainAspectRatio: false, responsive: false }}
+              options={{ maintainAspectRatio: false, responsive: false, rotation: 140 }}
             />
           </section>
           <section id="titanCC" className="CCcontainer"></section>
