@@ -1,6 +1,8 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 export default function WeaponCharts(props) {
+  const testPath = props;
+
   function handleWCSubmit(event) {
     event.preventDefault();
     let elementsToMove = document.querySelectorAll('.navButton');
@@ -16,36 +18,26 @@ export default function WeaponCharts(props) {
     document.getElementById("backgroundTransitions").classList.add('bodyShadow');
 
     // document.getElementById('weaponChartsButton').append(props[0]._id)
-    wepList(props)
+    WepList(testPath);
+    console.log(testPath);
   }
 
-  // const wepKeys = Object.keys(props);
 
-  // function WepConstructor(props) {
-  //   const guardianId = props.value;
-  //   const pathShortcut = basePath[guardianId];
-  //   const characterTypeValues = ["Titan", "Hunter", "Warlock"];
-  //   i++;
+  function WepConstructor(props) {
+    return (
+      <div>{props.Key}{props.value}Hey</div>
+    )
+  }
 
-  //   return (
-  //     <form onSubmit={handleHistoryStyling}>
-  //       <button className="guardianContainer" value={i} style={{backgroundImage: `url(${"https://www.bungie.net" + pathShortcut.emblemBackgroundPath})`}}>
-  //       <p className="guardianLevel">{pathShortcut.baseCharacterLevel}</p>
-  //       <p className="guardianLightLevel">{pathShortcut.light}</p>
-  //       <p className="guardianClass">{characterTypeValues[pathShortcut.classType]}</p>
-  //       </button>
-  //     </form>
-  //   )
-  // }
+  function WepList(testPathReceiver) {
+    let testPathReceiver2 = Object.keys(testPathReceiver);
 
-  function WepList(props) {
-    const listOfWeps = props.map((wepId) => 
-      <WepConstructor key={wepId._id} value={wepId.count}/>
+    const listOfWeps = testPathReceiver2.map((wepId) => 
+      <WepConstructor key={testPathReceiver[wepId]._id} value={testPathReceiver[wepId].count}/>
     );
 
     return (
       <section id="allWeps">
-      <div id="wepName">{props[0][0].displayName}</div>
         <section>
           {listOfWeps}
         </section>
@@ -54,9 +46,31 @@ export default function WeaponCharts(props) {
   }
 
 
-  return (
-    <form id="weaponCharts" onSubmit={handleWCSubmit}>
-      <button type="submit" id="weaponChartsButton" className="navButton">I'm for Weapon Charts!</button>
-    </form>
-  )
+  // if(document.getElementById('weaponChartsButton') != null && document.getElementById('weaponChartsButton').classList.contains('grantPriority')) {
+    return (
+      <form id="weaponCharts" onSubmit={handleWCSubmit}>
+        <button type="submit" id="weaponChartsButton" className="navButton">I'm for Weapon Charts!
+          <section id="wepContainer">
+            <WepList {...props}/>
+          </section>
+        </button>
+      </form>
+    )
+  // }
+  // else {
+  //   return (
+  //     <form id="weaponCharts" onSubmit={handleWCSubmit}>
+  //       <button type="submit" id="weaponChartsButton" className="navButton">I'm for Weapon Charts!</button>
+  //     </form>
+  //   )
+  // }
 }
+
+
+
+
+// return (
+//   <form id="weaponCharts" onSubmit={handleWCSubmit}>
+//     <button type="submit" id="weaponChartsButton" className="navButton"><WepList {...props}/></button>
+//   </form>
+// )
