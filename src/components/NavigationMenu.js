@@ -15,6 +15,7 @@ export default function NavigationMenu() {
       return res.json()
     });
 
+    console.log(result);
     setInitialData(result);
     };
 
@@ -27,7 +28,7 @@ export default function NavigationMenu() {
       <div value={initialData}></div>
       <PowerfulAndPopular />
       <ClassComparisons />
-      <WeaponCharts {...initialData[3]}/>
+      <WeaponCharts {...initialData[4]}/>
       <HistoricalGraphs />
     </section>
   )

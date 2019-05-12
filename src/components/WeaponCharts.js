@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 
 export default function WeaponCharts(props) {
   const testPath = props;
@@ -24,16 +24,24 @@ export default function WeaponCharts(props) {
 
 
   function WepConstructor(props) {
+    let revisedWep = testPath[props.value];
+    // let revisedWep = Object.values(currentWep);
+    // revisedWep.map(item => {
+    //   item.toFixed(2)
+    // })
+    let revisedWinRate = 1 - revisedWep.standingAvg;
+
     return (
-      <div>{props.Key}{props.value}Hey</div>
+      <div className="wepChartsItem">Weapon Name: {revisedWep._id}, Times Used: {revisedWep.totalCount}, Assists: {revisedWep.assistsAvg.toFixed(2)}, Kills: {revisedWep.killsAvg.toFixed(2)}, Deaths: {revisedWep.deathsAvg.toFixed(2)}, Efficiency: {revisedWep.effAvg.toFixed(2)}, scoreAvg: {revisedWep.scoreAvg.toFixed(2)}, Win Rate: {revisedWinRate.toFixed(2)}</div>
     )
   }
+
 
   function WepList(testPathReceiver) {
     let testPathReceiver2 = Object.keys(testPathReceiver);
 
     const listOfWeps = testPathReceiver2.map((wepId) => 
-      <WepConstructor key={testPathReceiver[wepId]._id} value={testPathReceiver[wepId].count}/>
+      <WepConstructor key={testPathReceiver[wepId]._id} value={wepId}/>
     );
 
     return (
@@ -43,34 +51,15 @@ export default function WeaponCharts(props) {
         </section>
       </section>
     )
-  }
+    }
 
-
-  // if(document.getElementById('weaponChartsButton') != null && document.getElementById('weaponChartsButton').classList.contains('grantPriority')) {
-    return (
-      <form id="weaponCharts" onSubmit={handleWCSubmit}>
-        <button type="submit" id="weaponChartsButton" className="navButton">I'm for Weapon Charts!
-          <section id="wepContainer">
-            <WepList {...props}/>
-          </section>
-        </button>
-      </form>
-    )
-  // }
-  // else {
-  //   return (
-  //     <form id="weaponCharts" onSubmit={handleWCSubmit}>
-  //       <button type="submit" id="weaponChartsButton" className="navButton">I'm for Weapon Charts!</button>
-  //     </form>
-  //   )
-  // }
+  return (
+    <form id="weaponCharts" onSubmit={handleWCSubmit}>
+      <button type="submit" id="weaponChartsButton" className="navButton">I'm for Weapon Charts!
+        <section id="wepContainer">
+          <WepList {...props}/>
+        </section>
+      </button>
+    </form>
+  )
 }
-
-
-
-
-// return (
-//   <form id="weaponCharts" onSubmit={handleWCSubmit}>
-//     <button type="submit" id="weaponChartsButton" className="navButton"><WepList {...props}/></button>
-//   </form>
-// )

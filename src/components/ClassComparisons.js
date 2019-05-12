@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
-import {Line, Bar, Pie} from 'react-chartjs-2';
+// import {Line, Bar, Pie} from 'react-chartjs-2';
+import {Pie} from 'react-chartjs-2';
+
 
 export default function ClassComparisons() {
   function handleCCSubmit(event) {
@@ -21,7 +23,8 @@ export default function ClassComparisons() {
 
 
 
-  const [classesPieChart, setClassesPieChart] = useState({
+  // const [classesPieChart, setClassesPieChart] = useState({
+  const [classesPieChart] = useState({
     labels: ['Titan', 'Hunter', 'Warlock'],
     datasets: [
       {
@@ -32,54 +35,54 @@ export default function ClassComparisons() {
     ]
   })
 
-  const [classesOTChart, setclassesOTChart] = useState({
-    labels: ['yesterday', 'today', 'tomorrow'],
-    datasets: [ //need to make this a variable thing that expects the { label } objects to come in
-      {
-        label: 'Titan',
-        data: [1, 3, 8, 2, 5],
-        // backgroundColor: ['rgba(13, 122, 231, 0.6)', 'rgba(231, 13, 13, 0.6)'],
-        borderColor: "red"
-      },
-      {
-        label: 'Hunter',
-        data: [4, 7, 9, 6, 3],
-        // backgroundColor: ['rgba(11, 22, 33, 0.6)', 'rgba(44, 55, 66, 0.6)'],
-        borderColor: "blue"
-      },
-      {
-        label: 'Warlock',
-        data: [2, 1, 3, 4, 1],
-        // backgroundColor: ['rgba(11, 22, 33, 0.6)', 'rgba(44, 55, 66, 0.6)'],
-        borderColor: "gold"
-      }
-    ]
-  })
+  // const [classesOTChart, setclassesOTChart] = useState({
+  //   labels: ['yesterday', 'today', 'tomorrow'],
+  //   datasets: [ //need to make this a variable thing that expects the { label } objects to come in
+  //     {
+  //       label: 'Titan',
+  //       data: [1, 3, 8, 2, 5],
+  //       // backgroundColor: ['rgba(13, 122, 231, 0.6)', 'rgba(231, 13, 13, 0.6)'],
+  //       borderColor: "red"
+  //     },
+  //     {
+  //       label: 'Hunter',
+  //       data: [4, 7, 9, 6, 3],
+  //       // backgroundColor: ['rgba(11, 22, 33, 0.6)', 'rgba(44, 55, 66, 0.6)'],
+  //       borderColor: "blue"
+  //     },
+  //     {
+  //       label: 'Warlock',
+  //       data: [2, 1, 3, 4, 1],
+  //       // backgroundColor: ['rgba(11, 22, 33, 0.6)', 'rgba(44, 55, 66, 0.6)'],
+  //       borderColor: "gold"
+  //     }
+  //   ]
+  // })
 
 
-  const [currentWeaponPopularity] = useState({
-    labels: ['Titan'], //BAR, labels = X-axis dates
-    datasets: [ 
-      {
-        label: 'Titan',
-        data: [1],
-        // backgroundColor: ['rgba(13, 122, 231, 0.6)', 'rgba(231, 13, 13, 0.6)'],
-        borderColor: "red"
-      },
-      {
-        label: 'Hunter',
-        data: [3],
-        // backgroundColor: ['rgba(11, 22, 33, 0.6)', 'rgba(44, 55, 66, 0.6)'],
-        borderColor: "blue"
-      },
-      {
-        label: 'Warlock',
-        data: [4],
-        // backgroundColor: ['rgba(11, 22, 33, 0.6)', 'rgba(44, 55, 66, 0.6)'],
-        borderColor: "gold"
-      },
-    ]
-  })
+  // const [currentWeaponPopularity] = useState({
+  //   labels: ['Titan'], //BAR, labels = X-axis dates
+  //   datasets: [ 
+  //     {
+  //       label: 'Titan',
+  //       data: [1],
+  //       // backgroundColor: ['rgba(13, 122, 231, 0.6)', 'rgba(231, 13, 13, 0.6)'],
+  //       borderColor: "red"
+  //     },
+  //     {
+  //       label: 'Hunter',
+  //       data: [3],
+  //       // backgroundColor: ['rgba(11, 22, 33, 0.6)', 'rgba(44, 55, 66, 0.6)'],
+  //       borderColor: "blue"
+  //     },
+  //     {
+  //       label: 'Warlock',
+  //       data: [4],
+  //       // backgroundColor: ['rgba(11, 22, 33, 0.6)', 'rgba(44, 55, 66, 0.6)'],
+  //       borderColor: "gold"
+  //     },
+  //   ]
+  // })
 
 
   return (
