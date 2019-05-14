@@ -16,7 +16,7 @@ function BackButton() {
 
 
     document.getElementById('pnpContent').classList.add('hiding');
-    document.getElementById('NavigationMenuContainer').classList.add('hiding');
+    // document.getElementById('NavigationMenuContainer').classList.add('hiding');
   }
 
 

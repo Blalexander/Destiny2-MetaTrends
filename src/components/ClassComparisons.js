@@ -22,10 +22,11 @@ export default function ClassComparisons(props) {
     document.getElementById("backgroundTransitions").classList.remove('removeBodyShadow');
     document.getElementById("backgroundTransitions").classList.add('bodyShadow');
 
-    document.getElementById('NavigationMenuContainer').classList.remove('hiding');
+    // document.getElementById('NavigationMenuContainer').classList.remove('hiding');
   }
 
-  function DaCreator(items) {
+
+  function GraphCreator(items) {
     const [classesPieChart] = useState({
       labels: [items[1]._id.class, items[0]._id.class, items[2]._id.class],
       datasets: [
@@ -44,6 +45,7 @@ export default function ClassComparisons(props) {
       />
     )
   }
+
   // const [classesOTChart, setclassesOTChart] = useState({
   //   labels: ['yesterday', 'today', 'tomorrow'],
   //   datasets: [ //need to make this a variable thing that expects the { label } objects to come in
@@ -98,9 +100,9 @@ export default function ClassComparisons(props) {
     <form id="classComparisons" onSubmit={handleCCSubmit}>
       <button type="submit" id="classComparisonsButton" className="navButton">
       I'm for Class Comparisons!
-        <div id="NavigationMenuContainer" className="hiding">
+        <div id="NavigationMenuContainer">
           <section className="currentClassPop Pie">
-            <DaCreator {...props}/>
+            <GraphCreator {...props}/>
           </section>
           <section id="titanCC" className="CCcontainer"></section>
           <section id="hunterCC" className="CCcontainer"></section>

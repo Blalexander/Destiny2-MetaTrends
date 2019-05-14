@@ -285,6 +285,8 @@ button {
 /*   justify-content: center; */
   grid-gap: 50px;
   padding: 20px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .CCcontainer {
