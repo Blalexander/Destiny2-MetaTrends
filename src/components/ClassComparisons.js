@@ -3,7 +3,11 @@ import React, {useState} from 'react';
 import {Pie} from 'react-chartjs-2';
 
 
-export default function ClassComparisons() {
+export default function ClassComparisons(props) {
+  if(props[0] === undefined) {
+    return null;
+  }
+  
   function handleCCSubmit(event) {
     event.preventDefault();
     let elementsToMove = document.querySelectorAll('.navButton');
@@ -21,20 +25,25 @@ export default function ClassComparisons() {
     document.getElementById('NavigationMenuContainer').classList.remove('hiding');
   }
 
+  function DaCreator(items) {
+    const [classesPieChart] = useState({
+      labels: [items[1]._id.class, items[0]._id.class, items[2]._id.class],
+      datasets: [
+        {
+          data: [items[1].count, items[0].count, items[2].count],
+          // data: [50, 50, 50],
+          backgroundColor: ['rgba(233, 11, 11, 0.6)', 'rgba(17, 17, 232, 0.6)', 'rgba(249, 160, 71, 0.6)'],
+        },
+      ]
+    })
 
-
-  // const [classesPieChart, setClassesPieChart] = useState({
-  const [classesPieChart] = useState({
-    labels: ['Titan', 'Hunter', 'Warlock'],
-    datasets: [
-      {
-        data: [147, 223, 109],
-        // data: [50, 50, 50],
-        backgroundColor: ['rgba(233, 11, 11, 0.6)', 'rgba(17, 17, 232, 0.6)', 'rgba(249, 160, 71, 0.6)'],
-      },
-    ]
-  })
-
+    return (
+      <Pie
+        data={classesPieChart}
+        options={{ maintainAspectRatio: false, responsive: false, rotation: 140 }}
+      />
+    )
+  }
   // const [classesOTChart, setclassesOTChart] = useState({
   //   labels: ['yesterday', 'today', 'tomorrow'],
   //   datasets: [ //need to make this a variable thing that expects the { label } objects to come in
@@ -91,10 +100,7 @@ export default function ClassComparisons() {
       I'm for Class Comparisons!
         <div id="NavigationMenuContainer" className="hiding">
           <section className="currentClassPop Pie">
-            <Pie
-              data={classesPieChart}
-              options={{ maintainAspectRatio: false, responsive: false, rotation: 140 }}
-            />
+            <DaCreator {...props}/>
           </section>
           <section id="titanCC" className="CCcontainer"></section>
           <section id="hunterCC" className="CCcontainer"></section>
