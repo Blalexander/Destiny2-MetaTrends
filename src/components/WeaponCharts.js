@@ -1,4 +1,7 @@
-import React from 'react'
+import React from 'react';
+import weaponList from './manifest';
+console.log(weaponList)
+
 
 export default function WeaponCharts(props) {
   const testPath = props;
@@ -22,7 +25,7 @@ export default function WeaponCharts(props) {
     console.log(testPath);
   }
 
-
+  // console.log(manifest)
   function WepConstructor(props) {
     let revisedWep = testPath[props.value];
     // let revisedWep = Object.values(currentWep);

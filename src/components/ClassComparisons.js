@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 // import {Line, Bar, Pie} from 'react-chartjs-2';
-import {Pie, Radar} from 'react-chartjs-2';
+import {Pie, HorizontalBar} from 'react-chartjs-2';
 
 
 export default function ClassComparisons(props) {
@@ -48,12 +48,26 @@ export default function ClassComparisons(props) {
 
   function TitanDataOrganizer(titems) {
     // console.log(titems)
-    const [titanRadar] = useState({
-      labels: ['Assists', 'Killing Blows', 'Kills', 'Deaths', 'Efficiency', 'Average Score Per Kill', 'Average Score Per Life', 'Average Score Per Game', 'Win Rate'], //BAR, labels = X-axis dates
+    let kda = titems.oppDefAvg / titems.deathsAvg;
+
+    const [titanHorizontalBar1] = useState({
+      labels: ['Opponents Defeated', 'Kills', 'Assists', 'Deaths'], //BAR, labels = X-axis dates
       datasets: [ 
         {
-          // label: 'Titan',
-          data: [titems.assistsAvg, titems.oppDefAvg, titems.killsAvg, titems.deathsAvg, titems.effAvg, titems.perKAvg, titems.perLAvg, titems.scoreAvg, titems.standingAvg],
+          // label: [10, 20, 30, 40, 50],
+          data: [titems.oppDefAvg, titems.killsAvg, titems.assistsAvg, titems.deathsAvg],
+          // backgroundColor: ['rgba(13, 122, 231, 0.6)', 'rgba(231, 13, 13, 0.6)'],
+          // borderColor: "red"
+        },
+      ]
+    })
+
+    const [titanHorizontalBar2] = useState({
+      labels: ['Efficiency', 'Average Score Per Kill', 'Average Score Per Life', 'K/DA'], //BAR, labels = X-axis dates
+      datasets: [ 
+        {
+          // label: [10, 20, 30, 40, 50],
+          data: [titems.effAvg, titems.perKAvg, titems.perLAvg, kda],
           // backgroundColor: ['rgba(13, 122, 231, 0.6)', 'rgba(231, 13, 13, 0.6)'],
           // borderColor: "red"
         },
@@ -61,21 +75,23 @@ export default function ClassComparisons(props) {
     })
 
     return(
-      <Radar
-        data={titanRadar}
-        options={{ maintainAspectRatio: false, }}
-      />
+      <div id="HorizontalBarHolder">
+        <HorizontalBar
+          data={titanHorizontalBar1}
+          options={{ maintainAspectRatio: false }}
+        />
+      </div>
     )
   }
 
   function HunterDataOrganizer(hitems) {
     // console.log(hitems)
-    const [hunterRadar] = useState({
-      labels: ['Assists', 'Killing Blows', 'Kills', 'Deaths', 'Efficiency', 'Average Score Per Kill', 'Average Score Per Life', 'Average Score Per Game', 'Win Rate'], //BAR, labels = X-axis dates
+    const [hunterHorizontalBar] = useState({
+      labels: ['Opponents Defeated', 'Kills', 'Assists', 'Deaths', 'Efficiency', 'Average Score Per Kill', 'Average Score Per Life', 'Average Score Per Game', 'Win Rate'], //BAR, labels = X-axis dates
       datasets: [ 
         {
           // label: 'Titan',
-          data: [hitems.assistsAvg, hitems.oppDefAvg, hitems.killsAvg, hitems.deathsAvg, hitems.effAvg, hitems.perKAvg, hitems.perLAvg, hitems.scoreAvg, hitems.standingAvg],
+          data: [hitems.oppDefAvg, hitems.killsAvg, hitems.assistsAvg, hitems.deathsAvg, hitems.effAvg, hitems.perKAvg, hitems.perLAvg, hitems.scoreAvg, hitems.standingAvg],
           // backgroundColor: ['rgba(13, 122, 231, 0.6)', 'rgba(231, 13, 13, 0.6)'],
           // borderColor: "red"
         },
@@ -83,8 +99,8 @@ export default function ClassComparisons(props) {
     })
 
     return(
-      <Radar
-        data={hunterRadar}
+      <HorizontalBar
+        data={hunterHorizontalBar}
         options={{ maintainAspectRatio: false, }}
       />
     )
@@ -92,12 +108,12 @@ export default function ClassComparisons(props) {
 
   function WarlockDataOrganizer(witems) {
     // console.log(witems)
-    const [warlockRadar] = useState({
-      labels: ['Assists', 'Killing Blows', 'Kills', 'Deaths', 'Efficiency', 'Average Score Per Kill', 'Average Score Per Life', 'Average Score Per Game', 'Win Rate'], //BAR, labels = X-axis dates
+    const [warlockHorizontalBar] = useState({
+      labels: ['Opponents Defeated', 'Kills', 'Assists', 'Deaths', 'Efficiency', 'Average Score Per Kill', 'Average Score Per Life', 'Average Score Per Game', 'Win Rate'], //BAR, labels = X-axis dates
       datasets: [ 
         {
           // label: 'Titan',
-          data: [witems.assistsAvg, witems.oppDefAvg, witems.killsAvg, witems.deathsAvg, witems.effAvg, witems.perKAvg, witems.perLAvg, witems.scoreAvg, witems.standingAvg],
+          data: [witems.oppDefAvg, witems.killsAvg, witems.assistsAvg, witems.deathsAvg, witems.effAvg, witems.perKAvg, witems.perLAvg, witems.scoreAvg, witems.standingAvg],
           // backgroundColor: ['rgba(13, 122, 231, 0.6)', 'rgba(231, 13, 13, 0.6)'],
           // borderColor: "red"
         },
@@ -105,8 +121,8 @@ export default function ClassComparisons(props) {
     })
 
     return(
-      <Radar
-        data={warlockRadar}
+      <HorizontalBar
+        data={warlockHorizontalBar}
         options={{ maintainAspectRatio: false, }}
       />
     )

@@ -19,7 +19,16 @@ export default function NavigationMenu() {
     setInitialData(result);
     };
 
+    // const fetchOtherData = async () => {
+    //   const result2 = await fetch('https://www.bungie.net/common/destiny2_content/json/en/aggregate-2c470b6f-2810-432f-ab54-0b0fe0b0ba53.json',).then(res => {
+    //     return res.json()
+    //   });
+  
+    //   console.log(result2);
+    // }
+
     fetchInitialData();
+    // fetchOtherData();
   }, [])
 
 
