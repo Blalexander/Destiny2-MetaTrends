@@ -1,6 +1,5 @@
 import React from 'react';
-import weaponList from './manifest';
-console.log(weaponList)
+import manifest from './manifest';
 
 
 export default function WeaponCharts(props) {
@@ -25,7 +24,7 @@ export default function WeaponCharts(props) {
     console.log(testPath);
   }
 
-  // console.log(manifest)
+  console.log(manifest[4425887])
   function WepConstructor(props) {
     let revisedWep = testPath[props.value];
     // let revisedWep = Object.values(currentWep);
@@ -33,10 +32,23 @@ export default function WeaponCharts(props) {
     //   item.toFixed(2)
     // })
     let revisedWinRate = 1 - revisedWep.standingAvg;
+    let wepId = revisedWep._id;
+    // let revisedWepName = manifest[wepId].weaponName;
+    // console.log(revisedWepName)
+    // let wepIcon = "https://www.bungie.net" + manifest[wepId].weaponIcon;
 
-    return (
-      <div className="wepChartsItem">Weapon Name: {revisedWep._id}, Times Used: {revisedWep.totalCount}, Assists: {revisedWep.assistsAvg.toFixed(2)}, Kills: {revisedWep.killsAvg.toFixed(2)}, Deaths: {revisedWep.deathsAvg.toFixed(2)}, Efficiency: {revisedWep.effAvg.toFixed(2)}, scoreAvg: {revisedWep.scoreAvg.toFixed(2)}, Win Rate: {revisedWinRate.toFixed(2)}</div>
-    )
+    if(manifest[wepId]) {
+      let revisedWepName = manifest[wepId].weaponName;
+      let wepIcon = "https://www.bungie.net" + manifest[wepId].weaponIcon;
+      return (
+        <div className="wepChartsItem"><img src={wepIcon} className="wepIcons" alt="wepIcon"></img> Weapon Name: {revisedWepName}, Times Used: {revisedWep.totalCount}, Assists: {revisedWep.assistsAvg.toFixed(2)}, Kills: {revisedWep.killsAvg.toFixed(2)}, Deaths: {revisedWep.deathsAvg.toFixed(2)}, Efficiency: {revisedWep.effAvg.toFixed(2)}, scoreAvg: {revisedWep.scoreAvg.toFixed(2)}, Win Rate: {revisedWinRate.toFixed(2)}</div>
+      )
+    }
+    else {
+      return (
+        <div className="wepChartsItem">Weapon Name: {wepId}, Times Used: {revisedWep.totalCount}, Assists: {revisedWep.assistsAvg.toFixed(2)}, Kills: {revisedWep.killsAvg.toFixed(2)}, Deaths: {revisedWep.deathsAvg.toFixed(2)}, Efficiency: {revisedWep.effAvg.toFixed(2)}, scoreAvg: {revisedWep.scoreAvg.toFixed(2)}, Win Rate: {revisedWinRate.toFixed(2)}</div>
+      )
+    }
   }
 
 
