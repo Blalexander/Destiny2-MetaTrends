@@ -24,7 +24,23 @@ export default function WeaponCharts(props) {
     console.log(testPath);
   }
 
-  console.log(manifest[4425887])
+  function WeaponStats(wepIterator) {
+    // let wepIterator2 = Object.keys(wepIterator.weaponValues);
+    return(
+      <p>{wepIterator}</p>
+    )
+
+    // const listOfStats = wepIterator2.map((statIterator) => 
+    //   <p>{wepIterator[wepIterator2].value}</p>
+    // );
+
+    // return (
+    //     <section>
+    //       {listOfStats}
+    //     </section>
+    // )
+    }
+
   function WepConstructor(props) {
     let revisedWep = testPath[props.value];
     // let revisedWep = Object.values(currentWep);
@@ -40,8 +56,13 @@ export default function WeaponCharts(props) {
     if(manifest[wepId]) {
       let revisedWepName = manifest[wepId].weaponName;
       let wepIcon = "https://www.bungie.net" + manifest[wepId].weaponIcon;
+      let wepStatKeys = Object.keys(manifest[wepId].weaponValues);
+
       return (
-        <div className="wepChartsItem"><img src={wepIcon} className="wepIcons" alt="wepIcon"></img> Weapon Name: {revisedWepName}, Times Used: {revisedWep.totalCount}, Assists: {revisedWep.assistsAvg.toFixed(2)}, Kills: {revisedWep.killsAvg.toFixed(2)}, Deaths: {revisedWep.deathsAvg.toFixed(2)}, Efficiency: {revisedWep.effAvg.toFixed(2)}, scoreAvg: {revisedWep.scoreAvg.toFixed(2)}, Win Rate: {revisedWinRate.toFixed(2)}</div>
+        <div className="wepChartsItem"><img src={wepIcon} className="wepIcons" alt="wepIcon"></img> <p className="wepName">Weapon Name: {revisedWepName}</p>
+        <div className="playerStats">Times Used: {revisedWep.totalCount}, Assists: {revisedWep.assistsAvg.toFixed(2)}, Kills: {revisedWep.killsAvg.toFixed(2)}, Deaths: {revisedWep.deathsAvg.toFixed(2)}, Efficiency: {revisedWep.effAvg.toFixed(2)}, scoreAvg: {revisedWep.scoreAvg.toFixed(2)}, Win Rate: {revisedWinRate.toFixed(2)}</div>
+        <div>{wepStatKeys}</div>
+        </div>
       )
     }
     else {
