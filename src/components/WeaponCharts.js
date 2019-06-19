@@ -57,11 +57,21 @@ export default function WeaponCharts(props) {
       let revisedWepName = manifest[wepId].weaponName;
       let wepIcon = "https://www.bungie.net" + manifest[wepId].weaponIcon;
       let wepStatKeys = Object.keys(manifest[wepId].weaponValues);
+      let wepStatVals = wepStatKeys.map(stat => {
+        if(stat === "1885944937" || stat === "3291498656") {
+          return("")
+        }
+        else {
+          return( 
+            stat + " " + manifest[wepId].weaponValues[stat].value + " "
+          )
+        }
+      })
 
       return (
         <div className="wepChartsItem"><img src={wepIcon} className="wepIcons" alt="wepIcon"></img> <p className="wepName">Weapon Name: {revisedWepName}</p>
         <div className="playerStats">Times Used: {revisedWep.totalCount}, Assists: {revisedWep.assistsAvg.toFixed(2)}, Kills: {revisedWep.killsAvg.toFixed(2)}, Deaths: {revisedWep.deathsAvg.toFixed(2)}, Efficiency: {revisedWep.effAvg.toFixed(2)}, scoreAvg: {revisedWep.scoreAvg.toFixed(2)}, Win Rate: {revisedWinRate.toFixed(2)}</div>
-        <div>{wepStatKeys}</div>
+        <div>{wepStatVals}</div>
         </div>
       )
     }
