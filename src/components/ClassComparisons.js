@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 // import {Line, Bar, Pie} from 'react-chartjs-2';
 import {Pie, HorizontalBar} from 'react-chartjs-2';
+import manifest from './manifest';
 
 
 export default function ClassComparisons(props) {
@@ -44,6 +45,56 @@ export default function ClassComparisons(props) {
         options={{ maintainAspectRatio: false, responsive: false, rotation: 140 }}
       />
     )
+  }
+
+  function MapDataPopulator(item) {
+    // console.log(item.value)
+    let mapHash = item.value._id.map;
+    let mapIcon = "https://www.bungie.net" + manifest.mapHashes[mapHash].locationImage;
+    let revisedWinRate = (1 - item.value.standing) * 100;
+
+
+    return(
+      <div className="eachMapHolder">
+        <img src={mapIcon} className="mapIcons" alt="mapIcon"></img> 
+        <p>{manifest.mapHashes[mapHash].locationName}</p>
+        <p>Win Rate: {revisedWinRate.toFixed(0)}%</p>
+        <p>Games Played: {item.value.count}</p>
+        <br></br>
+      </div>
+    )
+  }
+
+
+  const titanMaps = props[7].filter(gameMap => {
+    return gameMap._id.class === "Titan"
+  })
+  const hunterMaps = props[7].filter(gameMap => {
+    return gameMap._id.class === "Hunter"
+  })    
+  const warlockMaps = props[7].filter(gameMap => {
+    return gameMap._id.class === "Warlock"
+  })
+
+
+  function MapConstructor(mapItem) {
+    console.log(mapItem)
+    // const titanMaps = props[7].filter(gameMap => {
+    //   return gameMap._id.class === "Titan"
+    // })
+
+    const MapsData = mapItem[0].map((gameMap) => 
+      <MapDataPopulator key={gameMap._id.map} value={gameMap} />
+    );
+
+    return(
+      <div>
+        <div className="mapsContainer">
+          {MapsData}
+        </div>
+      </div>
+    )
+    
   }
 
   function TitanDataOrganizer(titems) {
@@ -145,6 +196,15 @@ export default function ClassComparisons(props) {
           </section>
           <section id="warlockCC" className="CCcontainer">
             <WarlockDataOrganizer {...props[6][2]} />
+          </section>
+          <section className="titanMaps">
+            <MapConstructor {...[titanMaps]} />
+          </section>
+          <section className="hunterMaps">
+            <MapConstructor {...[hunterMaps]} />
+          </section>
+          <section className="warlockMaps">
+            <MapConstructor {...[warlockMaps]} />
           </section>
         </div>
       </button>

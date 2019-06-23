@@ -63073,6 +63073,453 @@ const manifest = {
         "name": "Rounds Per Minute",
         "description": "The number of shots per minute this weapon can fire."
     }
+  },
+  "mapHashes": {
+        "29726492": {
+            "locationName": "Private Match",
+            "locationDescription": "Create a custom PvP match with your fireteam, and best your comrades for personal glory… and bragging rights.",
+            "locationImage": "/img/destiny_content/pgcr/playlist_mayhem.jpg"
+        },
+        "40003746": {
+            "locationName": "The Citadel",
+            "locationDescription": "The Dreaming City",
+            "locationImage": "/img/destiny_content/pgcr/pvp_peak.jpg"
+        },
+        "148937731": {
+            "locationName": "Wormhaven",
+            "locationDescription": "New Pacific Arcology, Titan",
+            "locationImage": "/img/destiny_content/pgcr/pvp_wormhaven.jpg"
+        },
+        "332234118": {
+            "locationName": "Vostok",
+            "locationDescription": "Felwinter Peak, Earth",
+            "locationImage": "/img/destiny_content/pgcr/crucible_observatory.jpg"
+        },
+        "399506119": {
+            "locationName": "Endless Vale",
+            "locationDescription": "Arcadian Valley, Nessus",
+            "locationImage": "/img/destiny_content/pgcr/crucible_grove.jpg"
+        },
+        "451430877": {
+            "locationName": "Bannerfall",
+            "locationDescription": "The Last City, Earth",
+            "locationImage": "/img/destiny_content/pgcr/crucible_bannerfall.jpg"
+        },
+        "504444892": {
+            "locationName": "Doubles",
+            "locationDescription": "\"Your partner is your life.\" —Lord Shaxx \n\nFight alongside a teammate, and work together to crush your opponents.",
+            "locationImage": "/img/destiny_content/pgcr/playlist_doubles.jpg"
+        },
+        "532383918": {
+            "locationName": "Radiant Cliffs",
+            "locationDescription": "Mercury's Past, Infinite Forest",
+            "locationImage": "/img/destiny_content/pgcr/pvp_radiant_cliffs.jpg"
+        },
+        "585322760": {
+            "locationName": "Armsweek",
+            "locationDescription": "\"Train with limitations, and a real fight will set you free.\" —Lord Shaxx \n\nYour arsenal is restricted for a greater challenge.Use the prescribed loadout, but let no other constraints stop your rampage.",
+            "locationImage": "/img/theme/destiny/bgs/pgcrs/placeholder.jpg"
+        },
+        "666770290": {
+            "locationName": "Altar of Flame",
+            "locationDescription": "Caloris Basin, Mercury",
+            "locationImage": "/img/destiny_content/pgcr/crucible_ness.jpg"
+        },
+        "750001803": {
+            "locationName": "Altar of Flame",
+            "locationDescription": "Caloris Basin, Mercury",
+            "locationImage": "/img/destiny_content/pgcr/crucible_ness.jpg"
+        },
+        "777592567": {
+            "locationName": "Midtown",
+            "locationDescription": "The Last City, Earth",
+            "locationImage": "/img/destiny_content/pgcr/crucible_midtown.jpg"
+        },
+        "778271008": {
+            "locationName": "Emperor's Respite",
+            "locationDescription": "Prison Barge, Leviathan",
+            "locationImage": "/img/destiny_content/pgcr/crucible_katana.jpg"
+        },
+        "806094750": {
+            "locationName": "Javelin-4",
+            "locationDescription": "Warsat Launch Facility, Io",
+            "locationImage": "/img/destiny_content/pgcr/crucible_shaft.jpg"
+        },
+        "903584917": {
+            "locationName": "Mayhem",
+            "locationDescription": "Faster Supers, abilities, and Heavy ammo spawns—withstand and engage in a whirlwind of chaos.",
+            "locationImage": "/img/destiny_content/pgcr/playlist_mayhem.jpg"
+        },
+        "917887719": {
+            "locationName": "Supremacy",
+            "locationDescription": "Defeat opponents and claim their crests.",
+            "locationImage": "/img/theme/destiny/bgs/pgcrs/placeholder.jpg"
+        },
+        "931636133": {
+            "locationName": "Radiant Cliffs",
+            "locationDescription": "Mercury's Past, Infinite Forest",
+            "locationImage": "/img/destiny_content/pgcr/pvp_radiant_cliffs.jpg"
+        },
+        "990984849": {
+            "locationName": "Retribution",
+            "locationDescription": "Upper Stratosphere, Mars",
+            "locationImage": "/img/destiny_content/pgcr/crucible_elevator.jpg"
+        },
+        "1003889713": {
+            "locationName": "Javelin-4",
+            "locationDescription": "Warsat Launch Facility, Io",
+            "locationImage": "/img/destiny_content/pgcr/crucible_shaft.jpg"
+        },
+        "1151331757": {
+            "locationName": "Showdown",
+            "locationDescription": "All-out team warfare. Revive a defeated teammate to steal back the point your opponents scored.",
+            "locationImage": "/img/theme/destiny/bgs/pgcrs/placeholder.jpg"
+        },
+        "1153409123": {
+            "locationName": "Convergence",
+            "locationDescription": "Infinite Forest, Mercury",
+            "locationImage": "/img/destiny_content/pgcr/pvp_longshot_2.jpg"
+        },
+        "1218001922": {
+            "locationName": "Private Match",
+            "locationDescription": "Create a custom PvP match with your fireteam, and best your comrades for personal glory… and bragging rights.",
+            "locationImage": "/img/theme/destiny/bgs/pgcrs/placeholder.jpg"
+        },
+        "1276739382": {
+            "locationName": "Breakthrough",
+            "locationDescription": "Deploy the Breaker to expose your opponents' vault. Then, hack their vault to plunder it.",
+            "locationImage": "/img/destiny_content/pgcr/playlist_breakthrough.jpg"
+        },
+        "1310854805": {
+            "locationName": "Rumble",
+            "locationDescription": "No teams. No allegiance. A free-for-all where the leader had better watch their back.",
+            "locationImage": "/img/theme/destiny/bgs/pgcrs/placeholder.jpg"
+        },
+        "1312786953": {
+            "locationName": "Mayhem",
+            "locationDescription": "Faster Supers, abilities, and Heavy ammo spawns—withstand and engage in a whirlwind of chaos.",
+            "locationImage": "/img/destiny_content/pgcr/playlist_mayhem.jpg"
+        },
+        "1358255449": {
+            "locationName": "Crimson Days",
+            "locationDescription": "\"Your partner is your life.\" —Lord Shaxx \n\nFight alongside a teammate and work together to crush your opponents.",
+            "locationImage": "/img/theme/destiny/bgs/pgcrs/placeholder.jpg"
+        },
+        "1435054848": {
+            "locationName": "Midtown",
+            "locationDescription": "The Last City, Earth",
+            "locationImage": "/img/destiny_content/pgcr/crucible_midtown.jpg"
+        },
+        "1448435553": {
+            "locationName": "Emperor's Respite",
+            "locationDescription": "Prison Barge, Leviathan",
+            "locationImage": "/img/destiny_content/pgcr/crucible_katana.jpg"
+        },
+        "1482206498": {
+            "locationName": "Convergence",
+            "locationDescription": "Infinite Forest, Mercury",
+            "locationImage": "/img/destiny_content/pgcr/pvp_longshot_2.jpg"
+        },
+        "1489679220": {
+            "locationName": "Endless Vale",
+            "locationDescription": "Arcadian Valley, Nessus",
+            "locationImage": "/img/destiny_content/pgcr/crucible_grove.jpg"
+        },
+        "1583254851": {
+            "locationName": "The Fortress",
+            "locationDescription": "European Dead Zone, Earth",
+            "locationImage": "/img/destiny_content/pgcr/crucible_hull.jpg"
+        },
+        "1673114595": {
+            "locationName": "Pacifica",
+            "locationDescription": "Tidal Anchor, Titan",
+            "locationImage": "/img/destiny_content/pgcr/pvp_pacifica.jpg"
+        },
+        "1694936744": {
+            "locationName": "Private Match",
+            "locationDescription": "Create a custom PvP match with your fireteam, and best your comrades for personal glory… and bragging rights.",
+            "locationImage": "/img/theme/destiny/bgs/pgcrs/placeholder.jpg"
+        },
+        "1702649201": {
+            "locationName": "Vostok",
+            "locationDescription": "Felwinter Peak, Earth",
+            "locationImage": "/img/destiny_content/pgcr/crucible_observatory.jpg"
+        },
+        "1709912095": {
+            "locationName": "Crucible Labs",
+            "locationDescription": "Participate in experimental, work-in-progress Crucible experiences. For more information on Crucible Labs, visit bungie.net.",
+            "locationImage": "/img/theme/destiny/bgs/pgcrs/placeholder.jpg"
+        },
+        "1711620427": {
+            "locationName": "Legion's Gulch",
+            "locationDescription": "European Dead Zone, Earth",
+            "locationImage": "/img/destiny_content/pgcr/crucible_slag.jpg"
+        },
+        "1733006874": {
+            "locationName": "Legion's Gulch",
+            "locationDescription": "European Dead Zone, Earth",
+            "locationImage": "/img/destiny_content/pgcr/crucible_slag.jpg"
+        },
+        "1746163491": {
+            "locationName": "Supremacy",
+            "locationDescription": "Defeat opponents and claim their crests.",
+            "locationImage": "/img/theme/destiny/bgs/pgcrs/placeholder.jpg"
+        },
+        "1815340083": {
+            "locationName": "Equinox",
+            "locationDescription": "Unknown Space",
+            "locationImage": "/img/destiny_content/pgcr/pvp_street.jpg"
+        },
+        "1859507212": {
+            "locationName": "Private Match",
+            "locationDescription": "Create a custom PvP match with your fireteam, and best your comrades for personal glory… and bragging rights.",
+            "locationImage": "/img/theme/destiny/bgs/pgcrs/placeholder.jpg"
+        },
+        "1887396202": {
+            "locationName": "Private Match",
+            "locationDescription": "Create a custom PvP match with your fireteam, and best your comrades for personal glory… and bragging rights.",
+            "locationImage": "/img/theme/destiny/bgs/pgcrs/placeholder.jpg"
+        },
+        "2014552458": {
+            "locationName": "Iron Banner Supremacy",
+            "locationDescription": "\"A Guardian's crest represents the lineage and combat techniques of her class. Hold onto yours and take them from your opponents.\" —Lord Saladin \n\nDefeat your opponents and take their crests.",
+            "locationImage": "/img/destiny_content/pgcr/conceptual_iron_banner.jpg"
+        },
+        "2063575880": {
+            "locationName": "Doubles",
+            "locationDescription": "\"Your partner is your life.\" —Lord Shaxx \n\nFight alongside a teammate, and work together to crush your opponents.",
+            "locationImage": "/img/destiny_content/pgcr/playlist_doubles.jpg"
+        },
+        "2068785595": {
+            "locationName": "Gambit Preview",
+            "locationDescription": "Defeat the enemies of humanity, collect their Motes, and bank them to summon a Primeval. First team to destroy their Primeval wins.",
+            "locationImage": "/img/theme/destiny/bgs/pgcrs/placeholder.jpg"
+        },
+        "2087163649": {
+            "locationName": "Rumble",
+            "locationDescription": "No teams. No allegiance. A free-for-all where the leader had better watch their back.",
+            "locationImage": "/img/theme/destiny/bgs/pgcrs/placeholder.jpg"
+        },
+        "2233665874": {
+            "locationName": "Eternity",
+            "locationDescription": "Unknown Space",
+            "locationImage": "/img/destiny_content/pgcr/crucible_glaive.jpg"
+        },
+        "2262757213": {
+            "locationName": "Solitude",
+            "locationDescription": "Warmind Facility Hellas, Mars",
+            "locationImage": "/img/destiny_content/pgcr/crucible_solitude.jpg"
+        },
+        "2271820498": {
+            "locationName": "The Burnout",
+            "locationDescription": "Vex Future, Infinite Forest",
+            "locationImage": "/img/destiny_content/pgcr/pvp_the_burnout.jpg"
+        },
+        "2274172949": {
+            "locationName": "Quickplay",
+            "locationDescription": "\"Take risks and learn the art of war. You have one focus: The enemy must fall.\" —Lord Shaxx \n\nFight for Valor in large-scale combat scenarios.",
+            "locationImage": "/img/theme/destiny/bgs/pgcrs/placeholder.jpg"
+        },
+        "2276121440": {
+            "locationName": "Firebase Echo",
+            "locationDescription": "Arcadian Valley, Nessus",
+            "locationImage": "/img/destiny_content/pgcr/pvp_echo.jpg"
+        },
+        "2319065780": {
+            "locationName": "Iron Banner Clash",
+            "locationDescription": "\"Bring the full force of your Light. Nothing less will do.\" —Lord Saladin \n\nAll-out team warfare. Destroy the enemy.",
+            "locationImage": "/img/destiny_content/pgcr/conceptual_iron_banner.jpg"
+        },
+        "2404525917": {
+            "locationName": "Private Match",
+            "locationDescription": "Create a custom PvP match with your fireteam, and best your comrades for personal glory… and bragging rights.",
+            "locationImage": "/img/destiny_content/pgcr/playlist_breakthrough.jpg"
+        },
+        "2444890541": {
+            "locationName": "Crimson Days",
+            "locationDescription": "\"Your partner is your life.\" —Lord Shaxx \n\nFight alongside a teammate and work together to crush your opponents.",
+            "locationImage": "/img/theme/destiny/bgs/pgcrs/placeholder.jpg"
+        },
+        "2459350930": {
+            "locationName": "Private Match",
+            "locationDescription": "Create a custom PvP match with your fireteam, and best your comrades for personal glory… and bragging rights.",
+            "locationImage": "/img/theme/destiny/bgs/pgcrs/placeholder.jpg"
+        },
+        "2473919228": {
+            "locationName": "Meltdown",
+            "locationDescription": "Clovis Bray Special Projects, Mars",
+            "locationImage": "/img/destiny_content/pgcr/crucible_meltdown.jpg"
+        },
+        "2491884566": {
+            "locationName": "Private Match",
+            "locationDescription": "Create a custom PvP match with your fireteam, and best your comrades for personal glory… and bragging rights.",
+            "locationImage": "/img/theme/destiny/bgs/pgcrs/placeholder.jpg"
+        },
+        "2591737171": {
+            "locationName": "Gambler's Ruin",
+            "locationDescription": "The Tangled Shore",
+            "locationImage": "/img/theme/destiny/bgs/pgcrs/placeholder.jpg"
+        },
+        "2598372743": {
+            "locationName": "Crucible Labs",
+            "locationDescription": "Participate in experimental, work-in-progress Crucible experiences. For more information on Crucible Labs, visit bungie.net.",
+            "locationImage": "/img/theme/destiny/bgs/pgcrs/placeholder.jpg"
+        },
+        "2666761222": {
+            "locationName": "Distant Shore",
+            "locationDescription": "Arcadian Strand, Nessus",
+            "locationImage": "/img/destiny_content/pgcr/crucible_distant_shore.jpg"
+        },
+        "2737374369": {
+            "locationName": "Trials of the Nine",
+            "locationDescription": "Enter the Trials of the Nine to face your fellow Guardians. Prepare to be judged.",
+            "locationImage": "/img/theme/destiny/bgs/pgcrs/placeholder.jpg"
+        },
+        "2748633318": {
+            "locationName": "Wormhaven",
+            "locationDescription": "New Pacific Arcology, Titan",
+            "locationImage": "/img/destiny_content/pgcr/pvp_wormhaven.jpg"
+        },
+        "2800919246": {
+            "locationName": "The Fortress",
+            "locationDescription": "European Dead Zone, Earth",
+            "locationImage": "/img/destiny_content/pgcr/crucible_hull.jpg"
+        },
+        "2810171920": {
+            "locationName": "Bannerfall",
+            "locationDescription": "The Last City, Earth",
+            "locationImage": "/img/destiny_content/pgcr/crucible_bannerfall.jpg"
+        },
+        "2903879783": {
+            "locationName": "Private Match",
+            "locationDescription": "Create a custom PvP match with your fireteam, and best your comrades for personal glory… and bragging rights.",
+            "locationImage": "/img/theme/destiny/bgs/pgcrs/placeholder.jpg"
+        },
+        "2947109551": {
+            "locationName": "Competitive",
+            "locationDescription": "\"Stakes are high, and coordination with your teammates is vital. Leave personal glory behind, and together you'll crush the enemy.\" —Lord Shaxx \n\nFight for Glory in more focused combat scenarios.",
+            "locationImage": "/img/theme/destiny/bgs/pgcrs/placeholder.jpg"
+        },
+        "2978154446": {
+            "locationName": "Equinox",
+            "locationDescription": "Unknown Space",
+            "locationImage": "/img/destiny_content/pgcr/pvp_street.jpg"
+        },
+        "3062197616": {
+            "locationName": "Competitive",
+            "locationDescription": "\"Stakes are high, and coordination with your teammates is vital. Leave personal glory behind, and together you'll crush the enemy.\" —Lord Shaxx \n\nFight for Glory in more focused combat scenarios.",
+            "locationImage": "/img/theme/destiny/bgs/pgcrs/placeholder.jpg"
+        },
+        "3135101885": {
+            "locationName": "Crucible Labs",
+            "locationDescription": "Participate in experimental, work-in-progress Crucible experiences. For more information on Crucible Labs, visit bungie.net.",
+            "locationImage": "/img/theme/destiny/bgs/pgcrs/placeholder.jpg"
+        },
+        "3164915257": {
+            "locationName": "The Dead Cliffs",
+            "locationDescription": "European Dead Zone, Earth",
+            "locationImage": "/img/destiny_content/pgcr/crucible_cliffside.jpg"
+        },
+        "3212348372": {
+            "locationName": "Gambler's Ruin",
+            "locationDescription": "The Tangled Shore",
+            "locationImage": "/img/theme/destiny/bgs/pgcrs/placeholder.jpg"
+        },
+        "3233852802": {
+            "locationName": "The Dead Cliffs",
+            "locationDescription": "European Dead Zone, Earth",
+            "locationImage": "/img/destiny_content/pgcr/crucible_cliffside.jpg"
+        },
+        "3243161126": {
+            "locationName": "Quickplay",
+            "locationDescription": "\"Take risks and learn the art of war. You have one focus: The enemy must fall.\" —Lord Shaxx \n\nFight for Valor in large-scale combat scenarios.",
+            "locationImage": "/img/theme/destiny/bgs/pgcrs/placeholder.jpg"
+        },
+        "3243244011": {
+            "locationName": "Lockdown",
+            "locationDescription": "Seize at least two zones to make capture progress. Control all three for a Lockdown to win the round early.",
+            "locationImage": "/img/theme/destiny/bgs/pgcrs/placeholder.jpg"
+        },
+        "3292922825": {
+            "locationName": "Firebase Echo",
+            "locationDescription": "Arcadian Valley, Nessus",
+            "locationImage": "/img/destiny_content/pgcr/pvp_echo.jpg"
+        },
+        "3344441646": {
+            "locationName": "Private Match",
+            "locationDescription": "Create a custom PvP match with your fireteam, and best your comrades for personal glory… and bragging rights.",
+            "locationImage": "/img/theme/destiny/bgs/pgcrs/placeholder.jpg"
+        },
+        "3349246768": {
+            "locationName": "Solitude",
+            "locationDescription": "Warmind Facility Hellas, Mars",
+            "locationImage": "/img/destiny_content/pgcr/crucible_solitude.jpg"
+        },
+        "3404623499": {
+            "locationName": "The Citadel",
+            "locationDescription": "The Dreaming City",
+            "locationImage": "/img/destiny_content/pgcr/pvp_peak.jpg"
+        },
+        "3423042035": {
+            "locationName": "Distant Shore",
+            "locationDescription": "Arcadian Strand, Nessus",
+            "locationImage": "/img/destiny_content/pgcr/crucible_distant_shore.jpg"
+        },
+        "3616746132": {
+            "locationName": "Iron Banner Control",
+            "locationDescription": "\"There will come a day when the Tower falls again. Our ability to hold territory is paramount.\" —Lord Saladin\n\nCapture zones to increase points for every kill.",
+            "locationImage": "/img/destiny_content/pgcr/conceptual_iron_banner.jpg"
+        },
+        "3617269021": {
+            "locationName": "Crucible Labs",
+            "locationDescription": "Participate in experimental, work-in-progress Crucible experiences. For more information on Crucible Labs, visit bungie.net.",
+            "locationImage": "/img/theme/destiny/bgs/pgcrs/placeholder.jpg"
+        },
+        "3734723183": {
+            "locationName": "Eternity",
+            "locationDescription": "Unknown Space",
+            "locationImage": "/img/destiny_content/pgcr/crucible_glaive.jpg"
+        },
+        "3753505781": {
+            "locationName": "Iron Banner",
+            "locationDescription": "\"There will come a day when the Tower falls again. Our ability to hold territory is paramount.\" —Lord Saladin\n\nCapture zones to increase points for every kill.",
+            "locationImage": "/img/theme/destiny/bgs/pgcrs/placeholder.jpg"
+        },
+        "3767360267": {
+            "locationName": "Private Match",
+            "locationDescription": "Create a custom PvP match with your fireteam, and best your comrades for personal glory… and bragging rights.",
+            "locationImage": "/img/theme/destiny/bgs/pgcrs/placeholder.jpg"
+        },
+        "3788594815": {
+            "locationName": "Meltdown",
+            "locationDescription": "Clovis Bray Special Projects, Mars",
+            "locationImage": "/img/destiny_content/pgcr/crucible_meltdown.jpg"
+        },
+        "3799743268": {
+            "locationName": "Trials of the Nine",
+            "locationDescription": "Enter the Trials of the Nine to face your fellow Guardians. Prepare to be judged.",
+            "locationImage": "/img/destiny_content/pgcr/conceptual_trials_of_the_nine.jpg"
+        },
+        "3849796864": {
+            "locationName": "Retribution",
+            "locationDescription": "Upper Stratosphere, Mars",
+            "locationImage": "/img/destiny_content/pgcr/crucible_elevator.jpg"
+        },
+        "3897312654": {
+            "locationName": "Pacifica",
+            "locationDescription": "Tidal Anchor, Titan",
+            "locationImage": "/img/destiny_content/pgcr/pvp_pacifica.jpg"
+        },
+        "4012915511": {
+            "locationName": "The Burnout",
+            "locationDescription": "Vex Future, Infinite Forest",
+            "locationImage": "/img/destiny_content/pgcr/pvp_the_burnout.jpg"
+        },
+        "4242525388": {
+            "locationName": "Private Match",
+            "locationDescription": "Create a custom PvP match with your fireteam, and best your comrades for personal glory… and bragging rights.",
+            "locationImage": "/img/theme/destiny/bgs/pgcrs/placeholder.jpg"
+        }
   }
 }
 export default manifest;

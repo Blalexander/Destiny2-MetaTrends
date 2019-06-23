@@ -317,17 +317,60 @@ button {
   border-right: 1px solid gold;
 }
 
+.mapIcons {
+  height: 100px;
+}
+
+.mapsContainer {
+  border: 1px solid black;
+  overflow-y: scroll;
+  height: 30vh;
+}
 
 
 /* -------------- Weapon Charts --------------- */
 #wepContainer {
 /*   -webkit-transform: scaleY(.1); */
-          transform: scaleY(1);
+          -webkit-transform: scaleY(1);
+                  transform: scaleY(1);
     overflow-y: scroll;
   height: 100%;
   width: 100%;
 }
 
+.wepChartsItem {
+  border-top: 3px solid navy;
+}
+
 .wepIcons {
   width: 60px;
+  justify-self: flex-start;
+  display: flex;
+}
+
+.wepName {
+  display: flex;
+  justify-self: flex-start;
+}
+
+.wepType {
+  display: flex;
+  justify-self: flex-start;
+}
+
+.wepStatVals {
+/*   display: flex; */
+/*   justify-content: flex-end; */
+/*   align-self: center; */
+  position: absolute;
+  height: 10vh;
+  width: 100%;
+  margin-top: -8vh;
+}
+
+.playerStats {
+  position: absolute;
+  height: 10vh;
+  width: 100%;
+  margin-top: -4vh;
 }
