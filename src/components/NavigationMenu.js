@@ -13,6 +13,7 @@ export default function NavigationMenu() {
   useEffect(() => {
     const fetchInitialData = async () => {
     const result = await fetch('http://localhost:8080/bungie/hope/',).then(res => {
+      document.getElementById('landingPageNav').classList.remove('loading');
       return res.json()
     });
 
@@ -53,7 +54,7 @@ export default function NavigationMenu() {
 
 
   return (
-    <section className="landingPageNavigation" onClick={backButton}>
+    <section id="landingPageNav" className="landingPageNavigation loading" onClick={backButton}>
       <div value={initialData}></div>
       <PowerfulAndPopular {...initialData[4]}/>
       <WeaponCharts {...initialData[3]}/>

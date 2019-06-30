@@ -3,6 +3,10 @@ import manifest from './manifest';
 
 
 function PopularCombos(props) {
+  if(props[0] === undefined) {
+    return null;
+  }
+  
   let valToUse;
   let valToUse2;
 

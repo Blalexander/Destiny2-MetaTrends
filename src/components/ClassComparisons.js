@@ -2,11 +2,20 @@ import React, {useState} from 'react';
 // import {Line, Bar, Pie} from 'react-chartjs-2';
 import {Pie, HorizontalBar} from 'react-chartjs-2';
 import manifest from './manifest';
+import MapConstructor from './MapConstructor';
 
 
 export default function ClassComparisons(props) {
   if(props[0] === undefined) {
-    return null;
+    return(    
+    <form id="classComparisons" onSubmit={handleCCSubmit}>
+      <button type="submit" id="classComparisonsButton" className="navButton">
+      I'm for Class Comparisons!
+        <div id="NavigationMenuContainer" className="hiding">
+        </div>
+      </button>
+    </form>
+    )
   }
   
   function handleCCSubmit(event) {
@@ -46,6 +55,7 @@ export default function ClassComparisons(props) {
       />
     )
   }
+
 
   function MapDataPopulator(item) {
     // console.log(item.value)
@@ -205,13 +215,22 @@ export default function ClassComparisons(props) {
           </section>
           <section className="warlockMaps">
             <MapConstructor {...[warlockMaps]} />
-          </section>
+          </section> 
         </div>
       </button>
     </form>
   )
 }
 
+// <section className="titanMaps">
+//<MapConstructor {...props[7]} />
+//</section>
+//<section className="hunterMaps">
+//<MapConstructor {...[hunterMaps]} />
+//</section>
+//<section className="warlockMaps">
+//<MapConstructor {...[warlockMaps]} />
+//</section> 
 
 // return (
 //   <form id="classComparisons" onSubmit={handleCCSubmit}>

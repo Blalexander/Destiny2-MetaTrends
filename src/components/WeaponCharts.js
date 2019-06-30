@@ -3,9 +3,9 @@ import manifest from './manifest';
 
 
 export default function WeaponCharts(props) {
-  if(props[0] === undefined) {
-    return null;
-  }
+  // if(props[0] === undefined) {
+  //   return null;
+  // }
 
   const testPath = props;
 

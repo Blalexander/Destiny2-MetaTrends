@@ -5,9 +5,9 @@ import PopularCombos from './PopularCombos';
 
 
 function PowerfulAndPopular(props) {
-  if(props[0] === undefined) {
-    return null;
-  }
+  // if(props[0] === undefined) {
+  //   return null;
+  // }
 
   // function CalculatePopularDuo() {
     // let valToUse;
