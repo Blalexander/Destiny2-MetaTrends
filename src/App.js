@@ -6,7 +6,7 @@ import './App2.css';
 import Searchbar from './components/Searchbar';
 // import Guardians from './components/Guardians';
 // import WeaponDetails from './components/Weapon-details';
-import BackButton from './components/BackButton';
+// import BackButton from './components/BackButton';
 import NavigationMenu from './components/NavigationMenu';
 
 
@@ -19,9 +19,6 @@ export default function App() {
       </header>
       <section>
         <Searchbar />
-      </section>
-      <section className="directoryButtons">
-        <BackButton />
       </section>
       <section className="navigationContainer">
         <NavigationMenu />

@@ -3,6 +3,10 @@ import manifest from './manifest';
 
 
 export default function WeaponCharts(props) {
+  if(props[0] === undefined) {
+    return null;
+  }
+
   const testPath = props;
 
   function handleWCSubmit(event) {
@@ -19,27 +23,29 @@ export default function WeaponCharts(props) {
     document.getElementById("backgroundTransitions").classList.remove('removeBodyShadow');
     document.getElementById("backgroundTransitions").classList.add('bodyShadow');
 
-    // document.getElementById('weaponChartsButton').append(props[0]._id)
+
+    document.getElementById('weaponContainer').classList.remove('hiding');
+
     WepList(testPath);
-    console.log(testPath);
+    // console.log(testPath);
   }
 
-  function WeaponStats(wepIterator) {
-    // let wepIterator2 = Object.keys(wepIterator.weaponValues);
-    return(
-      <p>{wepIterator}</p>
-    )
+  // function WeaponStats(wepIterator) {
+  //   // let wepIterator2 = Object.keys(wepIterator.weaponValues);
+  //   return(
+  //     <p>{wepIterator}</p>
+  //   )
 
-    // const listOfStats = wepIterator2.map((statIterator) => 
-    //   <p>{wepIterator[wepIterator2].value}</p>
-    // );
+  //   // const listOfStats = wepIterator2.map((statIterator) => 
+  //   //   <p>{wepIterator[wepIterator2].value}</p>
+  //   // );
 
-    // return (
-    //     <section>
-    //       {listOfStats}
-    //     </section>
-    // )
-    }
+  //   // return (
+  //   //     <section>
+  //   //       {listOfStats}
+  //   //     </section>
+  //   // )
+  //   }
 
   function WepConstructor(props) {
     let revisedWep = testPath[props.value];
@@ -102,11 +108,9 @@ export default function WeaponCharts(props) {
     );
 
     return (
-      <section id="allWeps">
-        <section>
-          {listOfWeps}
-        </section>
-      </section>
+      <div id="weaponContainer" className="hiding">
+        {listOfWeps}
+      </div>
     )
   }
 

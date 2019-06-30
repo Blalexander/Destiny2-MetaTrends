@@ -21,7 +21,7 @@ html {
 }
 
 #backgroundTransitions {
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.2));
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.0), rgba(189, 254, 255, 0.2));
   height: 100vh;
   width: 150vw;
 /*   margin-left: -50vw; */
@@ -51,7 +51,7 @@ html {
   background-color: white;
 /*   box-shadow: inset 0 0 4px #000; */
 /*   box-shadow: 0 0 5px #000; */
-  margin-bottom: 1vh;
+/*   margin-bottom: 1vh; */
   padding-top: 2vh;
   text-align: center;
   height: 7vh;
@@ -63,26 +63,6 @@ html {
   z-index: 1;
 }
 
-
-
-/*-------------- Directory Buttons ---------------*/
-.directoryButtons {
-  border: 1px dashed black;
-  display: flex;
-  justify-content: center;
-}
-
-.stats-and-graphs {
-  margin-right: 2vw;
-}
-
-.weapon-chart {
-  margin-left: 2vw;
-}
-
-button {
-  background-color: white;
-}
 
 
 
@@ -159,16 +139,19 @@ button {
 
 
 
+
 /* -------------- Main Nav Container ------------- */
 .landingPageNavigation {
   display: flex;
   flex-flow: column wrap;
   justify-content: space-evenly;
   width: 100%;
-  height: 100vh;
+  height: 90vh;
   align-self: center;
   align-content: center;
+  margin-top: -5vh;
 }
+
 
 
 
@@ -176,16 +159,11 @@ button {
 .navButton {
   width: 80vw;
   height: 20vh;
+  background-color: white;
 }
 
 #powerfulAndPopular {
 /*   border: 1px dashed black; */
-  width: 80vw;
-  height: 20vh;
-}
-
-#classComparisons {
-/*   border: 1px dashed blue; */
   width: 80vw;
   height: 20vh;
 }
@@ -196,6 +174,13 @@ button {
   height: 20vh;
 }
 
+#classComparisons {
+/*   border: 1px dashed blue; */
+  width: 80vw;
+  height: 20vh;
+}
+
+
 #historicalGraphs {
 /*   border: 1px dashed red; */
   width: 80vw;
@@ -203,19 +188,19 @@ button {
 }
 
 #powerfulAndPopularButton {
-  border: 1px dashed black;
+  border: 2px solid skyblue;
 }
 
 #classComparisonsButton {
-  border: 1px dashed blue;
+  border: 2px solid skyblue;
 }
 
 #weaponChartsButton {
-  border: 1px dashed green;
+  border: 2px solid skyblue;
 }
 
 #historicalGraphsButton {
-  border: 1px dashed red;
+  border: 2px solid skyblue;
 }
 
 .grantPriority {
@@ -275,27 +260,79 @@ button {
   grid-gap: 100px; */
   display: flex;
   flex-flow: column nowrap;
-}
-
-#pnpContent [id*=twoweppop] {
-  background-color: green;
+  overflow-y: scroll;
+  height: 100%;
 }
 
 .popWeaponContainer {
-  border: 1px solid orange;
+/*   border: 1px solid orange; */
   width: 100%;
   display: flex;
   justify-content: space-around;
-  
 }
 
 .powWeaponContainer {
-  border: 1px solid orange;
+/*   border: 1px solid orange; */
   width: 100%;
   display: flex;
   justify-content: space-around;
+}
+
+
+
+
+/* -------------- Weapon Charts --------------- */
+#wepContainer {
+/*   -webkit-transform: scaleY(.1); */
+          -webkit-transform: scaleY(1);
+                  transform: scaleY(1);
+    overflow-y: scroll;
+  height: 100%;
+  width: 100%;
+}
+
+#weaponContainer {
   
 }
+
+.wepChartsItem {
+  border-top: 3px solid navy;
+}
+
+.wepIcons {
+  width: 60px;
+  justify-self: flex-start;
+  display: flex;
+}
+
+.wepName {
+  display: flex;
+  justify-self: flex-start;
+}
+
+.wepType {
+  display: flex;
+  justify-self: flex-start;
+}
+
+.wepStatVals {
+/*   display: flex; */
+/*   justify-content: flex-end; */
+/*   align-self: center; */
+  position: absolute;
+  height: 10vh;
+  width: 100%;
+  margin-top: -8vh;
+}
+
+.playerStats {
+  position: absolute;
+  height: 10vh;
+  width: 100%;
+  margin-top: -4vh;
+}
+
+
 
 
 /* ------------ Class Comparisons --------------- */
@@ -345,53 +382,5 @@ button {
 .mapsContainer {
   border: 1px solid black;
   overflow-y: scroll;
-  height: 30vh;
-}
-
-
-/* -------------- Weapon Charts --------------- */
-#wepContainer {
-/*   -webkit-transform: scaleY(.1); */
-          -webkit-transform: scaleY(1);
-                  transform: scaleY(1);
-    overflow-y: scroll;
-  height: 100%;
-  width: 100%;
-}
-
-.wepChartsItem {
-  border-top: 3px solid navy;
-}
-
-.wepIcons {
-  width: 60px;
-  justify-self: flex-start;
-  display: flex;
-}
-
-.wepName {
-  display: flex;
-  justify-self: flex-start;
-}
-
-.wepType {
-  display: flex;
-  justify-self: flex-start;
-}
-
-.wepStatVals {
-/*   display: flex; */
-/*   justify-content: flex-end; */
-/*   align-self: center; */
-  position: absolute;
-  height: 10vh;
-  width: 100%;
-  margin-top: -8vh;
-}
-
-.playerStats {
-  position: absolute;
-  height: 10vh;
-  width: 100%;
-  margin-top: -4vh;
+  height: 35vh;
 }

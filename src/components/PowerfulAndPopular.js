@@ -1,5 +1,5 @@
 import React from 'react';
-import manifest from './manifest';
+// import manifest from './manifest';
 import PowerfulCombos from './PowerfulCombos';
 import PopularCombos from './PopularCombos';
 
@@ -89,9 +89,9 @@ function PowerfulAndPopular(props) {
   return (
     <form id="powerfulAndPopular" onSubmit={handlePnPSubmit}>
       <button type="submit" id="powerfulAndPopularButton" className="navButton">
+        I'm for Powerful and Popular!
         <section id="pnpContent" className="hiding">
           <PopularCombos {...props} />
-
           <PowerfulCombos {...props} />
         </section>
       </button>

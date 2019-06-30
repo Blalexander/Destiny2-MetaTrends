@@ -3,7 +3,8 @@ import React, { useState, useEffect } from 'react';
 import PowerfulAndPopular from './PowerfulAndPopular';
 import ClassComparisons from './ClassComparisons';
 import WeaponCharts from './WeaponCharts';
-import HistoricalGraphs from './HistoricalGraphs';
+// import BackButton from './BackButton';
+// import HistoricalGraphs from './HistoricalGraphs';
 
 
 export default function NavigationMenu() {
@@ -31,14 +32,32 @@ export default function NavigationMenu() {
     // fetchOtherData();
   }, [])
 
+  function backButton() {
+    let resetElements = document.querySelectorAll('.navButton');
+    for(let i=0; i<resetElements.length; i++) {
+      resetElements[i].classList.add('resetFromSide');
+      resetElements[i].classList.remove('moveToSide');
+      resetElements[i].classList.remove('grantPriority');
+    }
+
+    document.getElementById("backgroundTransitions").classList.remove('bodyShadow');
+    document.getElementById("backgroundTransitions").classList.add('removeBodyShadow');
+    // document.body.classList.remove('bodyShadow');
+
+
+    document.getElementById('pnpContent').classList.add('hiding');
+    document.getElementById('NavigationMenuContainer').classList.add('hiding');
+    document.getElementById('weaponContainer').classList.add('hiding');
+
+  }
+
 
   return (
-    <section className="landingPageNavigation">
+    <section className="landingPageNavigation" onClick={backButton}>
       <div value={initialData}></div>
       <PowerfulAndPopular {...initialData[4]}/>
-      <ClassComparisons {...initialData}/>
       <WeaponCharts {...initialData[3]}/>
-      <HistoricalGraphs />
+      <ClassComparisons {...initialData}/>
     </section>
   )
 }

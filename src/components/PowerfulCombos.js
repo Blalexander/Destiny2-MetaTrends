@@ -8,7 +8,7 @@ function PowerfulCombos(props) {
 
   for(let val in props) {
     if(props[val].allHashes != null && props[val].allHashes.length === 2 && props[val].standingAvg < 0.5) {
-      console.log("=== 2", props[val])
+      // console.log("=== 2", props[val])
       valToUse = props[val];
       break;
     }
@@ -16,7 +16,7 @@ function PowerfulCombos(props) {
 
   for(let val in props) {
     if(props[val].allHashes != null && props[val].allHashes.length === 3 && props[val].standingAvg < 0.5) {
-      console.log("=== 3", props[val])
+      // console.log("=== 3", props[val])
       valToUse2 = props[val];
       break;
     }
@@ -58,7 +58,7 @@ function PowerfulCombos(props) {
     u++
   })
 
-  console.log(trioObj)
+  // console.log(trioObj)
 
 
 
@@ -76,7 +76,7 @@ function PowerfulCombos(props) {
     i++
   })
   
-  console.log(duoObj)
+  // console.log(duoObj)
 
 
 
@@ -84,22 +84,22 @@ function PowerfulCombos(props) {
     <section className="powWeaponContainer">  
       <div className="powDuoContainer">
         <div id="twoweppow1" className="pnpBoxes">wep name: {manifest[keysToAverage[1]].weaponName}, wep kills: {duoObj[1].toFixed(2)}%
-          <img src={"https://www.bungie.net" + manifest[keysToAverage[1]].weaponIcon}></img>
+          <img src={"https://www.bungie.net" + manifest[keysToAverage[1]].weaponIcon} alt="powerfulDuoWep1"></img>
         </div>
         <div id="twoweppow2" className="pnpBoxes">wep name: {manifest[keysToAverage[0]].weaponName}, wep kills: {duoObj[0].toFixed(2)}%
-          <img src={"https://www.bungie.net" + manifest[keysToAverage[0]].weaponIcon}></img>
+          <img src={"https://www.bungie.net" + manifest[keysToAverage[0]].weaponIcon} alt="powerfulDuoWep2"></img>
         </div>
       </div>
 
       <div className="trioPowContainer">
         <div id="threeweppow1" className="pnpBoxes">wep name: {manifest[trioKeysToAv[0]].weaponName}, wep kills: {trioObj[0].toFixed(2)}%
-          <img src={"https://www.bungie.net" + manifest[trioKeysToAv[0]].weaponIcon}></img>
+          <img src={"https://www.bungie.net" + manifest[trioKeysToAv[0]].weaponIcon} alt="powerfulTrioWep1"></img>
         </div>
         <div id="threeweppow2" className="pnpBoxes">wep name: {manifest[trioKeysToAv[1]].weaponName}, wep kills: {trioObj[1].toFixed(2)}%
-          <img src={"https://www.bungie.net" + manifest[trioKeysToAv[1]].weaponIcon}></img>
+          <img src={"https://www.bungie.net" + manifest[trioKeysToAv[1]].weaponIcon} alt="powerfulTrioWep2"></img>
         </div>
         <div id="threeweppow3" className="pnpBoxes">wep name: {manifest[trioKeysToAv[2]].weaponName}, wep kills: {trioObj[2].toFixed(2)}%
-          <img src={"https://www.bungie.net" + manifest[trioKeysToAv[2]].weaponIcon}></img>
+          <img src={"https://www.bungie.net" + manifest[trioKeysToAv[2]].weaponIcon} alt="powerfulTrioWep3"></img>
         </div>
       </div>
     </section>

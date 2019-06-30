@@ -8,7 +8,7 @@ function PopularCombos(props) {
 
   for(let val in props) {
     if(props[val].allHashes != null && props[val].allHashes.length === 2) {
-      console.log("=== 2", props[val])
+      // console.log("=== 2", props[val])
       valToUse = props[val];
       break;
     }
@@ -16,7 +16,7 @@ function PopularCombos(props) {
 
   for(let val in props) {
     if(props[val].allHashes != null && props[val].allHashes.length === 3) {
-      console.log("=== 3", props[val])
+      // console.log("=== 3", props[val])
       valToUse2 = props[val];
       break;
     }
@@ -58,7 +58,7 @@ function PopularCombos(props) {
     u++
   })
 
-  console.log(trioObj)
+  // console.log(trioObj)
 
 
 
@@ -76,7 +76,7 @@ function PopularCombos(props) {
     i++
   })
   
-  console.log(duoObj)
+  // console.log(duoObj)
 
 
 
@@ -84,22 +84,22 @@ function PopularCombos(props) {
     <section className="popWeaponContainer">  
       <div className="popDuoContainer">
         <div id="twoweppop1" className="pnpBoxes">wep name: {manifest[keysToAverage[1]].weaponName}, wep kills: {duoObj[1].toFixed(2)}%
-          <img src={"https://www.bungie.net" + manifest[keysToAverage[1]].weaponIcon}></img>
+          <img src={"https://www.bungie.net" + manifest[keysToAverage[1]].weaponIcon} alt="popularDuoWep1"></img>
         </div>
         <div id="twoweppop2" className="pnpBoxes">wep name: {manifest[keysToAverage[0]].weaponName}, wep kills: {duoObj[0].toFixed(2)}%
-          <img src={"https://www.bungie.net" + manifest[keysToAverage[0]].weaponIcon}></img>
+          <img src={"https://www.bungie.net" + manifest[keysToAverage[0]].weaponIcon} alt="popularDuoWep2"></img>
         </div>
       </div>
 
       <div className="trioPopContainer">
         <div id="threeweppop1" className="pnpBoxes">wep name: {manifest[trioKeysToAv[0]].weaponName}, wep kills: {trioObj[0].toFixed(2)}%
-          <img src={"https://www.bungie.net" + manifest[trioKeysToAv[0]].weaponIcon}></img>
+          <img src={"https://www.bungie.net" + manifest[trioKeysToAv[0]].weaponIcon} alt="popularTrioWep1"></img>
         </div>
         <div id="threeweppop2" className="pnpBoxes">wep name: {manifest[trioKeysToAv[1]].weaponName}, wep kills: {trioObj[1].toFixed(2)}%
-          <img src={"https://www.bungie.net" + manifest[trioKeysToAv[1]].weaponIcon}></img>
+          <img src={"https://www.bungie.net" + manifest[trioKeysToAv[1]].weaponIcon} alt="popularTrioWep2"></img>
         </div>
         <div id="threeweppop3" className="pnpBoxes">wep name: {manifest[trioKeysToAv[2]].weaponName}, wep kills: {trioObj[2].toFixed(2)}%
-          <img src={"https://www.bungie.net" + manifest[trioKeysToAv[2]].weaponIcon}></img>
+          <img src={"https://www.bungie.net" + manifest[trioKeysToAv[2]].weaponIcon} alt="popularTrioWep3"></img>
         </div>
       </div>
     </section>

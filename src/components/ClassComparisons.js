@@ -23,7 +23,7 @@ export default function ClassComparisons(props) {
     document.getElementById("backgroundTransitions").classList.remove('removeBodyShadow');
     document.getElementById("backgroundTransitions").classList.add('bodyShadow');
 
-    // document.getElementById('NavigationMenuContainer').classList.remove('hiding');
+    document.getElementById('NavigationMenuContainer').classList.remove('hiding');
   }
 
 
@@ -78,7 +78,7 @@ export default function ClassComparisons(props) {
 
 
   function MapConstructor(mapItem) {
-    console.log(mapItem)
+    // console.log(mapItem)
     // const titanMaps = props[7].filter(gameMap => {
     //   return gameMap._id.class === "Titan"
     // })
@@ -99,7 +99,7 @@ export default function ClassComparisons(props) {
 
   function TitanDataOrganizer(titems) {
     // console.log(titems)
-    let kda = titems.oppDefAvg / titems.deathsAvg;
+    // let kda = titems.oppDefAvg / titems.deathsAvg;
 
     const [titanHorizontalBar1] = useState({
       labels: ['Opponents Defeated', 'Kills', 'Assists', 'Deaths'], //BAR, labels = X-axis dates
@@ -113,17 +113,17 @@ export default function ClassComparisons(props) {
       ]
     })
 
-    const [titanHorizontalBar2] = useState({
-      labels: ['Efficiency', 'Average Score Per Kill', 'Average Score Per Life', 'K/DA'], //BAR, labels = X-axis dates
-      datasets: [ 
-        {
-          // label: [10, 20, 30, 40, 50],
-          data: [titems.effAvg, titems.perKAvg, titems.perLAvg, kda],
-          // backgroundColor: ['rgba(13, 122, 231, 0.6)', 'rgba(231, 13, 13, 0.6)'],
-          // borderColor: "red"
-        },
-      ]
-    })
+    // const [titanHorizontalBar2] = useState({
+    //   labels: ['Efficiency', 'Average Score Per Kill', 'Average Score Per Life', 'K/DA'], //BAR, labels = X-axis dates
+    //   datasets: [ 
+    //     {
+    //       // label: [10, 20, 30, 40, 50],
+    //       data: [titems.effAvg, titems.perKAvg, titems.perLAvg, kda],
+    //       // backgroundColor: ['rgba(13, 122, 231, 0.6)', 'rgba(231, 13, 13, 0.6)'],
+    //       // borderColor: "red"
+    //     },
+    //   ]
+    // })
 
     return(
       <div id="HorizontalBarHolder">
@@ -184,7 +184,7 @@ export default function ClassComparisons(props) {
     <form id="classComparisons" onSubmit={handleCCSubmit}>
       <button type="submit" id="classComparisonsButton" className="navButton">
       I'm for Class Comparisons!
-        <div id="NavigationMenuContainer">
+        <div id="NavigationMenuContainer" className="hiding">
           <section className="currentClassPop Pie">
             <GraphCreator {...props[5]}/>
           </section>
