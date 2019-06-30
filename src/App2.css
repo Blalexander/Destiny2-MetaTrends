@@ -265,16 +265,37 @@ button {
   width: 200px;
 }
 
+.pnpBoxes img {
+  
+}
+
 #pnpContent {
-  display: inline-grid;
+/*   display: inline-grid;
   grid-template-columns: 300px 300px;
-  grid-gap: 100px;
+  grid-gap: 100px; */
+  display: flex;
+  flex-flow: column nowrap;
 }
 
 #pnpContent [id*=twoweppop] {
   background-color: green;
 }
 
+.popWeaponContainer {
+  border: 1px solid orange;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  
+}
+
+.powWeaponContainer {
+  border: 1px solid orange;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  
+}
 
 
 /* ------------ Class Comparisons --------------- */

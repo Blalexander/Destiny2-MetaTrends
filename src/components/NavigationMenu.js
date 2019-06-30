@@ -35,9 +35,9 @@ export default function NavigationMenu() {
   return (
     <section className="landingPageNavigation">
       <div value={initialData}></div>
-      <PowerfulAndPopular />
+      <PowerfulAndPopular {...initialData[4]}/>
       <ClassComparisons {...initialData}/>
-      <WeaponCharts {...initialData[4]}/>
+      <WeaponCharts {...initialData[3]}/>
       <HistoricalGraphs />
     </section>
   )
