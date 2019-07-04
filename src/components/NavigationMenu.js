@@ -48,14 +48,15 @@ export default function NavigationMenu() {
 
     document.getElementById('pnpContent').classList.add('hiding');
     document.getElementById('NavigationMenuContainer').classList.add('hiding');
+    document.getElementById('wepContainer').style.overflowY = "hidden";
     document.getElementById('weaponContainer').classList.add('hiding');
+
 
   }
 
 
   return (
     <section id="landingPageNav" className="landingPageNavigation loading" onClick={backButton}>
-      <div value={initialData}></div>
       <PowerfulAndPopular {...initialData[4]}/>
       <WeaponCharts {...initialData[3]}/>
       <ClassComparisons {...initialData}/>

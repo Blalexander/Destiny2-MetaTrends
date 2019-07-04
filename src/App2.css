@@ -156,6 +156,9 @@ html {
   background-color: red;
 }
 
+.loading {
+  background-color: red;
+}
 
 
 
@@ -246,6 +249,9 @@ html {
 .hiding {
   -webkit-transform: scaleY(0);
           transform: scaleY(0);
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+/*   overflow-y: hidden; */
 }
 
 .pnpBoxes {
@@ -282,6 +288,13 @@ html {
   justify-content: space-around;
 }
 
+.statBars {
+  height: 1vh;
+  background-color: green;
+  position: absolute;
+  margin-left: 100px;
+}
+
 
 
 
@@ -290,13 +303,15 @@ html {
 /*   -webkit-transform: scaleY(.1); */
           -webkit-transform: scaleY(1);
                   transform: scaleY(1);
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
   height: 100%;
   width: 100%;
 }
 
 #weaponContainer {
-  
+/*   overflow-y: scroll; */
+  height: 100%;
+  width: 100%;
 }
 
 .wepChartsItem {

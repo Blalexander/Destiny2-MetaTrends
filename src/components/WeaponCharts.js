@@ -23,8 +23,9 @@ export default function WeaponCharts(props) {
     document.getElementById("backgroundTransitions").classList.remove('removeBodyShadow');
     document.getElementById("backgroundTransitions").classList.add('bodyShadow');
 
-
+    // document.getElementById('wepContainer').classList.remove('hiding');
     document.getElementById('weaponContainer').classList.remove('hiding');
+    document.getElementById('wepContainer').style.overflowY = "scroll";
 
     WepList(testPath);
     // console.log(testPath);

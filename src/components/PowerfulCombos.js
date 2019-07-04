@@ -6,12 +6,14 @@ function PowerfulCombos(props) {
   if(props[0] === undefined) {
     return null;
   }
+  // console.log(props)
+
   
   let valToUse;
   let valToUse2;
 
   for(let val in props) {
-    if(props[val].allHashes != null && props[val].allHashes.length === 2 && props[val].standingAvg < 0.5) {
+    if(props[val]._id != null && props[val]._id.length === 2 && props[val].standingAvg < 0.5) {
       // console.log("=== 2", props[val])
       valToUse = props[val];
       break;
@@ -19,7 +21,7 @@ function PowerfulCombos(props) {
   }
 
   for(let val in props) {
-    if(props[val].allHashes != null && props[val].allHashes.length === 3 && props[val].standingAvg < 0.5) {
+    if(props[val]._id != null && props[val]._id.length === 3 && props[val].standingAvg < 0.5) {
       // console.log("=== 3", props[val])
       valToUse2 = props[val];
       break;
@@ -27,16 +29,16 @@ function PowerfulCombos(props) {
   }
 
 
-  let duoKeyOne = valToUse.allHashes[0];
-  let duoKeyTwo = valToUse.allHashes[1];
+  let duoKeyOne = valToUse.allHashes[0][0];
+  let duoKeyTwo = valToUse.allHashes[0][1];
   let duoObj = {
     [duoKeyOne]: valToUse.allKills[0][0] + valToUse.allKills[1][0],
     [duoKeyTwo]: valToUse.allKills[0][1] + valToUse.allKills[1][1]
   };
 
-  let trioKeyOne = valToUse2.allHashes[0];
-  let trioKeyTwo = valToUse2.allHashes[1];
-  let trioKeyThree = valToUse2.allHashes[2];
+  let trioKeyOne = valToUse2.allHashes[0][0];
+  let trioKeyTwo = valToUse2.allHashes[0][1];
+  let trioKeyThree = valToUse2.allHashes[0][2];
   let trioObj = {
     [trioKeyOne]: 0,
     [trioKeyTwo]: 0,
