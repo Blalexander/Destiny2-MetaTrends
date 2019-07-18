@@ -30,9 +30,10 @@ function PowerfulAndPopular(props) {
   return (
     <form id="powerfulAndPopular" onSubmit={handlePnPSubmit}>
       <button type="submit" id="powerfulAndPopularButton" className="navButton">
-        I'm for Powerful and Popular!
         <section id="pnpContent" className="hiding">
+          <h1 className="popCombos">Popular</h1>
           <PopularCombos {...props} />
+          <h1 className="powCombos">Powerful</h1>
           <PowerfulCombos {...props} />
         </section>
       </button>

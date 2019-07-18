@@ -255,7 +255,7 @@ html {
 }
 
 .pnpBoxes {
-  border: 1px solid black;
+/*   border: 1px solid black; */
   height: 200px;
   width: 200px;
 }
@@ -288,14 +288,71 @@ html {
   justify-content: space-around;
 }
 
-.statBars {
-  height: 1vh;
-  background-color: green;
-  position: absolute;
-  margin-left: 100px;
+.blankWepBox {
+  height: 200px;
+  width: 200px;
+/*   border: 1px solid red; */
 }
 
+.blankWepIcon {
+  height: 100px;
+  width: 100px;
+  background-color: lightgray;
+  margin: auto;
+}
 
+.blankWepName {
+  height: 15px;
+  width: 80px;
+  background-color: lightgray;
+  margin: auto;
+  margin-top: 10px;
+}
+
+#popDuoContainer {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+.pnpWepIcon {
+  height: 60px;
+  width: 60px;
+}
+
+.negStatBars {
+  height: 1vh;
+  background-color: red;
+}
+
+.statBarContainer {
+  display: flex;
+  width: 100%;
+}
+
+.statBars {
+  height: 1vh;
+  
+  background-color: green;
+/*   position: relative; */
+/*   margin-left: 100px; */
+}
+
+.statIcons {
+  border: 1px solid black;
+}
+
+.statsToDisplay {
+  border: 1px solid red;
+}
+
+.popCombos {
+  margin: 5vh;
+}
+
+.powCombos {
+  margin: 5vh;
+}
 
 
 /* -------------- Weapon Charts --------------- */
