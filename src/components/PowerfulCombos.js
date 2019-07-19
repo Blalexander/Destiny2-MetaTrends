@@ -28,7 +28,6 @@ function PowerfulCombos(props) {
     }
   }
 
-
   let valAllHashes = valToUse.allHashes;
   let valAllKills = valToUse.allKills;
 
@@ -73,8 +72,6 @@ function PowerfulCombos(props) {
   })
 
   console.log(duoObj, keysToAverage, keysToIdentify, newArr, barArr)
-
-
 
   let valAllHashes2 = valToUse2.allHashes;
   let valAllKills2 = valToUse2.allKills;
@@ -156,8 +153,11 @@ function PowerfulCombos(props) {
     else if(indexToUse === 0) { 
       return (<div id="twoweppop1" className={"pnpBoxes " + keyToUse}>
         <img src={"https://www.bungie.net" + manifest[keyToUse].weaponIcon} alt="popularDuoWep1"></img>
-        <h3 className="weaponName">{manifest[keyToUse].weaponName}</h3>
-        <span className="statBars" style={{width: + barArr[0]}}>{barArr[0].toFixed(0)}%</span>        
+        <h3 className="weaponName">{manifest[keyToUse].weaponName}</h3>   
+        <div className="statBarContainer">
+          <p className="statBars" style={{width: barArr[0] + "%"}}>{barArr[0].toFixed(0)}%</p>
+          <p className="negStatBars" style={{width: (100 - barArr[0] + "%")}}></p>
+        </div>    
         </div>
       );
     }
@@ -165,8 +165,11 @@ function PowerfulCombos(props) {
     else if(indexToUse === 1) {
       return ("afterend", <div id="twoweppop2" className={"pnpBoxes " + keyToUse}>
         <img src={"https://www.bungie.net" + manifest[keyToUse].weaponIcon} alt="popularDuoWep2"></img>
-        <h3 className="weaponName">{manifest[keyToUse].weaponName}</h3>
-        <span className="statBars" style={{width: + barArr[1]}}>{barArr[1].toFixed(0)}%</span>        
+        <h3 className="weaponName">{manifest[keyToUse].weaponName}</h3>  
+        <div className="statBarContainer">
+          <p className="statBars" style={{width: barArr[1] + "%"}}>{barArr[1].toFixed(0)}%</p>
+          <p className="negStatBars" style={{width: (100 - barArr[1] + "%")}}></p>
+        </div>        
         </div>
       )
     }
@@ -175,7 +178,10 @@ function PowerfulCombos(props) {
       return (<div id="twoweppop3" className={"pnpBoxes " + keyToUse}>
         <img src={"https://www.bungie.net" + manifest[keyToUse].weaponIcon} alt="popularDuoWep2"></img>
         <h3 className="weaponName">{manifest[keyToUse].weaponName}</h3>
-        <span className="statBars" style={{width: + barArr[2]}}>{barArr[2].toFixed(0)}%</span>        
+        <div className="statBarContainer">
+          <p className="statBars" style={{width: barArr[2] + "%"}}>{barArr[2].toFixed(0)}%</p>
+          <p className="negStatBars" style={{width: (100 - barArr[2] + "%")}}></p>
+        </div>         
         </div>
       )
     }
@@ -194,7 +200,10 @@ function PowerfulCombos(props) {
     return (<div id="threeweppop1" className={"pnpBoxes " + keyToUse}>
       <img src={"https://www.bungie.net" + manifest[keyToUse].weaponIcon} alt="popularTrioWep1"></img>
       <h3 className="weaponName">{manifest[keyToUse].weaponName}</h3>
-      <span className="statBars" style={{width: + trioObj[0]}}>{trioObj[1].toFixed(0)}%</span>
+      <div className="statBarContainer">
+        <p className="statBars" style={{width: barArr2[0] + "%"}}>{barArr2[0].toFixed(0)}%</p>
+        <p className="negStatBars" style={{width: (100 - barArr2[0]) + "%"}}></p>
+      </div>   
       </div>
       );
     }
@@ -203,7 +212,10 @@ function PowerfulCombos(props) {
       return (<div id="threeweppop2" className="pnpBoxes">
       <img src={"https://www.bungie.net" + manifest[keyToUse].weaponIcon} alt="popularTrioWep2"></img>
       <h3 className="weaponName">{manifest[keyToUse].weaponName}</h3>
-      <span className="statBars" style={{width: + trioObj[1]}}>{trioObj[1].toFixed(1)}%</span>
+      <div className="statBarContainer">
+        <p className="statBars" style={{width: barArr2[1] + "%"}}>{barArr2[1].toFixed(0)}%</p>
+        <p className="negStatBars" style={{width: (100 - barArr2[1]) + "%"}}></p>
+      </div> 
       </div>
       )
     }
@@ -212,11 +224,25 @@ function PowerfulCombos(props) {
       return (<div id="threeweppop3" className="pnpBoxes">
       <img src={"https://www.bungie.net" + manifest[keyToUse].weaponIcon} alt="popularTrioWep3"></img>
       <h3 className="weaponName">{manifest[keyToUse].weaponName}</h3>
-      <span className="statBars" style={{width: + trioObj[2]}}>{trioObj[1].toFixed(1)}%</span>
+      <div className="statBarContainer">
+        <p className="statBars" style={{width: barArr2[2] + "%"}}>{barArr2[2].toFixed(0)}%</p>
+        <p className="negStatBars" style={{width: (100 - barArr2[2] + "%")}}></p>
+      </div> 
       </div>
       )
     }
   }
+
+  // function StatBarCreator(iconToUse, numToUse, numAv) {
+  //   console.log(iconToUse, numToUse, numAv)
+
+  //   return(
+  //   <div className="statBarContainer">
+  //     <img className="statIcons" src={iconToUse} alt="statIcons"></img>
+  //     <p className="statsToDisplay">{(numToUse / numAv * 100).toFixed(2)}%</p>
+  //   </div>
+  //   )
+  // }
 
 
 
@@ -229,19 +255,18 @@ function PowerfulCombos(props) {
 
         <img className="pnpWepIcon melees" src="https://i.imgur.com/dczT76m.png"></img>
         <div className="statBarContainer">
-          <p className="statBars" style={{width: + (valToUse.meleeKills / valToUse.killsAvg * 100).toFixed(2)}}>{(valToUse.meleeKills / valToUse.killsAvg * 100).toFixed(0)}%</p>
-          <p className="negStatBars" style={{width: + ((valToUse.killsAvg
-            - valToUse.meleeKills) * 10).toFixed(2)}}>{(valToUse.meleeKills / valToUse.killsAvg * 100).toFixed(0)}%</p>
+          <p className="statBars" style={{width: (valToUse.meleeKills / valToUse.killsAvg) * 100 + "%"}}>{(valToUse.meleeKills / valToUse.killsAvg * 100).toFixed(0)}%</p>
+          <p className="negStatBars" style={{width: (1 - (valToUse.meleeKills / valToUse.killsAvg)) * 100 + "%"}}></p>
         </div>
         <img className="pnpWepIcon grenades" src="https://i.imgur.com/kfWS531.png"></img>
         <div className="statBarContainer">
-          <p className="statBars" style={{width: + (valToUse.grenadeKills / valToUse.killsAvg * 100).toFixed(2)}}>{(valToUse.grenadeKills / valToUse.killsAvg * 100).toFixed(0)}%</p>
-          <p className="negStatBars" style={{width: + ((valToUse.killsAvg - valToUse.grenadeKills) * 10).toFixed(2)}}>{(valToUse.grenadeKills / valToUse.killsAvg * 100).toFixed(0)}%</p>
+          <p className="statBars" style={{width: (valToUse.grenadeKills / valToUse.killsAvg) * 100 + "%"}}>{(valToUse.grenadeKills / valToUse.killsAvg * 100).toFixed(0)}%</p>
+          <p className="negStatBars" style={{width: (1 - (valToUse.grenadeKills / valToUse.killsAvg)) * 100 + "%"}}></p>
         </div>
         <img className="pnpWepIcon supers" src="https://i.imgur.com/EbvqkPc.png"></img>
         <div className="statBarContainer">
-          <p className="statBars supers" style={{width: + (valToUse.superKills / valToUse.killsAvg * 100).toFixed(2)}}>{(valToUse.superKills / valToUse.killsAvg * 100).toFixed(0)}%</p>
-          <p className="negStatBars" style={{width: + ((valToUse.killsAvg - valToUse.superKills) * 10).toFixed(2)}}>{(valToUse.superKills / valToUse.killsAvg * 100).toFixed(0)}%</p>
+          <p className="statBars" style={{width: (valToUse.superKills / valToUse.killsAvg) * 100 + "%"}}>{(valToUse.superKills / valToUse.killsAvg * 100).toFixed(0)}%</p>
+          <p className="negStatBars" style={{width: (1 - (valToUse.superKills / valToUse.killsAvg)) * 100 + "%"}}></p>
         </div>
 
       </div>
@@ -253,19 +278,18 @@ function PowerfulCombos(props) {
 
         <img className="pnpWepIcon melees" src="https://i.imgur.com/dczT76m.png"></img>
         <div className="statBarContainer">
-          <p className="statBars" style={{width: + (valToUse2.meleeKills / valToUse2.killsAvg * 100).toFixed(2)}}>{(valToUse2.meleeKills / valToUse2.killsAvg * 100).toFixed(0)}%</p>
-          <p className="negStatBars" style={{width: + ((valToUse.killsAvg
-            - valToUse2.meleeKills) * 10).toFixed(2)}}>{(valToUse2.meleeKills / valToUse2.killsAvg * 100).toFixed(0)}%</p>
+          <p className="statBars" style={{width: (valToUse2.meleeKills / valToUse2.killsAvg) * 100 + "%"}}>{(valToUse2.meleeKills / valToUse2.killsAvg * 100).toFixed(0)}%</p>
+          <p className="negStatBars" style={{width: (1 - (valToUse2.meleeKills / valToUse2.killsAvg)) * 100 + "%"}}></p>
         </div>
         <img className="pnpWepIcon grenades" src="https://i.imgur.com/kfWS531.png"></img>
         <div className="statBarContainer">
-          <p className="statBars" style={{width: + (valToUse2.grenadeKills / valToUse2.killsAvg * 100).toFixed(2)}}>{(valToUse2.grenadeKills / valToUse2.killsAvg * 100).toFixed(0)}%</p>
-          <p className="negStatBars" style={{width: + ((valToUse2.killsAvg - valToUse2.grenadeKills) * 10).toFixed(2)}}>{(valToUse2.grenadeKills / valToUse2.killsAvg * 100).toFixed(0)}%</p>
+          <p className="statBars" style={{width: (valToUse2.grenadeKills / valToUse2.killsAvg) * 100 + "%"}}>{(valToUse2.grenadeKills / valToUse2.killsAvg * 100).toFixed(0)}%</p>
+          <p className="negStatBars" style={{width: (1 - (valToUse2.grenadeKills / valToUse2.killsAvg)) * 100 + "%"}}></p>
         </div>
         <img className="pnpWepIcon supers" src="https://i.imgur.com/EbvqkPc.png"></img>
         <div className="statBarContainer">
-          <p className="statBars supers" style={{width: + (valToUse2.superKills / valToUse2.killsAvg * 100).toFixed(2)}}>{(valToUse2.superKills / valToUse2.killsAvg * 100).toFixed(0)}%</p>
-          <p className="negStatBars" style={{width: + ((valToUse2.killsAvg - valToUse2.superKills) * 10).toFixed(2)}}>{(valToUse2.superKills / valToUse2.killsAvg * 100).toFixed(0)}%</p>
+          <p className="statBars supers" style={{width: (valToUse2.superKills / valToUse2.killsAvg) * 100 + "%"}}>{(valToUse2.superKills / valToUse2.killsAvg * 100).toFixed(0)}%</p>
+          <p className="negStatBars" style={{width: (1 - (valToUse2.superKills / valToUse2.killsAvg)) * 100 + "%"}}></p>
         </div>
       </div>
     </section>

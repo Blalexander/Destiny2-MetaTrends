@@ -258,19 +258,18 @@ function PopularCombos(props) {
 
         <img className="pnpWepIcon melees" src="https://i.imgur.com/dczT76m.png"></img>
         <div className="statBarContainer">
-          <p className="statBars" style={{width: + (valToUse.meleeKills / valToUse.killsAvg * 100).toFixed(2)}}>{(valToUse.meleeKills / valToUse.killsAvg * 100).toFixed(0)}%</p>
-          <p className="negStatBars" style={{width: + ((valToUse.killsAvg
-            - valToUse.meleeKills) * 10).toFixed(2)}}>{(valToUse.meleeKills / valToUse.killsAvg * 100).toFixed(0)}%</p>
+          <p className="statBars" style={{width: (valToUse.meleeKills / valToUse.killsAvg) * 100 + "%"}}>{(valToUse.meleeKills / valToUse.killsAvg * 100).toFixed(0)}%</p>
+          <p className="negStatBars" style={{width: (1 - (valToUse.meleeKills / valToUse.killsAvg)) * 100 + "%"}}></p>
         </div>
         <img className="pnpWepIcon grenades" src="https://i.imgur.com/kfWS531.png"></img>
         <div className="statBarContainer">
-          <p className="statBars" style={{width: + (valToUse.grenadeKills / valToUse.killsAvg * 100).toFixed(2)}}>{(valToUse.grenadeKills / valToUse.killsAvg * 100).toFixed(0)}%</p>
-          <p className="negStatBars" style={{width: + ((valToUse.killsAvg - valToUse.grenadeKills) * 10).toFixed(2)}}>{(valToUse.grenadeKills / valToUse.killsAvg * 100).toFixed(0)}%</p>
+          <p className="statBars" style={{width: (valToUse.grenadeKills / valToUse.killsAvg) * 100 + "%"}}>{(valToUse.grenadeKills / valToUse.killsAvg * 100).toFixed(0)}%</p>
+          <p className="negStatBars" style={{width: (1 - (valToUse.grenadeKills / valToUse.killsAvg)) * 100 + "%"}}></p>
         </div>
         <img className="pnpWepIcon supers" src="https://i.imgur.com/EbvqkPc.png"></img>
         <div className="statBarContainer">
-          <p className="statBars supers" style={{width: + (valToUse.superKills / valToUse.killsAvg * 100).toFixed(2)}}>{(valToUse.superKills / valToUse.killsAvg * 100).toFixed(0)}%</p>
-          <p className="negStatBars" style={{width: + ((valToUse.killsAvg - valToUse.superKills) * 10).toFixed(2)}}>{(valToUse.superKills / valToUse.killsAvg * 100).toFixed(0)}%</p>
+          <p className="statBars" style={{width: (valToUse.superKills / valToUse.killsAvg) * 100 + "%"}}>{(valToUse.superKills / valToUse.killsAvg * 100).toFixed(0)}%</p>
+          <p className="negStatBars" style={{width: (1 - (valToUse.superKills / valToUse.killsAvg)) * 100 + "%"}}></p>
         </div>
 
       </div>
@@ -282,19 +281,18 @@ function PopularCombos(props) {
 
         <img className="pnpWepIcon melees" src="https://i.imgur.com/dczT76m.png"></img>
         <div className="statBarContainer">
-          <p className="statBars" style={{width: (valToUse2.meleeKills / valToUse2.killsAvg * 100) + "%"}}>{(valToUse2.meleeKills / valToUse2.killsAvg * 100).toFixed(0)}%</p>
-          <p className="negStatBars" style={{width: ((valToUse.killsAvg
-            - valToUse2.meleeKills) * 10) + "%"}}>{(valToUse2.meleeKills / valToUse2.killsAvg * 100).toFixed(0)}%</p>
+          <p className="statBars" style={{width: (valToUse2.meleeKills / valToUse2.killsAvg) * 100 + "%"}}>{(valToUse2.meleeKills / valToUse2.killsAvg * 100).toFixed(0)}%</p>
+          <p className="negStatBars" style={{width: (1 - (valToUse2.meleeKills / valToUse2.killsAvg)) * 100 + "%"}}></p>
         </div>
         <img className="pnpWepIcon grenades" src="https://i.imgur.com/kfWS531.png"></img>
         <div className="statBarContainer">
-          <p className="statBars" style={{width: (valToUse2.grenadeKills / valToUse2.killsAvg * 100) + "%"}}>{(valToUse2.grenadeKills / valToUse2.killsAvg * 100).toFixed(0)}%</p>
-          <p className="negStatBars" style={{width: ((valToUse2.killsAvg - valToUse2.grenadeKills) * 10) + "%"}}>{(valToUse2.grenadeKills / valToUse2.killsAvg * 100).toFixed(0)}%</p>
+          <p className="statBars" style={{width: (valToUse2.grenadeKills / valToUse2.killsAvg) * 100 + "%"}}>{(valToUse2.grenadeKills / valToUse2.killsAvg * 100).toFixed(0)}%</p>
+          <p className="negStatBars" style={{width: (1 - (valToUse2.grenadeKills / valToUse2.killsAvg)) * 100 + "%"}}></p>
         </div>
         <img className="pnpWepIcon supers" src="https://i.imgur.com/EbvqkPc.png"></img>
         <div className="statBarContainer">
-          <p className="statBars supers" style={{width: (valToUse2.superKills / valToUse2.killsAvg * 100)+ "%"}}>{(valToUse2.superKills / valToUse2.killsAvg * 100).toFixed(0)}%</p>
-          <p className="negStatBars" style={{width: ((valToUse2.killsAvg - valToUse2.superKills) * 10) + "%"}}>{(valToUse2.superKills / valToUse2.killsAvg * 100).toFixed(0)}%</p>
+          <p className="statBars supers" style={{width: (valToUse2.superKills / valToUse2.killsAvg) * 100 + "%"}}>{(valToUse2.superKills / valToUse2.killsAvg * 100).toFixed(0)}%</p>
+          <p className="negStatBars" style={{width: (1 - (valToUse2.superKills / valToUse2.killsAvg)) * 100 + "%"}}></p>
         </div>
       </div>
     </section>

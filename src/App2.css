@@ -321,18 +321,21 @@ html {
 }
 
 .negStatBars {
-  height: 1vh;
-  background-color: red;
+  height: 2vh;
+  background-color: lightblue;
 }
 
 .statBarContainer {
   display: flex;
   width: 100%;
+  border: 1px solid blue;
 }
 
 .statBars {
-  height: 1vh;
-  
+  height: 2vh;
+  z-index: 1;
+  color: white;
+  text-shadow: 1px 1px 1px black, 2px 2px 2px black;
   background-color: green;
 /*   position: relative; */
 /*   margin-left: 100px; */
