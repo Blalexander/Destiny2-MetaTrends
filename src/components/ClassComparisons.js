@@ -10,7 +10,6 @@ export default function ClassComparisons(props) {
     return(    
     <form id="classComparisons" onSubmit={handleCCSubmit}>
       <button type="submit" id="classComparisonsButton" className="navButton">
-      I'm for Class Comparisons!
         <div id="NavigationMenuContainer" className="hiding">
         </div>
       </button>
@@ -193,7 +192,6 @@ export default function ClassComparisons(props) {
   return (
     <form id="classComparisons" onSubmit={handleCCSubmit}>
       <button type="submit" id="classComparisonsButton" className="navButton">
-      I'm for Class Comparisons!
         <div id="NavigationMenuContainer" className="hiding">
           <section className="currentClassPop Pie">
             <GraphCreator {...props[5]}/>

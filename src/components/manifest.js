@@ -3,6 +3,7 @@ const manifest = {
       "weaponName": "The Time-Worn Spire",
       "weaponIcon": "/common/destiny2_content/icons/51f5300552a038079eaec00278f04a74.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 5,
       "ammoType": 1,
       "itemCategories": [
@@ -1887,6 +1888,7 @@ const manifest = {
       "weaponName": "Requiem-45",
       "weaponIcon": "/common/destiny2_content/icons/16c455a77705ae82c309fbd35cd8088e.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 5,
       "ammoType": 1,
       "itemCategories": [
@@ -1984,6 +1986,7 @@ const manifest = {
       "weaponName": "Machina Dei 4",
       "weaponIcon": "/common/destiny2_content/icons/e421c87fb2ef3eb6a0e54dcc9eb30ac9.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 5,
       "ammoType": 1,
       "itemCategories": [
@@ -2075,6 +2078,7 @@ const manifest = {
       "weaponName": "Infinite Paths 8",
       "weaponIcon": "/common/destiny2_content/icons/39214aaf1743673cd9a7c7de18527a3a.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 5,
       "ammoType": 1,
       "itemCategories": [
@@ -2354,6 +2358,7 @@ const manifest = {
       "weaponName": "Last Perdition",
       "weaponIcon": "/common/destiny2_content/icons/63b3899dc86ee792d807b34473595c47.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 5,
       "ammoType": 1,
       "itemCategories": [
@@ -2481,6 +2486,7 @@ const manifest = {
       "weaponName": "Redrix's Claymore",
       "weaponIcon": "/common/destiny2_content/icons/273b60dd158063c8d7c2d6ce624b5467.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 5,
       "ammoType": 1,
       "itemCategories": [
@@ -2784,6 +2790,7 @@ const manifest = {
       "weaponName": "Magnum Shepherd",
       "weaponIcon": "/common/destiny2_content/icons/c38d8016de17ef2a9ccb58315335f68c.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 5,
       "ammoType": 1,
       "itemCategories": [
@@ -3111,6 +3118,7 @@ const manifest = {
       "weaponName": "Impromptu-49",
       "weaponIcon": "/common/destiny2_content/icons/b2c49d084e474b89257814da38e99fcf.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 5,
       "ammoType": 1,
       "itemCategories": [
@@ -3628,8 +3636,8 @@ const manifest = {
           54
       ],
       "weaponValues": {
-          "209426660": {
-              "statHash": 209426660,
+          "Defense": {
+              
               "value": 46,
               "minimum": 46,
               "maximum": 68
@@ -3702,8 +3710,8 @@ const manifest = {
           54
       ],
       "weaponValues": {
-          "209426660": {
-              "statHash": 209426660,
+          "Defense": {
+              
               "value": 46,
               "minimum": 46,
               "maximum": 68
@@ -3776,8 +3784,8 @@ const manifest = {
           54
       ],
       "weaponValues": {
-          "209426660": {
-              "statHash": 209426660,
+          "Defense": {
+              
               "value": 46,
               "minimum": 28,
               "maximum": 46
@@ -3850,8 +3858,8 @@ const manifest = {
           54
       ],
       "weaponValues": {
-          "209426660": {
-              "statHash": 209426660,
+          "Defense": {
+              
               "value": 46,
               "minimum": 46,
               "maximum": 68
@@ -4013,6 +4021,7 @@ const manifest = {
       "weaponName": "Outlast",
       "weaponIcon": "/common/destiny2_content/icons/7967ce5273a19ca50fe3ec1fd1b1b375.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 5,
       "ammoType": 1,
       "itemCategories": [
@@ -4661,6 +4670,7 @@ const manifest = {
       "weaponName": "Darkest Before",
       "weaponIcon": "/common/destiny2_content/icons/11c898950b6693146377dd8b54d4afba.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 5,
       "ammoType": 1,
       "itemCategories": [
@@ -4849,6 +4859,7 @@ const manifest = {
       "weaponName": "Nightshade",
       "weaponIcon": "/common/destiny2_content/icons/fe0a4a1d2d0f2a152b1f7ac63445ab54.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 5,
       "ammoType": 1,
       "itemCategories": [
@@ -4946,6 +4957,7 @@ const manifest = {
       "weaponName": "Nergal PR4",
       "weaponIcon": "/common/destiny2_content/icons/0f8cd428b86c60e91310a9754257d8bd.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 5,
       "ammoType": 1,
       "itemCategories": [
@@ -5043,6 +5055,7 @@ const manifest = {
       "weaponName": "Cadenza-43",
       "weaponIcon": "/common/destiny2_content/icons/4083be2a6547c74605e63086cd01c18e.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 5,
       "ammoType": 1,
       "itemCategories": [
@@ -5425,6 +5438,7 @@ const manifest = {
       "weaponName": "Outbreak Perfected",
       "weaponIcon": "/common/destiny2_content/icons/65e4839c3750bcefbcb595dc6b7ee38a.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 6,
       "ammoType": 1,
       "itemCategories": [
@@ -7537,6 +7551,7 @@ const manifest = {
       "weaponName": "Chattering Bone",
       "weaponIcon": "/common/destiny2_content/icons/c1e8c9b33875a0ff693f421322ddd351.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 5,
       "ammoType": 1,
       "itemCategories": [
@@ -7643,8 +7658,8 @@ const manifest = {
           54
       ],
       "weaponValues": {
-          "209426660": {
-              "statHash": 209426660,
+          "Defense": {
+              
               "value": 50,
               "minimum": 0,
               "maximum": 0
@@ -7724,8 +7739,8 @@ const manifest = {
           54
       ],
       "weaponValues": {
-          "209426660": {
-              "statHash": 209426660,
+          "Defense": {
+              
               "value": 50,
               "minimum": 0,
               "maximum": 0
@@ -7805,8 +7820,8 @@ const manifest = {
           54
       ],
       "weaponValues": {
-          "209426660": {
-              "statHash": 209426660,
+          "Defense": {
+              
               "value": 50,
               "minimum": 0,
               "maximum": 0
@@ -8477,6 +8492,7 @@ const manifest = {
       "weaponName": "Jorum's Claw",
       "weaponIcon": "/common/destiny2_content/icons/8349c074494bc480494ddaf1c9dfc658.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 5,
       "ammoType": 1,
       "itemCategories": [
@@ -8574,6 +8590,7 @@ const manifest = {
       "weaponName": "Jian 7 Rifle",
       "weaponIcon": "/common/destiny2_content/icons/b0a3ee2eeff04e5803e473d360bfe51b.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 5,
       "ammoType": 1,
       "itemCategories": [
@@ -10424,8 +10441,8 @@ const manifest = {
               "minimum": 0,
               "maximum": 10
           },
-          "209426660": {
-              "statHash": 209426660,
+          "Defense": {
+              
               "value": 60,
               "minimum": 42,
               "maximum": 83
@@ -11465,6 +11482,7 @@ const manifest = {
       "weaponName": "Nightshade",
       "weaponIcon": "/common/destiny2_content/icons/7404d006e5953f6d1ec7d98bebe20b73.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 5,
       "ammoType": 1,
       "itemCategories": [
@@ -13125,6 +13143,7 @@ const manifest = {
       "weaponName": "Last Perdition",
       "weaponIcon": "/common/destiny2_content/icons/ebfe41975a804ea9c824e2a1551238f7.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 5,
       "ammoType": 1,
       "itemCategories": [
@@ -13738,8 +13757,8 @@ const manifest = {
           54
       ],
       "weaponValues": {
-          "209426660": {
-              "statHash": 209426660,
+          "Defense": {
+              
               "value": 46,
               "minimum": 28,
               "maximum": 68
@@ -13992,6 +14011,7 @@ const manifest = {
       "weaponName": "Horror's Least",
       "weaponIcon": "/common/destiny2_content/icons/c5454c80b15ecb3b3abf2d69d4bfe5ff.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 5,
       "ammoType": 1,
       "itemCategories": [
@@ -14871,6 +14891,7 @@ const manifest = {
       "weaponName": "Redrix's Broadsword",
       "weaponIcon": "/common/destiny2_content/icons/848176acba2ececb3b06f222bccee406.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 5,
       "ammoType": 1,
       "itemCategories": [
@@ -15283,6 +15304,7 @@ const manifest = {
       "weaponName": "Agrona PR4",
       "weaponIcon": "/common/destiny2_content/icons/a8a75818f67ca09a7edc4192054f74eb.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 5,
       "ammoType": 1,
       "itemCategories": [
@@ -15380,6 +15402,7 @@ const manifest = {
       "weaponName": "Battle Scar",
       "weaponIcon": "/common/destiny2_content/icons/c82f47494616b422986f08694705c1e5.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 5,
       "ammoType": 1,
       "itemCategories": [
@@ -15583,8 +15606,8 @@ const manifest = {
           54
       ],
       "weaponValues": {
-          "209426660": {
-              "statHash": 209426660,
+          "Defense": {
+              
               "value": 55,
               "minimum": 42,
               "maximum": 42
@@ -15658,8 +15681,8 @@ const manifest = {
           54
       ],
       "weaponValues": {
-          "209426660": {
-              "statHash": 209426660,
+          "Defense": {
+              
               "value": 55,
               "minimum": 55,
               "maximum": 55
@@ -15733,8 +15756,8 @@ const manifest = {
           54
       ],
       "weaponValues": {
-          "209426660": {
-              "statHash": 209426660,
+          "Defense": {
+              
               "value": 55,
               "minimum": 73,
               "maximum": 73
@@ -15799,6 +15822,7 @@ const manifest = {
       "weaponName": "Relentless",
       "weaponIcon": "/common/destiny2_content/icons/121fd59938b15a38a91eef14d0c01fbb.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 5,
       "ammoType": 1,
       "itemCategories": [
@@ -16480,8 +16504,8 @@ const manifest = {
           54
       ],
       "weaponValues": {
-          "209426660": {
-              "statHash": 209426660,
+          "Defense": {
+              
               "value": 46,
               "minimum": 28,
               "maximum": 28
@@ -16637,6 +16661,7 @@ const manifest = {
       "weaponName": "Claws of the Wolf",
       "weaponIcon": "/common/destiny2_content/icons/926e3aae0f14c85b470efcedb8a9165a.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 5,
       "ammoType": 1,
       "itemCategories": [
@@ -17237,6 +17262,7 @@ const manifest = {
       "weaponName": "Eystein-D",
       "weaponIcon": "/common/destiny2_content/icons/dbac0d30624109c9723fb9ebef4b04ae.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 5,
       "ammoType": 1,
       "itemCategories": [
@@ -18801,6 +18827,7 @@ const manifest = {
       "weaponName": "Swift Ride XE8375",
       "weaponIcon": "/common/destiny2_content/icons/c2fce315f9a82cbce8263a1479d7eb2e.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 5,
       "ammoType": 1,
       "itemCategories": [
@@ -19567,8 +19594,8 @@ const manifest = {
           54
       ],
       "weaponValues": {
-          "209426660": {
-              "statHash": 209426660,
+          "Defense": {
+              
               "value": 46,
               "minimum": 46,
               "maximum": 46
@@ -19641,8 +19668,8 @@ const manifest = {
           54
       ],
       "weaponValues": {
-          "209426660": {
-              "statHash": 209426660,
+          "Defense": {
+              
               "value": 46,
               "minimum": 28,
               "maximum": 28
@@ -20382,8 +20409,8 @@ const manifest = {
           54
       ],
       "weaponValues": {
-          "209426660": {
-              "statHash": 209426660,
+          "Defense": {
+              
               "value": 46,
               "minimum": 46,
               "maximum": 68
@@ -20825,6 +20852,7 @@ const manifest = {
       "weaponName": "Swift Ride",
       "weaponIcon": "/common/destiny2_content/icons/e894edf3163e2423ce20bbcf47f97ed3.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 5,
       "ammoType": 1,
       "itemCategories": [
@@ -20922,6 +20950,7 @@ const manifest = {
       "weaponName": "Disrespectful Stare",
       "weaponIcon": "/common/destiny2_content/icons/689abaf062d1b94ef8467cc32d53122f.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 5,
       "ammoType": 1,
       "itemCategories": [
@@ -21019,6 +21048,7 @@ const manifest = {
       "weaponName": "Lincoln Green",
       "weaponIcon": "/common/destiny2_content/icons/58e8660fd16b18f9238da4fab942b722.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 5,
       "ammoType": 1,
       "itemCategories": [
@@ -21116,6 +21146,7 @@ const manifest = {
       "weaponName": "Agenda 5",
       "weaponIcon": "/common/destiny2_content/icons/b3fd795d16a351366e8b1873ee854577.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 5,
       "ammoType": 1,
       "itemCategories": [
@@ -21461,6 +21492,7 @@ const manifest = {
       "weaponName": "Eternal Slumber",
       "weaponIcon": "/common/destiny2_content/icons/0914b5d362b0f5543e25cc97dea44e5b.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 5,
       "ammoType": 1,
       "itemCategories": [
@@ -22128,6 +22160,7 @@ const manifest = {
       "weaponName": "Three Graves",
       "weaponIcon": "/common/destiny2_content/icons/602d6e0ac5c9a2a755e95e719011fe7b.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 5,
       "ammoType": 1,
       "itemCategories": [
@@ -22706,8 +22739,8 @@ const manifest = {
           54
       ],
       "weaponValues": {
-          "209426660": {
-              "statHash": 209426660,
+          "Defense": {
+              
               "value": 50,
               "minimum": 0,
               "maximum": 0
@@ -23548,6 +23581,7 @@ const manifest = {
       "weaponName": "Encore-25",
       "weaponIcon": "/common/destiny2_content/icons/a6012cebcbc485ae270682d67fceb910.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 4,
       "ammoType": 1,
       "itemCategories": [
@@ -23645,6 +23679,7 @@ const manifest = {
       "weaponName": "Agrona PR2",
       "weaponIcon": "/common/destiny2_content/icons/98dc3880bbc3d7bb32d5e6a4470490a8.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 4,
       "ammoType": 1,
       "itemCategories": [
@@ -23742,6 +23777,7 @@ const manifest = {
       "weaponName": "Psi Cirrus II",
       "weaponIcon": "/common/destiny2_content/icons/7d11cd192e36fd50eca2640a0c8f53a3.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 4,
       "ammoType": 1,
       "itemCategories": [
@@ -23839,6 +23875,7 @@ const manifest = {
       "weaponName": "Bayesian MSu",
       "weaponIcon": "/common/destiny2_content/icons/29f8514392d18cf67b20ef7a2a705df6.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 4,
       "ammoType": 1,
       "itemCategories": [
@@ -23936,6 +23973,7 @@ const manifest = {
       "weaponName": "Autumn Wind",
       "weaponIcon": "/common/destiny2_content/icons/f9b6602d5ad6a523250bbbf8a4816ff5.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 5,
       "ammoType": 1,
       "itemCategories": [
@@ -24033,6 +24071,7 @@ const manifest = {
       "weaponName": "Bayesian MSu",
       "weaponIcon": "/common/destiny2_content/icons/84840820b26100b7b03620a1e7e21b6c.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 4,
       "ammoType": 1,
       "itemCategories": [
@@ -24130,6 +24169,7 @@ const manifest = {
       "weaponName": "Psi Cirrus II",
       "weaponIcon": "/common/destiny2_content/icons/a734883762d5c2b12d3074b422d70a84.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 4,
       "ammoType": 1,
       "itemCategories": [
@@ -24227,6 +24267,7 @@ const manifest = {
       "weaponName": "Agrona PR2",
       "weaponIcon": "/common/destiny2_content/icons/865c2dd4b65fb95b74214421c3a02c51.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 4,
       "ammoType": 1,
       "itemCategories": [
@@ -24324,6 +24365,7 @@ const manifest = {
       "weaponName": "Encore-25",
       "weaponIcon": "/common/destiny2_content/icons/65b9716e376b6953a80b3ee8ea07ac0c.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 4,
       "ammoType": 1,
       "itemCategories": [
@@ -25301,6 +25343,7 @@ const manifest = {
       "weaponName": "Legal Action II",
       "weaponIcon": "/common/destiny2_content/icons/ac260b159d7b07c20370b1b14ea76c4a.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 5,
       "ammoType": 1,
       "itemCategories": [
@@ -26602,8 +26645,8 @@ const manifest = {
           54
       ],
       "weaponValues": {
-          "209426660": {
-              "statHash": 209426660,
+          "Defense": {
+              
               "value": 46,
               "minimum": 46,
               "maximum": 46
@@ -32667,6 +32710,7 @@ const manifest = {
       "weaponName": "Psi Termina II",
       "weaponIcon": "/common/destiny2_content/icons/7a9b1f17430793162d53574d4b630c4a.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 3,
       "ammoType": 1,
       "itemCategories": [
@@ -32764,6 +32808,7 @@ const manifest = {
       "weaponName": "Cadenza-11",
       "weaponIcon": "/common/destiny2_content/icons/bfe34b82fc9637cd520bf58b6b1b4fa8.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 3,
       "ammoType": 1,
       "itemCategories": [
@@ -32861,6 +32906,7 @@ const manifest = {
       "weaponName": "Standing Tall",
       "weaponIcon": "/common/destiny2_content/icons/205bc64aab3ecf08f6ab4750d73b2b22.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 3,
       "ammoType": 1,
       "itemCategories": [
@@ -32958,6 +33004,7 @@ const manifest = {
       "weaponName": "Psi Ferox II",
       "weaponIcon": "/common/destiny2_content/icons/f5a2626cac6249ddd185d7bc3aac7f62.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 3,
       "ammoType": 1,
       "itemCategories": [
@@ -33443,8 +33490,8 @@ const manifest = {
           54
       ],
       "weaponValues": {
-          "209426660": {
-              "statHash": 209426660,
+          "Defense": {
+              
               "value": 46,
               "minimum": 28,
               "maximum": 68
@@ -38692,8 +38739,8 @@ const manifest = {
           54
       ],
       "weaponValues": {
-          "209426660": {
-              "statHash": 209426660,
+          "Defense": {
+              
               "value": 46,
               "minimum": 28,
               "maximum": 68
@@ -38766,8 +38813,8 @@ const manifest = {
           54
       ],
       "weaponValues": {
-          "209426660": {
-              "statHash": 209426660,
+          "Defense": {
+              
               "value": 40,
               "minimum": 0,
               "maximum": 0
@@ -39985,6 +40032,7 @@ const manifest = {
       "weaponName": "Bygones",
       "weaponIcon": "/common/destiny2_content/icons/bfadb17ae76b9ac4cfcf96120aa9ec47.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 5,
       "ammoType": 1,
       "itemCategories": [
@@ -41951,8 +41999,8 @@ const manifest = {
           54
       ],
       "weaponValues": {
-          "209426660": {
-              "statHash": 209426660,
+          "Defense": {
+              
               "value": 40,
               "minimum": 0,
               "maximum": 0
@@ -42031,8 +42079,8 @@ const manifest = {
           54
       ],
       "weaponValues": {
-          "209426660": {
-              "statHash": 209426660,
+          "Defense": {
+              
               "value": 40,
               "minimum": 0,
               "maximum": 0
@@ -45694,6 +45742,7 @@ const manifest = {
       "weaponName": "Eystein-D",
       "weaponIcon": "/common/destiny2_content/icons/34fe987bb53e4bc661c869974ccce305.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 5,
       "ammoType": 1,
       "itemCategories": [
@@ -47653,6 +47702,7 @@ const manifest = {
       "weaponName": "Inaugural Address",
       "weaponIcon": "/common/destiny2_content/icons/00427f2fd52a3d7b887c86c8365a273e.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 5,
       "ammoType": 1,
       "itemCategories": [
@@ -48744,6 +48794,7 @@ const manifest = {
       "weaponName": "Right Side of Wrong",
       "weaponIcon": "/common/destiny2_content/icons/61548ffd2a5850359641a05c70634201.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 5,
       "ammoType": 1,
       "itemCategories": [
@@ -51515,6 +51566,7 @@ const manifest = {
       "weaponName": "The Marine",
       "weaponIcon": "/common/destiny2_content/icons/92617492ff758820ce1d30f2fb4e41a8.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 5,
       "ammoType": 1,
       "itemCategories": [
@@ -51899,8 +51951,8 @@ const manifest = {
           54
       ],
       "weaponValues": {
-          "209426660": {
-              "statHash": 209426660,
+          "Defense": {
+              
               "value": 46,
               "minimum": 28,
               "maximum": 46
@@ -52062,6 +52114,7 @@ const manifest = {
       "weaponName": "Lost and Found",
       "weaponIcon": "/common/destiny2_content/icons/e5b0c3de8a4e94d6759191d94c2280b0.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 2,
       "ammoType": 1,
       "itemCategories": [
@@ -52523,6 +52576,7 @@ const manifest = {
       "weaponName": "Triumph DX-PR",
       "weaponIcon": "/common/destiny2_content/icons/42a2bb8b37f66b42453b300aa11b2a83.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 3,
       "ammoType": 1,
       "itemCategories": [
@@ -52620,6 +52674,7 @@ const manifest = {
       "weaponName": "Nanty Narker",
       "weaponIcon": "/common/destiny2_content/icons/377a16b2b31685071a4df067ee4ef3dc.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 4,
       "ammoType": 1,
       "itemCategories": [
@@ -52717,6 +52772,7 @@ const manifest = {
       "weaponName": "Graviton Lance",
       "weaponIcon": "/common/destiny2_content/icons/42016d2f42846246599263d0718349ff.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 6,
       "ammoType": 1,
       "itemCategories": [
@@ -52808,6 +52864,7 @@ const manifest = {
       "weaponName": "Vigilance Wing",
       "weaponIcon": "/common/destiny2_content/icons/ccc33abaa83f13f08825116c7711890c.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 6,
       "ammoType": 1,
       "itemCategories": [
@@ -53671,8 +53728,8 @@ const manifest = {
           54
       ],
       "weaponValues": {
-          "209426660": {
-              "statHash": 209426660,
+          "Defense": {
+              
               "value": 40,
               "minimum": 0,
               "maximum": 0
@@ -54733,8 +54790,8 @@ const manifest = {
           54
       ],
       "weaponValues": {
-          "209426660": {
-              "statHash": 209426660,
+          "Defense": {
+              
               "value": 55,
               "minimum": 73,
               "maximum": 73
@@ -55987,6 +56044,7 @@ const manifest = {
       "weaponName": "Blast Furnace",
       "weaponIcon": "/common/destiny2_content/icons/b163df19bb09e17b7b23abd57b53e38c.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 5,
       "ammoType": 1,
       "itemCategories": [
@@ -60318,6 +60376,7 @@ const manifest = {
       "weaponName": "Go Figure",
       "weaponIcon": "/common/destiny2_content/icons/a56e7f0cb7692696f693ab10dd556507.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 5,
       "ammoType": 1,
       "itemCategories": [
@@ -60718,6 +60777,7 @@ const manifest = {
       "weaponName": "Heart of Time",
       "weaponIcon": "/common/destiny2_content/icons/ccb367f32582d40eddc4fdc01f095aef.jpg",
       "weaponType": "Pulse Rifle",
+      "archetypeIcon": "https://imgur.com/MBmXrCb",
       "weaponTier": 5,
       "ammoType": 1,
       "itemCategories": [
@@ -61332,8 +61392,8 @@ const manifest = {
           54
       ],
       "weaponValues": {
-          "209426660": {
-              "statHash": 209426660,
+          "Defense": {
+              
               "value": 46,
               "minimum": 28,
               "maximum": 68
@@ -61685,8 +61745,8 @@ const manifest = {
           54
       ],
       "weaponValues": {
-          "209426660": {
-              "statHash": 209426660,
+          "Defense": {
+              
               "value": 55,
               "minimum": 37,
               "maximum": 55
@@ -62164,8 +62224,8 @@ const manifest = {
               "minimum": 0,
               "maximum": 10
           },
-          "209426660": {
-              "statHash": 209426660,
+          "Defense": {
+              
               "value": 55,
               "minimum": 37,
               "maximum": 78
@@ -62877,7 +62937,7 @@ const manifest = {
         "name": "Stability",
         "description": "How much or little recoil you will experience while firing the weapon."
     },
-    "209426660": {
+    "Defense": {
         "name": "Defense",
         "description": "Damage reduction while guarding with this weapon."
     },
