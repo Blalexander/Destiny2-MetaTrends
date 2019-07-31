@@ -108,7 +108,7 @@ export default function ClassComparisons(props) {
 
   function TitanDataOrganizer(titems) {
     // console.log(titems)
-    // let kda = titems.oppDefAvg / titems.deathsAvg;
+    let kda = titems.oppDefAvg / titems.deathsAvg;
 
     const [titanHorizontalBar1] = useState({
       labels: ['Opponents Defeated', 'Kills', 'Assists', 'Deaths'], //BAR, labels = X-axis dates
@@ -122,36 +122,55 @@ export default function ClassComparisons(props) {
       ]
     })
 
-    // const [titanHorizontalBar2] = useState({
-    //   labels: ['Efficiency', 'Average Score Per Kill', 'Average Score Per Life', 'K/DA'], //BAR, labels = X-axis dates
-    //   datasets: [ 
-    //     {
-    //       // label: [10, 20, 30, 40, 50],
-    //       data: [titems.effAvg, titems.perKAvg, titems.perLAvg, kda],
-    //       // backgroundColor: ['rgba(13, 122, 231, 0.6)', 'rgba(231, 13, 13, 0.6)'],
-    //       // borderColor: "red"
-    //     },
-    //   ]
-    // })
+    const [titanHorizontalBar2] = useState({
+      labels: ['K/DA', 'Efficiency', 'Average Score Per Kill', 'Average Score Per Life'], //BAR, labels = X-axis dates
+      datasets: [ 
+        {
+          // label: [10, 20, 30, 40, 50],
+          data: [kda, titems.effAvg, titems.perKAvg, titems.perLAvg],
+          // backgroundColor: ['rgba(13, 122, 231, 0.6)', 'rgba(231, 13, 13, 0.6)'],
+          // borderColor: "red"
+        },
+      ]
+    })
 
     return(
-      <div id="HorizontalBarHolder">
+      <div className="HorizontalBarHolder">
         <HorizontalBar
           data={titanHorizontalBar1}
-          options={{ maintainAspectRatio: false }}
+          options={{ maintainAspectRatio: true }}
         />
+        <HorizontalBar
+          data={titanHorizontalBar2}
+          options={{ maintainAspectRatio: true }}
+        />
+        <p className="winRate">Win Rate: {(titems.standingAvg * 100).toFixed(1)}%</p>
       </div>
     )
   }
 
   function HunterDataOrganizer(hitems) {
     // console.log(hitems)
-    const [hunterHorizontalBar] = useState({
-      labels: ['Opponents Defeated', 'Kills', 'Assists', 'Deaths', 'Efficiency', 'Average Score Per Kill', 'Average Score Per Life', 'Average Score Per Game', 'Win Rate'], //BAR, labels = X-axis dates
+    let kda = hitems.oppDefAvg / hitems.deathsAvg;
+
+    const [hunterHorizontalBar1] = useState({
+      labels: ['Opponents Defeated', 'Kills', 'Assists', 'Deaths'], //BAR, labels = X-axis dates
       datasets: [ 
         {
-          // label: 'Titan',
-          data: [hitems.oppDefAvg, hitems.killsAvg, hitems.assistsAvg, hitems.deathsAvg, hitems.effAvg, hitems.perKAvg, hitems.perLAvg, hitems.scoreAvg, hitems.standingAvg],
+          // label: [10, 20, 30, 40, 50],
+          data: [hitems.oppDefAvg, hitems.killsAvg, hitems.assistsAvg, hitems.deathsAvg],
+          // backgroundColor: ['rgba(13, 122, 231, 0.6)', 'rgba(231, 13, 13, 0.6)'],
+          // borderColor: "red"
+        },
+      ]
+    })
+
+    const [hunterHorizontalBar2] = useState({
+      labels: ['K/DA', 'Efficiency', 'Average Score Per Kill', 'Average Score Per Life'], //BAR, labels = X-axis dates
+      datasets: [ 
+        {
+          // label: [10, 20, 30, 40, 50],
+          data: [kda, hitems.effAvg, hitems.perKAvg, hitems.perLAvg],
           // backgroundColor: ['rgba(13, 122, 231, 0.6)', 'rgba(231, 13, 13, 0.6)'],
           // borderColor: "red"
         },
@@ -159,21 +178,42 @@ export default function ClassComparisons(props) {
     })
 
     return(
-      <HorizontalBar
-        data={hunterHorizontalBar}
-        options={{ maintainAspectRatio: false, }}
-      />
+      <div className="HorizontalBarHolder">
+        <HorizontalBar
+          data={hunterHorizontalBar1}
+          options={{ maintainAspectRatio: true }}
+        />
+        <HorizontalBar
+          data={hunterHorizontalBar2}
+          options={{ maintainAspectRatio: true }}
+        />
+        <p className="winRate">Win Rate: {(hitems.standingAvg * 100).toFixed(1)}%</p>
+      </div>
     )
   }
 
   function WarlockDataOrganizer(witems) {
     // console.log(witems)
-    const [warlockHorizontalBar] = useState({
-      labels: ['Opponents Defeated', 'Kills', 'Assists', 'Deaths', 'Efficiency', 'Average Score Per Kill', 'Average Score Per Life', 'Average Score Per Game', 'Win Rate'], //BAR, labels = X-axis dates
+    let kda = witems.oppDefAvg / witems.deathsAvg;
+
+    const [warlockHorizontalBar1] = useState({
+      labels: ['Opponents Defeated', 'Kills', 'Assists', 'Deaths'], //BAR, labels = X-axis dates
       datasets: [ 
         {
-          // label: 'Titan',
-          data: [witems.oppDefAvg, witems.killsAvg, witems.assistsAvg, witems.deathsAvg, witems.effAvg, witems.perKAvg, witems.perLAvg, witems.scoreAvg, witems.standingAvg],
+          // label: [10, 20, 30, 40, 50],
+          data: [witems.oppDefAvg, witems.killsAvg, witems.assistsAvg, witems.deathsAvg],
+          // backgroundColor: ['rgba(13, 122, 231, 0.6)', 'rgba(231, 13, 13, 0.6)'],
+          // borderColor: "red"
+        },
+      ]
+    })
+
+    const [warlockHorizontalBar2] = useState({
+      labels: ['K/DA', 'Efficiency', 'Average Score Per Kill', 'Average Score Per Life'], //BAR, labels = X-axis dates
+      datasets: [ 
+        {
+          // label: [10, 20, 30, 40, 50],
+          data: [kda, witems.effAvg, witems.perKAvg, witems.perLAvg],
           // backgroundColor: ['rgba(13, 122, 231, 0.6)', 'rgba(231, 13, 13, 0.6)'],
           // borderColor: "red"
         },
@@ -181,10 +221,17 @@ export default function ClassComparisons(props) {
     })
 
     return(
-      <HorizontalBar
-        data={warlockHorizontalBar}
-        options={{ maintainAspectRatio: false, }}
-      />
+      <div className="HorizontalBarHolder">
+        <HorizontalBar
+          data={warlockHorizontalBar1}
+          options={{ maintainAspectRatio: true }}
+        />
+        <HorizontalBar
+          data={warlockHorizontalBar2}
+          options={{ maintainAspectRatio: true }}
+        />
+        <p className="winRate">Win Rate: {(witems.standingAvg * 100).toFixed(1)}%</p>
+      </div>
     )
   }
 

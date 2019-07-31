@@ -36,7 +36,7 @@ export default function WeaponCharts(props) {
 
   function GraphCreator(j) {
     // let tempData = {j, k, l};
-    console.log(j.allData[0], j.allData[1], j.allData[2])
+    // console.log(j.allData[0], j.allData[1], j.allData[2])
     // let tempData = [meleeData, grenadeData, superData];
     let doughnutData = {
       labels: ["melee kills", "grenade kills", "super kills"],

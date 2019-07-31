@@ -13,8 +13,8 @@ function PowerfulCombos(props) {
   let valToUse2;
 
   for(let val in props) {
-    if(props[val]._id != null && props[val]._id.length === 2 && props[val].standingAvg < 0.5) {
-      // console.log("=== 2", props[val])
+    if(props[val]._id != null && props[val]._id.length === 2 && props[val].allKills.length === 2 && props[val].standingAvg < 0.5) {
+      console.log("=== 2", props[val])
       valToUse = props[val];
       break;
     }
@@ -30,6 +30,8 @@ function PowerfulCombos(props) {
 
   let valAllHashes = valToUse.allHashes;
   let valAllKills = valToUse.allKills;
+
+  console.log(valAllKills)
 
   let duoObj = {
     [valAllHashes[0][0]]: valAllKills[0][0] + valAllKills[1][0],

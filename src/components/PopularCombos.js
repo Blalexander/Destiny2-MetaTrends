@@ -14,7 +14,7 @@ function PopularCombos(props) {
 
   for(let val in props) {
     if(props[val]._id != null && props[val]._id.length === 2) {
-      console.log("=== 2", props[val])
+      // console.log("=== 2", props[val])
       valToUse = props[val];
       break;
     }
@@ -22,7 +22,7 @@ function PopularCombos(props) {
 
   for(let val in props) {
     if(props[val]._id != null && props[val]._id.length === 3) {
-      console.log("=== 3", props[val])
+      // console.log("=== 3", props[val])
       valToUse2 = props[val];
       break;
     }

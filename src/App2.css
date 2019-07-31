@@ -46,23 +46,84 @@ html {
 
 /*-------------- SearchBar ---------------*/
 #playerSearchForm {
-  border: 3px solid black;
-/*   background-color: whitesmoke; */
-  background-color: white;
+/*   border: 3px solid black; */
+  background-color: black;
+/*   background-color: white; */
 /*   box-shadow: inset 0 0 4px #000; */
 /*   box-shadow: 0 0 5px #000; */
 /*   margin-bottom: 1vh; */
   padding-top: 2vh;
-  text-align: center;
-  height: 7vh;
+/*   text-align: center; */
+  height: 6vh;
   width: 100vw;
   font-size: x-large;
-  position: -webkit-sticky;
-  position: sticky;
+/*   position: -webkit-sticky; */
+/*   position: sticky; */
   left:-18px;
   z-index: 1;
+/*   position: absolute; */
+  top: 0;
+/*   display: flex; */
+/*   justify-content: center; */
+  
 }
 
+header {
+/*   text-shadow: 1px 1px 1px #000, 4px 4px 4px white; */
+  position: absolute;
+  top: 1.5vh;
+  color: white;
+}
+
+.playerSearchInputContainer {
+  position: absolute;
+  width: 100%;
+  height: 6vh;
+  margin-left: 20vw;
+  top: 1vh;
+}
+
+#formTextInput {
+  height: 2vh;
+  width: 13vw;
+  border: none;
+}
+
+#membershipTypeSelector {
+  margin-left: 1vw;
+  color: white;
+  background-color: gray;
+  border: none;
+  height: 2vh;
+  width: 6vw;
+}
+
+#playerSearchButton {
+  color: white;
+  border: none;
+  background-color: gray;
+  height: 2vh;
+  width: 5vw;
+  border-radius: 1px;
+  margin-left: 1vw;
+}
+
+.navButtonContainer {
+  position: absolute;
+  right: 0;
+  top: 1.5vh;
+  display: flex;
+  align-items: center;
+}
+
+.topNavButton {
+  height: 3vh;
+  width: 10vw;
+  background-color: white;
+  color: black;
+  margin-right: 1vw;
+  border: none;
+}
 
 
 
@@ -186,68 +247,6 @@ html {
   100% {-webkit-transform: translateY(1000px);transform: translateY(1000px); }
 }
 
-.bars {
-  position: absolute;
-}
-
-.first-bar {
-  background-color: white;
-  height: 5%;
-  width: 105%;
-  top: 0;
-  margin-left: -2vw;
-}
-
-.second-bar {
-  background-color: white;
-  height: 7%;
-  width: 83%;
-/*   margin-left: -2vw; */
-  top: 10%;
-/*   z-index: 1; */
-  border-radius: 15px;
-}
-
-.third-bar {
-  background-color: white;
-  height: 6%;
-  width: 83%;
-  top: 39.5%;
-  z-index: 1;
-  border-radius: 15px;
-}
-
-.fourth-bar {
-  background-color: white;
-  height: 6%;
-  width: 83%;
-  top: 67%;
-  border-radius: 15px;
-}
-
-.fifth-bar {
-  background-color: white;
-  height: 4.5%;
-  width: 83%;
-/*   margin-left: -2vw; */
-  bottom: 0;
-  border-radius: 15px 15px 0 0;
-}
-
-.sixth-bar {
-  background-color: white;
-  height: 100%;
-  width: 9.5%;
-  left: 0;
-}
-
-.seventh-bar {
-  background-color: white;
-  height: 100%;
-  width: 8%;
-  right: 0;
-}
-
 
 
 
@@ -338,13 +337,13 @@ html {
 
 
 /* ---------------- Powerful & Popular --------------- */
-.hiding {
+/* .hiding { */
   -webkit-transform: scaleY(0);
           transform: scaleY(0);
   -webkit-transform: scaleX(0);
           transform: scaleX(0);
 /*   overflow-y: hidden; */
-}
+/* } */
 
 .pnpBoxes {
 /*   border: 1px solid black; */
@@ -360,10 +359,17 @@ html {
 /*   display: inline-grid;
   grid-template-columns: 300px 300px;
   grid-gap: 100px; */
+  top: 10vh;
+  left: 0;
   display: flex;
   flex-flow: column nowrap;
   overflow-y: scroll;
   height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  background-color: white;
+  transition: 0.5s;
 }
 
 .popWeaponContainer {
@@ -458,6 +464,13 @@ html {
     /* overflow-y: scroll; */
   height: 100%;
   width: 100%;
+  position: absolute;
+  z-index: 2;
+  background-color: white;
+  top: 10vh;
+  left: 0;
+  transition: 0.5s;
+  
 }
 
 #weaponContainer {
@@ -678,13 +691,20 @@ html {
 /* ------------ Class Comparisons --------------- */
 #NavigationMenuContainer {
   display: grid;
-  height: inherit;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background-color: white;
+  top: 10vh;
+  left: 0;
   grid-template-columns: auto auto auto;
 /*   justify-content: center; */
   grid-gap: 50px;
   padding: 20px;
   overflow-y: scroll;
   overflow-x: hidden;
+  transition: 0.5s;
+  
 }
 
 .CCcontainer {

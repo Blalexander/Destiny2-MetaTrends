@@ -14,10 +14,10 @@ export default function App() {
   return (
     <main>
       <div id="backgroundTransitions"></div>
-      <header>
-        <h1>Destiny MetaTrends</h1>
-      </header>
       <section>
+        <header>
+          <h1>Destiny MetaTrends</h1>
+        </header>
         <Searchbar />
       </section>
       <section className="navigationContainer">

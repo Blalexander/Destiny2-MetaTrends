@@ -15,11 +15,11 @@ export default function NavigationMenu() {
     const result = await fetch('http://localhost:8080/bungie/hope/',).then(res => {
       // document.getElementById('landingPageNav').classList.remove('loading');
       // document.getElementsByClassName("loading").style.opacity = 0.0;
-      document.getElementsByClassName("loading")[0].style.opacity = 0.0;
-      setTimeout(() => document.getElementsByClassName("bars")[0, 1, 2, 3, 4, 5, 6].style.opacity = 0.0, 2000)
-      setTimeout(() => document.getElementsByClassName("navButton")[0].style.border = "2px solid skyblue", 100)
-      setTimeout(() => document.getElementsByClassName("navButton")[1].style.border = "2px solid skyblue", 500)
-      setTimeout(() => document.getElementsByClassName("navButton")[2].style.border = "2px solid skyblue", 1000)
+      document.getElementsByClassName("loading")[0].style.display = "none";
+      // setTimeout(() => document.getElementsByClassName("bars")[0, 1, 2, 3, 4, 5, 6].style.opacity = 0.0, 2000);
+      // setTimeout(() => document.getElementsByClassName("navButton")[0].style.border = "2px solid skyblue", 100);
+      // setTimeout(() => document.getElementsByClassName("navButton")[1].style.border = "2px solid skyblue", 500);
+      // setTimeout(() => document.getElementsByClassName("navButton")[2].style.border = "2px solid skyblue", 1000);
 
       return res.json()
     });
@@ -41,22 +41,22 @@ export default function NavigationMenu() {
   }, [])
 
   function backButton() {
-    let resetElements = document.querySelectorAll('.navButton');
-    for(let i=0; i<resetElements.length; i++) {
-      resetElements[i].classList.add('resetFromSide');
-      resetElements[i].classList.remove('moveToSide');
-      resetElements[i].classList.remove('grantPriority');
-    }
+    // let resetElements = document.querySelectorAll('.navButton');
+    // for(let i=0; i<resetElements.length; i++) {
+    //   resetElements[i].classList.add('resetFromSide');
+    //   resetElements[i].classList.remove('moveToSide');
+    //   resetElements[i].classList.remove('grantPriority');
+    // }
 
-    document.getElementById("backgroundTransitions").classList.remove('bodyShadow');
-    document.getElementById("backgroundTransitions").classList.add('removeBodyShadow');
+    // document.getElementById("backgroundTransitions").classList.remove('bodyShadow');
+    // document.getElementById("backgroundTransitions").classList.add('removeBodyShadow');
     // document.body.classList.remove('bodyShadow');
 
 
-    document.getElementById('pnpContent').classList.add('hiding');
-    document.getElementById('NavigationMenuContainer').classList.add('hiding');
-    document.getElementById('wepContainer').style.overflowY = "hidden";
-    document.getElementById('weaponContainer').classList.add('hiding');
+    // document.getElementById('pnpContent').classList.add('hiding');
+    // document.getElementById('NavigationMenuContainer').classList.add('hiding');
+    // document.getElementById('wepContainer').style.overflowY = "hidden";
+    // document.getElementById('weaponContainer').classList.add('hiding');
 
 
   }
@@ -65,20 +65,18 @@ export default function NavigationMenu() {
   return (
     <section id="landingPageNav" className="landingPageNavigation" onClick={backButton}>
       <div className="loading"></div>
-      <div className="bars first-bar"></div>
-      <div className="bars second-bar"></div>
-      <div className="bars third-bar"></div>
-      <div className="bars fourth-bar"></div>
-      <div className="bars fifth-bar"></div>
-      <div className="bars sixth-bar"></div>
-      <div className="bars seventh-bar"></div>
 
       <PowerfulAndPopular {...initialData[4]}/>
       <WeaponCharts {...initialData[3]}/>
-      <ClassComparisons {...initialData}/>
+      <ClassComparisons {...initialData}/> 
+
     </section>
   )
 }
+
+{/* <PowerfulAndPopular {...initialData[4]}/>
+<WeaponCharts {...initialData[3]}/>
+<ClassComparisons {...initialData}/>  */}
 
 
 

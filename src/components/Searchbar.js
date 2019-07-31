@@ -1,6 +1,9 @@
-import React, {  useState } from 'react';
+import React, {  useState, useEffect } from 'react';
 import { API_BASE_URL } from '../config';
 import Guardians from './Guardians';
+import PowerfulAndPopular from './PowerfulAndPopular';
+import ClassComparisons from './ClassComparisons';
+import WeaponCharts from './WeaponCharts';
 
 
 //Coppertop#1657
@@ -11,14 +14,23 @@ const Searchbar = () => {
   const [membershipType, setMembershipType] = useState('4');
   const [characterData, setCharacterData] = useState('');
 
-  
-  // function handleNameChange(e) {
-  //   setSearchedName(e.target.value);
-  // }
 
-  // function handleTypeChange(e) {
-  //   setMembershipType(e.target.value);
-  // }
+  // const [initialData, setInitialData] = useState('');
+
+  // useEffect(() => {
+  //   const fetchInitialData = async () => {
+  //   const result = await fetch('http://localhost:8080/bungie/hope/',).then(res => {
+  //     return res.json()
+  //   });
+
+  //   console.log(result);
+  //   setInitialData(result);
+  //   };
+
+
+  //   fetchInitialData();
+  // }, [])
+  
 
 
   function handleSubmit(e) {
@@ -59,17 +71,62 @@ const Searchbar = () => {
     });
   }
 
+  // <label>Type in your Xbox, Playstation, or Battlenet ID here</label>
+
+  function navButtonSubmit(ev) {
+    console.log(ev.target.innerText)
+    ev.preventDefault();
+    let identifyByText = ev.target.innerText;
+    if(identifyByText === "Weapon Combinations") {
+      document.getElementById('pnpContent').style.opacity = 1.0;
+      document.getElementById('pnpContent').style.zIndex = 1;
+      document.getElementById('wepContainer').style.opacity = 0.0;
+      document.getElementById('wepContainer').style.zIndex = 0;
+      document.getElementById('NavigationMenuContainer').style.opacity = 0.0;
+      document.getElementById('NavigationMenuContainer').style.zIndex = 0;
+    }
+    else if(identifyByText === "Weapon Charts") {
+      document.getElementById('pnpContent').style.opacity = 0.0;
+      document.getElementById('pnpContent').style.zIndex = 0;
+      document.getElementById('wepContainer').style.opacity = 1.0;
+      document.getElementById('wepContainer').style.zIndex = 1;
+      document.getElementById('NavigationMenuContainer').style.opacity = 0.0;
+      document.getElementById('NavigationMenuContainer').style.zIndex = 0;
+    }
+    else if(identifyByText === "Stats & Graphs") {
+      document.getElementById('pnpContent').style.opacity = 0.0;
+      document.getElementById('pnpContent').style.zIndex = 0;
+      document.getElementById('wepContainer').style.opacity = 0.0;
+      document.getElementById('wepContainer').style.zIndex = 0;
+      document.getElementById('NavigationMenuContainer').style.opacity = 1.0;
+      document.getElementById('NavigationMenuContainer').style.zIndex = 1;
+    }
+  }
+
   return (
     <div>
       <form id="playerSearchForm" onSubmit={handleSubmit}>
-        <label>Type in your Xbox, Playstation, or Battlenet ID here</label>
-        <input id="formTextInput" name="searchedName" type="text" value={searchedName} onChange={e => setSearchedName(e.target.value)} />
-        <select id="membershipTypeSelector" name="membershipType" value={membershipType} onChange={e => setMembershipType(e.target.value)}>
-          <option value="4">Blizzard</option>
-          <option value="2">PSN</option>
-          <option value="1">Xbox</option>
-        </select>
-        <button id="playerSearchButton" type="submit" value="Submit">Search</button>
+        <div className="playerSearchInputContainer">
+          <input id="formTextInput" name="searchedName" type="text" value={searchedName} onChange={e => setSearchedName(e.target.value)} />
+          <select id="membershipTypeSelector" name="membershipType" value={membershipType} onChange={e => setMembershipType(e.target.value)}>
+            <option value="4">Blizzard</option>
+            <option value="2">PSN</option>
+            <option value="1">Xbox</option>
+          </select>
+          <button id="playerSearchButton" type="submit" value="Submit">Search</button>
+        </div>
+      </form>
+
+      <form className="navButtonContainer">
+        <button type="submit" id="powerfulAndPopularNavButton" className="topNavButton" onClick={e => navButtonSubmit(e)}>
+          Weapon Combinations
+        </button>
+        <button type="submit" id="weaponChartsNavButton" className="topNavButton" onClick={e => navButtonSubmit(e)}>
+          Weapon Charts
+        </button>
+        <button type="submit" id="classComparisonsNavButton" className="topNavButton" onClick={e => navButtonSubmit(e)}>
+          Stats & Graphs
+        </button>
       </form>
 
       <Guardians {...characterData}/>
