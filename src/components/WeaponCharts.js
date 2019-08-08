@@ -57,6 +57,86 @@ export default function WeaponCharts(props) {
     )
   }
 
+
+
+
+
+
+  // let weaponTypes = ["Sidearm", "Auto Rifle", "Pulse Rifle", "Combat Bow", "Scout Rifle", "Hand Cannon", "Sniper Rifle", "Submachine Gun", "Trace Rifle", "Linear Fusion Rifle", "Grenade Launcher", "Shotgun", "Rocket Launcher", "Sword", "Machine Gun"];
+  let eachArchetypeAverages = {
+    "Sidearm": {},
+    "Auto Rifle": {},
+    "Pulse Rifle": {},
+    "Combat Bow": {},
+    "Scout Rifle": {},
+    "Hand Cannon": {},
+    "Sniper Rifle": {},
+    "Submachine Gun": {},
+    "Trace Rifle": {},
+    "Fusion Rifle": {},
+    "Linear Fusion Rifle": {},
+    "Grenade Launcher": {},
+    "Shotgun": {},
+    "Rocket Launcher": {},
+    "Sword": {},
+    "Machine Gun": {},
+    "All Types": {
+      count: 0
+    }
+  };
+
+  // let eachPlayerStatAverages = {
+
+  // };
+
+  // let eachStatToAverage = ['scoreAvg', 'oppDefAvg', 'killsAvg', 'assistsAvg', 'deathsAvg', 'kdaAvg', 'effAvg', 'perKAvg', 'perLAvg'];
+
+  //go through the manifest and create averages from there, nothing yet is coming from props
+  //two loops.  one for each propItem, the other for each stat to be averaged
+
+  // let eachStatToAverage = ["Stability", "Handling", "Aim Assistance", "Velocity", "Recoil Direction", "Zoom", "Blast Radius", ]
+
+
+  for (let eachItem in manifest) {
+    if(eachItem != "mapHashes" && eachItem != "statDefinitions") { //FIRST LAYER: FILTERS TO GET WEAPON DEFINITIONS
+      // console.log(manifest[eachItem].weaponType, "First Layer")
+      //manifest[eachItem].weaponType === eachArchetypeAverages[eachItem]
+
+      let wepType = manifest[eachItem].weaponType;
+      if(eachArchetypeAverages[wepType].count === undefined) {
+        eachArchetypeAverages[wepType].count = 1;
+      }
+      else {
+        eachArchetypeAverages[wepType].count++;
+        eachArchetypeAverages["All Types"].count++;
+      }
+
+      //SECOND LAYER: CYCLES THROUGH LIST AND ASSIGNS DEFINITIONS TO EACHARCHETYPEAVERAGES
+      for(let eachManifestStat in manifest[eachItem].weaponValues) {
+        if(eachArchetypeAverages[wepType] === undefined) {
+          console.log(wepType)
+        }
+        else if(eachArchetypeAverages[wepType][eachManifestStat] === undefined) {
+          eachArchetypeAverages[wepType][eachManifestStat] = manifest[eachItem].weaponValues[eachManifestStat].value;
+          if(eachArchetypeAverages["All Types"][eachManifestStat] === undefined && manifest[eachItem].weaponValues[eachManifestStat].value != 0) {
+            eachArchetypeAverages["All Types"][eachManifestStat] = manifest[eachItem].weaponValues[eachManifestStat].value
+          }
+        }
+        else {
+          eachArchetypeAverages[wepType][eachManifestStat] += manifest[eachItem].weaponValues[eachManifestStat].value;
+          if(manifest[eachItem].weaponValues[eachManifestStat].value != 0) {
+            eachArchetypeAverages["All Types"][eachManifestStat] += manifest[eachItem].weaponValues[eachManifestStat].value;
+          }
+        }
+      }
+    }
+    
+  }
+  console.log(eachArchetypeAverages)
+
+
+
+
   function WepConstructor(props) {
     let revisedWep = testPath[props.value];
     // console.log(labelIncrementor)
@@ -76,6 +156,9 @@ export default function WeaponCharts(props) {
       let wepIcon = "https://www.bungie.net" + manifest[wepId].weaponIcon;
       let wepStatKeys = Object.keys(manifest[wepId].weaponValues);
       let wepRpmMagSize = [];
+      let type = manifest[wepId].weaponType;
+
+
       let wepStatVals = wepStatKeys.map(stat => {
         if(stat === "1885944937" || stat === "3291498656" || stat === "3291498659" || stat === "Inventory Size") {
           return("")
@@ -83,31 +166,118 @@ export default function WeaponCharts(props) {
         else if(manifest[wepId].weaponValues[stat].value === 0 || stat === "Power") {
           return("")
         }
-        else if(stat === "Rounds Per Minute" || stat === "Charge Time" || stat === "Swing Speed") {
-          wepRpmMagSize.unshift(<p className={"eachWepStat " + stat}>{stat + " " + manifest[wepId].weaponValues[stat].value}</p>);
-          return("");
-        }
-        else if(stat === "Magazine" || stat === "Draw Time") {
-          wepRpmMagSize.push(<p className={"eachWepStat " + stat}>{stat + " " + manifest[wepId].weaponValues[stat].value}</p>);
-          return("");
-        }
-        else if(stat === "Recoil Direction" || stat === "Zoom" || stat === "Blast Radius" || stat === "Impact" || stat === "Reload Speed" || stat === "Accuracy" || stat === "Charge Time" ) {
-          return(
-            <p className="eachWepStat rightHalf">{manifest[wepId].weaponValues[stat].value + "/100  " + stat}</p>
-          )
-        }
-        else {
+        else { //CREATOR FOR INNATE WEAPON STATS
           return( 
-            <p className="eachWepStat leftHalf">{stat + " " + manifest[wepId].weaponValues[stat].value + "/100  "}</p>
+            <p className="eachWepStat leftHalf">{stat + " " + manifest[wepId].weaponValues[stat].value + "  "}</p>
           )
         }
       })
 
-      // let stat1 = wepStatKeys[6];
-      // let stat2 = wepStatKeys[10];
-      // wepStatVals.push(<p className="eachWepStat">{stat1 + " " + manifest[wepId].weaponValues[stat1].value + " "}</p>)
-      // wepStatVals.push(<p className="eachWepStat">{stat2 + " " + manifest[wepId].weaponValues[stat2].value + " "}</p>)
-      // console.log("stat1: ", stat1, "stat2: ", stat2)
+      let wepSameTypeStatRatings = wepStatKeys.map(stat => {
+        let averagedStat = eachArchetypeAverages[type][stat] / eachArchetypeAverages[type].count;
+        //if(manifest[wepId].weaponValues[stat].value ><= eachArchetypeAverages[type][stat])
+
+        if(stat === "1885944937" || stat === "3291498656" || stat === "3291498659" || stat === "Inventory Size") {
+          return("")
+        }
+        else if(manifest[wepId].weaponValues[stat].value === 0 || stat === "Power") {
+          return("")
+        }
+        else {
+          if(manifest[wepId].weaponValues[stat].value > averagedStat) { //if thisWep > average
+            let percentageGreater = (manifest[wepId].weaponValues[stat].value/averagedStat) * 100;
+            return( 
+              <p className="eachSameTypeStatRating" style={{color: 'green'}}>^ {(percentageGreater-100).toFixed(1)}%</p>
+            )
+          }
+          else if(manifest[wepId].weaponValues[stat].value < averagedStat) { //if thisWep < average
+            let percentageLesser = (averagedStat/manifest[wepId].weaponValues[stat].value) * 100;
+            return( 
+              <p className="eachSameTypeStatRating" style={{color: 'red'}}>v {(percentageLesser-100).toFixed(1)}%</p>
+            )
+          }
+          else if(manifest[wepId].weaponValues[stat].value == averagedStat) { //if thisWep = average
+            return( 
+              <p className="eachSameTypeStatRating" style={{color: 'orange'}}>- 0%</p>
+            )
+          }
+        }
+      })
+
+      let wepAllTypesStatRatings = wepStatKeys.map(stat => {
+        let averagedStat = eachArchetypeAverages["All Types"][stat] / eachArchetypeAverages["All Types"].count;
+        //if(manifest[wepId].weaponValues[stat].value ><= eachArchetypeAverages[type][stat])
+
+        if(stat === "1885944937" || stat === "3291498656" || stat === "3291498659" || stat === "Inventory Size") {
+          return("")
+        }
+        else if(manifest[wepId].weaponValues[stat].value === 0 || stat === "Power") {
+          return("")
+        }
+        else {
+          if(manifest[wepId].weaponValues[stat].value > averagedStat) { //if thisWep > average
+            let percentageGreater = (manifest[wepId].weaponValues[stat].value/averagedStat) * 100;
+            return( 
+              <p className="eachAllTypesStatRating" style={{color: 'green'}}>^ {(percentageGreater-100).toFixed(1)}%</p>
+            )
+          }
+          else if(manifest[wepId].weaponValues[stat].value < averagedStat) { //if thisWep < average
+            let percentageLesser = (averagedStat/manifest[wepId].weaponValues[stat].value) * 100;
+            return( 
+              <p className="eachAllTypesStatRating" style={{color: 'red'}}>v {(percentageLesser-100).toFixed(1)}%</p>
+            )
+          }
+          else if(manifest[wepId].weaponValues[stat].value == averagedStat) { //if thisWep = average
+            return( 
+              <p className="eachAllTypesStatRating" style={{color: 'orange'}}>- 0%</p>
+            )
+          }
+        }
+      })
+
+      let playerSameTypeStatRatings = wepStatKeys.map(stat => {
+        if(stat === "1885944937" || stat === "3291498656" || stat === "3291498659" || stat === "Inventory Size") {
+          return("")
+        }
+        else if(manifest[wepId].weaponValues[stat].value === 0 || stat === "Power") {
+          return("")
+        }
+        else {
+          return( 
+            <p className="playerSameTypeStatRatings">^ 10%</p>
+          )
+        }
+      })
+
+      let playerAllTypesStatRatings = wepStatKeys.map(stat => {
+        if(stat === "1885944937" || stat === "3291498656" || stat === "3291498659" || stat === "Inventory Size") {
+          return("")
+        }
+        else if(manifest[wepId].weaponValues[stat].value === 0 || stat === "Power") {
+          return("")
+        }
+        else {
+          return( 
+            <p className="playerAllTypesStatRatings">v 10%</p>
+          )
+        }
+      })
+
+
+
+      let tempPlayerRank = ["Assists", "Kills", "Deaths", "K/D" , "Efficiency", "scoreAvg"];
+
+      let tempPlayerRanksSame = tempPlayerRank.map(stat => {
+        return( 
+          <p className="tempPlayerRanksSame">^ 10%</p>
+        )
+      })
+
+      let tempPlayerRanksAll = tempPlayerRank.map(stat => {
+        return( 
+          <p className="tempPlayerRanksAll">v 10%</p>
+        )
+      })
 
 
       if(labelIncrementor%10 === 0) {
@@ -115,12 +285,12 @@ export default function WeaponCharts(props) {
         let graphData = [revisedWep.meleeKills.toFixed(1), revisedWep.grenadeKills.toFixed(1), revisedWep.superKills.toFixed(1)]
         return (
           <div className="wepChartsItem">
+            <h3 className="wepNumber">{labelIncrementor}</h3>
             <div className="popularityAndWinRate">
-              <p className="eachPlayerStat timesUsed">Times Used: {revisedWep.totalCount}</p>
-              <p className="eachPlayerStat winRate">Win Rate: {(revisedWinRate * 100).toFixed(0)}%</p>
+              <p className="timesUsed">Times Used: {revisedWep.totalCount}</p>
+              <p className="winRate">Win Rate: {(revisedWinRate * 100).toFixed(0)}%</p>
             </div>
             <div className={"wepNameIconType t" + manifest[wepId].weaponTier}>
-              <div className="labelNum">{labelIncrementor} - {labelIncrementor + 9}</div>
               <p className="wepName">{revisedWepName}</p>
               <img src={wepIcon} className="wepIcons" alt="wepIcon"></img> 
               <p className="wepType">{manifest[wepId].weaponType}</p>
@@ -128,13 +298,33 @@ export default function WeaponCharts(props) {
             <div className="wepRpmMagSize">{wepRpmMagSize}</div>
             <div className="statsContainer">
               <div className="wepStatVals">{wepStatVals}</div>
+              <div className="wepStatValsArrows">
+                <div className="sameTypeArrows">
+                  <p className="arrowsLabel">{manifest[wepId].weaponType}s</p>
+                  {wepSameTypeStatRatings}
+                </div>
+                <div className="allTypesArrows">
+                  <p className="arrowsLabel">All Weapons</p>
+                  {wepAllTypesStatRatings}
+                </div>
+              </div> 
               <div className="playerStats">
-                <p className="eachPlayerStat">Assists: {revisedWep.assistsAvg.toFixed(2)}</p>
-                <p className="eachPlayerStat">Kills: {revisedWep.killsAvg.toFixed(2)}</p>
-                <p className="eachPlayerStat">Deaths: {revisedWep.deathsAvg.toFixed(2)}</p>
-                <p className="eachPlayerStat">K/D: {(revisedWep.killsAvg / revisedWep.deathsAvg).toFixed(2)}</p>
-                <p className="eachPlayerStat">Efficiency: {revisedWep.effAvg.toFixed(2)}</p>
-                <p className="eachPlayerStat">scoreAvg: {revisedWep.scoreAvg.toFixed(2)}</p>
+                <p className="eachPlayerStat">Assists {revisedWep.assistsAvg.toFixed(2)}</p>
+                <p className="eachPlayerStat">Kills {revisedWep.killsAvg.toFixed(2)}</p>
+                <p className="eachPlayerStat">Deaths {revisedWep.deathsAvg.toFixed(2)}</p>
+                <p className="eachPlayerStat">K/D {(revisedWep.killsAvg / revisedWep.deathsAvg).toFixed(2)}</p>
+                <p className="eachPlayerStat">Efficiency {revisedWep.effAvg.toFixed(2)}</p>
+                <p className="eachPlayerStat">scoreAvg {revisedWep.scoreAvg.toFixed(2)}</p>
+              </div>
+              <div className="playerStatRankings">
+                 <div className="sameTypeArrows">
+                  <p className="arrowsLabel">{manifest[wepId].weaponType}s</p>
+                  {tempPlayerRanksSame}
+                </div>
+                <div className="allTypesArrows">
+                  <p className="arrowsLabel">All Weapons</p>
+                  {tempPlayerRanksAll}
+                </div>
               </div>
               <div className="abilityStats">
                 <GraphCreator allData={graphData} />
@@ -148,9 +338,10 @@ export default function WeaponCharts(props) {
       let graphData = [revisedWep.meleeKills.toFixed(1), revisedWep.grenadeKills.toFixed(1), revisedWep.superKills.toFixed(1)]
       return (
         <div className="wepChartsItem">
+          <h3 className="wepNumber">{labelIncrementor}</h3>
           <div className="popularityAndWinRate">
-            <p className="eachPlayerStat timesUsed">Times Used: {revisedWep.totalCount}</p>
-            <p className="eachPlayerStat winRate">Win Rate: {(revisedWinRate * 100).toFixed(0)}%</p>
+            <p className="timesUsed">Times Used: {revisedWep.totalCount}</p>
+            <p className="winRate">Win Rate: {(revisedWinRate * 100).toFixed(0)}%</p>
           </div>
           <div className={"wepNameIconType t" + manifest[wepId].weaponTier}>
             <p className="wepName">{revisedWepName}</p>
@@ -160,13 +351,33 @@ export default function WeaponCharts(props) {
           <div className="wepRpmMagSize">{wepRpmMagSize}</div>
           <div className="statsContainer">
             <div className="wepStatVals">{wepStatVals}</div>
+            <div className="wepStatValsArrows">
+              <div className="sameTypeArrows">
+                <p className="arrowsLabel">{manifest[wepId].weaponType}s</p>
+                {wepSameTypeStatRatings}
+              </div>
+              <div className="allTypesArrows">
+                <p className="arrowsLabel">All Weapons</p>
+                {wepAllTypesStatRatings}
+              </div>
+            </div>
             <div className="playerStats">
-              <p className="eachPlayerStat">Assists: {revisedWep.assistsAvg.toFixed(2)}</p>
-              <p className="eachPlayerStat">Kills: {revisedWep.killsAvg.toFixed(2)}</p>
-              <p className="eachPlayerStat">Deaths: {revisedWep.deathsAvg.toFixed(2)}</p>
-              <p className="eachPlayerStat">K/D: {(revisedWep.killsAvg / revisedWep.deathsAvg).toFixed(2)}</p>
-              <p className="eachPlayerStat">Efficiency: {revisedWep.effAvg.toFixed(2)}</p>
-              <p className="eachPlayerStat">scoreAvg: {revisedWep.scoreAvg.toFixed(2)}</p>
+              <p className="eachPlayerStat">Assists {revisedWep.assistsAvg.toFixed(2)}</p>
+              <p className="eachPlayerStat">Kills {revisedWep.killsAvg.toFixed(2)}</p>
+              <p className="eachPlayerStat">Deaths {revisedWep.deathsAvg.toFixed(2)}</p>
+              <p className="eachPlayerStat">K/D {(revisedWep.killsAvg / revisedWep.deathsAvg).toFixed(2)}</p>
+              <p className="eachPlayerStat">Efficiency {revisedWep.effAvg.toFixed(2)}</p>
+              <p className="eachPlayerStat">scoreAvg {revisedWep.scoreAvg.toFixed(2)}</p>
+            </div>
+            <div className="playerStatRankings">
+              <div className="sameTypeArrows">
+                <p className="arrowsLabel">{manifest[wepId].weaponType}s</p>
+                {tempPlayerRanksSame}
+              </div>
+              <div className="allTypesArrows">
+                <p className="arrowsLabel">All Weapons</p>
+                {tempPlayerRanksAll}
+              </div>
             </div>
             <div className="abilityStats">
               <GraphCreator allData={graphData} />
@@ -257,3 +468,44 @@ export default function WeaponCharts(props) {
     </form>
   )
 }
+
+        // else if(stat === "Charge Time" || stat === "Swing Speed") {
+        //   wepRpmMagSize.unshift(<p className={"eachWepStat " + stat}>{stat + " " + manifest[wepId].weaponValues[stat].value}</p>);
+        //   return("");
+        // }
+        // else if(stat === "Rounds Per Minute") {
+        //   wepRpmMagSize.unshift(<p className={"eachWepStat " + stat}>{manifest[wepId].weaponValues[stat].value + " RPM"}</p>);
+        //   return("");
+        // }
+        // else if(stat === "Magazine" || stat === "Draw Time") {
+        //   wepRpmMagSize.push(<p className={"eachWepStat " + stat}>{stat + " " + manifest[wepId].weaponValues[stat].value}</p>);
+        //   return("");
+        // }
+        // else if(stat === "Recoil Direction" || stat === "Zoom" || stat === "Blast Radius" || stat === "Impact" || stat === "Reload Speed" || stat === "Accuracy" || stat === "Charge Time" ) {
+        //   return(
+        //     <p className="eachWepStat rightHalf">{manifest[wepId].weaponValues[stat].value + "  " + stat}</p>
+        //   )
+        // }
+
+
+        // let pulseCounter = 0;
+
+        // for (let eachItem in manifest) {  //if item != mapHashes or statDefinitions
+        //   if(eachItem != "mapHashes" && eachItem != "statDefinitions") { //First Layer: scans for proper defs.
+        //     // console.log(manifest[eachItem].weaponType, "First Layer")
+      
+        //     if(manifest[eachItem].weaponType === "Pulse Rifle") {//Second Layer: 
+        //       // console.log(manifest[eachItem])
+        //       pulseCounter++;
+        //       if(eachArchetypeAverages["Pulse Rifle"].stabilityAvg === undefined) {
+        //         eachArchetypeAverages["Pulse Rifle"].stabilityAvg = 0;
+        //       }
+        //       else {
+        //         eachArchetypeAverages["Pulse Rifle"].stabilityAvg += manifest[eachItem].weaponValues.Stability.value;
+        //       }
+        //     }
+        //   }
+          
+        // }
+        // let thiss = eachArchetypeAverages["Pulse Rifle"].stabilityAvg/pulseCounter;
+        // console.log(thiss)

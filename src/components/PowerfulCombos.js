@@ -14,7 +14,7 @@ function PowerfulCombos(props) {
 
   for(let val in props) {
     if(props[val]._id != null && props[val]._id.length === 2 && props[val].allKills.length === 2 && props[val].standingAvg < 0.5) {
-      console.log("=== 2", props[val])
+      // console.log("=== 2", props[val])
       valToUse = props[val];
       break;
     }
@@ -31,7 +31,7 @@ function PowerfulCombos(props) {
   let valAllHashes = valToUse.allHashes;
   let valAllKills = valToUse.allKills;
 
-  console.log(valAllKills)
+  // console.log(valAllKills)
 
   let duoObj = {
     [valAllHashes[0][0]]: valAllKills[0][0] + valAllKills[1][0],
@@ -73,7 +73,7 @@ function PowerfulCombos(props) {
     }
   })
 
-  console.log(duoObj, keysToAverage, keysToIdentify, newArr, barArr)
+  // console.log(duoObj, keysToAverage, keysToIdentify, newArr, barArr)
 
   let valAllHashes2 = valToUse2.allHashes;
   let valAllKills2 = valToUse2.allKills;
@@ -124,7 +124,7 @@ function PowerfulCombos(props) {
     }
   })
 
-  console.log(trioObj, "trioKeysToAv: ", trioKeysToAv, "keysToIdentify2: ", keysToIdentify2, newArr2, barArr2)
+  // console.log(trioObj, "trioKeysToAv: ", trioKeysToAv, "keysToIdentify2: ", keysToIdentify2, newArr2, barArr2)
 
 
 
@@ -146,7 +146,7 @@ function PowerfulCombos(props) {
   function WeaponSorter(o) {
     let keyToUse = o.o;
     let indexToUse = o.k;
-    console.log(keyToUse, indexToUse)
+    // console.log(keyToUse, indexToUse)
 
     if(keyToUse === 0) {
       return (<div className="blankWepBox"><div className="blankWepIcon"></div><div className="blankWepName"></div></div>)
@@ -192,7 +192,7 @@ function PowerfulCombos(props) {
   function WeaponSorter2(o) {
     let keyToUse = o.o;
     let indexToUse = o.k;
-    console.log(keyToUse, indexToUse)
+    // console.log(keyToUse, indexToUse)
 
     if(keyToUse === 0) {
       return (<div className="blankWepBox"><div className="blankWepIcon"></div><div className="blankWepName"></div></div>)

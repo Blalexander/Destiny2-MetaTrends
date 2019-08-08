@@ -9441,7 +9441,7 @@ const manifest = {
           },
           "Magazine": {
               
-              "value": 65,
+              "value": 10,
               "minimum": 0,
               "maximum": 0
           },

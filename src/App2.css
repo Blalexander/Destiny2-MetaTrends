@@ -363,13 +363,13 @@ header {
   left: 0;
   display: flex;
   flex-flow: column nowrap;
-  overflow-y: scroll;
+/*   overflow-y: scroll; */
   height: 100%;
   width: 100%;
   position: absolute;
   z-index: 1;
   background-color: white;
-  transition: 0.5s;
+  transition: 0.2s;
 }
 
 .popWeaponContainer {
@@ -469,7 +469,7 @@ header {
   background-color: white;
   top: 10vh;
   left: 0;
-  transition: 0.5s;
+  transition: 0.2s;
   
 }
 
@@ -479,15 +479,65 @@ header {
   width: 100%;
 }
 
-.wepChartsItem {
-  padding-top: 2vh;
-/*   border-top: 3px solid navy; */
-  padding-left: 5vw;
-/*! margin-right: 30vw; */
-  width: 70vw;
-  margin-left: 1vw;
+.wepStatValsArrows {
   display: flex;
   flex-flow: row nowrap;
+  width: 20%;
+  height: 17vh;
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+/*   margin-top: -2.5vh; */
+}
+
+.sameTypeArrows  {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.allTypesArrows {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+
+
+.eachSameTypeStatRating {
+  height: 10%;
+  color: greenyellow;
+}
+
+.eachAllTypesStatRating {
+  height: 10%;
+  color: red;
+}
+
+.arrowsLabel {
+  height: 2vh;
+  width: 8vw;
+}
+
+
+
+
+
+
+
+.wepChartsItem {
+/*   padding-top: 2vh; */
+/*   border-top: 3px solid navy; */
+/*   padding-left: 5vw; */
+/*   padding-bottom: 2vh; */
+/*! margin-right: 30vw; */
+  height: 17vh;
+  width: 80vw;
+  margin-left: 8vw;
+/*   margin-left: 1vw; */
+  display: flex;
+  flex-flow: row nowrap;
+/*   background-color: rgba(0, 0, 0, .2); */
+  margin-bottom: 3vh;
+/*   border-bottom: 1px solid black; */
+  
 /*   background-color: #ceae33; */
 /*   background-color: #522f65; */
 /*   background-color: #5076a3; */
@@ -497,7 +547,7 @@ header {
 /*   border-left: 3px solid orange; */
 /*   border-left: 3px solid rgba(255, 153, 36, .5); */
 /*   transition-duration: .5s; */
-/*   box-shadow: 1px 1px 1px orange, 2px 2px 2px orange; */
+/*   box-shadow: 0 0 0 0 black, 2px 2px 2px 2px black; */
 }
 
 .t6 {
@@ -505,30 +555,35 @@ header {
 /*   opacity: 0.5; */
   background: rgba(206, 174, 51, .7);
   border: 1px solid rgba(206, 174, 51, .7);
+  box-shadow: 0px 0px 4px 2px rgba(206, 174, 51, .7);
 }
 
 .t5 {
 /*   background-color: #522f65; */
   background: rgba(82, 47, 101, .8);
   border: 1px solid rgba(82, 47, 101, .8);
+  box-shadow: 0px 0px 4px 2px rgba(82, 47, 101, .8);
 }
 
 .t4 {
 /*   background-color: #5076a3; */
   background: rgba(80, 118, 163, .7);
   border: 1px solid rgba(80, 118, 163, .7);
+  box-shadow: 0px 0px 4px 2px rgba(80, 118, 163, .7);
 }
 
 .t3 {
 /*   background-color: #366f42; */
   background: rgba(54, 111, 66, .7);
   border: 1px solid rgba(54, 111, 66, .7);
+  box-shadow: 0px 0px 4px 2px rgba(54, 111, 66, .7);
 }
 
 .t2 {
 /*   background-color: #c3bcb4; */
   background: rgba(195, 188, 180, .7);
   border: 1px solid rgba(195, 188, 180, .7);
+  box-shadow: 0px 0px 4px 2px rgba(195, 188, 180, .7);
 }
 
 
@@ -542,16 +597,27 @@ header {
 .popularityAndWinRate {
   display: flex;
   flex-flow: column nowrap;
-  justify-content: space-evenly;
-  height: 10vh;
+/*   justify-content: flex-end; */
+/*   align-items: flex-end; */
+  height: 17vh;
+/*   border-left: 1px solid black; */
+/*   border-bottom: 1px solid black; */
+  border: 1px solid black;
+  border-radius: 3px 0 0 3px;
+  border-right: none;
 }
 
 .timesUsed {
   height: 50%;
+  display: flex;
+  align-items: center;
 }
 
 .winRate {
   height: 50%;
+  align-items: center;
+/*   border-left: 1px solid black; */
+/*   border-bottom: 1px solid black; */
 }
 
 
@@ -561,6 +627,7 @@ header {
   justify-self: flex-start;
   display: flex;
 /*   border: 1px solid black; */
+  box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, .3);
 }
 
 .wepName {
@@ -578,18 +645,21 @@ header {
 
 .wepStatVals {
   display: flex; 
+  height: 17vh;
 /*   justify-content: flex-end;  */
 /*   align-self: center;  */
 /*   position: absolute; */
   flex-flow: column wrap;
-  height: 10vh;
-  width: 60%;
-/*   margin-top: -8vh; */
+/*   height: 10vh; */
+  width: 20%;
+  padding-top: 2vh;
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
 } 
 
-.rightHalf {
+/* .rightHalf {
   display: flex;
-}
+} */
 
 .leftHalf {
   display: flex;
@@ -597,7 +667,7 @@ header {
 }
  
 .eachWepStat {
-  height: 25%;
+  height: 10%;
   width: 10vw;
 }
 
@@ -606,23 +676,49 @@ header {
 .playerStats {
   display: flex;
   flex-flow: column wrap;
-  height: 100%;
+  height: 17vh;
   width: 25%;
+  padding-top: 2vh;
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
 }
 
 .eachPlayerStat {
-  height: 33%;
+  height: 16%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.playerStatRankings {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 20%;
+  height: 17vh;
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+/*   margin-top: 2vh; */
+}
+
+.tempPlayerRanksSame {
+  color: greenyellow;
+  height: 16%;
+}
+
+.tempPlayerRanksAll {
+  color: red;
+  height: 16%;
 }
 
 
 
-.wepRpmMagSize {
+
+/* .wepRpmMagSize {
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-evenly;
   height: 10vh;
   width: 20vw;
-}
+} */
 
 .Magazine {
   border: 1px solid green;
@@ -672,12 +768,17 @@ header {
 }
 
 .abilityStats {
-  height: 100%;
-  width: 20%;
+  height: 17vh;
+  width: 30%;
+/*   margin-top: -1vh; */
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+  border-right: 1px solid black;
+  border-radius: 0px 3px 3px 0px;
 }
 
 .wepNameIconType {
-  height: 12vh;
+  height: 17vh;
   width: 12vw;
   display: flex;
   flex-flow: column nowrap;
@@ -685,13 +786,32 @@ header {
   justify-content: center;
 }
 
+.wepNumber {
+  height: 5vh;
+  width: 5vw;
+  margin-top: 7vh;
+  border: 1px solid black;
+  border-radius: 3px 0 0 3px;
+  border-right: none;
+  background-color: black;
+  color: white;
+  font-size:large;
+/*   text-shadow: 1px 1px 1px black, 2px 2px 2px black; */
+/*   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.0), rgba(189, 254, 255, 0.2)); */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: -1px;
+/*   z-index: 1; */
+  opacity: 0.7;
+}
 
 
 
 /* ------------ Class Comparisons --------------- */
 #NavigationMenuContainer {
   display: grid;
-  height: 100%;
+/*   height: 100%; */
   width: 100%;
   position: absolute;
   background-color: white;
@@ -699,11 +819,12 @@ header {
   left: 0;
   grid-template-columns: auto auto auto;
 /*   justify-content: center; */
-  grid-gap: 50px;
+  grid-gap: 0px 50px;
   padding: 20px;
-  overflow-y: scroll;
+/*   overflow-y: scroll; */
   overflow-x: hidden;
-  transition: 0.5s;
+  transition: 0.2s;
+  align-items: end;
   
 }
 
@@ -713,34 +834,106 @@ header {
 /*   border: 1px solid black; */
 }
 
-.currentClassPop {
-  margin: auto;
-  margin-top: 0;
-  grid-column-start: 1;
-  grid-column-end: 4;
+#titanCC, #hunterCC, #warlockCC {
+  margin-top: 50px;
 }
 
 #titanCC {
   border-left: 1px solid red;
   border-right: 1px solid red;
+  grid-row: 3 / 4;
+  grid-column: 1/ 2;
+  width: 30vw;
 }
 
 #hunterCC {
   border-left: 1px solid blue;
   border-right: 1px solid blue;
+  grid-row: 3 / 4;
+  grid-column: 2 / 3;
+  width: 30vw;
 }
 
 #warlockCC {
   border-left: 1px solid gold;
   border-right: 1px solid gold;
+  grid-row: 3 / 4;
+  grid-column: 3 / 4;
+  width: 30vw;
+}
+
+.populationBar {
+/*   border: 1px solid green; */
+/*   bottom: 0; */
+/*   margin-bottom: 0; */
+}
+
+.classPopNumbers {
+  grid-row: 2 / 3;
+  margin-top: 1vh;
+}
+
+.titanPopulationBar {
+  border: 1px solid red;
+  height: 20vh;
+  background-image: url(https://geek-prime.com/wp-content/uploads/2014/02/Destiny-2-4k-hd-wallpaper-titan-4k-1024x576.jpg);
+  background-size: cover;
+  display: grid;
+  align-items: end;
+}
+
+.titanPopulationBar .populationBar {
+/*   background-color: red; */
+  opacity: 0.6;
+  box-shadow: 0px 51px 100px inset red;
+}
+
+.hunterPopulationBar {
+  border: 1px solid blue;
+  height: 20vh;
+  background-image: url(https://geek-prime.com/wp-content/uploads/2014/02/Destiny-2-4k-hd-wallpaper-Hunter-4k-1024x576.jpg);
+  background-size: cover;
+  display: grid;
+  align-items: end;
+}
+
+.hunterPopulationBar .populationBar {
+/*   background-color: blue; */
+  opacity: 0.6;
+  box-shadow: 0px 51px 100px inset blue;
+}
+
+.warlockPopulationBar {
+  border: 1px solid goldenrod;
+  height: 20vh;
+  background-image: url(https://geek-prime.com/wp-content/uploads/2014/02/Destiny-2-4k-hd-wallpaper-warlock-4k-1024x576.jpg);
+  background-size: cover;
+  display: grid;
+  align-items: end;
+}
+
+.warlockPopulationBar .populationBar {
+/*   background-color: goldenrod; */
+  opacity: 0.6;
+  box-shadow: 0px 51px 100px inset goldenrod;
 }
 
 .mapIcons {
-  height: 100px;
+/*   height: 100px; */
+  width: 60vw;
+/*   max-height: 100px; */
 }
 
-.mapsContainer {
-  border: 1px solid black;
-  overflow-y: scroll;
-  height: 35vh;
+.classMaps {
+/*   border: 1px solid black; */
+/*   overflow-y: scroll; */
+/*   height: 50vh; */
+  margin-top: 50px;
+  grid-row: 4 / 5;
+  grid-column: 1 / 4;
+/*   width: 90vw; */
+}
+
+.eachMapHolder {
+  margin-bottom: 1vh;
 }

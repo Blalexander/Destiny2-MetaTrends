@@ -72,7 +72,7 @@ function PopularCombos(props) {
     }
   })
 
-  console.log(duoObj, keysToAverage, keysToIdentify, newArr, barArr)
+  // console.log(duoObj, keysToAverage, keysToIdentify, newArr, barArr)
 
 
 
@@ -125,7 +125,7 @@ function PopularCombos(props) {
     }
   })
 
-  console.log(trioObj, "trioKeysToAv: ", trioKeysToAv, "keysToIdentify2: ", keysToIdentify2, newArr2, barArr2)
+  // console.log(trioObj, "trioKeysToAv: ", trioKeysToAv, "keysToIdentify2: ", keysToIdentify2, newArr2, barArr2)
 
 
 
@@ -147,7 +147,7 @@ function PopularCombos(props) {
   function WeaponSorter(o) {
     let keyToUse = o.o;
     let indexToUse = o.k;
-    console.log(keyToUse, indexToUse)
+    // console.log(keyToUse, indexToUse)
 
     if(keyToUse === 0) {
       return (<div className="blankWepBox"><div className="blankWepIcon"></div><div className="blankWepName"></div></div>)
@@ -193,7 +193,7 @@ function PopularCombos(props) {
   function WeaponSorter2(o) {
     let keyToUse = o.o;
     let indexToUse = o.k;
-    console.log(keyToUse, indexToUse)
+    // console.log(keyToUse, indexToUse)
 
     if(keyToUse === 0) {
       return (<div className="blankWepBox"><div className="blankWepIcon"></div><div className="blankWepName"></div></div>)
