@@ -85,24 +85,59 @@ export default function WeaponCharts(props) {
     }
   };
 
-  // let eachPlayerStatAverages = {
-
-  // };
+  let eachPlayerStatAverages = {
+    "scoreAvg": 0,
+    "oppDefAvg": 0,
+    "killsAvg": 0,
+    "abilityKills": 0,
+    "grenadeKills": 0,
+    "meleeKills": 0,
+    "superKills": 0,
+    "standingAvg": 0,
+    "assistsAvg": 0,
+    "deathsAvg": 0,
+    "effAvg": 0,
+    "perKAvg": 0,
+    "perLAvg": 0,
+    "count": 0
+  }; //KD = kills / deaths
 
   // let eachStatToAverage = ['scoreAvg', 'oppDefAvg', 'killsAvg', 'assistsAvg', 'deathsAvg', 'kdaAvg', 'effAvg', 'perKAvg', 'perLAvg'];
+  for (let eachWeaponKey in props) {
+    // eachPlayerStatAverages.count += 1;
+    // if(eachPlayerStatAverages["count"] === undefined) {
+    //   eachPlayerStatAverages["count"] = 1;
+    // }
+    // else {
+      eachPlayerStatAverages["count"]++;
+    // }
+    // console.log(eachPlayerStatAverages.count)
+    for (let eachWepPlayerStat in props[eachWeaponKey]) {
+      if(eachWepPlayerStat != "_id" && eachWepPlayerStat != "totalCount") {
+        if(eachPlayerStatAverages[eachWepPlayerStat] == undefined) {
+          eachPlayerStatAverages[eachWepPlayerStat] = props[eachWeaponKey][eachWepPlayerStat]
+        }
+        else {
+          eachPlayerStatAverages[eachWepPlayerStat] += props[eachWeaponKey][eachWepPlayerStat]
+        }
+      }
+    }
+  }
+  for (let eachAveragedPlayerStat in eachPlayerStatAverages) { 
+    if(eachAveragedPlayerStat != "count") {
+      eachPlayerStatAverages[eachAveragedPlayerStat] /= eachPlayerStatAverages.count
+    }
+  }
+  eachPlayerStatAverages.kdAvg = eachPlayerStatAverages.killsAvg / eachPlayerStatAverages.deathsAvg;
+  console.log(eachPlayerStatAverages)
 
-  //go through the manifest and create averages from there, nothing yet is coming from props
-  //two loops.  one for each propItem, the other for each stat to be averaged
 
-  // let eachStatToAverage = ["Stability", "Handling", "Aim Assistance", "Velocity", "Recoil Direction", "Zoom", "Blast Radius", ]
 
 
   for (let eachItem in manifest) {
     if(eachItem != "mapHashes" && eachItem != "statDefinitions") { //FIRST LAYER: FILTERS TO GET WEAPON DEFINITIONS
-      // console.log(manifest[eachItem].weaponType, "First Layer")
-      //manifest[eachItem].weaponType === eachArchetypeAverages[eachItem]
-
       let wepType = manifest[eachItem].weaponType;
+
       if(eachArchetypeAverages[wepType].count === undefined) {
         eachArchetypeAverages[wepType].count = 1;
       }
@@ -126,7 +161,7 @@ export default function WeaponCharts(props) {
           eachArchetypeAverages[wepType][eachManifestStat] += manifest[eachItem].weaponValues[eachManifestStat].value;
           if(manifest[eachItem].weaponValues[eachManifestStat].value != 0) {
             eachArchetypeAverages["All Types"][eachManifestStat] += manifest[eachItem].weaponValues[eachManifestStat].value;
-          }
+          } //!!!!COMBAT BOW VELOCITY === 0???
         }
       }
     }
@@ -265,7 +300,7 @@ export default function WeaponCharts(props) {
 
 
 
-      let tempPlayerRank = ["Assists", "Kills", "Deaths", "K/D" , "Efficiency", "scoreAvg"];
+      let tempPlayerRank = ["assistsAvg", "killsAvg", "deathsAvg", "kdAvg" , "effAvg", "scoreAvg"];
 
       let tempPlayerRanksSame = tempPlayerRank.map(stat => {
         return( 
@@ -273,10 +308,26 @@ export default function WeaponCharts(props) {
         )
       })
 
-      let tempPlayerRanksAll = tempPlayerRank.map(stat => {
-        return( 
-          <p className="tempPlayerRanksAll">v 10%</p>
-        )
+      revisedWep["kdAvg"] = revisedWep.killsAvg / revisedWep.deathsAvg;
+
+      let tempPlayerRanksAll = tempPlayerRank.map(stat => { //INCLUDE THE AVG NEXT TO PERCENT COMPARISON
+        if(revisedWep[stat] > eachPlayerStatAverages[stat]) {
+          let percentageGreater = (revisedWep[stat]/eachPlayerStatAverages[stat]) * 100;
+          return( 
+            <p className="tempPlayerRanksAll" style={{color: 'green'}}>^ {(percentageGreater-100).toFixed(1)}%</p>
+          )
+        }
+        else if(revisedWep[stat] < eachPlayerStatAverages[stat]) {
+          let percentageLesser = (revisedWep[stat]/eachPlayerStatAverages[stat]) * 100;
+          return( 
+            <p className="tempPlayerRanksAll" style={{color: 'red'}}>v {(percentageLesser-100).toFixed(1)}%</p>
+          )
+        }
+        else if(revisedWep[stat] == eachPlayerStatAverages[stat]) {
+          return( 
+            <p className="tempPlayerRanksAll" style={{color: 'orange'}}>- 0%</p>
+          )
+        }
       })
 
 
