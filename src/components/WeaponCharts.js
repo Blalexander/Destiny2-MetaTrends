@@ -86,49 +86,67 @@ export default function WeaponCharts(props) {
   };
 
   let eachPlayerStatAverages = {
-    "scoreAvg": 0,
-    "oppDefAvg": 0,
-    "killsAvg": 0,
-    "abilityKills": 0,
-    "grenadeKills": 0,
-    "meleeKills": 0,
-    "superKills": 0,
-    "standingAvg": 0,
-    "assistsAvg": 0,
-    "deathsAvg": 0,
-    "effAvg": 0,
-    "perKAvg": 0,
-    "perLAvg": 0,
-    "count": 0
-  }; //KD = kills / deaths
+    "Sidearm": {},
+    "Auto Rifle": {},
+    "Pulse Rifle": {},
+    "Combat Bow": {},
+    "Scout Rifle": {},
+    "Hand Cannon": {},
+    "Sniper Rifle": {},
+    "Submachine Gun": {},
+    "Trace Rifle": {},
+    "Fusion Rifle": {},
+    "Linear Fusion Rifle": {},
+    "Grenade Launcher": {},
+    "Shotgun": {},
+    "Rocket Launcher": {},
+    "Sword": {},
+    "Machine Gun": {},
+    "All Types": {
+      count: 0
+    }
+  };
 
-  // let eachStatToAverage = ['scoreAvg', 'oppDefAvg', 'killsAvg', 'assistsAvg', 'deathsAvg', 'kdaAvg', 'effAvg', 'perKAvg', 'perLAvg'];
+  // let eachStatToAverage = ['scoreAvg', 'oppDefAvg', 'killsAvg', 'abilityKills', 'grenadeKills', 'superKills', 'standingAvg', 'assistsAvg', 'deathsAvg', 'effAvg', 'perKAvg', 'perLAvg'];
+
   for (let eachWeaponKey in props) {
-    // eachPlayerStatAverages.count += 1;
-    // if(eachPlayerStatAverages["count"] === undefined) {
-    //   eachPlayerStatAverages["count"] = 1;
-    // }
-    // else {
-      eachPlayerStatAverages["count"]++;
-    // }
-    // console.log(eachPlayerStatAverages.count)
+    let wepType = manifest[props[eachWeaponKey]._id].weaponType;
+
+    if(eachPlayerStatAverages[wepType].count === undefined) {
+      eachPlayerStatAverages[wepType].count = 1;
+    }
+    else {
+      eachPlayerStatAverages[wepType].count++;
+      eachPlayerStatAverages["All Types"].count++;
+    }
+
     for (let eachWepPlayerStat in props[eachWeaponKey]) {
       if(eachWepPlayerStat != "_id" && eachWepPlayerStat != "totalCount") {
-        if(eachPlayerStatAverages[eachWepPlayerStat] == undefined) {
-          eachPlayerStatAverages[eachWepPlayerStat] = props[eachWeaponKey][eachWepPlayerStat]
+        if(eachPlayerStatAverages[wepType][eachWepPlayerStat] === undefined) {
+          eachPlayerStatAverages[wepType][eachWepPlayerStat] = props[eachWeaponKey][eachWepPlayerStat]
+          if(eachPlayerStatAverages["All Types"][eachWepPlayerStat] === undefined) {
+            eachPlayerStatAverages["All Types"][eachWepPlayerStat] = props[eachWeaponKey][eachWepPlayerStat]
+          }
         }
         else {
-          eachPlayerStatAverages[eachWepPlayerStat] += props[eachWeaponKey][eachWepPlayerStat]
+          eachPlayerStatAverages[wepType][eachWepPlayerStat] += props[eachWeaponKey][eachWepPlayerStat]
+          eachPlayerStatAverages["All Types"][eachWepPlayerStat] += props[eachWeaponKey][eachWepPlayerStat]
         }
       }
     }
   }
-  for (let eachAveragedPlayerStat in eachPlayerStatAverages) { 
-    if(eachAveragedPlayerStat != "count") {
-      eachPlayerStatAverages[eachAveragedPlayerStat] /= eachPlayerStatAverages.count
-    }
+
+  for(let eachWepType in eachPlayerStatAverages) {
+    // if(eachWepType != "All Types") {
+      for(let eachWepStat in eachPlayerStatAverages[eachWepType]) {
+        if(eachWepStat != "count") {
+          eachPlayerStatAverages[eachWepType][eachWepStat] /= eachPlayerStatAverages[eachWepType].count
+        }
+      }
+      eachPlayerStatAverages[eachWepType].kdAvg = eachPlayerStatAverages[eachWepType].killsAvg / eachPlayerStatAverages[eachWepType].deathsAvg
+    // }
   }
-  eachPlayerStatAverages.kdAvg = eachPlayerStatAverages.killsAvg / eachPlayerStatAverages.deathsAvg;
+
   console.log(eachPlayerStatAverages)
 
 
@@ -301,29 +319,44 @@ export default function WeaponCharts(props) {
 
 
       let tempPlayerRank = ["assistsAvg", "killsAvg", "deathsAvg", "kdAvg" , "effAvg", "scoreAvg"];
-
-      let tempPlayerRanksSame = tempPlayerRank.map(stat => {
-        return( 
-          <p className="tempPlayerRanksSame">^ 10%</p>
-        )
-      })
-
       revisedWep["kdAvg"] = revisedWep.killsAvg / revisedWep.deathsAvg;
 
+      let tempPlayerRanksSame = tempPlayerRank.map(stat => {
+        for(let eachWepType2 in eachPlayerStatAverages) {
+          if(revisedWep[stat] > eachPlayerStatAverages[eachWepType2][stat]) {
+            let percentageGreater = (revisedWep[stat]/eachPlayerStatAverages[eachWepType2][stat]) * 100;
+            return( 
+              <p className="tempPlayerRanksAll" style={{color: 'green'}}>^ {(percentageGreater-100).toFixed(1)}%</p>
+            )
+          }
+          else if(revisedWep[stat] < eachPlayerStatAverages[eachWepType2][stat]) {
+            let percentageLesser = (revisedWep[stat]/eachPlayerStatAverages[eachWepType2][stat]) * 100;
+            return( 
+              <p className="tempPlayerRanksAll" style={{color: 'red'}}>v {(percentageLesser-100).toFixed(1)}%</p>
+            )
+          }
+          else if(revisedWep[stat] == eachPlayerStatAverages[eachWepType2][stat]) {
+            return( 
+              <p className="tempPlayerRanksAll" style={{color: 'orange'}}>- 0%</p>
+            )
+          }
+        }
+      })
+
       let tempPlayerRanksAll = tempPlayerRank.map(stat => { //INCLUDE THE AVG NEXT TO PERCENT COMPARISON
-        if(revisedWep[stat] > eachPlayerStatAverages[stat]) {
-          let percentageGreater = (revisedWep[stat]/eachPlayerStatAverages[stat]) * 100;
+        if(revisedWep[stat] > eachPlayerStatAverages["All Types"][stat]) {
+          let percentageGreater = (revisedWep[stat]/eachPlayerStatAverages["All Types"][stat]) * 100;
           return( 
             <p className="tempPlayerRanksAll" style={{color: 'green'}}>^ {(percentageGreater-100).toFixed(1)}%</p>
           )
         }
-        else if(revisedWep[stat] < eachPlayerStatAverages[stat]) {
-          let percentageLesser = (revisedWep[stat]/eachPlayerStatAverages[stat]) * 100;
+        else if(revisedWep[stat] < eachPlayerStatAverages["All Types"][stat]) {
+          let percentageLesser = (revisedWep[stat]/eachPlayerStatAverages["All Types"][stat]) * 100;
           return( 
             <p className="tempPlayerRanksAll" style={{color: 'red'}}>v {(percentageLesser-100).toFixed(1)}%</p>
           )
         }
-        else if(revisedWep[stat] == eachPlayerStatAverages[stat]) {
+        else if(revisedWep[stat] == eachPlayerStatAverages["All Types"][stat]) {
           return( 
             <p className="tempPlayerRanksAll" style={{color: 'orange'}}>- 0%</p>
           )
