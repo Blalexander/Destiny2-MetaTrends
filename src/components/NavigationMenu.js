@@ -3,12 +3,17 @@ import React, { useState, useEffect } from 'react';
 import PowerfulAndPopular from './PowerfulAndPopular';
 import ClassComparisons from './ClassComparisons';
 import WeaponCharts from './WeaponCharts';
+import manifest from './manifest';
 // import BackButton from './BackButton';
 // import HistoricalGraphs from './HistoricalGraphs';
 
 
 export default function NavigationMenu() {
   const [initialData, setInitialData] = useState('');
+  let weaponTypes = ["Sidearm", "Auto Rifle", "Pulse Rifle", "Combat Bow", "Scout Rifle", "Hand Cannon", "Sniper Rifle", "Submachine Gun", "Trace Rifle", "Fusion Rifle", "Linear Fusion Rifle", "Grenade Launcher", "Shotgun", "Rocket Launcher", "Sword", "Machine Gun"];
+
+  let blankErAy = [];
+  let blankObj = {};
 
   useEffect(() => {
     const fetchInitialData = async () => {
@@ -28,19 +33,106 @@ export default function NavigationMenu() {
     setInitialData(result);
     };
 
-    // const fetchOtherData = async () => {
-    //   const result2 = await fetch('https://www.bungie.net/common/destiny2_content/json/en/aggregate-2c470b6f-2810-432f-ab54-0b0fe0b0ba53.json',).then(res => {
+    const fetchOtherData = async () => {
+      const result2 = await fetch('http://localhost:8080/bungie/hoping/',)
+      // const result2 = await fetch('http://localhost:8080/bungie/hoping/',).then(res => {
+      //   return res.json()
+      // });
+  
+      console.log(result2);
+      console.log(result2.Response);
+    }
+
+    //   const result2 = await fetch('https://www.bungie.net/common/destiny2_content/json/en/aggregate-2897f1bd-269c-4b6e-a1bf-61a8577b687b.json',).then(res => {
     //     return res.json()
     //   });
-  
-    //   console.log(result2);
+    //   for(let item in result2) {
+    //     if(item === "DestinyInventoryItemDefinition") {
+    //       // console.log(result2[item])
+    //       for(let inventoryItem in result2[item]) {
+    //         let wepType = result2[item][inventoryItem].itemTypeDisplayName
+    //         if(weaponTypes.includes(wepType) && result2[item][inventoryItem].sockets) {  //.sockets doesn't exist for exotics?
+    //           // console.log(result2[item][inventoryItem])
+    //           let basePath = result2[item][inventoryItem] //sockets for each save just hash
+              // let intSocketsVals = basePath.sockets.intrinsicSockets.map(eachSocket => {
+              //   return eachSocket.plugItemHash
+              // })
+              // let varSocketsVals = basePath.sockets.socketEntries.map(eachSocket => {
+              //   if(eachSocket.reusablePlugItems.length != 100) {
+              //     let hashMaker = eachSocket.reusablePlugItems.map(eachPlugItem => eachPlugItem.plugItemHash)
+              //     return hashMaker
+              //   }
+              // })
+
+    //           blankObj[basePath.hash] = {
+    //             weaponName: basePath.displayProperties.name,
+    //             weaponIcon: basePath.displayProperties.icon,
+    //             weaponType: basePath.itemTypeDisplayName,
+    //             weaponTier: basePath.inventory.tierType,
+    //             ammoType: basePath.equippingBlock.ammoType,
+    //             itemCategories: basePath.itemCategoryHashes,
+    //             intSockets: intSocketsVals,
+    //             varSockets: varSocketsVals,
+    //             weaponValues: basePath.stats.stats,
+    //           }
+    //           manifest[result2[item][inventoryItem].hash] = blankObj[result2[item][inventoryItem].hash]
+    //         }
+    //       }
+    //     }
+    //   }
+    //   console.log(manifest)
+    //   // console.log(result2);
+    // }
+    // const fetchOtherData = async () => {
+    //   const result2 = await fetch('https://www.bungie.net/common/destiny2_content/json/en/aggregate-2897f1bd-269c-4b6e-a1bf-61a8577b687b.json',).then(res => {
+    //     return res.json()
+    //   });
+    //   for(let item in result2) {
+    //     if(item === "DestinyInventoryItemDefinition") {
+    //       // console.log(result2[item])
+    //       for(let inventoryItem in result2[item]) {
+    //         let itemType = result2[item][inventoryItem].itemType
+    //         if(itemType === 19) {  
+    //           let badWords = ["Armor", "Emote", "Shader", "Mod", "Effects", "Ghost"];
+    //           let containsArmor1 = result2[item][inventoryItem].itemTypeDisplayName.includes("Armor") ? true : false
+    //           let containsArmor2 = result2[item][inventoryItem].displayProperties.name.includes("Armor") ? true : false
+    //           let containsEmote = result2[item][inventoryItem].itemTypeDisplayName.includes("Emote") ? true : false
+    //           let containsShader = result2[item][inventoryItem].itemTypeDisplayName.includes("Shader") ? true : false
+    //           let containsMod = result2[item][inventoryItem].itemTypeDisplayName.includes("Mod") ? true : false //Effects Trait Bonus
+    //           let containsEffects = result2[item][inventoryItem].itemTypeDisplayName.includes("Effect") ? true : false
+    //           let containsGhost = result2[item][inventoryItem].itemTypeDisplayName.includes("Ghost") ? true : false
+    //           let containsTrait = result2[item][inventoryItem].itemTypeDisplayName.includes("Trait") ? true : false
+    //           let containsBonus = result2[item][inventoryItem].itemTypeDisplayName.includes("Bonus") ? true : false
+    //           let containsClan = result2[item][inventoryItem].itemTypeDisplayName.includes("Clan") ? true : false
+
+
+
+    //           if(!containsArmor1 && !containsArmor2 && !containsEmote && !containsShader && !containsMod && !containsEffects && !containsGhost && !containsTrait && !containsBonus && !containsClan) {
+    //             // console.log(result2[item][inventoryItem])
+    //             let basePath = result2[item][inventoryItem] 
+
+    //             blankObj[basePath.hash] = {
+    //               socketName: basePath.displayProperties.name,
+    //               socketDesc: basePath.displayProperties.description,
+    //               socketIcon: basePath.displayProperties.icon,
+    //               socketType: basePath.itemTypeDisplayName,
+    //               itemType: itemType
+    //             }
+    //             manifest["socketDefinitions"][result2[item][inventoryItem].hash] = blankObj[result2[item][inventoryItem].hash]
+    //           }
+    //         }
+    //       }
+    //     }
+    //   }
+      // console.log(manifest)
+      // console.log(result2);
     // }
 
     fetchInitialData();
-    // fetchOtherData();
+    // fetchOtherData(); //COULD BE THAT YOU CAN SENT TWO REQUESTS TO SAME DOMAIN IN ONE FUNCTION
   }, [])
 
-  function backButton() {
+  // function backButton() {
     // let resetElements = document.querySelectorAll('.navButton');
     // for(let i=0; i<resetElements.length; i++) {
     //   resetElements[i].classList.add('resetFromSide');
@@ -59,15 +151,15 @@ export default function NavigationMenu() {
     // document.getElementById('weaponContainer').classList.add('hiding');
 
 
-  }
+  // }
 
 
   return (
-    <section id="landingPageNav" className="landingPageNavigation" onClick={backButton}>
+    <section id="landingPageNav" className="landingPageNavigation">
       <div className="loading"></div>
 
       <PowerfulAndPopular {...initialData[4]}/>
-      <WeaponCharts {...initialData[3]}/>
+      <WeaponCharts {...initialData[8]}/>
       <ClassComparisons {...initialData}/> 
 
     </section>

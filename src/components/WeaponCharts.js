@@ -1,36 +1,38 @@
 import React from 'react';
-import manifest from './manifest';
-import {Doughnut, Pie} from 'react-chartjs-2';
+// import manifest from './manifest';
+import {Doughnut, Pie, HorizontalBar} from 'react-chartjs-2';
 
 
 export default function WeaponCharts(props) {
-  // if(props[0] === undefined) {
-  //   return null;
-  // }
+  if(props.socketDefs === undefined) {
+    return null;
+  }
+
+  const manifest = props.socketDefs
 
   const testPath = props;
 
-  function handleWCSubmit(event) {
-    event.preventDefault();
-    let elementsToMove = document.querySelectorAll('.navButton');
-    for(let i=0; i<elementsToMove.length; i++) {
-      elementsToMove[i].classList.add('moveToSide');
-      elementsToMove[i].classList.remove('grantPriority');
-      elementsToMove[i].classList.remove('resetFromSide');
-    }
+  // function handleWCSubmit(event) {
+    // event.preventDefault();
+    // let elementsToMove = document.querySelectorAll('.navButton');
+    // for(let i=0; i<elementsToMove.length; i++) {
+      // elementsToMove[i].classList.add('moveToSide');
+      // elementsToMove[i].classList.remove('grantPriority');
+      // elementsToMove[i].classList.remove('resetFromSide');
+    // }
 
-    document.getElementById('weaponChartsButton').classList.add('grantPriority');
-    document.getElementById('weaponChartsButton').classList.remove('moveToSide');
-    document.getElementById("backgroundTransitions").classList.remove('removeBodyShadow');
-    document.getElementById("backgroundTransitions").classList.add('bodyShadow');
+    // document.getElementById('weaponChartsButton').classList.add('grantPriority');
+    // document.getElementById('weaponChartsButton').classList.remove('moveToSide');
+    // document.getElementById("backgroundTransitions").classList.remove('removeBodyShadow');
+    // document.getElementById("backgroundTransitions").classList.add('bodyShadow');
 
     // document.getElementById('wepContainer').classList.remove('hiding');
-    document.getElementById('weaponContainer').classList.remove('hiding');
-    document.getElementById('wepContainer').style.overflowY = "scroll";
+    // document.getElementById('weaponContainer').classList.remove('hiding');
+    // document.getElementById('wepContainer').style.overflowY = "scroll";
 
     WepList(testPath);
     // console.log(testPath);
-  }
+  // }
 
   let labelIncrementor = 0;
 
@@ -85,7 +87,7 @@ export default function WeaponCharts(props) {
     }
   };
 
-  let eachPlayerStatAverages = {
+  let eachPlayerStatAverages = { //on hover, show real stats, not % dif
     "Sidearm": {},
     "Auto Rifle": {},
     "Pulse Rifle": {},
@@ -110,27 +112,29 @@ export default function WeaponCharts(props) {
   // let eachStatToAverage = ['scoreAvg', 'oppDefAvg', 'killsAvg', 'abilityKills', 'grenadeKills', 'superKills', 'standingAvg', 'assistsAvg', 'deathsAvg', 'effAvg', 'perKAvg', 'perLAvg'];
 
   for (let eachWeaponKey in props) {
-    let wepType = manifest[props[eachWeaponKey]._id].weaponType;
+    let wepType = props[eachWeaponKey].weaponType;
 
-    if(eachPlayerStatAverages[wepType].count === undefined) {
-      eachPlayerStatAverages[wepType].count = 1;
-    }
-    else {
-      eachPlayerStatAverages[wepType].count++;
-      eachPlayerStatAverages["All Types"].count++;
-    }
+    if(wepType) {
+      if(eachPlayerStatAverages[wepType].count === undefined) {
+        eachPlayerStatAverages[wepType].count = 1;
+      }
+      else {
+        eachPlayerStatAverages[wepType].count++;
+        eachPlayerStatAverages["All Types"].count++;
+      }
 
-    for (let eachWepPlayerStat in props[eachWeaponKey]) {
-      if(eachWepPlayerStat != "_id" && eachWepPlayerStat != "totalCount") {
-        if(eachPlayerStatAverages[wepType][eachWepPlayerStat] === undefined) {
-          eachPlayerStatAverages[wepType][eachWepPlayerStat] = props[eachWeaponKey][eachWepPlayerStat]
-          if(eachPlayerStatAverages["All Types"][eachWepPlayerStat] === undefined) {
-            eachPlayerStatAverages["All Types"][eachWepPlayerStat] = props[eachWeaponKey][eachWepPlayerStat]
+      for (let eachWepPlayerStat in props[eachWeaponKey]) {
+        if(eachWepPlayerStat != "_id" && eachWepPlayerStat != "totalCount") {
+          if(eachPlayerStatAverages[wepType][eachWepPlayerStat] === undefined) {
+            eachPlayerStatAverages[wepType][eachWepPlayerStat] = props[eachWeaponKey][eachWepPlayerStat]
+            if(eachPlayerStatAverages["All Types"][eachWepPlayerStat] === undefined) {
+              eachPlayerStatAverages["All Types"][eachWepPlayerStat] = props[eachWeaponKey][eachWepPlayerStat]
+            }
           }
-        }
-        else {
-          eachPlayerStatAverages[wepType][eachWepPlayerStat] += props[eachWeaponKey][eachWepPlayerStat]
-          eachPlayerStatAverages["All Types"][eachWepPlayerStat] += props[eachWeaponKey][eachWepPlayerStat]
+          else {
+            eachPlayerStatAverages[wepType][eachWepPlayerStat] += props[eachWeaponKey][eachWepPlayerStat]
+            eachPlayerStatAverages["All Types"][eachWepPlayerStat] += props[eachWeaponKey][eachWepPlayerStat]
+          }
         }
       }
     }
@@ -155,13 +159,16 @@ export default function WeaponCharts(props) {
   for (let eachItem in manifest) {
     if(eachItem != "mapHashes" && eachItem != "statDefinitions") { //FIRST LAYER: FILTERS TO GET WEAPON DEFINITIONS
       let wepType = manifest[eachItem].weaponType;
+      // console.log(wepType)
 
-      if(eachArchetypeAverages[wepType].count === undefined) {
-        eachArchetypeAverages[wepType].count = 1;
-      }
-      else {
-        eachArchetypeAverages[wepType].count++;
-        eachArchetypeAverages["All Types"].count++;
+      if(eachArchetypeAverages[wepType] != undefined) {
+        if(eachArchetypeAverages[wepType].count === undefined) {
+          eachArchetypeAverages[wepType].count = 1;
+        }
+        else {
+          eachArchetypeAverages[wepType].count++;
+          eachArchetypeAverages["All Types"].count++;
+        }
       }
 
       //SECOND LAYER: CYCLES THROUGH LIST AND ASSIGNS DEFINITIONS TO EACHARCHETYPEAVERAGES
@@ -180,8 +187,8 @@ export default function WeaponCharts(props) {
           if(manifest[eachItem].weaponValues[eachManifestStat].value != 0) {
             eachArchetypeAverages["All Types"][eachManifestStat] += manifest[eachItem].weaponValues[eachManifestStat].value;
           } //!!!!COMBAT BOW VELOCITY === 0???
-        }
-      }
+        }//velocity for all is being calculated in
+      }//on weaponType or All Weapons hover, show color for each stat relative to one being hovered
     }
     
   }
@@ -190,300 +197,217 @@ export default function WeaponCharts(props) {
 
 
 
-  function WepConstructor(props) {
-    let revisedWep = testPath[props.value];
-    // console.log(labelIncrementor)
+  function WepConstructor(weaponItem) { 
+    // console.log(weaponItem) //weaponItem being sent here with twin values?
+    if(weaponItem.value != "socketDefs" && weaponItem.value != "statDefs") {
+      let revisedWep = testPath[weaponItem.value];
+      let revisedWinRate = 1 - revisedWep.playerPerformances.standingAvg.toFixed(2);
+      let wepId = weaponItem;
+      // let wepIcon = "https://www.bungie.net" + manifest[wepId].weaponIcon;
 
-    // let revisedWep = Object.values(currentWep);
-    // revisedWep.map(item => {
-    //   item.toFixed(2)
-    // })
-    let revisedWinRate = 1 - revisedWep.standingAvg.toFixed(2);
-    let wepId = revisedWep._id;
-    // let revisedWepName = manifest[wepId].weaponName;
-    // console.log(revisedWepName)
-    // let wepIcon = "https://www.bungie.net" + manifest[wepId].weaponIcon;
-
-    if(manifest[wepId]) {
-      let revisedWepName = manifest[wepId].weaponName;
-      let wepIcon = "https://www.bungie.net" + manifest[wepId].weaponIcon;
-      let wepStatKeys = Object.keys(manifest[wepId].weaponValues);
+      let revisedWepName = revisedWep.weaponName;
+      let wepIcon = "https://www.bungie.net" + revisedWep.weaponIcon;
+      let wepStatKeys = Object.keys(revisedWep.weaponValues);
+      // console.log(wepStatKeys) //WORK WITH THIS
       let wepRpmMagSize = [];
-      let type = manifest[wepId].weaponType;
+      // let barStats = [];
+      let type = revisedWep.weaponType;
+
+      if(type === "Fusion Rifle") {
+        wepStatKeys = ["Impact", "Range", "Stability", "Handling", "Reload Speed", "Aim Assistance", "Zoom", "Magazine", "Charge Time"]
+      }
+      else if(type === "Grenade Launcher" || type === "Rocket Launcher") {
+        wepStatKeys = ["Blast Radius", "Velocity", "Stability", "Handling", "Reload Speed", "Aim Assistance", "Zoom", "Magazine", "Rounds Per Minute"]
+      }
+      else if(type === "Combat Bow") {
+        wepStatKeys = ["Impact", "Accuracy", "Stability", "Handling", "Reload Speed", "Aim Assistance", "Zoom", "Draw Time", "Rounds Per Minute"]
+      }
+      else if(type === "Sword") {
+        wepStatKeys = ["Impact", "Range", "Defense", "Efficiency", "Ammo Capacity", "Swing Speed"]
+      }
+      else {
+        wepStatKeys = ["Impact", "Range", "Stability", "Handling", "Reload Speed", "Aim Assistance", "Zoom", "Magazine", "Rounds Per Minute"]
+      }
+      // console.log(wepStatKeys)
 
 
       let wepStatVals = wepStatKeys.map(stat => {
-        if(stat === "1885944937" || stat === "3291498656" || stat === "3291498659" || stat === "Inventory Size") {
-          return("")
-        }
-        else if(manifest[wepId].weaponValues[stat].value === 0 || stat === "Power") {
-          return("")
-        }
-        else { //CREATOR FOR INNATE WEAPON STATS
-          return( 
-            <p className="eachWepStat leftHalf">{stat + " " + manifest[wepId].weaponValues[stat].value + "  "}</p>
-          )
-        }
-      })
-
-      let wepSameTypeStatRatings = wepStatKeys.map(stat => {
-        let averagedStat = eachArchetypeAverages[type][stat] / eachArchetypeAverages[type].count;
-        //if(manifest[wepId].weaponValues[stat].value ><= eachArchetypeAverages[type][stat])
-
-        if(stat === "1885944937" || stat === "3291498656" || stat === "3291498659" || stat === "Inventory Size") {
-          return("")
-        }
-        else if(manifest[wepId].weaponValues[stat].value === 0 || stat === "Power") {
-          return("")
-        }
-        else {
-          if(manifest[wepId].weaponValues[stat].value > averagedStat) { //if thisWep > average
-            let percentageGreater = (manifest[wepId].weaponValues[stat].value/averagedStat) * 100;
+        let eachStatHash = testPath.statDefs[stat].statHash
+        // if(stat === "1885944937" || stat === "3291498656" || stat === "3291498659" || stat === "Inventory Size") {
+        //   return("")
+        // }
+        // else if(revisedWep.weaponValues[stat].value === 0 || stat === "Power") {
+        //   return("")
+        // }
+        if(revisedWep.weaponValues[eachStatHash] != undefined) {
+          if(stat === "Magazine" || stat === "Rounds Per Minute" || stat === "Ammo Capacity" || stat === "Draw Time") {
+            // console.log(manifest[wepId])
             return( 
-              <p className="eachSameTypeStatRating" style={{color: 'green'}}>^ {(percentageGreater-100).toFixed(1)}%</p>
-            )
-          }
-          else if(manifest[wepId].weaponValues[stat].value < averagedStat) { //if thisWep < average
-            let percentageLesser = (averagedStat/manifest[wepId].weaponValues[stat].value) * 100;
-            return( 
-              <p className="eachSameTypeStatRating" style={{color: 'red'}}>v {(percentageLesser-100).toFixed(1)}%</p>
-            )
-          }
-          else if(manifest[wepId].weaponValues[stat].value == averagedStat) { //if thisWep = average
-            return( 
-              <p className="eachSameTypeStatRating" style={{color: 'orange'}}>- 0%</p>
-            )
-          }
-        }
-      })
-
-      let wepAllTypesStatRatings = wepStatKeys.map(stat => {
-        let averagedStat = eachArchetypeAverages["All Types"][stat] / eachArchetypeAverages["All Types"].count;
-        //if(manifest[wepId].weaponValues[stat].value ><= eachArchetypeAverages[type][stat])
-
-        if(stat === "1885944937" || stat === "3291498656" || stat === "3291498659" || stat === "Inventory Size") {
-          return("")
-        }
-        else if(manifest[wepId].weaponValues[stat].value === 0 || stat === "Power") {
-          return("")
-        }
-        else {
-          if(manifest[wepId].weaponValues[stat].value > averagedStat) { //if thisWep > average
-            let percentageGreater = (manifest[wepId].weaponValues[stat].value/averagedStat) * 100;
-            return( 
-              <p className="eachAllTypesStatRating" style={{color: 'green'}}>^ {(percentageGreater-100).toFixed(1)}%</p>
-            )
-          }
-          else if(manifest[wepId].weaponValues[stat].value < averagedStat) { //if thisWep < average
-            let percentageLesser = (averagedStat/manifest[wepId].weaponValues[stat].value) * 100;
-            return( 
-              <p className="eachAllTypesStatRating" style={{color: 'red'}}>v {(percentageLesser-100).toFixed(1)}%</p>
-            )
-          }
-          else if(manifest[wepId].weaponValues[stat].value == averagedStat) { //if thisWep = average
-            return( 
-              <p className="eachAllTypesStatRating" style={{color: 'orange'}}>- 0%</p>
-            )
-          }
-        }
-      })
-
-      let playerSameTypeStatRatings = wepStatKeys.map(stat => {
-        if(stat === "1885944937" || stat === "3291498656" || stat === "3291498659" || stat === "Inventory Size") {
-          return("")
-        }
-        else if(manifest[wepId].weaponValues[stat].value === 0 || stat === "Power") {
-          return("")
-        }
-        else {
-          return( 
-            <p className="playerSameTypeStatRatings">^ 10%</p>
-          )
-        }
-      })
-
-      let playerAllTypesStatRatings = wepStatKeys.map(stat => {
-        if(stat === "1885944937" || stat === "3291498656" || stat === "3291498659" || stat === "Inventory Size") {
-          return("")
-        }
-        else if(manifest[wepId].weaponValues[stat].value === 0 || stat === "Power") {
-          return("")
-        }
-        else {
-          return( 
-            <p className="playerAllTypesStatRatings">v 10%</p>
-          )
-        }
-      })
-
-
-
-      let tempPlayerRank = ["assistsAvg", "killsAvg", "deathsAvg", "kdAvg" , "effAvg", "scoreAvg"];
-      revisedWep["kdAvg"] = revisedWep.killsAvg / revisedWep.deathsAvg;
-
-      let tempPlayerRanksSame = tempPlayerRank.map(stat => {
-        for(let eachWepType2 in eachPlayerStatAverages) {
-          if(revisedWep[stat] > eachPlayerStatAverages[eachWepType2][stat]) {
-            let percentageGreater = (revisedWep[stat]/eachPlayerStatAverages[eachWepType2][stat]) * 100;
-            return( 
-              <p className="tempPlayerRanksAll" style={{color: 'green'}}>^ {(percentageGreater-100).toFixed(1)}%</p>
-            )
-          }
-          else if(revisedWep[stat] < eachPlayerStatAverages[eachWepType2][stat]) {
-            let percentageLesser = (revisedWep[stat]/eachPlayerStatAverages[eachWepType2][stat]) * 100;
-            return( 
-              <p className="tempPlayerRanksAll" style={{color: 'red'}}>v {(percentageLesser-100).toFixed(1)}%</p>
-            )
-          }
-          else if(revisedWep[stat] == eachPlayerStatAverages[eachWepType2][stat]) {
-            return( 
-              <p className="tempPlayerRanksAll" style={{color: 'orange'}}>- 0%</p>
-            )
-          }
-        }
-      })
-
-      let tempPlayerRanksAll = tempPlayerRank.map(stat => { //INCLUDE THE AVG NEXT TO PERCENT COMPARISON
-        if(revisedWep[stat] > eachPlayerStatAverages["All Types"][stat]) {
-          let percentageGreater = (revisedWep[stat]/eachPlayerStatAverages["All Types"][stat]) * 100;
-          return( 
-            <p className="tempPlayerRanksAll" style={{color: 'green'}}>^ {(percentageGreater-100).toFixed(1)}%</p>
-          )
-        }
-        else if(revisedWep[stat] < eachPlayerStatAverages["All Types"][stat]) {
-          let percentageLesser = (revisedWep[stat]/eachPlayerStatAverages["All Types"][stat]) * 100;
-          return( 
-            <p className="tempPlayerRanksAll" style={{color: 'red'}}>v {(percentageLesser-100).toFixed(1)}%</p>
-          )
-        }
-        else if(revisedWep[stat] == eachPlayerStatAverages["All Types"][stat]) {
-          return( 
-            <p className="tempPlayerRanksAll" style={{color: 'orange'}}>- 0%</p>
-          )
-        }
-      })
-
-
-      if(labelIncrementor%10 === 0) {
-        labelIncrementor++;
-        let graphData = [revisedWep.meleeKills.toFixed(1), revisedWep.grenadeKills.toFixed(1), revisedWep.superKills.toFixed(1)]
-        return (
-          <div className="wepChartsItem">
-            <h3 className="wepNumber">{labelIncrementor}</h3>
-            <div className="popularityAndWinRate">
-              <p className="timesUsed">Times Used: {revisedWep.totalCount}</p>
-              <p className="winRate">Win Rate: {(revisedWinRate * 100).toFixed(0)}%</p>
-            </div>
-            <div className={"wepNameIconType t" + manifest[wepId].weaponTier}>
-              <p className="wepName">{revisedWepName}</p>
-              <img src={wepIcon} className="wepIcons" alt="wepIcon"></img> 
-              <p className="wepType">{manifest[wepId].weaponType}</p>
-            </div>
-            <div className="wepRpmMagSize">{wepRpmMagSize}</div>
-            <div className="statsContainer">
-              <div className="wepStatVals">{wepStatVals}</div>
-              <div className="wepStatValsArrows">
-                <div className="sameTypeArrows">
-                  <p className="arrowsLabel">{manifest[wepId].weaponType}s</p>
-                  {wepSameTypeStatRatings}
-                </div>
-                <div className="allTypesArrows">
-                  <p className="arrowsLabel">All Weapons</p>
-                  {wepAllTypesStatRatings}
-                </div>
-              </div> 
-              <div className="playerStats">
-                <p className="eachPlayerStat">Assists {revisedWep.assistsAvg.toFixed(2)}</p>
-                <p className="eachPlayerStat">Kills {revisedWep.killsAvg.toFixed(2)}</p>
-                <p className="eachPlayerStat">Deaths {revisedWep.deathsAvg.toFixed(2)}</p>
-                <p className="eachPlayerStat">K/D {(revisedWep.killsAvg / revisedWep.deathsAvg).toFixed(2)}</p>
-                <p className="eachPlayerStat">Efficiency {revisedWep.effAvg.toFixed(2)}</p>
-                <p className="eachPlayerStat">scoreAvg {revisedWep.scoreAvg.toFixed(2)}</p>
+              <div className="eachWepStat leftHalf">
+                <div className="statNames">{stat + " "}</div>
+                <div className="statVals">{" " + revisedWep.weaponValues[eachStatHash].value}</div>
               </div>
-              <div className="playerStatRankings">
-                 <div className="sameTypeArrows">
-                  <p className="arrowsLabel">{manifest[wepId].weaponType}s</p>
-                  {tempPlayerRanksSame}
+            )
+          }
+          // else { //CREATOR FOR INNATE WEAPON STATS
+            return( 
+              <div className="eachWepStat leftHalf">
+                <div className="statNames">{stat + " "}</div>
+                <div className="statBarContainers">
+                  <span className="eachWepStatBar" style={{width: (revisedWep.weaponValues[eachStatHash].value + "%")}}></span>
+                  <span className="eachStatBarBg" style={{width: ((100 - revisedWep.weaponValues[eachStatHash].value) + "%")}}></span>
                 </div>
-                <div className="allTypesArrows">
-                  <p className="arrowsLabel">All Weapons</p>
-                  {tempPlayerRanksAll}
-                </div>
+                <div className="statVals">{" " + revisedWep.weaponValues[eachStatHash].value}</div>
               </div>
-              <div className="abilityStats">
-                <GraphCreator allData={graphData} />
+            )
+          // }
+        }
+      })
+      // console.log(wepStatVals)
+
+      let vSockets = revisedWep.varSockets;
+      // let socketItems = [];
+      let wepPerks = vSockets.map(eachSocket => {
+        if(eachSocket != null) {
+          if(Array.isArray(eachSocket)) {
+            let multipleSockets = eachSocket.map(sock => {
+              if(testPath.socketDefs[sock]) {
+                return(
+                  <p>{testPath.socketDefs[sock].socketName}</p>
+                )
+              }
+              else {
+                return(
+                  <p>{sock + "Error"}</p>
+                )
+              }
+            })
+            return(
+              <div className="socketsContainer">
+                <p>{multipleSockets}</p>
               </div>
-            </div>
-          </div>
-        )
-      }
+            )
+          }
+          else {
+            return(
+              <div className="socketsContainer">
+                <p>{testPath.socketDefs[eachSocket].socketName}</p>
+              </div>
+            )
+          }
+        }
+      })
+
+
+      // return(
+      //   <div className="socketsContainer">
+      //     <p>{eachSocket}</p>
+      //   </div>
+      // )
+      // wepStatVals yo
+
+      // let wepSameTypeStatRatings = wepStatKeys.map(stat => {
+      //   let averagedStat = eachArchetypeAverages[type][stat] / eachArchetypeAverages[type].count;
+      //   //if(manifest[wepId].weaponValues[stat].value ><= eachArchetypeAverages[type][stat])
+
+      //   if(stat === "1885944937" || stat === "3291498656" || stat === "3291498659" || stat === "Inventory Size") {
+      //     return("")
+      //   }
+      //   else if(manifest[wepId].weaponValues[stat].value === 0 || stat === "Power") {
+      //     return("")
+      //   }
+      //   else {
+      //     return(
+      //       <p className="eachAllTypesStatRating">{averagedStat.toFixed(0)}</p>
+      //     )
+      //   }
+      // })
+
+      // let wepAllTypesStatRatings = wepStatKeys.map(stat => {
+      //   let averagedStat = eachArchetypeAverages["All Types"][stat] / eachArchetypeAverages["All Types"].count;
+
+      //   if(stat === "1885944937" || stat === "3291498656" || stat === "3291498659" || stat === "Inventory Size") {
+      //     return("")
+      //   }
+      //   else if(manifest[wepId].weaponValues[stat].value === 0 || stat === "Power") {
+      //     return("")
+      //   }
+      //   else {
+      //     return(
+      //       <p className="eachAllTypesStatRating">{averagedStat.toFixed(0)}</p>
+      //     )
+      //   }
+      // })
+
+
+      // let tempPlayerRank = ["assistsAvg", "killsAvg", "deathsAvg", "kdAvg" , "effAvg", "scoreAvg"];
+      // revisedWep["kdAvg"] = revisedWep.killsAvg / revisedWep.deathsAvg;
+
+      // let tempPlayerRanksSame = tempPlayerRank.map(stat => {
+      //   for(let eachWepType2 in eachPlayerStatAverages) {
+      //     return(
+      //       <p className="tempPlayerRanksSame">{eachPlayerStatAverages[type][stat].toFixed(1)}</p>
+      //     )
+      //   }
+      // })
+
+      // let tempPlayerRanksAll = tempPlayerRank.map(stat => { //INCLUDE THE AVG NEXT TO PERCENT COMPARISON
+      //   return(
+      //     <p className="tempPlayerRanksAll">{eachPlayerStatAverages["All Types"][stat].toFixed(1)}</p>
+      //   )
+      // })
 
       labelIncrementor++;
-      let graphData = [revisedWep.meleeKills.toFixed(1), revisedWep.grenadeKills.toFixed(1), revisedWep.superKills.toFixed(1)]
+      // let graphData = [revisedWep.meleeKills.toFixed(1), revisedWep.grenadeKills.toFixed(1), revisedWep.superKills.toFixed(1)]
       return (
-        <div className="wepChartsItem">
+        <button className="wepChartsItem" id={"item" + labelIncrementor} onClick={e => displayWepStats(e)}>
           <h3 className="wepNumber">{labelIncrementor}</h3>
           <div className="popularityAndWinRate">
-            <p className="timesUsed">Times Used: {revisedWep.totalCount}</p>
+            <p className="timesUsed">Times Used: {revisedWep.playerPerformances.totalCount}</p>
             <p className="winRate">Win Rate: {(revisedWinRate * 100).toFixed(0)}%</p>
           </div>
-          <div className={"wepNameIconType t" + manifest[wepId].weaponTier}>
+          <div className={"wepNameIconType t" + revisedWep.weaponTier}>
             <p className="wepName">{revisedWepName}</p>
             <img src={wepIcon} className="wepIcons" alt="wepIcon"></img> 
-            <p className="wepType">{manifest[wepId].weaponType}</p>
+            <p className="wepType">{revisedWep.weaponType}</p>
           </div>
-          <div className="wepRpmMagSize">{wepRpmMagSize}</div>
-          <div className="statsContainer">
+          <div className={"wepRpmMagSize " + "wepRpmMagSize" + revisedWep.weaponTier}>{wepRpmMagSize}</div>
+          <div className={"statsContainer " + "statsContainer" + revisedWep.weaponTier}>
             <div className="wepStatVals">{wepStatVals}</div>
-            <div className="wepStatValsArrows">
-              <div className="sameTypeArrows">
-                <p className="arrowsLabel">{manifest[wepId].weaponType}s</p>
-                {wepSameTypeStatRatings}
-              </div>
-              <div className="allTypesArrows">
-                <p className="arrowsLabel">All Weapons</p>
-                {wepAllTypesStatRatings}
-              </div>
-            </div>
-            <div className="playerStats">
-              <p className="eachPlayerStat">Assists {revisedWep.assistsAvg.toFixed(2)}</p>
-              <p className="eachPlayerStat">Kills {revisedWep.killsAvg.toFixed(2)}</p>
-              <p className="eachPlayerStat">Deaths {revisedWep.deathsAvg.toFixed(2)}</p>
-              <p className="eachPlayerStat">K/D {(revisedWep.killsAvg / revisedWep.deathsAvg).toFixed(2)}</p>
-              <p className="eachPlayerStat">Efficiency {revisedWep.effAvg.toFixed(2)}</p>
-              <p className="eachPlayerStat">scoreAvg {revisedWep.scoreAvg.toFixed(2)}</p>
-            </div>
-            <div className="playerStatRankings">
-              <div className="sameTypeArrows">
-                <p className="arrowsLabel">{manifest[wepId].weaponType}s</p>
-                {tempPlayerRanksSame}
-              </div>
-              <div className="allTypesArrows">
-                <p className="arrowsLabel">All Weapons</p>
-                {tempPlayerRanksAll}
-              </div>
-            </div>
-            <div className="abilityStats">
-              <GraphCreator allData={graphData} />
-            </div>
+            <div className="wepPerks">{wepPerks}</div>
           </div>
-        </div>
+        </button>
       )
     }
     else {
-      return (
-        <div className="wepChartsItem">Weapon Name: {wepId}, Times Used: {revisedWep.totalCount}, Assists: {revisedWep.assistsAvg.toFixed(2)}, Kills: {revisedWep.killsAvg.toFixed(2)}, Deaths: {revisedWep.deathsAvg.toFixed(2)}, Efficiency: {revisedWep.effAvg.toFixed(2)}, scoreAvg: {revisedWep.scoreAvg.toFixed(2)}, Win Rate: {revisedWinRate.toFixed(2)}</div>
-      )
+      return null;
     }
   }
 
+  //work on showing most notable medals for each wep
+  function displayWepStats(p) { //onClick = show hidden stats / query for best secondary weapon
+    let cName = (p.currentTarget.id)
+    // console.log(document.getElementById(cName))
+    // document.getElementById(cName).style.border = "5px solid red"
+
+    
+    let addClass = document.getElementById(cName).classList;
+    // console.log(addClass.value)
+    if(addClass.value.includes('beingFocused')) {
+      addClass.remove('beingFocused')
+    }
+    addClass.add('beingFocused')
+  }
 
   function WepList(testPathReceiver) {
     let testPathReceiver2 = Object.keys(testPathReceiver);
+    console.log(testPathReceiver2)
 
     const listOfWeps = testPathReceiver2.map((wepId) => 
       <WepConstructor key={testPathReceiver[wepId]._id} value={wepId}/>
     );
+    // listOfWeps.reverse();
+    // listOfWeps.sort();
 
     return (
       <div id="weaponContainer" className="hiding">
@@ -543,13 +467,11 @@ export default function WeaponCharts(props) {
   }
 
   return (
-    <form id="weaponCharts" onSubmit={handleWCSubmit}>
-      <button type="submit" id="weaponChartsButton" className="navButton">
-        <section id="wepContainer" onScroll={event => labelTimer(event)}>
-          <WepList {...props}/>
-        </section>
-      </button>
-    </form>
+    <div id="weaponCharts">
+      <section id="wepContainer" onScroll={event => labelTimer(event)}>
+        <WepList {...props}/>
+      </section>
+    </div>
   )
 }
 
