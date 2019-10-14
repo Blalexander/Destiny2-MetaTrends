@@ -266,31 +266,31 @@ export default function WeaponCharts(props) {
       // console.log(wepStatVals)
 
       let vSockets = revisedWep.varSockets;
-      // let socketItems = [];
-      let wepPerks = vSockets.map(eachSocket => {
+      let wepPerks = vSockets.map(eachSocket => { //item.varSockets = [ [eachSocket], [eachSocket], [eachSocket] ] 
         if(eachSocket != null) {
-          if(Array.isArray(eachSocket)) {
+          if(Array.isArray(eachSocket)) { //checking if each slot has multiple socket values
             let multipleSockets = eachSocket.map(sock => {
-              if(testPath.socketDefs[sock]) {
+              if(testPath.socketDefs[sock] && testPath.socketDefs[sock].socketName != "Rework Weapon" && !testPath.socketDefs[sock].socketName.includes("Tracker") && !testPath.socketDefs[sock].socketName.includes("Shader") && !testPath.socketDefs[sock].socketName.includes("Ornament") && !testPath.socketDefs[sock].socketName.includes("Masterwork")) {
+                let socketIcon = "https://www.bungie.net" + testPath.socketDefs[sock].socketIcon;                
                 return(
-                  <p>{testPath.socketDefs[sock].socketName}</p>
+                  <div className="eachSocket">
+                    <img src={socketIcon} className="socketIcons" alt="socketIcon"></img> 
+                  </div>
                 )
               }
-              else {
-                return(
-                  <p>{sock + "Error"}</p>
-                )
+              else if(testPath.socketDefs[sock].socketName === "Rework Weapon" || testPath.socketDefs[sock].socketName.includes("Tracker") || testPath.socketDefs[sock].socketName.includes("Shader") || testPath.socketDefs[sock].socketName.includes("Ornament") || testPath.socketDefs[sock].socketName.includes("Masterwork")) {
+                return null
               }
             })
             return(
-              <div className="socketsContainer">
-                <p>{multipleSockets}</p>
+              <div className="eachSlot">
+                {multipleSockets}
               </div>
             )
           }
-          else {
+          else { //if each slot does not have multiple socket values
             return(
-              <div className="socketsContainer">
+              <div className="eachSlot">
                 <p>{testPath.socketDefs[eachSocket].socketName}</p>
               </div>
             )
@@ -401,10 +401,11 @@ export default function WeaponCharts(props) {
 
   function WepList(testPathReceiver) {
     let testPathReceiver2 = Object.keys(testPathReceiver);
-    console.log(testPathReceiver2)
+    // console.log(testPathReceiver2)
+    // console.log(testPathReceiver)
 
     const listOfWeps = testPathReceiver2.map((wepId) => 
-      <WepConstructor key={testPathReceiver[wepId]._id} value={wepId}/>
+      <WepConstructor key={testPathReceiver[wepId].weaponName} value={wepId}/>
     );
     // listOfWeps.reverse();
     // listOfWeps.sort();

@@ -2,6 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: 'Fjalla One', sans-serif;
 }
 
 body {
@@ -521,6 +522,30 @@ header {
 
 
 
+.wepPerks {
+  display: flex;
+/*   width: 30vw; */
+  margin-left: 5vw;
+}
+
+.eachSlot {
+/*! display: flex; */
+/*! flex-flow: row nowrap; */
+/*! width: 30vw; */
+/*! height: 17vh; */
+}
+
+.eachSocket {
+/*   display: flex; */
+/*   position: relative; */
+/*   flex-flow: column nowrap; */
+}
+
+.socketIcons {
+  height: 30px;
+  width: 30px;
+}
+
 
 
 
@@ -533,9 +558,9 @@ header {
   height: 17vh;
   width: 80vw;
   margin-left: 8vw;
-/*   margin-left: 1vw; */
+  margin-right: 8vw;
   display: flex;
-  flex-flow: row nowrap;
+/*   flex-flow: row nowrap; */
 /*   background-color: rgba(0, 0, 0, .2); */
   background-color: white;
   border: none;
@@ -597,6 +622,15 @@ header {
 } 
 
 
+.statsContainer {
+  display: flex;
+  flex-flow: row nowrap;
+/*   justify-content: space-between; */
+  height: 17vh;
+  width: 100%;
+  border-radius: 0 3px 3px 0;
+}
+
 .statsContainer6 {
 /*   height: 100%; */
 /*   width: 100%; */
@@ -619,18 +653,22 @@ header {
   background: rgba(195, 188, 180, .6);
 }
 
+
+
 .wepStatVals {
-  display: flex; 
-  height: 17vh;
-/*   justify-content: flex-end;  */
-/*   align-self: center;  */
-/*   position: absolute; */
-  flex-flow: column wrap;
+/*   display: flex;  */
+/*   height: 17vh; */
+/*! justify-content: flex-end; */
+/*   align-self: center; */
+/*! position: absolute; */
+/*   flex-flow: column wrap; */
 /*   height: 10vh; */
-/*   width: 20%; */
+  width: 30vw;
   padding-top: 2vh;
 /*   border-bottom: 1px solid black; */
 /*   border-top: 1px solid black; */
+/*   width: 50%; */
+/*   margin-left: -5vw; */
 } 
 
 /* .rightHalf {
@@ -640,12 +678,13 @@ header {
 .leftHalf {
   display: flex;
   justify-content: flex-end;
+/*   width: 50%; */
 }
  
 .statBarContainers {
 /*   background-color: red; */
   height: 80%;
-  width: 40%;
+  width: 70%;
   display: flex;
   align-self: center;
 }
@@ -662,17 +701,7 @@ header {
 
 .eachWepStat {
   height: 10%;
-  width: 50vw;
-}
-
-
-.statsContainer {
-  display: flex;
-  flex-flow: row nowrap;
-/*   justify-content: space-between; */
-  height: 17vh;
   width: 100%;
-  border-radius: 0 3px 3px 0;
 }
 
 .additionalStats {
@@ -817,6 +846,28 @@ header {
 .wepType {
   display: flex;
   justify-self: flex-start;
+}
+
+
+
+.wepChartsItem:first-child {
+ height: 50vh; 
+}
+.wepChartsItem:first-child .statsContainer {
+  height: 50vh;
+/*   margin-left: -10vw; */
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+.wepChartsItem:first-child .wepStatVals {
+  height: 17vh;
+  grid-row: 2/3;
+}
+.wepChartsItem:first-child .wepPerks {
+/*   display: flex;
+  align-self: flex-end; */
+  grid-row: 1/2;
+  
 }
 
 
