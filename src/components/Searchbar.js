@@ -53,14 +53,6 @@ const Searchbar = () => {
     .then(payload => {
       PGCRs = payload;
       console.log(PGCRs);
-      // PGCRs.Response.activities.forEach(activity => {
-      //   if(activity.activityHash == "1153409123") {
-      //     console.log(activity);
-      //   }
-      //   else {
-      //     console.log("-")
-      //   }
-      // })
       setCharacterData(PGCRs);
     })
     .catch(err => {

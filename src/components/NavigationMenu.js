@@ -4,8 +4,6 @@ import PowerfulAndPopular from './PowerfulAndPopular';
 import ClassComparisons from './ClassComparisons';
 import WeaponCharts from './WeaponCharts';
 import manifest from './manifest';
-// import BackButton from './BackButton';
-// import HistoricalGraphs from './HistoricalGraphs';
 
 
 export default function NavigationMenu() {
@@ -21,10 +19,6 @@ export default function NavigationMenu() {
       // document.getElementById('landingPageNav').classList.remove('loading');
       // document.getElementsByClassName("loading").style.opacity = 0.0;
       document.getElementsByClassName("loading")[0].style.display = "none";
-      // setTimeout(() => document.getElementsByClassName("bars")[0, 1, 2, 3, 4, 5, 6].style.opacity = 0.0, 2000);
-      // setTimeout(() => document.getElementsByClassName("navButton")[0].style.border = "2px solid skyblue", 100);
-      // setTimeout(() => document.getElementsByClassName("navButton")[1].style.border = "2px solid skyblue", 500);
-      // setTimeout(() => document.getElementsByClassName("navButton")[2].style.border = "2px solid skyblue", 1000);
 
       return res.json()
     });
@@ -132,27 +126,6 @@ export default function NavigationMenu() {
     // fetchOtherData(); //COULD BE THAT YOU CAN SENT TWO REQUESTS TO SAME DOMAIN IN ONE FUNCTION
   }, [])
 
-  // function backButton() {
-    // let resetElements = document.querySelectorAll('.navButton');
-    // for(let i=0; i<resetElements.length; i++) {
-    //   resetElements[i].classList.add('resetFromSide');
-    //   resetElements[i].classList.remove('moveToSide');
-    //   resetElements[i].classList.remove('grantPriority');
-    // }
-
-    // document.getElementById("backgroundTransitions").classList.remove('bodyShadow');
-    // document.getElementById("backgroundTransitions").classList.add('removeBodyShadow');
-    // document.body.classList.remove('bodyShadow');
-
-
-    // document.getElementById('pnpContent').classList.add('hiding');
-    // document.getElementById('NavigationMenuContainer').classList.add('hiding');
-    // document.getElementById('wepContainer').style.overflowY = "hidden";
-    // document.getElementById('weaponContainer').classList.add('hiding');
-
-
-  // }
-
 
   return (
     <section id="landingPageNav" className="landingPageNavigation">
@@ -165,10 +138,6 @@ export default function NavigationMenu() {
     </section>
   )
 }
-
-{/* <PowerfulAndPopular {...initialData[4]}/>
-<WeaponCharts {...initialData[3]}/>
-<ClassComparisons {...initialData}/>  */}
 
 
 

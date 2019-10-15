@@ -267,13 +267,18 @@ export default function WeaponCharts(props) {
 
       let vSockets = revisedWep.varSockets;
       // let socketItems = [];
+      let notAllowed = ["tracker"]
       let wepPerks = vSockets.map(eachSocket => {
         if(eachSocket != null) {
           if(Array.isArray(eachSocket)) {
             let multipleSockets = eachSocket.map(sock => {
               if(testPath.socketDefs[sock]) {
-                return(
-                  <p>{testPath.socketDefs[sock].socketName}</p>
+                let socketIcon = "https://www.bungie.net" + testPath.socketDefs[sock].socketIcon;
+                // return(
+                //   <p>{testPath.socketDefs[sock].socketName}</p>
+                // )
+                return (
+                  <img src={socketIcon} className="socketIcons" alt="socketIcon"></img>
                 )
               }
               else {
@@ -283,25 +288,24 @@ export default function WeaponCharts(props) {
               }
             })
             return(
-              <div className="socketsContainer">
-                <p>{multipleSockets}</p>
-              </div>
+
+                <p class="multiSockets">{multipleSockets}</p>
+
             )
           }
-          else {
-            return(
-              <div className="socketsContainer">
-                <p>{testPath.socketDefs[eachSocket].socketName}</p>
-              </div>
-            )
-          }
+          // else {
+          //   return(
+
+          //       <p class="singleSockets">{eachSocket}</p>
+          //   )
+          // }
         }
       })
 
 
       // return(
       //   <div className="socketsContainer">
-      //     <p>{eachSocket}</p>
+      //     <p>{testPath.socketDefs[eachSocket].socketName}</p>
       //   </div>
       // )
       // wepStatVals yo
@@ -371,9 +375,10 @@ export default function WeaponCharts(props) {
             <img src={wepIcon} className="wepIcons" alt="wepIcon"></img> 
             <p className="wepType">{revisedWep.weaponType}</p>
           </div>
-          <div className={"wepRpmMagSize " + "wepRpmMagSize" + revisedWep.weaponTier}>{wepRpmMagSize}</div>
-          <div className={"statsContainer " + "statsContainer" + revisedWep.weaponTier}>
-            <div className="wepStatVals">{wepStatVals}</div>
+          <div className={"wepAttributes " + "wepAttributes" + revisedWep.weaponTier}>
+            <div className={"statsContainer " + "statsContainer" + revisedWep.weaponTier}>
+              <div className="wepStatVals">{wepStatVals}</div>
+            </div>
             <div className="wepPerks">{wepPerks}</div>
           </div>
         </button>
@@ -387,16 +392,16 @@ export default function WeaponCharts(props) {
   //work on showing most notable medals for each wep
   function displayWepStats(p) { //onClick = show hidden stats / query for best secondary weapon
     let cName = (p.currentTarget.id)
-    // console.log(document.getElementById(cName))
-    // document.getElementById(cName).style.border = "5px solid red"
-
+    console.log(cName)
     
     let addClass = document.getElementById(cName).classList;
     // console.log(addClass.value)
     if(addClass.value.includes('beingFocused')) {
       addClass.remove('beingFocused')
     }
-    addClass.add('beingFocused')
+    else {
+      addClass.add('beingFocused')
+    }
   }
 
   function WepList(testPathReceiver) {
