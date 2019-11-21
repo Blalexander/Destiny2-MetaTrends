@@ -65,27 +65,27 @@ export default function WeaponCharts(props) {
 
 
   // let weaponTypes = ["Sidearm", "Auto Rifle", "Pulse Rifle", "Combat Bow", "Scout Rifle", "Hand Cannon", "Sniper Rifle", "Submachine Gun", "Trace Rifle", "Linear Fusion Rifle", "Grenade Launcher", "Shotgun", "Rocket Launcher", "Sword", "Machine Gun"];
-  let eachArchetypeAverages = {
-    "Sidearm": {},
-    "Auto Rifle": {},
-    "Pulse Rifle": {},
-    "Combat Bow": {},
-    "Scout Rifle": {},
-    "Hand Cannon": {},
-    "Sniper Rifle": {},
-    "Submachine Gun": {},
-    "Trace Rifle": {},
-    "Fusion Rifle": {},
-    "Linear Fusion Rifle": {},
-    "Grenade Launcher": {},
-    "Shotgun": {},
-    "Rocket Launcher": {},
-    "Sword": {},
-    "Machine Gun": {},
-    "All Types": {
-      count: 0
-    }
-  };
+  // let eachArchetypeAverages = {
+  //   "Sidearm": {},
+  //   "Auto Rifle": {},
+  //   "Pulse Rifle": {},
+  //   "Combat Bow": {},
+  //   "Scout Rifle": {},
+  //   "Hand Cannon": {},
+  //   "Sniper Rifle": {},
+  //   "Submachine Gun": {},
+  //   "Trace Rifle": {},
+  //   "Fusion Rifle": {},
+  //   "Linear Fusion Rifle": {},
+  //   "Grenade Launcher": {},
+  //   "Shotgun": {},
+  //   "Rocket Launcher": {},
+  //   "Sword": {},
+  //   "Machine Gun": {},
+  //   "All Types": {
+  //     count: 0
+  //   }
+  // };
 
   let eachPlayerStatAverages = { //on hover, show real stats, not % dif
     "Sidearm": {},
@@ -123,20 +123,36 @@ export default function WeaponCharts(props) {
         eachPlayerStatAverages["All Types"].count++;
       }
 
-      for (let eachWepPlayerStat in props[eachWeaponKey]) {
+      for (let eachWepPlayerStat in props[eachWeaponKey].playerPerformances) {
         if(eachWepPlayerStat != "_id" && eachWepPlayerStat != "totalCount") {
           if(eachPlayerStatAverages[wepType][eachWepPlayerStat] === undefined) {
-            eachPlayerStatAverages[wepType][eachWepPlayerStat] = props[eachWeaponKey][eachWepPlayerStat]
+            eachPlayerStatAverages[wepType][eachWepPlayerStat] = props[eachWeaponKey].playerPerformances[eachWepPlayerStat]
             if(eachPlayerStatAverages["All Types"][eachWepPlayerStat] === undefined) {
-              eachPlayerStatAverages["All Types"][eachWepPlayerStat] = props[eachWeaponKey][eachWepPlayerStat]
+              eachPlayerStatAverages["All Types"][eachWepPlayerStat] = props[eachWeaponKey].playerPerformances[eachWepPlayerStat]
             }
           }
           else {
-            eachPlayerStatAverages[wepType][eachWepPlayerStat] += props[eachWeaponKey][eachWepPlayerStat]
-            eachPlayerStatAverages["All Types"][eachWepPlayerStat] += props[eachWeaponKey][eachWepPlayerStat]
+            eachPlayerStatAverages[wepType][eachWepPlayerStat] += props[eachWeaponKey].playerPerformances[eachWepPlayerStat]
+            eachPlayerStatAverages["All Types"][eachWepPlayerStat] += props[eachWeaponKey].playerPerformances[eachWepPlayerStat]
           }
         }
       }
+
+      for (let eachWepPlayerStat in props[eachWeaponKey].weaponValues) {
+        if(eachWepPlayerStat != "_id" && eachWepPlayerStat != "totalCount") {
+          if(eachPlayerStatAverages[wepType][eachWepPlayerStat] === undefined) {
+            eachPlayerStatAverages[wepType][eachWepPlayerStat] = props[eachWeaponKey].weaponValues[eachWepPlayerStat].value
+            if(eachPlayerStatAverages["All Types"][eachWepPlayerStat] === undefined) {
+              eachPlayerStatAverages["All Types"][eachWepPlayerStat] = props[eachWeaponKey].weaponValues[eachWepPlayerStat].value
+            }
+          }
+          else {
+            eachPlayerStatAverages[wepType][eachWepPlayerStat] += props[eachWeaponKey].weaponValues[eachWepPlayerStat].value
+            eachPlayerStatAverages["All Types"][eachWepPlayerStat] += props[eachWeaponKey].weaponValues[eachWepPlayerStat].value
+          }
+        }
+      }
+
     }
   }
 
@@ -147,52 +163,11 @@ export default function WeaponCharts(props) {
           eachPlayerStatAverages[eachWepType][eachWepStat] /= eachPlayerStatAverages[eachWepType].count
         }
       }
-      eachPlayerStatAverages[eachWepType].kdAvg = eachPlayerStatAverages[eachWepType].killsAvg / eachPlayerStatAverages[eachWepType].deathsAvg
+      eachPlayerStatAverages[eachWepType].kdAvg = (eachPlayerStatAverages[eachWepType].killsAvg + eachPlayerStatAverages[eachWepType].assistsAvg) / eachPlayerStatAverages[eachWepType].deathsAvg
     // }
   }
 
   console.log(eachPlayerStatAverages)
-
-
-
-
-  for (let eachItem in manifest) {
-    if(eachItem != "mapHashes" && eachItem != "statDefinitions") { //FIRST LAYER: FILTERS TO GET WEAPON DEFINITIONS
-      let wepType = manifest[eachItem].weaponType;
-      // console.log(wepType)
-
-      if(eachArchetypeAverages[wepType] != undefined) {
-        if(eachArchetypeAverages[wepType].count === undefined) {
-          eachArchetypeAverages[wepType].count = 1;
-        }
-        else {
-          eachArchetypeAverages[wepType].count++;
-          eachArchetypeAverages["All Types"].count++;
-        }
-      }
-
-      //SECOND LAYER: CYCLES THROUGH LIST AND ASSIGNS DEFINITIONS TO EACHARCHETYPEAVERAGES
-      for(let eachManifestStat in manifest[eachItem].weaponValues) {
-        if(eachArchetypeAverages[wepType] === undefined) {
-          console.log(wepType)
-        }
-        else if(eachArchetypeAverages[wepType][eachManifestStat] === undefined) {
-          eachArchetypeAverages[wepType][eachManifestStat] = manifest[eachItem].weaponValues[eachManifestStat].value;
-          if(eachArchetypeAverages["All Types"][eachManifestStat] === undefined && manifest[eachItem].weaponValues[eachManifestStat].value != 0) {
-            eachArchetypeAverages["All Types"][eachManifestStat] = manifest[eachItem].weaponValues[eachManifestStat].value
-          }
-        }
-        else {
-          eachArchetypeAverages[wepType][eachManifestStat] += manifest[eachItem].weaponValues[eachManifestStat].value;
-          if(manifest[eachItem].weaponValues[eachManifestStat].value != 0) {
-            eachArchetypeAverages["All Types"][eachManifestStat] += manifest[eachItem].weaponValues[eachManifestStat].value;
-          } //!!!!COMBAT BOW VELOCITY === 0???
-        }//velocity for all is being calculated in
-      }//on weaponType or All Weapons hover, show color for each stat relative to one being hovered
-    }
-    
-  }
-  console.log(eachArchetypeAverages)
 
 
 
@@ -213,33 +188,31 @@ export default function WeaponCharts(props) {
       // let barStats = [];
       let type = revisedWep.weaponType;
 
-      if(type === "Fusion Rifle") {
-        wepStatKeys = ["Impact", "Range", "Stability", "Handling", "Reload Speed", "Aim Assistance", "Zoom", "Magazine", "Charge Time"]
+      if(type === "Fusion Rifle") { //NEED TO BE LOOKED AT
+        wepStatKeys = ["Impact", "Range", "Stability", "Handling", "Reload Speed", "Aim Assistance", "Zoom", "Magazine", "Charge Time", "killsAvg", "deathsAvg", "assistsAvg", "KaD", "effAvg", "perKAvg", "perLAvg", "scoreAvg"]
       }
       else if(type === "Grenade Launcher" || type === "Rocket Launcher") {
-        wepStatKeys = ["Blast Radius", "Velocity", "Stability", "Handling", "Reload Speed", "Aim Assistance", "Zoom", "Magazine", "Rounds Per Minute"]
+        wepStatKeys = ["Blast Radius", "Velocity", "Stability", "Handling", "Reload Speed", "Aim Assistance", "Zoom", "Magazine", "Rounds Per Minute", "killsAvg", "deathsAvg", "assistsAvg", "KaD", "effAvg", "perKAvg", "perLAvg", "scoreAvg"]
       }
-      else if(type === "Combat Bow") {
-        wepStatKeys = ["Impact", "Accuracy", "Stability", "Handling", "Reload Speed", "Aim Assistance", "Zoom", "Draw Time", "Rounds Per Minute"]
+      else if(type === "Combat Bow") { //NEED TO BE LOOKED AT
+        wepStatKeys = ["Impact", "Accuracy", "Stability", "Handling", "Reload Speed", "Aim Assistance", "Zoom", "Draw Time", "Rounds Per Minute", "killsAvg", "deathsAvg", "assistsAvg", "KaD", "effAvg", "perKAvg", "perLAvg", "scoreAvg"]
       }
-      else if(type === "Sword") {
-        wepStatKeys = ["Impact", "Range", "Defense", "Efficiency", "Ammo Capacity", "Swing Speed"]
+      else if(type === "Sword") { //NEED TO BE LOOKED AT
+        wepStatKeys = ["Impact", "Range", "Defense", "Efficiency", "Ammo Capacity", "Swing Speed", "killsAvg", "deathsAvg", "assistsAvg", "KaD", "effAvg", "perKAvg", "perLAvg", "scoreAvg"]
       }
       else {
-        wepStatKeys = ["Impact", "Range", "Stability", "Handling", "Reload Speed", "Aim Assistance", "Zoom", "Magazine", "Rounds Per Minute"]
+        wepStatKeys = ["Impact", "Range", "Stability", "Handling", "Reload Speed", "Aim Assistance", "Zoom", "Magazine", "Rounds Per Minute", "killsAvg", "deathsAvg", "assistsAvg", "KaD", "effAvg", "perKAvg", "perLAvg", "scoreAvg"]
       }
       // console.log(wepStatKeys)
 
 
       let wepStatVals = wepStatKeys.map(stat => {
-        let eachStatHash = testPath.statDefs[stat].statHash
-        // if(stat === "1885944937" || stat === "3291498656" || stat === "3291498659" || stat === "Inventory Size") {
-        //   return("")
-        // }
-        // else if(revisedWep.weaponValues[stat].value === 0 || stat === "Power") {
-        //   return("")
-        // }
-        if(revisedWep.weaponValues[eachStatHash] != undefined) {
+        // console.log("everything ", stat)
+        let eachStatHash;
+        if(testPath.statDefs[stat]) {
+          eachStatHash = testPath.statDefs[stat].statHash
+        }
+        if(revisedWep.weaponValues[eachStatHash] != undefined || revisedWep.playerPerformances[stat] || stat === "KaD") {
           if(stat === "Magazine" || stat === "Rounds Per Minute" || stat === "Ammo Capacity" || stat === "Draw Time") {
             // console.log(manifest[wepId])
             return( 
@@ -249,18 +222,55 @@ export default function WeaponCharts(props) {
               </div>
             )
           }
-          // else { //CREATOR FOR INNATE WEAPON STATS
+          else if(stat === "KaD") {
             return( 
+              <div className="eachWepStat playerPerformances">
+                <div className="statNames">{stat + " "}</div>
+                <div className="playerStatBarContainers">
+                  <span className="eachPlayerStatBar" style={{width: ((((revisedWep.playerPerformances.killsAvg + revisedWep.playerPerformances.assistsAvg) / revisedWep.playerPerformances.deathsAvg) / eachPlayerStatAverages[type]["kdAvg"]) * 50 + "%")}}></span>
+                  <span className="eachPlayerStatBarLeft" style={{width: (50 + "%")}}></span>
+                  <span className="eachPlayerStatBarRight" style={{width: (50 + "%")}}></span>
+                </div>
+                <div className="statVals">{" " + ((revisedWep.playerPerformances.killsAvg + revisedWep.playerPerformances.assistsAvg) / revisedWep.playerPerformances.deathsAvg).toFixed(1)}</div>
+              </div>
+            )
+          }
+          else if(revisedWep.playerPerformances[stat]) {
+            // console.log(stat)
+            if(eachPlayerStatAverages[type][stat]) {
+              return(
+                <div className="eachWepStat playerPerformances">
+                  <div className="statNames">{stat + " "}</div>
+                  <div className="playerStatBarContainers">
+                    <span className="eachPlayerStatBar" style={{width: ((revisedWep.playerPerformances[stat] / eachPlayerStatAverages[type][stat]) * 50 + "%")}}></span>
+                    <span className="eachPlayerStatBarLeft" style={{width: (50 + "%")}}></span>
+                    <span className="eachPlayerStatBarRight" style={{width: (50 + "%")}}></span>
+                  </div>
+                  <div className="statVals">{" " + revisedWep.playerPerformances[stat].toFixed(1)}</div>
+                  {/* <div className="avStatVals">{" " + eachPlayerStatAverages[type][stat].toFixed(1)}</div> */}
+                </div>
+              )
+            }
+            return(
               <div className="eachWepStat leftHalf">
+                <div className="statNames">{stat + " "}</div>
+                <div className="statVals">{" " + revisedWep.playerPerformances[stat].toFixed(1)}</div>
+              </div>
+            )
+          }
+          else { //CREATOR FOR INNATE WEAPON STATS
+            return( 
+              <div className="eachWepStat instrinsicStats">
                 <div className="statNames">{stat + " "}</div>
                 <div className="statBarContainers">
                   <span className="eachWepStatBar" style={{width: (revisedWep.weaponValues[eachStatHash].value + "%")}}></span>
                   <span className="eachStatBarBg" style={{width: ((100 - revisedWep.weaponValues[eachStatHash].value) + "%")}}></span>
+                  <span className="eachAvStatBar" style={{width: ((eachPlayerStatAverages[type][eachStatHash]) + "%")}}></span>
                 </div>
                 <div className="statVals">{" " + revisedWep.weaponValues[eachStatHash].value}</div>
               </div>
             )
-          // }
+          }
         }
       })
       // console.log(wepStatVals)
@@ -272,7 +282,7 @@ export default function WeaponCharts(props) {
         if(eachSocket != null) {
           if(Array.isArray(eachSocket)) {
             let multipleSockets = eachSocket.map(sock => {
-              if(testPath.socketDefs[sock]) {
+              if(testPath.socketDefs[sock] && testPath.socketDefs[sock].socketType != "" && testPath.socketDefs[sock].socketType != "Weapon Ornament" && !testPath.socketDefs[sock].socketType.includes('Tracker') && !testPath.socketDefs[sock].socketType.includes('Catalyst') && !testPath.socketDefs[sock].socketType.includes('Mod') && !testPath.socketDefs[sock].socketType.includes('Shader') && !testPath.socketDefs[sock].socketName.includes('Shader')) {
                 let socketIcon = "https://www.bungie.net" + testPath.socketDefs[sock].socketIcon;
                 // return(
                 //   <p>{testPath.socketDefs[sock].socketName}</p>
@@ -281,85 +291,33 @@ export default function WeaponCharts(props) {
                   <img src={socketIcon} className="socketIcons" alt="socketIcon"></img>
                 )
               }
-              else {
-                return(
-                  <p>{sock + "Error"}</p>
-                )
-              }
+              // else {
+              //   return(
+              //     <p>{sock + "Error"}</p>
+              //   )
+              // }
             })
             return(
-
-                <p class="multiSockets">{multipleSockets}</p>
-
+              <p className="multiSockets">{multipleSockets}</p>
             )
           }
-          // else {
-          //   return(
-
-          //       <p class="singleSockets">{eachSocket}</p>
-          //   )
-          // }
+          else {
+            if(testPath.socketDefs[eachSocket]) {
+              let socketIcon = "https://www.bungie.net" + testPath.socketDefs[eachSocket].socketIcon;
+              // return(
+              //   <p>{testPath.socketDefs[sock].socketName}</p>
+              // )
+              return (
+                <img src={socketIcon} className="socketIcons" alt="socketIcon"></img>
+              )
+            }
+            return(
+              <p class="singleSockets">{eachSocket}</p>
+            )
+          }
         }
       })
 
-
-      // return(
-      //   <div className="socketsContainer">
-      //     <p>{testPath.socketDefs[eachSocket].socketName}</p>
-      //   </div>
-      // )
-      // wepStatVals yo
-
-      // let wepSameTypeStatRatings = wepStatKeys.map(stat => {
-      //   let averagedStat = eachArchetypeAverages[type][stat] / eachArchetypeAverages[type].count;
-      //   //if(manifest[wepId].weaponValues[stat].value ><= eachArchetypeAverages[type][stat])
-
-      //   if(stat === "1885944937" || stat === "3291498656" || stat === "3291498659" || stat === "Inventory Size") {
-      //     return("")
-      //   }
-      //   else if(manifest[wepId].weaponValues[stat].value === 0 || stat === "Power") {
-      //     return("")
-      //   }
-      //   else {
-      //     return(
-      //       <p className="eachAllTypesStatRating">{averagedStat.toFixed(0)}</p>
-      //     )
-      //   }
-      // })
-
-      // let wepAllTypesStatRatings = wepStatKeys.map(stat => {
-      //   let averagedStat = eachArchetypeAverages["All Types"][stat] / eachArchetypeAverages["All Types"].count;
-
-      //   if(stat === "1885944937" || stat === "3291498656" || stat === "3291498659" || stat === "Inventory Size") {
-      //     return("")
-      //   }
-      //   else if(manifest[wepId].weaponValues[stat].value === 0 || stat === "Power") {
-      //     return("")
-      //   }
-      //   else {
-      //     return(
-      //       <p className="eachAllTypesStatRating">{averagedStat.toFixed(0)}</p>
-      //     )
-      //   }
-      // })
-
-
-      // let tempPlayerRank = ["assistsAvg", "killsAvg", "deathsAvg", "kdAvg" , "effAvg", "scoreAvg"];
-      // revisedWep["kdAvg"] = revisedWep.killsAvg / revisedWep.deathsAvg;
-
-      // let tempPlayerRanksSame = tempPlayerRank.map(stat => {
-      //   for(let eachWepType2 in eachPlayerStatAverages) {
-      //     return(
-      //       <p className="tempPlayerRanksSame">{eachPlayerStatAverages[type][stat].toFixed(1)}</p>
-      //     )
-      //   }
-      // })
-
-      // let tempPlayerRanksAll = tempPlayerRank.map(stat => { //INCLUDE THE AVG NEXT TO PERCENT COMPARISON
-      //   return(
-      //     <p className="tempPlayerRanksAll">{eachPlayerStatAverages["All Types"][stat].toFixed(1)}</p>
-      //   )
-      // })
 
       labelIncrementor++;
       // let graphData = [revisedWep.meleeKills.toFixed(1), revisedWep.grenadeKills.toFixed(1), revisedWep.superKills.toFixed(1)]
@@ -479,44 +437,3 @@ export default function WeaponCharts(props) {
     </div>
   )
 }
-
-        // else if(stat === "Charge Time" || stat === "Swing Speed") {
-        //   wepRpmMagSize.unshift(<p className={"eachWepStat " + stat}>{stat + " " + manifest[wepId].weaponValues[stat].value}</p>);
-        //   return("");
-        // }
-        // else if(stat === "Rounds Per Minute") {
-        //   wepRpmMagSize.unshift(<p className={"eachWepStat " + stat}>{manifest[wepId].weaponValues[stat].value + " RPM"}</p>);
-        //   return("");
-        // }
-        // else if(stat === "Magazine" || stat === "Draw Time") {
-        //   wepRpmMagSize.push(<p className={"eachWepStat " + stat}>{stat + " " + manifest[wepId].weaponValues[stat].value}</p>);
-        //   return("");
-        // }
-        // else if(stat === "Recoil Direction" || stat === "Zoom" || stat === "Blast Radius" || stat === "Impact" || stat === "Reload Speed" || stat === "Accuracy" || stat === "Charge Time" ) {
-        //   return(
-        //     <p className="eachWepStat rightHalf">{manifest[wepId].weaponValues[stat].value + "  " + stat}</p>
-        //   )
-        // }
-
-
-        // let pulseCounter = 0;
-
-        // for (let eachItem in manifest) {  //if item != mapHashes or statDefinitions
-        //   if(eachItem != "mapHashes" && eachItem != "statDefinitions") { //First Layer: scans for proper defs.
-        //     // console.log(manifest[eachItem].weaponType, "First Layer")
-      
-        //     if(manifest[eachItem].weaponType === "Pulse Rifle") {//Second Layer: 
-        //       // console.log(manifest[eachItem])
-        //       pulseCounter++;
-        //       if(eachArchetypeAverages["Pulse Rifle"].stabilityAvg === undefined) {
-        //         eachArchetypeAverages["Pulse Rifle"].stabilityAvg = 0;
-        //       }
-        //       else {
-        //         eachArchetypeAverages["Pulse Rifle"].stabilityAvg += manifest[eachItem].weaponValues.Stability.value;
-        //       }
-        //     }
-        //   }
-          
-        // }
-        // let thiss = eachArchetypeAverages["Pulse Rifle"].stabilityAvg/pulseCounter;
-        // console.log(thiss)

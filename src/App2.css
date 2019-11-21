@@ -126,6 +126,13 @@ header {
 }
 
 
+#powerfulAndPopularNavButton {
+/*   background-color: red; */
+  -webkit-clip-path: polygon(20% 0%, 100% 0, 100% 100%, 0% 100%);
+          clip-path: polygon(20% 0%, 100% 0, 100% 100%, 0% 100%);
+}
+
+
 
 /*--------------- Guardians ----------------*/
 #accountContainer {
@@ -544,6 +551,8 @@ header {
   border: 1px solid black;
   border-radius: 3px 0 0 3px;
   border-right: none;
+  width: 0;
+  visibility: hidden;
 }
 
 .timesUsed {
@@ -617,8 +626,18 @@ header {
 .wepAttributes {
   width: 70vw;
   display: flex;
-  flex-flow: row nowrap;
- 
+  flex-flow: row-reverse nowrap;
+}
+
+.socketIcons {
+  transition: 0.1s;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+}
+
+.socketIcons:hover {
+  -webkit-transform: scale(1.3);
+          transform: scale(1.3);
 }
 
 #item1 {
@@ -645,18 +664,33 @@ header {
   background: rgba(195, 188, 180, .6);
 }
 
+.beingFocused .statBarContainers {
+/*   display: none; */
+}
+
+.beingFocused .wepStatVals {
+  flex-flow: column nowrap;
+  transition: 0.2s;
+  height: 40vh;
+  
+}
+
+.beingFocused .eachWepStat {
+/*   justify-content: center; */
+}
+
 .wepStatVals {
   display: flex; 
   height: 17vh;
+/*   flex-flow: column nowrap; */
   flex-flow: column wrap;
   padding-top: 2vh;
 /*   width: 5vw; */
+  border: 3px solid red;
 } 
 
-
-.leftHalf {
-  display: flex;
-  justify-content: flex-end;
+.wepChartsItem * {
+  transition: 0.2s;
 }
  
 .statBarContainers {
@@ -664,7 +698,20 @@ header {
   height: 80%;
   width: 40%;
   display: flex;
+/*   display: none; */
   align-self: center;
+  position: relative;
+}
+
+.statVals {
+  width: 2.5em;
+/*   background-color: black; */
+}
+
+.statNames {
+/*   background-color: black; */
+  width: 8em;
+  white-space: nowrap;
 }
 
 .eachWepStatBar {
@@ -677,20 +724,76 @@ header {
   background: rgba(195, 188, 180, .6);
 }
 
+.eachAvStatBar {
+  border-right: 5px solid orange;
+  position: absolute;
+  height: 100%;
+}
+
 .eachWepStat {
-  height: 10%;
+  display: flex;
+  justify-content: flex-end;
+/*   justify-content: space-between; */
+  height: 11%;
   width: 50vw;
   margin-left: -20vw;
 }
 
+.playerPerformances {
+/*   background-color: white; */
+  width: 100%;
+  justify-content: space-evenly;
+  align-self: flex-end;
+  opacity: 0;
+}
+
+.beingFocused .playerPerformances {
+  opacity: 1;
+}
+
+.playerStatBarContainers {
+/*   background-color: powderblue; */
+  height: 50%;
+  width: 50%;
+  display: flex;
+  align-self: center;
+  position: relative;
+}
+
+
+.eachPlayerStatBar {
+  border-right: 5px solid cyan;
+  position: absolute;
+  height: 100%;
+  opacity: 0;
+}
+
+.eachPlayerStatBarLeft {
+  background-color: red;
+  border-radius: 15px 0 0 15px;
+  opacity: 0;
+}
+
+.eachPlayerStatBarRight {
+  background-color: green;
+  border-radius: 0 15px 15px 0;
+  opacity: 0;
+}
+
+.beingFocused .eachPlayerStatBar, .beingFocused .eachPlayerStatBarLeft, .beingFocused .eachPlayerStatBarRight {
+  opacity: 1;
+}
+
+
 
 .statsContainer {
-  display: flex;
-  flex-flow: row nowrap;
+/*   display: flex; */
+/*   flex-flow: row nowrap; */
 /*   justify-content: space-between; */
-  height: 17vh;
+/*   height: 17vh; */
 /*   width: 80vw; */
   border-radius: 0 3px 3px 0;
+/*   border: 3px solid red; */
 }
 
 .additionalStats {
@@ -728,6 +831,10 @@ header {
 .wepPerks {
   display: flex;
   flex-flow: row nowrap;
+  width: 30vw;
+/*   height: 10vh; */
+  margin-top: 1vh;
+/*   border: 3px solid red; */
 }
 
 .socketIcons {

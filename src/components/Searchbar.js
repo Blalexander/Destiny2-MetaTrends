@@ -101,7 +101,7 @@ const Searchbar = () => {
         <div className="playerSearchInputContainer">
           <input id="formTextInput" name="searchedName" type="text" value={searchedName} onChange={e => setSearchedName(e.target.value)} />
           <select id="membershipTypeSelector" name="membershipType" value={membershipType} onChange={e => setMembershipType(e.target.value)}>
-            <option value="4">Blizzard</option>
+            <option value="4">PC</option>
             <option value="2">PSN</option>
             <option value="1">Xbox</option>
           </select>
