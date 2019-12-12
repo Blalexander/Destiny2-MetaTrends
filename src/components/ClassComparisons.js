@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 // import {Line, Bar, Pie} from 'react-chartjs-2';
 import {Pie, HorizontalBar, Bar} from 'react-chartjs-2';
-import manifest from './manifest';
 import MapConstructor from './MapConstructor';
 
 
@@ -59,7 +58,7 @@ export default function ClassComparisons(props) {
   function MapDataPopulator(item) {
     // console.log(item.value)
     let mapHash = item.value._id;
-    let mapIcon = "https://www.bungie.net" + manifest.mapHashes[mapHash].locationImage;
+    // let mapIcon = "https://www.bungie.net" + manifest.mapHashes[mapHash].locationImage;
     // let revisedWinRate = (1 - item.value.standing) * 100;
     let highestWinningClassPerMap = () => {
       if(item.value.classWins[0].winRate > item.value.classWins[1].winRate && item.value.classWins[0].winRate > item.value.classWins[2].winRate) {
@@ -87,8 +86,7 @@ export default function ClassComparisons(props) {
 
     return(
       <div className="eachMapHolder" style={{backgroundColor: highestWinningClassPerMap()}}>
-        <img src={mapIcon} className="mapIcons" alt="mapIcon"></img> 
-        <p>{manifest.mapHashes[mapHash].locationName}</p>
+        <p>Location Name To Be Inserted</p>
         <p>{item.value.classWins[0].class} {(item.value.classWins[0].winRate * 100).toFixed(0)}%</p>
         <p>{item.value.classWins[1].class} {(item.value.classWins[1].winRate * 100).toFixed(0)}%</p>
         <p>{item.value.classWins[2].class} {(item.value.classWins[2].winRate * 100).toFixed(0)}%</p>

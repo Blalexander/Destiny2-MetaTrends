@@ -1,9 +1,8 @@
 import React from 'react';
-import manifest from './manifest';
 
 
 function PowerfulCombos(props) {
-  if(props[0] === undefined) {
+  if(props[0] != undefined) {
     return null;
   }
   // console.log(props)

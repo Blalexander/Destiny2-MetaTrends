@@ -225,7 +225,7 @@ export default function WeaponCharts(props) {
           else if(stat === "KaD") {
             return( 
               <div className="eachWepStat playerPerformances">
-                <div className="statNames">{stat + " "}</div>
+                <div className="statNames">KA/D</div>
                 <div className="playerStatBarContainers">
                   <span className="eachPlayerStatBar" style={{width: ((((revisedWep.playerPerformances.killsAvg + revisedWep.playerPerformances.assistsAvg) / revisedWep.playerPerformances.deathsAvg) / eachPlayerStatAverages[type]["kdAvg"]) * 50 + "%")}}></span>
                   <span className="eachPlayerStatBarLeft" style={{width: (50 + "%")}}></span>
@@ -238,9 +238,34 @@ export default function WeaponCharts(props) {
           else if(revisedWep.playerPerformances[stat]) {
             // console.log(stat)
             if(eachPlayerStatAverages[type][stat]) {
+              let statname = stat;
+              // if(stat.includes("Avg")) {
+              //   statname.replace("Avg", "");
+              // }
+              if(stat === "killsAvg") {
+                statname = "Kills";
+              }
+              else if(stat === "deathsAvg") {
+                statname = "Deaths";
+              }
+              else if(stat === "assistsAvg") {
+                statname = "Assists";
+              }
+              else if(stat === "effAvg") {
+                statname = "Efficiency";
+              }
+              else if(stat === "perKAvg") {
+                statname = "Points Per Kill";
+              }
+              else if(stat === "perLAvg") {
+                statname = "Points Per Life";
+              }
+              else if(stat === "scoreAvg") {
+                statname = "Score";
+              }
               return(
                 <div className="eachWepStat playerPerformances">
-                  <div className="statNames">{stat + " "}</div>
+                  <div className="statNames">{statname + " "}</div>
                   <div className="playerStatBarContainers">
                     <span className="eachPlayerStatBar" style={{width: ((revisedWep.playerPerformances[stat] / eachPlayerStatAverages[type][stat]) * 50 + "%")}}></span>
                     <span className="eachPlayerStatBarLeft" style={{width: (50 + "%")}}></span>
@@ -284,18 +309,10 @@ export default function WeaponCharts(props) {
             let multipleSockets = eachSocket.map(sock => {
               if(testPath.socketDefs[sock] && testPath.socketDefs[sock].socketType != "" && testPath.socketDefs[sock].socketType != "Weapon Ornament" && !testPath.socketDefs[sock].socketType.includes('Tracker') && !testPath.socketDefs[sock].socketType.includes('Catalyst') && !testPath.socketDefs[sock].socketType.includes('Mod') && !testPath.socketDefs[sock].socketType.includes('Shader') && !testPath.socketDefs[sock].socketName.includes('Shader')) {
                 let socketIcon = "https://www.bungie.net" + testPath.socketDefs[sock].socketIcon;
-                // return(
-                //   <p>{testPath.socketDefs[sock].socketName}</p>
-                // )
                 return (
                   <img src={socketIcon} className="socketIcons" alt="socketIcon"></img>
                 )
               }
-              // else {
-              //   return(
-              //     <p>{sock + "Error"}</p>
-              //   )
-              // }
             })
             return(
               <p className="multiSockets">{multipleSockets}</p>
@@ -304,9 +321,6 @@ export default function WeaponCharts(props) {
           else {
             if(testPath.socketDefs[eachSocket]) {
               let socketIcon = "https://www.bungie.net" + testPath.socketDefs[eachSocket].socketIcon;
-              // return(
-              //   <p>{testPath.socketDefs[sock].socketName}</p>
-              // )
               return (
                 <img src={socketIcon} className="socketIcons" alt="socketIcon"></img>
               )

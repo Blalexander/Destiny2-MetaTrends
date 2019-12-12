@@ -1,5 +1,4 @@
 import React from 'react';
-import manifest from './manifest';
 
 
 function MapConstructor(props) {
@@ -26,14 +25,14 @@ function MapConstructor(props) {
   function MapDataPopulator(item) {
     // console.log(item.value)
     let mapHash = item.value._id.map;
-    let mapIcon = "https://www.bungie.net" + manifest.mapHashes[mapHash].locationImage;
+    // let mapIcon = "https://www.bungie.net" + manifest.mapHashes[mapHash].locationImage;
     let revisedWinRate = (1 - item.value.standing) * 100;
 
 
     return(
       <div className="eachMapHolder">
-        <img src={mapIcon} className="mapIcons" alt="mapIcon"></img> 
-        <p>{manifest.mapHashes[mapHash].locationName}</p>
+        {/* <img src={mapIcon} className="mapIcons" alt="mapIcon"></img>  */}
+        {/* <p>{manifest.mapHashes[mapHash].locationName}</p> */}
         <p>Win Rate: {revisedWinRate.toFixed(0)}%</p>
         <p>Games Played: {item.value.count}</p>
         <br></br>

@@ -128,34 +128,21 @@ header {
 
 #powerfulAndPopularNavButton {
 /*   background-color: red; */
-  -webkit-clip-path: polygon(20% 0%, 100% 0, 100% 100%, 0% 100%);
-          clip-path: polygon(20% 0%, 100% 0, 100% 100%, 0% 100%);
+/*   -webkit-clip-path: polygon(20% 0%, 100% 0, 100% 100%, 0% 100%); */
+/*           clip-path: polygon(20% 0%, 100% 0, 100% 100%, 0% 100%); */
 }
 
 
 
 /*--------------- Guardians ----------------*/
 #accountContainer {
-/*   box-shadow: inset 0 0 100px #000; */
-/*   float: left; */
   position: absolute;
   bottom: 0;
   display: flex;
-/*   background: rgba(0,0,0,.5); */
   width: 85vw;
   margin-left: 6vw;
   padding-bottom: 2vh;
-/*   align-self: flex-end; */
-/*   flex-direction: column; */
-/*   flex-flow: column wrap; */
-/*   flex-flow: row nowrap; */
   justify-content: space-evenly;
-/*   align-items:center; */
-/*   margin-top: 8vh; */
-/*   height: 70vh; */
-/*   border: 1px solid black; */
-/*   background-color: white; */
-/*   overflow-y: scroll; */
 }
 
 #accountName {
@@ -224,14 +211,6 @@ header {
   background-color: red;
 }
 
-/* .loading {
-  background-color: red;
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  z-index: -1;
-} */
-
 .loading {
   background-image: linear-gradient(0deg, rgb(22, 244, 197) 0%, rgb(22, 244, 197) 12%,rgb(24, 219, 187) 12%, rgb(24, 219, 187) 51%,rgb(26, 193, 176) 51%, rgb(26, 193, 176) 52%,rgb(28, 168, 166) 52%, rgb(28, 168, 166) 66%,rgb(29, 143, 155) 66%, rgb(29, 143, 155) 73%,rgb(31, 117, 145) 73%, rgb(31, 117, 145) 80%,rgb(33, 92, 134) 80%, rgb(33, 92, 134) 100%);
   -webkit-animation: drop 6s linear infinite;
@@ -257,212 +236,38 @@ header {
 
 
 
-/* --------------- Nav Buttons ---------------- */
-.navButton {
-  width: 80vw;
-  height: 20vh;
-  background-color: white;
-}
-
-#powerfulAndPopular {
-/*   border: 1px dashed black; */
-  width: 80vw;
-  height: 20vh;
-}
-
-#weaponCharts {
-/*   border: 1px dashed green; */
-  width: 80vw;
-  height: 20vh;
-}
-
-#classComparisons {
-/*   border: 1px dashed blue; */
-  width: 80vw;
-  height: 20vh;
-}
-
-
-#historicalGraphs {
-/*   border: 1px dashed red; */
-  width: 80vw;
-  height: 20vh;
-}
-
-#powerfulAndPopularButton {
-/*   border: 2px solid skyblue; */
-  border: none;
-}
-
-#classComparisonsButton {
-/*   border: 2px solid skyblue; */
-  border: none;
-}
-
-#weaponChartsButton {
-/*   border: 2px solid skyblue; */
-  border: none;
-}
-
-#historicalGraphsButton {
-  border: 2px solid skyblue;
-}
-
-.grantPriority {
-  transition: 0.5s;
-  position: absolute;
-  top: 20vh;
-  height: 80vh;
-  width: 85vw;
-}
-
-
-.moveToSide {
-/*   position: relative; */
-  transition: 0.5s;
-  height: 5vh;
-  width: 10vw;
-  top: 15vh;
-  margin-top: 9vh;
-  margin-left: -10vw;
-/*   transform: scaleX(.6); */
-/*   transition-delay: 0.5s;
-  transition-property: transform;
-  -webkit-transform: rotate(-90deg);
-          transform: rotate(-90deg); */
-}
-
-.resetFromSide {
-  transition: 0.5s;
-}
-
-.minimized {
-  display: none;
-}
-
 
 
 
 /* ---------------- Powerful & Popular --------------- */
-/* .hiding { */
-  /* -webkit-transform: scaleY(0); */
-          /* transform: scaleY(0); */
-  /* -webkit-transform: scaleX(0); */
-          /* transform: scaleX(0); */
-/*   overflow-y: hidden; */
-/* } */
-
-.pnpBoxes {
-/*   border: 1px solid black; */
-  height: 200px;
-  width: 200px;
+.pnp-container {
+  border: 2px solid black;
+  width: 80vw;
+  height: 90vh;
+  margin-top: 5vh;
+/*   display: grid; */
 }
 
-.pnpBoxes img {
-  
-}
-
-#pnpContent {
-/*   display: inline-grid;
-  grid-template-columns: 300px 300px;
-  grid-gap: 100px; */
-  top: 10vh;
-  left: 0;
-  display: flex;
-  flex-flow: column nowrap;
-/*   overflow-y: scroll; */
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  z-index: 1;
-  background-color: white;
-  transition: 0.2s;
-  opacity: 0.0;
-  z-index: 0;
-}
-
-.popWeaponContainer {
-/*   border: 1px solid orange; */
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-}
-
-.powWeaponContainer {
-/*   border: 1px solid orange; */
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-}
-
-.blankWepBox {
-  height: 200px;
-  width: 200px;
-/*   border: 1px solid red; */
-}
-
-.blankWepIcon {
-  height: 100px;
-  width: 100px;
-  background-color: lightgray;
-  margin: auto;
-}
-
-.blankWepName {
-  height: 15px;
-  width: 80px;
-  background-color: lightgray;
-  margin: auto;
-  margin-top: 10px;
-}
-
-#popDuoContainer {
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-}
-
-.pnpWepIcon {
-  height: 60px;
-  width: 60px;
-}
-
-.negStatBars {
-  height: 2vh;
-  background-color: lightblue;
-}
-
-.statBarContainer {
-  display: flex;
-  width: 100%;
-  border: 1px solid blue;
-}
-
-.statBars {
-  height: 2vh;
-  z-index: 1;
-  color: white;
-  text-shadow: 1px 1px 1px black, 2px 2px 2px black;
+.best-partners {
   background-color: green;
-/*   position: relative; */
-/*   margin-left: 100px; */
 }
 
-.statIcons {
-  border: 1px solid black;
+.worst-partners {
+  background-color: red;
 }
 
-.statsToDisplay {
-  border: 1px solid red;
+.click-to-search {
+  left: 45%;
+  top: 45%;
+  height: 5vh;
+  width: 10vw;
+  position: absolute;
+  background-color: orange;
 }
 
-.popCombos {
-  margin: 5vh;
-}
 
-.powCombos {
-  margin: 5vh;
-}
+
+
 
 
 /* -------------- Weapon Charts --------------- */
@@ -640,10 +445,6 @@ header {
           transform: scale(1.3);
 }
 
-#item1 {
-/*   height: 50vh; */
-}
-
 .wepAttributes6 {
   background: rgba(206, 174, 51, .6);
 }
@@ -664,6 +465,13 @@ header {
   background: rgba(195, 188, 180, .6);
 }
 
+
+.statsContainer {
+  border-radius: 0 3px 3px 0;
+/*   background-color: orange; */
+}
+
+
 .beingFocused .statBarContainers {
 /*   display: none; */
 }
@@ -671,7 +479,7 @@ header {
 .beingFocused .wepStatVals {
   flex-flow: column nowrap;
   transition: 0.2s;
-  height: 40vh;
+  height: 48vh;
   
 }
 
@@ -686,7 +494,7 @@ header {
   flex-flow: column wrap;
   padding-top: 2vh;
 /*   width: 5vw; */
-  border: 3px solid red;
+/*   border: 3px solid red; */
 } 
 
 .wepChartsItem * {
@@ -786,55 +594,13 @@ header {
 
 
 
-.statsContainer {
-/*   display: flex; */
-/*   flex-flow: row nowrap; */
-/*   justify-content: space-between; */
-/*   height: 17vh; */
-/*   width: 80vw; */
-  border-radius: 0 3px 3px 0;
-/*   border: 3px solid red; */
-}
-
-.additionalStats {
-  display: flex;
-  flex-flow: row nowrap;
-}
-
-.abilityStats {
-/*   height: 17vh; */
-/*   width: 30%; */
-  border-bottom: 1px solid black;
-  border-top: 1px solid black;
-  border-right: 1px solid black;
-  border-radius: 0px 3px 3px 0px;
-}
-
-
-.playerStats {
-  display: flex;
-  flex-flow: column wrap;
-  height: 17vh;
-  width: 25%;
-  padding-top: 2vh;
-  border-bottom: 1px solid black;
-  border-top: 1px solid black;
-}
-
-.eachPlayerStat {
-  height: 16%;
-  display: flex;
-  justify-content: flex-end;
-}
-
-
 .wepPerks {
   display: flex;
   flex-flow: row nowrap;
   width: 30vw;
-/*   height: 10vh; */
+  height: 16vh;
   margin-top: 1vh;
-/*   border: 3px solid red; */
+/*   border: 5px groove red; */
 }
 
 .socketIcons {
@@ -885,6 +651,7 @@ header {
   grid-row: 3 / 4;
   grid-column: 1/ 2;
   width: 30vw;
+  
 }
 
 #hunterCC {
@@ -901,12 +668,6 @@ header {
   grid-row: 3 / 4;
   grid-column: 3 / 4;
   width: 30vw;
-}
-
-.populationBar {
-/*   border: 1px solid green; */
-/*   bottom: 0; */
-/*   margin-bottom: 0; */
 }
 
 .classPopNumbers {
@@ -960,21 +721,38 @@ header {
 }
 
 .mapIcons {
-/*   height: 100px; */
   width: 60vw;
-/*   max-height: 100px; */
 }
 
 .classMaps {
-/*   border: 1px solid black; */
-/*   overflow-y: scroll; */
-/*   height: 50vh; */
-  margin-top: 50px;
+  margin-top: 10vh;
   grid-row: 4 / 5;
   grid-column: 1 / 4;
-/*   width: 90vw; */
 }
 
 .eachMapHolder {
   margin-bottom: 1vh;
+}
+
+
+
+
+
+
+
+
+@media only screen and (max-width:500px) {
+  #NavigationMenuContainer {
+    display: block;
+  }
+  .CCcontainer {
+    width: unset;
+    height: unset;
+  }
+  #titanCC, #hunterCC, #warlockCC {
+    width: unset;
+    margin-top: 5vh;
+    margin-bottom: 10vh;
+  }
+  
 }
