@@ -10,7 +10,9 @@ function PowerfulAndPopular(props) {
   const [selectedWeapon, setSelectedWeapon] = useState('');
   const [selectedHash, setSelectedHash] = useState('');
   const [powerfulPartners, setPowerfulPartners] = useState('');
+  const [revisedPowerfulPartners, setRevisedPowerfulPartners] = useState('');
   const [popularPartners, setPopularPartners] = useState('');
+  const [partnerStats, setPartnerStats] = useState('');
   // let emptyArr = [];
 
 
@@ -80,23 +82,55 @@ function PowerfulAndPopular(props) {
     setPowerfulPartners(result);
   };
 
+  let emptyArrg = [];
 
   function PowerfulCombos(createEachPartner) {
-    let emptyArrg = [];
+    // let emptyArrg = [];
+    let hashesUsed = [];
     for(let i = 0; i < powerfulPartners.length; i++) {
       if(powerfulPartners[i].allHashes[0].length === 2) {
-        emptyArrg.push(powerfulPartners[i])
+        let uniqueHash = powerfulPartners[i].allHashes[0][0] == selectedHash ? powerfulPartners[i].allHashes[0][1] : powerfulPartners[i].allHashes[0][0];
+
+        if(hashesUsed.includes(uniqueHash)) {
+          let preexistingIndex = hashesUsed.findIndex(currentIndex => {
+            return currentIndex === uniqueHash
+          })
+
+          if(emptyArrg[preexistingIndex].duplicateCounter === undefined && powerfulPartners[i].accountedFor != "true") {
+            emptyArrg[preexistingIndex].duplicateCounter = 0;
+            console.log(powerfulPartners[i], i)
+          }
+          else if(emptyArrg[preexistingIndex].duplicateCounter && powerfulPartners[i].accountedFor != "true") {
+            emptyArrg[preexistingIndex].duplicateCounter++;
+            console.log(powerfulPartners[i], i)
+          }
+
+          for(let eachStat in emptyArrg[preexistingIndex]) {
+            if(eachStat != "_id" && eachStat != "allHashes" && eachStat != "allKills" && eachStat != "duplicateCounter" && powerfulPartners[i].accountedFor != "true") {
+              emptyArrg[preexistingIndex][eachStat] += powerfulPartners[i][eachStat];
+            }
+          }
+
+          if(powerfulPartners[i].accountedFor === undefined) {
+            powerfulPartners[i].accountedFor = "true"
+          }
+        }
+        else if(!hashesUsed.includes(uniqueHash)) {
+          emptyArrg.push(powerfulPartners[i])
+          hashesUsed.push(uniqueHash)
+        }
       }
     }
 
     let highest = emptyArrg.sort((a, b) => 
       b.effAvg - a.effAvg
-    ).slice(0,3)
+    )
+
 
     console.log("Highest: ", highest)
 
     if(createEachPartner != undefined) {
-      let powPartStep1 = emptyArrg.map((eachPart) => {
+      let powPartStep1 = highest.map((eachPart) => {
         let keyVal = eachPart.allHashes[0][0] == selectedHash ? eachPart.allHashes[0][1] : eachPart.allHashes[0][0];
         return(<PartConstructor1 key={keyVal} value={props[keyVal]} />)
       })
@@ -107,28 +141,73 @@ function PowerfulAndPopular(props) {
     }
   }
 
+  function testThisn(testE) {
+    console.log(testE.target.value)
+    emptyArrg.forEach((eachPowPartner) => {
+      // console.log(eachPowPartner._id, testE.target.value)
+      if(eachPowPartner._id[0] == testE.target.value || eachPowPartner._id[1] == testE.target.value) {
+        // console.log(eachPowPartner)
+        setPartnerStats(eachPowPartner)
+        // console.log(partnerStats)
+      }
+    })
+  }
+
   function PartConstructor1(powPartsStep2) {
-    // console.log(popPartsStep2)
+    // console.log(powPartsStep2)
     return (
-      <div className="pow-weapon">
+      <button className="pow-weapon" value={powPartsStep2.value.weaponHash} onClick={e => testThisn(e)}>
         <h3 className="pow-wep-name">{powPartsStep2.value.weaponName}</h3>
         <img src={"https://www.bungie.net" + powPartsStep2.value.weaponIcon} className="pow-wep-icon" alt="pow-wep-icon"></img>
         <h4 className="pow-wep-type">{powPartsStep2.value.weaponType}</h4>
-      </div>
+      </button>
     )
   }
 
   function PopularCombos(createEachPartner) {
     let emptyArr = [];
+    let hashesUsed = [];
     for(let i = 0; i < popularPartners.length; i++)  {  
-      if(emptyArr.length === 3) {
-        i = popularPartners.length
-      }
-      else if(popularPartners[i].allHashes[0].length === 2) {   
-        emptyArr.push(popularPartners[i])
+      if(popularPartners[i].allHashes[0].length === 2) { 
+        let uniqueHash = popularPartners[i].allHashes[0][0] == selectedHash ? popularPartners[i].allHashes[0][1] : popularPartners[i].allHashes[0][0];
+
+        if(hashesUsed.includes(uniqueHash)) {
+          let preexistingIndex = hashesUsed.findIndex(currentIndex => {
+            return currentIndex === uniqueHash
+          })
+          // console.log("FOUND ONE!", "i = ", i, uniqueHash, preexistingIndex)
+
+          if(emptyArr[preexistingIndex].duplicateCounter === undefined && popularPartners[i].accountedFor != "true") {
+            emptyArr[preexistingIndex].duplicateCounter = 0;
+            console.log(popularPartners[i], i)
+          }
+          else if(emptyArr[preexistingIndex].duplicateCounter && popularPartners[i].accountedFor != "true") {
+            emptyArr[preexistingIndex].duplicateCounter++;
+            console.log(popularPartners[i], i)
+          }
+
+          for(let eachStat in emptyArr[preexistingIndex]) {
+            if(eachStat != "_id" && eachStat != "allHashes" && eachStat != "allKills" && eachStat != "duplicateCounter" && popularPartners[i].accountedFor != "true") {
+              // console.log(eachStat, emptyArr[preexistingIndex][eachStat], popularPartners[i][eachStat])
+              emptyArr[preexistingIndex][eachStat] += popularPartners[i][eachStat];
+            }
+          }
+
+          if(popularPartners[i].accountedFor === undefined) {
+            popularPartners[i].accountedFor = "true"
+          }
+        }
+        else if(!hashesUsed.includes(uniqueHash)) {
+          emptyArr.push(popularPartners[i])
+          hashesUsed.push(uniqueHash)
+        }
       }
     }
-    console.log(emptyArr)
+
+    let namesUsed = hashesUsed.map(eachHash => {
+      return props[eachHash].weaponName
+    })
+    console.log(emptyArr, popularPartners, hashesUsed, namesUsed)
 
     if(createEachPartner != undefined) {
       let popPartStep1 = emptyArr.map((eachPart) => {
@@ -153,7 +232,10 @@ function PowerfulAndPopular(props) {
     )
   }
 
+  
 
+
+  //NEXT STEP is to visually display stats for both weps when other wep is clicked
   return (
     <section
       id="pnp-container"
@@ -163,10 +245,25 @@ function PowerfulAndPopular(props) {
         <PowerfulCombos {...powerfulPartners} />
       </div>
 
-      <div className="current-weapon">
-        <h3 className="selected-name">{selectedWeapon.weaponName}</h3>
-        <img src={"https://www.bungie.net" + selectedWeapon.weaponIcon} className="selected-icon" alt="selected-icon"></img>
-        <h4 className="selected-type">{selectedWeapon.weaponType}</h4>
+      <div className="current-combination">
+        <div className="current-weapon">
+          <h3 className="selected-name">{selectedWeapon.weaponName}</h3>
+          <img src={"https://www.bungie.net" + selectedWeapon.weaponIcon} className="selected-icon" alt="selected-icon"></img>
+          <h4 className="selected-type">{selectedWeapon.weaponType}</h4>
+        </div>
+        <div className="current-stats">
+          <h3 className="current-stats-label">Combined stats: </h3>
+          <p className="current-oppDef">Opponents Defeated: {partnerStats.oppDefAvg}</p>
+          <p className="current-kills">Kills: {partnerStats.killsAvg}</p>
+          <p className="current-assists">Assists: {partnerStats.assistsAvg}</p>
+          <p className="current-deaths">Deaths: {partnerStats.deathsAvg}</p>
+          <p className="current-kda">KDA: {(partnerStats.killsAvg + partnerStats.assistsAvg) / partnerStats.deathsAvg}</p>
+          <p className="current-eff">Efficiency: {partnerStats.effAvg}</p>
+          <p className="current-avpkill">Points per Kill: {partnerStats.perKAvg}</p>
+          <p className="current-avplife">Points per Life: {partnerStats.perLAvg}</p>
+          <p className="current-score">Score: {partnerStats.scoreAvg}</p>
+
+        </div>
       </div>
 
       <div className="weapon-searcher">

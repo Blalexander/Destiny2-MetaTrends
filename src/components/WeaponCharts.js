@@ -309,13 +309,21 @@ export default function WeaponCharts(props) {
             let multipleSockets = eachSocket.map(sock => {
               if(testPath.socketDefs[sock] && testPath.socketDefs[sock].socketType != "" && testPath.socketDefs[sock].socketType != "Weapon Ornament" && !testPath.socketDefs[sock].socketType.includes('Tracker') && !testPath.socketDefs[sock].socketType.includes('Catalyst') && !testPath.socketDefs[sock].socketType.includes('Mod') && !testPath.socketDefs[sock].socketType.includes('Shader') && !testPath.socketDefs[sock].socketName.includes('Shader')) {
                 let socketIcon = "https://www.bungie.net" + testPath.socketDefs[sock].socketIcon;
+                let socketDesc = testPath.socketDefs[sock].socketDesc;
+                let socketName = testPath.socketDefs[sock].socketName;
                 return (
-                  <img src={socketIcon} className="socketIcons" alt="socketIcon"></img>
+                  <div className="weapon-socket">
+                    <img src={socketIcon} className="socketIcons" alt="socketIcon"></img>
+                    <div className="socket-tooltip">
+                      <p className="socketName">{socketName}</p>
+                      <p className="socketDesc">{socketDesc}</p>
+                    </div>
+                  </div>
                 )
               }
             })
             return(
-              <p className="multiSockets">{multipleSockets}</p>
+              <div className="multiSockets">{multipleSockets}</div>
             )
           }
           else {

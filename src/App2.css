@@ -241,30 +241,85 @@ header {
 
 /* ---------------- Powerful & Popular --------------- */
 .pnp-container {
-  border: 2px solid black;
+/*   border: 2px solid black; */
   width: 80vw;
   height: 90vh;
   margin-top: 5vh;
-/*   display: grid; */
+  display: grid;
 }
 
-.best-partners {
-  background-color: green;
+.weapon-searcher {
+  display: flex;
+  justify-content: center;
 }
 
-.worst-partners {
-  background-color: red;
+.current-weapon {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
 }
 
 .click-to-search {
-  left: 45%;
-  top: 45%;
-  height: 5vh;
-  width: 10vw;
-  position: absolute;
-  background-color: orange;
+/*   left: 45%; */
+/*   top: 45%; */
+/*   height: 5vh; */
+/*   width: 10vw; */
+/*   position: absolute; */
+/*   background-color: orange; */
 }
 
+.dropdownSelector {
+  height: 5vh;
+  width: 15vw;
+  font-size-adjust: 0.8;
+  text-align: center;
+}
+
+.powerful-combinations, .popular-combinations {
+  background-image: linear-gradient(to top, gray, white);
+  display: flex;
+  align-items: center;
+  width: 80vw;
+}
+
+.all-powerful-partners, .all-popular-partners {
+  height: 25vh;
+  display: flex;
+  flex-flow: row nowrap;
+/*   justify-content: space-evenly; */
+  overflow-x: scroll;
+}
+
+.pow-weapon, .pop-weapon {
+  height: 20vh;
+  width: 10vw;
+  margin-left: 1vw; 
+  margin-right: 1vw;
+  text-align: center;
+  pointer-events: auto;
+}
+
+.pow-wep-name, .pow-wep-type, .pop-wep-name, .pop-wep-type {
+  height: 5vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pow-wep-name, .pow-wep-type, .pow-wep-icon, .pop-wep-name, .pop-wep-type, .pop-wep-icon {
+  pointer-events: none;
+}
+
+.popular-combinations {
+  background-image: linear-gradient(to bottom, gray, white);
+/*   display: flex; */
+/*   align-items: center; */
+}
+
+.all-popular-partners {
+
+}
 
 
 
@@ -435,14 +490,16 @@ header {
 }
 
 .socketIcons {
-  transition: 0.1s;
+/*   transition: 0.1s; */
   -webkit-transform-origin: center;
           transform-origin: center;
+  pointer-events: auto;
 }
 
 .socketIcons:hover {
   -webkit-transform: scale(1.3);
           transform: scale(1.3);
+  z-index: 1;
 }
 
 .wepAttributes6 {
@@ -498,7 +555,7 @@ header {
 } 
 
 .wepChartsItem * {
-  transition: 0.2s;
+/*   transition: 0.2s; */
 }
  
 .statBarContainers {
@@ -603,8 +660,43 @@ header {
 /*   border: 5px groove red; */
 }
 
+.weapon-socket .socket-tooltip {
+  visibility: hidden;
+  position: absolute;
+}
+
+.weapon-socket:hover .socket-tooltip {
+  visibility: visible;
+}
+
 .socketIcons {
   height: 50px;
+}
+
+.socket-tooltip {
+  background-color: black;
+  color: white;
+  height: 15vh;
+  width: 15vw;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-flow: column nowrap;
+  align-items: center;
+  margin-top: -6vh;
+  margin-left: -1vh;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.socketName {
+  font-size-adjust: 0.6;
+/*   background-color: green; */
+}
+
+.socketDesc {
+/*   background-color: skyblue; */
+  width: 80%;
 }
 
 .beingFocused {

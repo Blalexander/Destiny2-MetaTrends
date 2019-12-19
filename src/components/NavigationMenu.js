@@ -7,7 +7,7 @@ import WeaponCharts from './WeaponCharts';
 
 export default function NavigationMenu() {
   const [initialData, setInitialData] = useState('');
-  const [wepPartnerData, setPartnerData] = useState('');
+  const [wepPartnerData, setPartnerData] = useState(''); //transfer the call to app.js so that only when it's answered does this render?
 
 
   let weaponTypes = ["Sidearm", "Auto Rifle", "Pulse Rifle", "Combat Bow", "Scout Rifle", "Hand Cannon", "Sniper Rifle", "Submachine Gun", "Trace Rifle", "Fusion Rifle", "Linear Fusion Rifle", "Grenade Launcher", "Shotgun", "Rocket Launcher", "Sword", "Machine Gun"];
@@ -42,14 +42,23 @@ export default function NavigationMenu() {
   }, [])
 
 
-  return (
-    <section id="landingPageNav" className="landingPageNavigation">
-      <div className="loading"></div>
+  if(initialData != '') {
+    return (
+      <section id="landingPageNav" className="landingPageNavigation">
+        <div className="loading"></div>
 
-      <PowerfulAndPopular {...wepPartnerData}/>
-      <WeaponCharts {...initialData[8]}/>
-      <ClassComparisons {...initialData}/> 
+        <PowerfulAndPopular {...wepPartnerData}/>
+        <WeaponCharts {...initialData[8]}/>
+        <ClassComparisons {...initialData}/> 
 
-    </section>
-  )
+      </section>
+    )
+  }
+  else {
+    return (
+      <section id="landingPageNav" className="landingPageNavigation">
+        <div className="loading"></div>
+      </section>
+    )
+  }
 }
