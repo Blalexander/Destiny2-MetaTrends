@@ -2,6 +2,12 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+/*   outline: 1px solid transparent; */
+/*   -webkit-backface-visibility: hidden; */
+/*           backface-visibility: hidden; */
+/*   -webkit-filter: blur(0); */
+/*           filter: blur(0); */
+/*   -webkit-font-smoothing: subpixel-antialiased; */
 }
 
 body {
@@ -44,93 +50,26 @@ html {
 
 
 
-/*-------------- SearchBar ---------------*/
-#playerSearchForm {
-/*   border: 3px solid black; */
-  background-color: black;
-/*   background-color: white; */
-/*   box-shadow: inset 0 0 4px #000; */
-/*   box-shadow: 0 0 5px #000; */
-/*   margin-bottom: 1vh; */
-  padding-top: 2vh;
-/*   text-align: center; */
-  height: 6vh;
-  width: 100vw;
-  font-size: x-large;
-/*   position: -webkit-sticky; */
-/*   position: sticky; */
-  left:-18px;
-  z-index: 1;
-/*   position: absolute; */
-  top: 0;
-/*   display: flex; */
-/*   justify-content: center; */
-  
-}
-
+/*-------------- Header ---------------*/
 header {
 /*   text-shadow: 1px 1px 1px #000, 4px 4px 4px white; */
   position: absolute;
-  top: 1.5vh;
   color: white;
+  background-color: black;
+/*   background-image: linear-gradient(to bottom, black, white); */
+  height: 15vh;
+  width: 20vw;
+/*   border-right: 5px solid rgba(0, 0, 0, 0.5); */
+/*   border-radius: 0px 0px 15px 0px; */
+/*   clip-path: polygon(100% 0, 60% 5%, 60% 95%, 100% 100%, 0 100%, 0 0); */
 }
 
-.playerSearchInputContainer {
+h1 {
+  top: 5vh;
+  left: 1vw;
   position: absolute;
-  width: 100%;
-  height: 6vh;
-  margin-left: 20vw;
-  top: 1vh;
 }
 
-#formTextInput {
-  height: 2vh;
-  width: 13vw;
-  border: none;
-}
-
-#membershipTypeSelector {
-  margin-left: 1vw;
-  color: white;
-  background-color: gray;
-  border: none;
-  height: 2vh;
-  width: 6vw;
-}
-
-#playerSearchButton {
-  color: white;
-  border: none;
-  background-color: gray;
-  height: 2vh;
-  width: 5vw;
-  border-radius: 1px;
-  margin-left: 1vw;
-}
-
-.navButtonContainer {
-  position: absolute;
-  right: 0;
-  top: 1.5vh;
-  display: flex;
-  align-items: center;
-}
-
-.topNavButton {
-  height: 3vh;
-  width: 10vw;
-  background-color: white;
-  color: black;
-  margin-right: 1vw;
-  border: none;
-}
-
-
-#powerfulAndPopularNavButton {
-/*   background-color: red; */
-/*   -webkit-clip-path: polygon(20% 0%, 100% 0, 100% 100%, 0% 100%); */
-/*           clip-path: polygon(20% 0%, 100% 0, 100% 100%, 0% 100%); */
-}
 
 
 
@@ -253,11 +192,22 @@ header {
   justify-content: center;
 }
 
+.current-combination {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+  border: 3px solid black;
+}
+
 .current-weapon {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
   justify-content: center;
+}
+
+.current-stats {
+  background-color: red;
 }
 
 .click-to-search {
@@ -317,9 +267,57 @@ header {
 /*   align-items: center; */
 }
 
-.all-popular-partners {
-
+.combination-container {
+  opacity: 1;
+    -webkit-transform: translate3d(-100%, 0, 0);
+          transform: translate3d(-100%, 0, 0);
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  z-index: 2;
+  transition: 0.2s;
+  
 }
+
+.display-combos {
+/*   background-color: red; */
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  z-index: 2;
+  opacity: 1;
+  -webkit-transform: translate3d(0%, 0, 0);
+          transform: translate3d(0%, 0, 0);
+}
+
+
+
+
+
+
+
+/* -------------- Comparisons --------------- */
+.comparison-container {
+  opacity: 0;
+    -webkit-transform: translate3d(100%, 0, 0);
+          transform: translate3d(100%, 0, 0);
+    position: fixed;
+  top: 0;
+  background-color: red;
+}
+
+.display-comps {
+  background-color: red;
+  height: 100vh;
+  width: 100vw;
+/*   position: fixed; */
+  z-index: 2;
+  opacity: 1;
+  -webkit-transform: translate3d(0%, 0, 0);
+          transform: translate3d(0%, 0, 0);
+}
+
+
 
 
 
@@ -345,10 +343,11 @@ header {
 /*   overflow-y: scroll; */
   height: 100%;
   width: 100%;
+  margin-top: 5vh;
 }
 
 .wepChartsItem {
-  height: 17vh;
+  height: 150px;
   width: 80vw;
   margin-left: 8vw;
   display: flex;
@@ -357,31 +356,17 @@ header {
   border: none;
   margin-bottom: 3vh;
   transition: 0.3s;
+  position: relative;
 }
-
-.labelNum {
-  position: absolute;
-  margin-left: -8vw;
-  margin-top: 126vh;
-  width: 15vw;
-  height: 141vh;
-  -webkit-writing-mode: sideways-lr;
-          writing-mode: sideways-lr;
-  text-orientation: sideways;
-  font-weight: bold;
-  font-size: xx-large;
-  transition-duration: .8s;
-  border-radius: 15px 0 0 15px;
-}
-
 
 .wepNameIconType {
-  height: 17vh;
+  height: 150px;
   width: 12vw;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
   justify-content: center;
+  z-index: 1;
 }
 
 .wepNumber {
@@ -443,6 +428,37 @@ header {
   justify-self: flex-start;
 }
 
+.combAndCompButtons {
+  height: 15em;
+  position: absolute;
+  top: 20vh;
+  left: 6vw;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.beingFocused .combAndCompButtons {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.combination-button, .comparison-button {
+  height: 6em;
+  width: 8em;
+/*   background-color: transparent; */
+  background-color: rgba(0, 100, 255, 1); 
+  opacity: 0.5;
+}
+
+.combination-button:hover, .comparison-button:hover {
+  opacity: 1;
+  cursor: pointer;
+/*   background-color: rgba(255, 255, 255, 0.2); */
+}
+
 .t6 {
 /*   background-color: #ceae33; */
 /*   opacity: 0.5; */
@@ -489,19 +505,6 @@ header {
   flex-flow: row-reverse nowrap;
 }
 
-.socketIcons {
-/*   transition: 0.1s; */
-  -webkit-transform-origin: center;
-          transform-origin: center;
-  pointer-events: auto;
-}
-
-.socketIcons:hover {
-  -webkit-transform: scale(1.3);
-          transform: scale(1.3);
-  z-index: 1;
-}
-
 .wepAttributes6 {
   background: rgba(206, 174, 51, .6);
 }
@@ -522,10 +525,14 @@ header {
   background: rgba(195, 188, 180, .6);
 }
 
+.beingFocused .wepAttributes {
+  background-color: white;
+}
 
 .statsContainer {
   border-radius: 0 3px 3px 0;
 /*   background-color: orange; */
+  width: 250px;
 }
 
 
@@ -536,7 +543,7 @@ header {
 .beingFocused .wepStatVals {
   flex-flow: column nowrap;
   transition: 0.2s;
-  height: 48vh;
+  height: 500px;
   
 }
 
@@ -544,19 +551,19 @@ header {
 /*   justify-content: center; */
 }
 
+.beingFocused {
+  height: 500px;
+}
+
 .wepStatVals {
   display: flex; 
-  height: 17vh;
+  height: 140px;
 /*   flex-flow: column nowrap; */
   flex-flow: column wrap;
-  padding-top: 2vh;
+  padding-top: 1vh;
 /*   width: 5vw; */
 /*   border: 3px solid red; */
 } 
-
-.wepChartsItem * {
-/*   transition: 0.2s; */
-}
  
 .statBarContainers {
 /*   background-color: red; */
@@ -570,11 +577,14 @@ header {
 
 .statVals {
   width: 2.5em;
+  line-height: 200%;
 /*   background-color: black; */
 }
 
 .statNames {
 /*   background-color: black; */
+  line-height: 200%;
+  height: 100%;
   width: 8em;
   white-space: nowrap;
 }
@@ -600,13 +610,13 @@ header {
   justify-content: flex-end;
 /*   justify-content: space-between; */
   height: 11%;
-  width: 50vw;
+  width: 350px;
   margin-left: -20vw;
 }
 
 .playerPerformances {
 /*   background-color: white; */
-  width: 100%;
+/*   width: 60px; */
   justify-content: space-evenly;
   align-self: flex-end;
   opacity: 0;
@@ -631,6 +641,7 @@ header {
   position: absolute;
   height: 100%;
   opacity: 0;
+  z-index: 1;
 }
 
 .eachPlayerStatBarLeft {
@@ -649,13 +660,17 @@ header {
   opacity: 1;
 }
 
+.current-combination .playerPerformances, .current-combination .eachPlayerStatBar, .current-combination .eachPlayerStatBarLeft, .current-combination .eachPlayerStatBarRight {
+  opacity: 1;
+}
+
 
 
 .wepPerks {
   display: flex;
   flex-flow: row nowrap;
   width: 30vw;
-  height: 16vh;
+  height: 100%;
   margin-top: 1vh;
 /*   border: 5px groove red; */
 }
@@ -670,27 +685,39 @@ header {
 }
 
 .socketIcons {
-  height: 50px;
+  height: 3em;
+}
+
+.beingFocused .socketIcons {
+/*   filter: invert(100%); */
+  background-color: black;
+}
+
+.socketIcons:hover {
+  -webkit-transform: scale(1.3);
+          transform: scale(1.3);
+  z-index: 2;
 }
 
 .socket-tooltip {
   background-color: black;
   color: white;
-  height: 15vh;
-  width: 15vw;
+  height: 15em;
+  width: 15em;
+  padding-top: 5em;
   border-radius: 15px;
   display: flex;
   justify-content: space-evenly;
   flex-flow: column nowrap;
   align-items: center;
   margin-top: -6vh;
-  margin-left: -1vh;
+  margin-left: -5.5em;
   pointer-events: none;
-  z-index: 0;
+  z-index: 1;
 }
 
 .socketName {
-  font-size-adjust: 0.6;
+  font-size-adjust: 0.7;
 /*   background-color: green; */
 }
 
@@ -699,133 +726,60 @@ header {
   width: 80%;
 }
 
-.beingFocused {
-  height: 50vh;
-}
-
-
-
-
-/* ------------ Class Comparisons --------------- */
-#NavigationMenuContainer {
+.wep-type-selector {
   display: grid;
-/*   height: 100%; */
-  width: 100%;
-  position: absolute;
-  background-color: white;
-  top: 10vh;
-  left: 0;
-  grid-template-columns: auto auto auto;
-/*   justify-content: center; */
-  grid-gap: 0px 50px;
-  padding: 20px;
-/*   overflow-y: scroll; */
-  overflow-x: hidden;
-  transition: 0.2s;
-  align-items: end;
-  opacity: 0.0;
-  z-index: 0;
+  grid-template-rows: auto auto;
+  grid-template-columns: auto auto auto auto auto auto auto auto;
+  justify-content: end;
+  grid-gap: 5px;
+  border: 5px solid transparent;
+  border-top: 10px solid black;
+  border-right: 10px solid black;
+/*   border-radius: 15px; */
+  padding: 15px;
+  opacity: 0;
+  transition: 1s;
+  -webkit-perspective: 1000px;
+          perspective: 1000px;
+  -webkit-perspective-origin: 60% 50%;
+          perspective-origin: 60% 50%;
 }
 
-.CCcontainer {
-  width: 25vw;
-  height: 50vh;
-/*   border: 1px solid black; */
+.wep-type-selector button {
+  height: 4em;
+  width: 8em;
+  -webkit-transform: scale(1.2) rotate3d(0, 1, 0, 90deg);
+          transform: scale(1.2) rotate3d(0, 1, 0, 90deg);
+  color: transparent;
+  font-size-adjust: 0.6;
+  transition: 1s;
+  border: 1px solid transparent;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 100, 255, .7);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8),
+              -2px -2px 5px rgba(255, 255, 255, 0.8);
 }
 
-#titanCC, #hunterCC, #warlockCC {
-  margin-top: 50px;
+.wep-type-selector button p {
+  position: relative;
+  z-index: 3;
 }
 
-#titanCC {
-  border-left: 1px solid red;
-  border-right: 1px solid red;
-  grid-row: 3 / 4;
-  grid-column: 1/ 2;
-  width: 30vw;
-  
+.wep-type-selector button:hover {
+  cursor: pointer;
+  background-color: rgba(0, 100, 255, 1); 
+  -webkit-transform: translate3d(0, 0, -50px); 
+          transform: translate3d(0, 0, -50px);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3),
+              -2px -2px 5px rgba(255, 255, 255, 0.3);
+  font-size-adjust: 0.6;
 }
 
-#hunterCC {
-  border-left: 1px solid blue;
-  border-right: 1px solid blue;
-  grid-row: 3 / 4;
-  grid-column: 2 / 3;
-  width: 30vw;
+.finished-loading button {
+  -webkit-transform: scale(1) rotate3d(0, 0, 0, 90deg);
+          transform: scale(1) rotate3d(0, 0, 0, 90deg);
+  color: white;
 }
-
-#warlockCC {
-  border-left: 1px solid gold;
-  border-right: 1px solid gold;
-  grid-row: 3 / 4;
-  grid-column: 3 / 4;
-  width: 30vw;
-}
-
-.classPopNumbers {
-  grid-row: 2 / 3;
-  margin-top: 1vh;
-}
-
-.titanPopulationBar {
-  border: 1px solid red;
-  height: 20vh;
-  background-image: url(https://geek-prime.com/wp-content/uploads/2014/02/Destiny-2-4k-hd-wallpaper-titan-4k-1024x576.jpg);
-  background-size: cover;
-  display: grid;
-  align-items: end;
-}
-
-.titanPopulationBar .populationBar {
-/*   background-color: red; */
-  opacity: 0.6;
-  box-shadow: 0px 51px 100px inset red;
-}
-
-.hunterPopulationBar {
-  border: 1px solid blue;
-  height: 20vh;
-  background-image: url(https://geek-prime.com/wp-content/uploads/2014/02/Destiny-2-4k-hd-wallpaper-Hunter-4k-1024x576.jpg);
-  background-size: cover;
-  display: grid;
-  align-items: end;
-}
-
-.hunterPopulationBar .populationBar {
-/*   background-color: blue; */
-  opacity: 0.6;
-  box-shadow: 0px 51px 100px inset blue;
-}
-
-.warlockPopulationBar {
-  border: 1px solid goldenrod;
-  height: 20vh;
-  background-image: url(https://geek-prime.com/wp-content/uploads/2014/02/Destiny-2-4k-hd-wallpaper-warlock-4k-1024x576.jpg);
-  background-size: cover;
-  display: grid;
-  align-items: end;
-}
-
-.warlockPopulationBar .populationBar {
-/*   background-color: goldenrod; */
-  opacity: 0.6;
-  box-shadow: 0px 51px 100px inset goldenrod;
-}
-
-.mapIcons {
-  width: 60vw;
-}
-
-.classMaps {
-  margin-top: 10vh;
-  grid-row: 4 / 5;
-  grid-column: 1 / 4;
-}
-
-.eachMapHolder {
-  margin-bottom: 1vh;
-}
-
 
 
 
