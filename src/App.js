@@ -27,24 +27,6 @@ export default function App() {
     fetchInitialData();
   }, [])
 
-  let weaponsOrganizedByType = {};
-
-  for(let weaponDefinition in initialData[8]) {
-    // console.log(weaponDefinition)
-    if(weaponDefinition != "socketDefs" && weaponDefinition != "statDefs") {
-      let typeToMatch = initialData[8][weaponDefinition].weaponType;
-      let nameToMatch = initialData[8][weaponDefinition].weaponName;
-      if(weaponsOrganizedByType[typeToMatch] != undefined) {
-        weaponsOrganizedByType[typeToMatch].push({hash: weaponDefinition, name: nameToMatch})
-      }
-      else {
-        weaponsOrganizedByType[typeToMatch] = []
-      }
-    }
-  }
-
-  console.log(weaponsOrganizedByType)
-
 
 
   return (

@@ -43,6 +43,25 @@ export default function WeaponCharts(props) {
 
   // console.log(weaponsOrganizedByType)
 
+  let damageDefs = {
+    "1847026933": {
+      damageType: "Solar",
+      damageTypeIcon: "https://www.bungie.net/common/destiny2_content/icons/DestinyDamageTypeDefinition_2a1773e10968f2d088b97c22b22bba9e.png"
+    },
+    "2303181850": {
+      damageType: "Arc",
+      damageTypeIcon: "https://www.bungie.net/common/destiny2_content/icons/DestinyDamageTypeDefinition_9fbcfcef99f4e8a40d8762ccb556fcd4.png"
+    },
+    "3454344768": {
+      damageType: "Void",
+      damageTypeIcon: "https://www.bungie.net/common/destiny2_content/icons/DestinyDamageTypeDefinition_ceb2f6197dccf3958bb31cc783eb97a0.png"
+    },
+    "3373582085": {
+      damageType: "Kinetic",
+      damageTypeIcon: "https://www.bungie.net/common/destiny2_content/icons/DestinyDamageTypeDefinition_3385a924fd3ccb92c343ade19f19a370.png"
+    }
+  }
+
   let eachPlayerStatAverages = { 
     "Sidearm": {},
     "Auto Rifle": {},
@@ -134,15 +153,14 @@ export default function WeaponCharts(props) {
       let revisedWep = testPath[weaponItem.value];
       let revisedWinRate = 1 - revisedWep.playerPerformances.standingAvg.toFixed(2);
       let wepId = weaponItem.value;
-      // let wepIcon = "https://www.bungie.net" + manifest[wepId].weaponIcon;
-
       let revisedWepName = revisedWep.weaponName;
       let wepIcon = "https://www.bungie.net" + revisedWep.weaponIcon;
       let wepStatKeys = Object.keys(revisedWep.weaponValues);
       // console.log(wepStatKeys) //WORK WITH THIS
-      let wepRpmMagSize = [];
-      // let barStats = [];
       let type = revisedWep.weaponType;
+      let hashedDamageType = revisedWep.damageType[0];
+      let damageIcon = damageDefs[hashedDamageType].damageTypeIcon;
+
 
       if(type === "Fusion Rifle") { //NEED TO BE LOOKED AT
         wepStatKeys = ["Impact", "Range", "Stability", "Handling", "Reload Speed", "Aim Assistance", "Zoom", "Charge Time", "Magazine", "wepPrecKillsAvg", "killsAvg", "deathsAvg", "assistsAvg", "KaD", "effAvg", "perKAvg", "perLAvg", "scoreAvg"]
@@ -231,36 +249,44 @@ export default function WeaponCharts(props) {
       labelIncrementor++;
       // let graphData = [revisedWep.meleeKills.toFixed(1), revisedWep.grenadeKills.toFixed(1), revisedWep.superKills.toFixed(1)]
       return (
-        <button className="wepChartsItem" id={"item" + labelIncrementor} onClick={e => displayWepStats(e)}>
+        <div className="wepChartsItem" id={"item" + labelIncrementor} onClick={e => displayWepStats(e)}>
           <h3 className="wepNumber">{labelIncrementor}</h3>
-          <div className="popularityAndWinRate">
-            <p className="timesUsed">Times Used: {revisedWep.playerPerformances.totalCount}</p>
-            <p className="winRate">Win Rate: {(revisedWinRate * 100).toFixed(0)}%</p>
-          </div>
-          <div className={"wepNameIconType t" + revisedWep.weaponTier}>
-            <p className="wepName">{revisedWepName}</p>
-            <img src={wepIcon} className="wepIcons" alt="wepIcon"></img> 
-            <p className="wepType">{revisedWep.weaponType}</p>
-          </div>
-          <div className={"wepAttributes " + "wepAttributes" + revisedWep.weaponTier}>
-            <div className={"statsContainer " + "statsContainer" + revisedWep.weaponTier}>
-              <div className="wepStatVals">{wepStatVals}</div>
+          <img src={wepIcon} className="wepIcons" alt="wepIcon"></img> 
+          <div className="item-body">
+            <div className="weapon-header">
+              <div className={"wepNameIconType t" + revisedWep.weaponTier}>
+                <p className="wepName">{revisedWepName}</p>
+                <img src={damageIcon} className="damage-type-icon" alt="damage-type-icon"></img>
+                <p className="wepType">{revisedWep.weaponType}</p>
+              </div>
+              <div className="popularityAndWinRate">
+                <p className="timesUsed">Times Used: {revisedWep.playerPerformances.totalCount}</p>
+                <p className="winRate">Win Rate: {(revisedWinRate * 100).toFixed(0)}%</p>
+              </div>
             </div>
-            <div className="pie-chart">
-              <Pie
-                data={chartData}
-                width={150}
-                height={100}
-                options={{ maintainAspectRatio: false, legend: {display: false}, layout: {padding: {right: 50}}, responsive: true }}
-              />
+            <div className={"wepAttributes " + "wepAttributes" + revisedWep.weaponTier} backgroundimage={"https://www.bungie.net" + revisedWep.weaponScreenshot}>
+              <div className={"statsContainer " + "statsContainer" + revisedWep.weaponTier}>
+                <div className="wepStatVals">{wepStatVals}</div>
+              </div>
+              <div className="pie-chart">
+                <Pie
+                  data={chartData}
+                  width={150}
+                  height={100}
+                  options={{ maintainAspectRatio: false, legend: {display: false}, layout: {padding: {right: 50}}, responsive: true }}
+                />
+              </div>
+              <div className="wepPerks">{wepPerks}</div>
             </div>
-            <div className="wepPerks">{wepPerks}</div>
             <div className="combAndCompButtons">
               <button className="combination-button" value={wepId} onClick={e => showCombinations(e)}>View Combinations</button>
               <button className="comparison-button" value={wepId} onClick={e => showComparisons(e)}>Compare</button>
             </div>
+            <div className="wepDescription">
+              {revisedWep.weaponDescription}
+            </div>
           </div>
-        </button>
+        </div>
       )
     }
     else {
@@ -268,6 +294,9 @@ export default function WeaponCharts(props) {
     }
   }
 
+
+
+  
   function showCombinations(comboHash) {
     console.log(comboHash.target.value)
     let comboContainer = document.querySelector('.combination-container');
@@ -280,23 +309,30 @@ export default function WeaponCharts(props) {
   function showComparisons(compHash) {
     console.log(compHash.target.value)
     let compContainer = document.querySelector('.comparison-container');
-    compContainer.classList.toggle('display-comps');
-    // document.getElementById('weaponCharts').style.filter = 'blur(5px)';
+    compContainer.style.transform = "translate3d(0%, 0, 0)";
+
+    document.getElementById('weaponCharts').style.filter = 'blur(5px)';
     setCurrentWepForCombAndComp(compHash.target.value);
   }
 
   //work on showing most notable medals for each wep
   function displayWepStats(p) { //onClick = show hidden stats / query for best secondary weapon
     let cName = (p.currentTarget.id)
-    // console.log(cName)
+    console.log(cName)
     
     let addClass = document.getElementById(cName).classList;
     // console.log(addClass.value)
     if(addClass.value.includes('beingFocused')) {
       addClass.remove('beingFocused')
+      document.getElementById(cName).childNodes[2].childNodes[1].style.backgroundImage = "unset";
     }
     else {
       addClass.add('beingFocused')
+      // if(document.getElementById(cName).childNodes[3]) {
+        let imgSrc = document.getElementById(cName).childNodes[2].childNodes[1].attributes[1].nodeValue
+        // console.log("I hope it worked! ", imgSrc)
+        document.getElementById(cName).childNodes[2].childNodes[1].style.backgroundImage = "url(" + imgSrc + ")";
+      // }
     }
   }
 
@@ -337,8 +373,8 @@ export default function WeaponCharts(props) {
       setCurrentWepForCombAndComp('')
       document.getElementById('weaponCharts').style.filter = 'blur(0px)'; 
     }
-    else if(ev.target.className.includes('comparison-container')) {
-      document.querySelector('.comparison-container').classList.toggle('display-comps')
+    else if(ev.target.className.includes('comparison') || ev.target.className.includes('first-weapon') || ev.target.className.includes('second-weapon')) {
+      document.querySelector('.comparison-container').style.transform = "translate3d(100%, 0, 0)";
       setCurrentWepForCombAndComp('')
       document.getElementById('weaponCharts').style.filter = 'blur(0px)'; 
     }
@@ -373,7 +409,7 @@ export default function WeaponCharts(props) {
         </div>
       </section>
       <section className="comparison-container" onClick={e => resetBlur(e)}>
-        <Comparisons value={currentWepForCombAndComp} manifest={props} />
+        <Comparisons value={currentWepForCombAndComp} manifest={props} averages={eachPlayerStatAverages} />
       </section>
     </div>
   )

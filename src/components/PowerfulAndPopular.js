@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 // import PowerfulCombos from './PowerfulCombos';
 // import PopularCombos from './PopularCombos';
 import MakeMyStatBars from './MakeMyStatBars';
+import {Pie} from 'react-chartjs-2';
+
 
 function PowerfulAndPopular(props) {
   if(props.value === "") {
@@ -192,22 +194,39 @@ function PowerfulAndPopular(props) {
       let keysToMap = Object.keys(statContainer)
 
       let currentSingleOrDuoStats = keysToMap.map(eachKey => {
-        // console.log(eachKey)
-        if(eachKey != "_id" && eachKey != "totalCount" && eachKey != "allHashes" && eachKey != "allKills") {
+        if(eachKey != "_id" && eachKey != "totalCount" && eachKey != "allHashes" && eachKey != "allKills" && eachKey != "oppDefAvg" && eachKey != "grenadeKills" && eachKey != "meleeKills" && eachKey != "abilityKills" && eachKey != "superKills" && eachKey != "standingAvg") {
           return(<MakeMyStatBars key={manifestDefs[selectedHash].weaponHash + eachKey} value={statContainer} stat={eachKey} mani={eachKey} avs={averages} type={manifestDefs[selectedHash].weaponType} />)
         }
         else {
           return(null)
         }
       })
-      // if(manifestDefs[selectedHash] && Object.keys(statContainer).length > 0) {
-      //   let newStatContainer = Object.keys(statContainer).length === 0 ? manifestDefs[selectedHash].playerPerformances : statContainer
-      // }
 
-      return(<div>{currentSingleOrDuoStats}</div>)
+      const chartData = {
+        labels: ["Weapon Kills", "Melee Kills", "Grenade Kills", "Ability Kills", "Super Kills"],
+        datasets: [{
+          level:'population',
+          data:[statContainer.wepKillsAvg, statContainer.grenadeKills, statContainer.meleeKills, statContainer.abilityKills, statContainer.superKills],
+          backgroundColor: ['rgba(255, 255, 255, 0.2)', 'firebrick', 'mediumblue', 'royalblue', 'orange']
+        }]
+      }
+
+      return(
+        <div className="combo-and-pie-container">
+          <div className="combo-stat-container">
+            {currentSingleOrDuoStats}
+          </div>
+          <div className="pie-chart">
+              <Pie
+                data={chartData}
+                width={150}
+                height={100}
+                options={{ maintainAspectRatio: false, legend: {display: false}, layout: {padding: {right: 50}}, responsive: true }}
+              />
+            </div>
+        </div>)
     }
     else {
-      console.log("NULL")
       return(null)
     }
   }
@@ -256,20 +275,20 @@ export default PowerfulAndPopular;
 //   if(manifestDefs[selectedHash] && Object.keys(statContainer).length > 0) {
 //     let newStatContainer = Object.keys(statContainer).length === 0 ? manifestDefs[selectedHash].playerPerformances : statContainer
     
-//     return (
-//       <div className="current-stats">
-//         <h3 className="current-stats-label">{manifestDefs[selectedHash].weaponName + " "} stats: </h3>
-//         <p className="current-oppDef">Opponents Defeated: {newStatContainer.oppDefAvg.toFixed(1)}</p>
-//         <p className="current-kills">Kills: {newStatContainer.killsAvg.toFixed(1)}</p>
-//         <p className="current-assists">Assists: {newStatContainer.assistsAvg.toFixed(1)}</p>
-//         <p className="current-deaths">Deaths: {newStatContainer.deathsAvg.toFixed(1)}</p>
-//         <p className="current-kda">KDA: {((newStatContainer.killsAvg + newStatContainer.assistsAvg) / newStatContainer.deathsAvg).toFixed(1)}</p>
-//         <p className="current-eff">Efficiency: {newStatContainer.effAvg.toFixed(1)}</p>
-//         <p className="current-avpkill">Points per Kill: {newStatContainer.perKAvg.toFixed(1)}</p>
-//         <p className="current-avplife">Points per Life: {newStatContainer.perLAvg.toFixed(1)}</p>
-//         <p className="current-score">Score: {newStatContainer.scoreAvg.toFixed(1)}</p>
-//       </div>
-//     )
+    // return (
+    //   <div className="current-stats">
+    //     <h3 className="current-stats-label">{manifestDefs[selectedHash].weaponName + " "} stats: </h3>
+    //     <p className="current-oppDef">Opponents Defeated: {newStatContainer.oppDefAvg.toFixed(1)}</p>
+    //     <p className="current-kills">Kills: {newStatContainer.killsAvg.toFixed(1)}</p>
+    //     <p className="current-assists">Assists: {newStatContainer.assistsAvg.toFixed(1)}</p>
+    //     <p className="current-deaths">Deaths: {newStatContainer.deathsAvg.toFixed(1)}</p>
+    //     <p className="current-kda">KDA: {((newStatContainer.killsAvg + newStatContainer.assistsAvg) / newStatContainer.deathsAvg).toFixed(1)}</p>
+    //     <p className="current-eff">Efficiency: {newStatContainer.effAvg.toFixed(1)}</p>
+    //     <p className="current-avpkill">Points per Kill: {newStatContainer.perKAvg.toFixed(1)}</p>
+    //     <p className="current-avplife">Points per Life: {newStatContainer.perLAvg.toFixed(1)}</p>
+    //     <p className="current-score">Score: {newStatContainer.scoreAvg.toFixed(1)}</p>
+    //   </div>
+    // )
 //   }
 //   else {
 //     return null
