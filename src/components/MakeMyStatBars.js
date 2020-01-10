@@ -31,7 +31,7 @@ function MakeMyStatBars(props) {
     }
     else if(stat === "wepPrecKillsAvg") {
       return( 
-        <div className="eachWepStat playerPerformances">
+        <div className="eachWepStat playerPerformances add-margin-top">
           <div className="statNames">Precision Kills</div>
           <div className="playerStatBarContainers">
               <span className="eachPlayerStatBar" style={{width: ((revisedPlayerPerfs[stat] / eachPlayerStatAverages[type][stat]) * 50 + "%")}}></span>
@@ -89,7 +89,7 @@ function MakeMyStatBars(props) {
     // console.log(stat, eachStatHash, props.mani)
     // console.log(revisedWep.weaponValues, eachStatHash)
 
-    if(stat === "Magazine" || stat === "Rounds Per Minute" || stat === "Ammo Capacity" || stat === "Draw Time") {
+    if(stat === "Magazine" || stat === "Rounds Per Minute" || stat === "Ammo Capacity" || stat === "Draw Time" || stat === "Charge Time" || stat === "Swing Speed") {
       // console.log(manifest[wepId])
       return( 
         <div className="eachWepStat leftHalf">

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {Polar} from 'react-chartjs-2';
 import MakeMyStatBars from './MakeMyStatBars';
 
@@ -9,6 +9,8 @@ function Comparisons(props) {
   if(props.value === "") {
     return null;
   }
+
+  console.log(props)
 
   let manifestDefs = props.manifest;
   let selectedHash = props.value;
@@ -44,10 +46,10 @@ function Comparisons(props) {
 
   for(let weaponDefinition in manifestDefs) {
     // console.log(weaponDefinition)
-    if(weaponDefinition != "socketDefs" && weaponDefinition != "statDefs") {
+    if(weaponDefinition !== "socketDefs" && weaponDefinition !== "statDefs") {
       let typeToMatch = manifestDefs[weaponDefinition].weaponType;
       let nameToMatch = manifestDefs[weaponDefinition].weaponName;
-      if(weaponsOrganizedByType[typeToMatch] != undefined) {
+      if(weaponsOrganizedByType[typeToMatch] !== undefined) {
         weaponsOrganizedByType[typeToMatch].push({hash: weaponDefinition, name: nameToMatch})
       }
       else {
@@ -169,7 +171,7 @@ function Comparisons(props) {
   function CreateMyCenter() {
     let dropdownKeys = Object.keys(manifestDefs)
     let dropdownOptions = dropdownKeys.map(wepId => {
-      if(wepId != "socketDefs" && wepId != "statDefs") {
+      if(wepId !== "socketDefs" && wepId !== "statDefs") {
         return(<ListItemConstructor key={wepId} value={manifestDefs[wepId]} />)
       }
       else {
@@ -220,25 +222,25 @@ function Comparisons(props) {
 
   function StatDifsConstructor(eachKeyToCompare) {
     eachKeyToCompare = eachKeyToCompare.value
-    if(manifestDefs[compareMe] != undefined && manifestDefs[selectedHash].weaponValues[manifestDefs.statDefs[eachKeyToCompare].statHash] != undefined && manifestDefs[compareMe].weaponValues[manifestDefs.statDefs[eachKeyToCompare].statHash] != undefined) {
-      console.log(eachKeyToCompare)
+    if(manifestDefs[compareMe] !== undefined && manifestDefs[selectedHash].weaponValues[manifestDefs.statDefs[eachKeyToCompare].statHash] !== undefined && manifestDefs[compareMe].weaponValues[manifestDefs.statDefs[eachKeyToCompare].statHash] !== undefined) {
+      // console.log(eachKeyToCompare)
       let eachKeysHash = manifestDefs.statDefs[eachKeyToCompare].statHash;
       if(manifestDefs[selectedHash].weaponValues[eachKeysHash].value > manifestDefs[compareMe].weaponValues[eachKeysHash].value) {
-        console.log("LEFT", manifestDefs[selectedHash].weaponValues[eachKeysHash], manifestDefs[compareMe].weaponValues[eachKeysHash])
+        // console.log("LEFT", manifestDefs[selectedHash].weaponValues[eachKeysHash], manifestDefs[compareMe].weaponValues[eachKeysHash])
         return(
           <div className={"compared-stat-" + eachKeyToCompare + " superior-first"}>
           </div>
         )
       }
       else if(manifestDefs[selectedHash].weaponValues[eachKeysHash].value < manifestDefs[compareMe].weaponValues[eachKeysHash].value) {
-        console.log("RIGHT", manifestDefs[selectedHash].weaponValues[eachKeysHash], manifestDefs[compareMe].weaponValues[eachKeysHash])
+        // console.log("RIGHT", manifestDefs[selectedHash].weaponValues[eachKeysHash], manifestDefs[compareMe].weaponValues[eachKeysHash])
         return(
           <div className={"compared-stat-" + eachKeyToCompare + " superior-second"}>
           </div>
         )
       }
       else {
-        console.log("NEITHER", manifestDefs[selectedHash].weaponValues[eachKeysHash], manifestDefs[compareMe].weaponValues[eachKeysHash])
+        // console.log("NEITHER", manifestDefs[selectedHash].weaponValues[eachKeysHash], manifestDefs[compareMe].weaponValues[eachKeysHash])
         return(
           <div className={"compared-stat-" + eachKeyToCompare + " first-equal-second"}>
           </div>
@@ -246,7 +248,7 @@ function Comparisons(props) {
       }
     }
     else {
-      console.log("It equal to UNderFINED :(....", eachKeyToCompare)
+      // console.log("It equal to UNderFINED :(....", eachKeyToCompare)
       return(
         <div className={"compared-stat-" + eachKeyToCompare + " cannot-compare"}>
         </div>

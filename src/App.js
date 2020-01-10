@@ -7,7 +7,7 @@ import WeaponCharts from './components/WeaponCharts';
 
 export default function App() {
   const [initialData, setInitialData] = useState('');
-  const [wepPartnerData, setPartnerData] = useState(''); 
+  // const [wepPartnerData, setPartnerData] = useState(''); 
 
   useEffect(() => {
     const fetchInitialData = async () => {
@@ -19,7 +19,7 @@ export default function App() {
 
       console.log(result);
       setInitialData(result);
-      setPartnerData(result);
+      // setPartnerData(result);
       document.querySelector('.wep-type-selector').style.opacity = "1";
       document.querySelector('.wep-type-selector').classList.add('finished-loading')
     };
@@ -37,7 +37,7 @@ export default function App() {
         </header>
       </section>
       <section className="dynamic-charts-display">
-        <WeaponCharts  {...initialData[8]} />
+        <WeaponCharts  {...initialData[0]} />
       </section>
     </main>
   );

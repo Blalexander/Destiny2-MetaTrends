@@ -45,24 +45,24 @@ function PowerfulAndPopular(props) {
     let hashesUsed = [];
     for(let i = 0; i < unrefinedPartnerData.length; i++) {
       if(unrefinedPartnerData[i].allHashes[0].length === 2) {
-        let uniqueHash = unrefinedPartnerData[i].allHashes[0][0] == selectedHash ? unrefinedPartnerData[i].allHashes[0][1] : unrefinedPartnerData[i].allHashes[0][0];
+        let uniqueHash = unrefinedPartnerData[i].allHashes[0][0] === selectedHash ? unrefinedPartnerData[i].allHashes[0][1] : unrefinedPartnerData[i].allHashes[0][0];
 
         if(hashesUsed.includes(uniqueHash)) {
           let preexistingIndex = hashesUsed.findIndex(currentIndex => {
             return currentIndex === uniqueHash
           })
 
-          if(sortedPowCombos[preexistingIndex].duplicateCounter === undefined && unrefinedPartnerData[i].accountedFor != "true") {
+          if(sortedPowCombos[preexistingIndex].duplicateCounter === undefined && unrefinedPartnerData[i].accountedFor !== "true") {
             sortedPowCombos[preexistingIndex].duplicateCounter = 0;
             // console.log(unrefinedPartnerData[i], i)
           }
-          else if(sortedPowCombos[preexistingIndex].duplicateCounter && unrefinedPartnerData[i].accountedFor != "true") {
+          else if(sortedPowCombos[preexistingIndex].duplicateCounter && unrefinedPartnerData[i].accountedFor !== "true") {
             sortedPowCombos[preexistingIndex].duplicateCounter++;
             // console.log(unrefinedPartnerData[i], i)
           }
 
           for(let eachStat in sortedPowCombos[preexistingIndex]) {
-            if(eachStat != "_id" && eachStat != "allHashes" && eachStat != "allKills" && eachStat != "duplicateCounter" && unrefinedPartnerData[i].accountedFor != "true") {
+            if(eachStat !== "_id" && eachStat !== "allHashes" && eachStat !== "allKills" && eachStat !== "duplicateCounter" && unrefinedPartnerData[i].accountedFor !== "true") {
               sortedPowCombos[preexistingIndex][eachStat] += unrefinedPartnerData[i][eachStat];
             }
           }
@@ -85,9 +85,9 @@ function PowerfulAndPopular(props) {
 
     // console.log("Highest: ", highest)
 
-    if(createEachPartner != undefined) {
+    if(createEachPartner !== undefined) {
       let powPartStep1 = highest.map((eachPart) => {
-        let keyVal = eachPart.allHashes[0][0] == selectedHash ? eachPart.allHashes[0][1] : eachPart.allHashes[0][0];
+        let keyVal = eachPart.allHashes[0][0] === selectedHash ? eachPart.allHashes[0][1] : eachPart.allHashes[0][0];
         return(<PartConstructor1 key={keyVal} value={manifestDefs[keyVal]} />)
       })
 
@@ -100,7 +100,7 @@ function PowerfulAndPopular(props) {
   function displayCombinationStats(clickableWeaponHash) {
     // console.log(clickableWeaponHash.target.value)
     sortedPowCombos.forEach((eachPowPartner) => {
-      if(eachPowPartner._id[0] == clickableWeaponHash.target.value || eachPowPartner._id[1] == clickableWeaponHash.target.value) {
+      if(eachPowPartner._id[0] === clickableWeaponHash.target.value || eachPowPartner._id[1] === clickableWeaponHash.target.value) {
         setPartnerStats(eachPowPartner)
       }
     })
@@ -121,7 +121,7 @@ function PowerfulAndPopular(props) {
     let hashesUsed = [];
     for(let i = 0; i < unrefinedPartnerData.length; i++)  {  
       if(unrefinedPartnerData[i].allHashes[0].length === 2) { 
-        let uniqueHash = unrefinedPartnerData[i].allHashes[0][0] == selectedHash ? unrefinedPartnerData[i].allHashes[0][1] : unrefinedPartnerData[i].allHashes[0][0];
+        let uniqueHash = unrefinedPartnerData[i].allHashes[0][0] === selectedHash ? unrefinedPartnerData[i].allHashes[0][1] : unrefinedPartnerData[i].allHashes[0][0];
 
         if(hashesUsed.includes(uniqueHash)) {
           let preexistingIndex = hashesUsed.findIndex(currentIndex => {
@@ -129,17 +129,17 @@ function PowerfulAndPopular(props) {
           })
           // console.log("FOUND ONE!", "i = ", i, uniqueHash, preexistingIndex)
 
-          if(sortedPopCombos[preexistingIndex].duplicateCounter === undefined && unrefinedPartnerData[i].accountedFor != "true") {
+          if(sortedPopCombos[preexistingIndex].duplicateCounter === undefined && unrefinedPartnerData[i].accountedFor !== "true") {
             sortedPopCombos[preexistingIndex].duplicateCounter = 0;
             console.log(unrefinedPartnerData[i], i)
           }
-          else if(sortedPopCombos[preexistingIndex].duplicateCounter && unrefinedPartnerData[i].accountedFor != "true") {
+          else if(sortedPopCombos[preexistingIndex].duplicateCounter && unrefinedPartnerData[i].accountedFor !== "true") {
             sortedPopCombos[preexistingIndex].duplicateCounter++;
             console.log(unrefinedPartnerData[i], i)
           }
 
           for(let eachStat in sortedPopCombos[preexistingIndex]) {
-            if(eachStat != "_id" && eachStat != "allHashes" && eachStat != "allKills" && eachStat != "duplicateCounter" && unrefinedPartnerData[i].accountedFor != "true") {
+            if(eachStat !== "_id" && eachStat !== "allHashes" && eachStat !== "allKills" && eachStat !== "duplicateCounter" && unrefinedPartnerData[i].accountedFor !== "true") {
               // console.log(eachStat, sortedPopCombos[preexistingIndex][eachStat], unrefinedPartnerData[i][eachStat])
               sortedPopCombos[preexistingIndex][eachStat] += unrefinedPartnerData[i][eachStat];
             }
@@ -156,14 +156,14 @@ function PowerfulAndPopular(props) {
       }
     }
 
-    let namesUsed = hashesUsed.map(eachHash => {
-      return manifestDefs[eachHash].weaponName
-    })
+    // let namesUsed = hashesUsed.map(eachHash => {
+    //   return manifestDefs[eachHash].weaponName
+    // })
     // console.log(sortedPopCombos, unrefinedPartnerData, hashesUsed, namesUsed)
 
-    if(createEachPartner != undefined) {
+    if(createEachPartner !== undefined) {
       let popPartStep1 = sortedPopCombos.map((eachPart) => {
-        let keyVal = eachPart.allHashes[0][0] == selectedHash ? eachPart.allHashes[0][1] : eachPart.allHashes[0][0];
+        let keyVal = eachPart.allHashes[0][0] === selectedHash ? eachPart.allHashes[0][1] : eachPart.allHashes[0][0];
         return(<PartConstructor2 key={keyVal} value={manifestDefs[keyVal]} />)
       })
 
@@ -194,7 +194,7 @@ function PowerfulAndPopular(props) {
       let keysToMap = Object.keys(statContainer)
 
       let currentSingleOrDuoStats = keysToMap.map(eachKey => {
-        if(eachKey != "_id" && eachKey != "totalCount" && eachKey != "allHashes" && eachKey != "allKills" && eachKey != "oppDefAvg" && eachKey != "grenadeKills" && eachKey != "meleeKills" && eachKey != "abilityKills" && eachKey != "superKills" && eachKey != "standingAvg") {
+        if(eachKey !== "_id" && eachKey !== "totalCount" && eachKey !== "allHashes" && eachKey !== "allKills" && eachKey !== "oppDefAvg" && eachKey !== "grenadeKills" && eachKey !== "meleeKills" && eachKey !== "abilityKills" && eachKey !== "superKills" && eachKey !== "standingAvg") {
           return(<MakeMyStatBars key={manifestDefs[selectedHash].weaponHash + eachKey} value={statContainer} stat={eachKey} mani={eachKey} avs={averages} type={manifestDefs[selectedHash].weaponType} />)
         }
         else {
@@ -232,7 +232,7 @@ function PowerfulAndPopular(props) {
   }
 
 
-  if(selectedWeapon != undefined) {
+  if(selectedWeapon !== undefined) {
     return (
       <section
         id="pnp-container"

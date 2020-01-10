@@ -13,7 +13,6 @@ export default function WeaponCharts(props) {
   // }
   // console.log(props)
 
-  const manifest = props.socketDefs
 
   const testPath = props;
 
@@ -23,12 +22,14 @@ export default function WeaponCharts(props) {
 
   let weaponsOrganizedByType = {};
 
+  let eachPlayerStatAverages = props.playerAvgs
+
   for(let weaponDefinition in props) {
     // console.log(weaponDefinition)
-    if(weaponDefinition != "socketDefs" && weaponDefinition != "statDefs") {
+    if(weaponDefinition !== "socketDefs" && weaponDefinition !== "statDefs") {
       let typeToMatch = props[weaponDefinition].weaponType;
       let nameToMatch = props[weaponDefinition].weaponName;
-      if(weaponsOrganizedByType[typeToMatch] != undefined) {
+      if(weaponsOrganizedByType[typeToMatch] !== undefined) {
         weaponsOrganizedByType[typeToMatch].push({hash: weaponDefinition, name: nameToMatch})
       }
       else {
@@ -37,9 +38,25 @@ export default function WeaponCharts(props) {
     }
   }
 
+  // console.log(weaponsOrganizedByType)
+
 
   const [currentWeaponsToDisplay, setCurrentWeaponsToDisplay] = useState('');
-  const [currentWepForCombAndComp, setCurrentWepForCombAndComp] = useState('');
+  const [currentWepForCombination, setCurrentWepForCombination] = useState('');
+  const [currentWepForComparison, setCurrentWepForComparison] = useState('');
+
+  const [weaponOneHash, setWeaponOneHash] = useState('')
+  const [weaponTwoHash, setWeaponTwoHash] = useState('')
+  const [weaponThreeHash, setWeaponThreeHash] = useState('')
+  const [weaponFourHash, setWeaponFourHash] = useState('')
+  const [weaponFiveHash, setWeaponFiveHash] = useState('')
+  const [weaponSixHash, setWeaponSixHash] = useState('')
+  const [weaponSevenHash, setWeaponSevenHash] = useState('')
+  const [weaponEightHash, setWeaponEightHash] = useState('')
+  const [weaponNineHash, setWeaponNineHash] = useState('')
+  const [weaponTenHash, setWeaponTenHash] = useState('')
+  
+
 
   // console.log(weaponsOrganizedByType)
 
@@ -62,94 +79,11 @@ export default function WeaponCharts(props) {
     }
   }
 
-  let eachPlayerStatAverages = { 
-    "Sidearm": {},
-    "Auto Rifle": {},
-    "Pulse Rifle": {},
-    "Combat Bow": {},
-    "Scout Rifle": {},
-    "Hand Cannon": {},
-    "Sniper Rifle": {},
-    "Submachine Gun": {},
-    "Trace Rifle": {},
-    "Fusion Rifle": {},
-    "Linear Fusion Rifle": {},
-    "Grenade Launcher": {},
-    "Shotgun": {},
-    "Rocket Launcher": {},
-    "Sword": {},
-    "Machine Gun": {},
-    "All Types": {
-      count: 0
-    }
-  };
-
-  // let eachStatToAverage = ['scoreAvg', 'oppDefAvg', 'killsAvg', 'abilityKills', 'grenadeKills', 'superKills', 'standingAvg', 'assistsAvg', 'deathsAvg', 'effAvg', 'perKAvg', 'perLAvg'];
-
-  for (let eachWeaponKey in props) {
-    let wepType = props[eachWeaponKey].weaponType;
-
-    if(wepType) {
-      if(eachPlayerStatAverages[wepType].count === undefined) {
-        eachPlayerStatAverages[wepType].count = 1;
-      }
-      else {
-        eachPlayerStatAverages[wepType].count++;
-        eachPlayerStatAverages["All Types"].count++;
-      }
-
-      for (let eachWepPlayerStat in props[eachWeaponKey].playerPerformances) {
-        if(eachWepPlayerStat != "_id" && eachWepPlayerStat != "totalCount") {
-          if(eachPlayerStatAverages[wepType][eachWepPlayerStat] === undefined) {
-            eachPlayerStatAverages[wepType][eachWepPlayerStat] = props[eachWeaponKey].playerPerformances[eachWepPlayerStat]
-            if(eachPlayerStatAverages["All Types"][eachWepPlayerStat] === undefined) {
-              eachPlayerStatAverages["All Types"][eachWepPlayerStat] = props[eachWeaponKey].playerPerformances[eachWepPlayerStat]
-            }
-          }
-          else {
-            eachPlayerStatAverages[wepType][eachWepPlayerStat] += props[eachWeaponKey].playerPerformances[eachWepPlayerStat]
-            eachPlayerStatAverages["All Types"][eachWepPlayerStat] += props[eachWeaponKey].playerPerformances[eachWepPlayerStat]
-          }
-        }
-      }
-
-      for (let eachWepPlayerStat in props[eachWeaponKey].weaponValues) {
-        if(eachWepPlayerStat != "_id" && eachWepPlayerStat != "totalCount") {
-          if(eachPlayerStatAverages[wepType][eachWepPlayerStat] === undefined) {
-            eachPlayerStatAverages[wepType][eachWepPlayerStat] = props[eachWeaponKey].weaponValues[eachWepPlayerStat].value
-            if(eachPlayerStatAverages["All Types"][eachWepPlayerStat] === undefined) {
-              eachPlayerStatAverages["All Types"][eachWepPlayerStat] = props[eachWeaponKey].weaponValues[eachWepPlayerStat].value
-            }
-          }
-          else {
-            eachPlayerStatAverages[wepType][eachWepPlayerStat] += props[eachWeaponKey].weaponValues[eachWepPlayerStat].value
-            eachPlayerStatAverages["All Types"][eachWepPlayerStat] += props[eachWeaponKey].weaponValues[eachWepPlayerStat].value
-          }
-        }
-      }
-
-    }
-  }
-
-  for(let eachWepType in eachPlayerStatAverages) {
-    // if(eachWepType != "All Types") {
-      for(let eachWepStat in eachPlayerStatAverages[eachWepType]) {
-        if(eachWepStat != "count") {
-          eachPlayerStatAverages[eachWepType][eachWepStat] /= eachPlayerStatAverages[eachWepType].count
-        }
-      }
-      eachPlayerStatAverages[eachWepType].kdAvg = (eachPlayerStatAverages[eachWepType].killsAvg + eachPlayerStatAverages[eachWepType].assistsAvg) / eachPlayerStatAverages[eachWepType].deathsAvg
-    // }
-  }
-
-  console.log(eachPlayerStatAverages)
-
-
 
 
   function WepConstructor(weaponItem) { 
     // console.log(weaponItem) //weaponItem being sent here with twin values?
-    if(weaponItem.value != "socketDefs" && weaponItem.value != "statDefs") {
+    if(weaponItem.value !== "socketDefs" && weaponItem.value !== "statDefs") {
       let revisedWep = testPath[weaponItem.value];
       let revisedWinRate = 1 - revisedWep.playerPerformances.standingAvg.toFixed(2);
       let wepId = weaponItem.value;
@@ -198,12 +132,11 @@ export default function WeaponCharts(props) {
 
       let vSockets = revisedWep.varSockets;
       // let socketItems = [];
-      let notAllowed = ["tracker"]
       let wepPerks = vSockets.map(eachSocket => {
-        if(eachSocket != null) {
+        if(eachSocket !== null) {
           if(Array.isArray(eachSocket)) {
             let multipleSockets = eachSocket.map(sock => {
-              if(testPath.socketDefs[sock] && testPath.socketDefs[sock].socketType != "" && testPath.socketDefs[sock].socketType != "Weapon Ornament" && !testPath.socketDefs[sock].socketType.includes('Tracker') && !testPath.socketDefs[sock].socketType.includes('Catalyst') && !testPath.socketDefs[sock].socketType.includes('Mod') && !testPath.socketDefs[sock].socketType.includes('Shader') && !testPath.socketDefs[sock].socketName.includes('Shader')) {
+              if(testPath.socketDefs[sock] && testPath.socketDefs[sock].socketType !== "" && testPath.socketDefs[sock].socketType !== "Weapon Ornament" && !testPath.socketDefs[sock].socketType.includes('Tracker') && !testPath.socketDefs[sock].socketType.includes('Catalyst') && !testPath.socketDefs[sock].socketType.includes('Mod') && !testPath.socketDefs[sock].socketType.includes('Shader') && !testPath.socketDefs[sock].socketName.includes('Shader')) {
                 let socketIcon = "https://www.bungie.net" + testPath.socketDefs[sock].socketIcon;
                 let socketDesc = testPath.socketDefs[sock].socketDesc;
                 let socketName = testPath.socketDefs[sock].socketName;
@@ -249,13 +182,13 @@ export default function WeaponCharts(props) {
       labelIncrementor++;
       // let graphData = [revisedWep.meleeKills.toFixed(1), revisedWep.grenadeKills.toFixed(1), revisedWep.superKills.toFixed(1)]
       return (
-        <div className="wepChartsItem" id={"item" + labelIncrementor} onClick={e => displayWepStats(e)}>
+        <div className="temp-classholder" id={"item" + labelIncrementor} onClick={e => displayWepStats(e)}>
           <h3 className="wepNumber">{labelIncrementor}</h3>
           <img src={wepIcon} className="wepIcons" alt="wepIcon"></img> 
           <div className="item-body">
             <div className="weapon-header">
-              <div className={"wepNameIconType t" + revisedWep.weaponTier}>
-                <p className="wepName">{revisedWepName}</p>
+              <p className="wepName">{revisedWepName}</p>
+              <div className={"wepNameIconType"}>
                 <img src={damageIcon} className="damage-type-icon" alt="damage-type-icon"></img>
                 <p className="wepType">{revisedWep.weaponType}</p>
               </div>
@@ -264,7 +197,8 @@ export default function WeaponCharts(props) {
                 <p className="winRate">Win Rate: {(revisedWinRate * 100).toFixed(0)}%</p>
               </div>
             </div>
-            <div className={"wepAttributes " + "wepAttributes" + revisedWep.weaponTier} backgroundimage={"https://www.bungie.net" + revisedWep.weaponScreenshot}>
+            <span className="bg-image-holder" backgroundimage={"https://www.bungie.net" + revisedWep.weaponScreenshot}></span>
+            <div className={"wepAttributes " + "wepAttributes" + revisedWep.weaponTier}>
               <div className={"statsContainer " + "statsContainer" + revisedWep.weaponTier}>
                 <div className="wepStatVals">{wepStatVals}</div>
               </div>
@@ -272,8 +206,8 @@ export default function WeaponCharts(props) {
                 <Pie
                   data={chartData}
                   width={150}
-                  height={100}
-                  options={{ maintainAspectRatio: false, legend: {display: false}, layout: {padding: {right: 50}}, responsive: true }}
+                  height={225}
+                  options={{ maintainAspectRatio: false, legend: {display: false}, layout: {padding: {right: 50, top: 475}}, responsive: true }}
                 />
               </div>
               <div className="wepPerks">{wepPerks}</div>
@@ -298,84 +232,118 @@ export default function WeaponCharts(props) {
 
   
   function showCombinations(comboHash) {
+    comboHash.preventDefault();
     console.log(comboHash.target.value)
     let comboContainer = document.querySelector('.combination-container');
     comboContainer.style.transform = "translate3d(0%, 0, 0)";
+    // setTimeout(() => comboContainer.style.transform = "translate3d(0%, 0, 0)", 500);
 
     document.getElementById('weaponCharts').style.filter = 'blur(5px)';
-    setCurrentWepForCombAndComp(comboHash.target.value);
+    setCurrentWepForCombination(comboHash.target.value);
   }
 
   function showComparisons(compHash) {
+    
     console.log(compHash.target.value)
     let compContainer = document.querySelector('.comparison-container');
     compContainer.style.transform = "translate3d(0%, 0, 0)";
 
     document.getElementById('weaponCharts').style.filter = 'blur(5px)';
-    setCurrentWepForCombAndComp(compHash.target.value);
+    setCurrentWepForComparison(compHash.target.value);
   }
 
-  //work on showing most notable medals for each wep
-  function displayWepStats(p) { //onClick = show hidden stats / query for best secondary weapon
+
+  function displayWepStats(p) { 
     let cName = (p.currentTarget.id)
-    console.log(cName)
+    let checkAgainst = p.target.classList;
+    console.log(checkAgainst[0] === "combination-button")
     
-    let addClass = document.getElementById(cName).classList;
-    // console.log(addClass.value)
-    if(addClass.value.includes('beingFocused')) {
-      addClass.remove('beingFocused')
-      document.getElementById(cName).childNodes[2].childNodes[1].style.backgroundImage = "unset";
-    }
-    else {
-      addClass.add('beingFocused')
-      // if(document.getElementById(cName).childNodes[3]) {
-        let imgSrc = document.getElementById(cName).childNodes[2].childNodes[1].attributes[1].nodeValue
-        // console.log("I hope it worked! ", imgSrc)
-        document.getElementById(cName).childNodes[2].childNodes[1].style.backgroundImage = "url(" + imgSrc + ")";
-      // }
+    if(checkAgainst[0] !== "combination-button" && checkAgainst[0] !== "comparison-button") {
+      let addClass = document.getElementById(cName).classList;
+      // addClass.toggle('beingFocused')
+
+      // console.log(addClass.value)
+      if(addClass.value.includes('beingFocused')) {
+        addClass.toggle('beingFocused')
+        addClass.toggle('notFocused')
+        document.getElementById(cName).childNodes[2].childNodes[1].style.backgroundImage = "unset";
+      }
+      else {
+        addClass.toggle('beingFocused')
+        addClass.toggle('notFocused')
+        // if(document.getElementById(cName).childNodes[3]) {
+          let imgSrc = document.getElementById(cName).childNodes[2].childNodes[1].attributes[1].nodeValue
+          document.getElementById(cName).childNodes[2].childNodes[1].style.backgroundImage = "url(" + imgSrc + ")";
+        // }
+      }
     }
   }
 
   function WepList(testPathReceiver) {
     let testPathReceiver2 = Object.keys(testPathReceiver);
-    // console.log(testPathReceiver2)
+    let testPathReceiver3 = testPathReceiver2.slice(0, 10)
+    // console.log(testPathReceiver3)
 
-    const listOfWeps = testPathReceiver2.map((wepId) => 
-      <WepConstructor key={testPathReceiver[wepId].hash} value={testPathReceiver[wepId].hash}/>
-    );
+    const listOfWeps = testPathReceiver3.map((wepId) => {
+      return(<WepConstructor key={testPathReceiver[wepId].hash} value={testPathReceiver[wepId].hash}/>)
+    });
     // listOfWeps.reverse();
     // listOfWeps.sort();
 
     return (
-      <div id="weaponContainer" className="hiding">
+      <div id="weaponContainer">
         {listOfWeps}
       </div>
     )
   }
 
+  const delayLoop = (fn, delay) => {
+    return (x, i) => {
+      setTimeout(() => {
+        fn(x);
+      }, i * delay);
+    }
+  };
+
+  const display = s => {
+    if(document.getElementById(s.id) != null) {
+      console.log(document.getElementById(s.id)); 
+      // document.getElementById(s.id).style.opacity = 1
+      document.getElementById(s.id).classList.add("wepChartsItem", "notFocused")
+    }
+    else return null
+  };
+
   function handleSubmit(e) {
     e.preventDefault();
-    // console.log(e.currentTarget.value)
-    if(currentWeaponsToDisplay[0] && currentWeaponsToDisplay[0].hash == weaponsOrganizedByType[e.currentTarget.value][0].hash) {
+    console.log(e.currentTarget.value)
+
+
+
+    if(currentWeaponsToDisplay[0] && currentWeaponsToDisplay[0].hash === weaponsOrganizedByType[e.currentTarget.value][0].hash) {
       setCurrentWeaponsToDisplay('');
       // console.log("TOGGLE OFF", currentWeaponsToDisplay)
     }
     else {
       setCurrentWeaponsToDisplay(weaponsOrganizedByType[e.currentTarget.value])
-      // console.log("TOGGLE ON", currentWeaponsToDisplay)
+      console.log("TOGGLE ON", currentWeaponsToDisplay)
+
+      setTimeout(() => document.querySelectorAll('.temp-classholder').forEach(delayLoop(display, 500)), 500)
+      // setCurrentWeaponsToDisplay(weaponsOrganizedByType[e.currentTarget.value])
     }
   }
 
   function resetBlur(ev) {
+    console.log("BLUR RESET")
     ev.preventDefault();
     if(ev.target.className.includes('combination-container')) {
       document.querySelector('.combination-container').style.transform = "translate3d(-100%, 0, 0)";
-      setCurrentWepForCombAndComp('')
+      setCurrentWepForCombination('')
       document.getElementById('weaponCharts').style.filter = 'blur(0px)'; 
     }
     else if(ev.target.className.includes('comparison') || ev.target.className.includes('first-weapon') || ev.target.className.includes('second-weapon')) {
       document.querySelector('.comparison-container').style.transform = "translate3d(100%, 0, 0)";
-      setCurrentWepForCombAndComp('')
+      setCurrentWepForComparison('')
       document.getElementById('weaponCharts').style.filter = 'blur(0px)'; 
     }
   }
@@ -383,7 +351,7 @@ export default function WeaponCharts(props) {
   return (
     <div className="body-content-container">
       <section className="combination-container" onClick={e => resetBlur(e)}>
-        <PowerfulAndPopular value={currentWepForCombAndComp} manifest={props} averages={eachPlayerStatAverages} />
+        <PowerfulAndPopular value={currentWepForCombination} manifest={props} averages={eachPlayerStatAverages} />
       </section>
       <section id="weaponCharts">
         <form className="wep-type-selector">
@@ -394,7 +362,7 @@ export default function WeaponCharts(props) {
           <button className="sidearms" value="Sidearm" type="submit" onClick={e => handleSubmit(e)}><p>Sidearms</p></button>
           <button className="hand-cannons" value="Hand Cannon" type="submit" onClick={e => handleSubmit(e)}><p>Hand Cannons</p></button>
           <button className="scout-rifles" value="Scout Rifle" type="submit" onClick={e => handleSubmit(e)}><p>Scout Rifles</p></button>
-          <button className="snipers" value="Sniper" type="submit" onClick={e => handleSubmit(e)}><p>Snipers</p></button>
+          <button className="snipers" value="Sniper Rifle" type="submit" onClick={e => handleSubmit(e)}><p>Snipers</p></button>
           <button className="bows" value="Combat Bow" type="submit" onClick={e => handleSubmit(e)}><p>Bows</p></button>
           <button className="shotguns" value="Shotgun" type="submit" onClick={e => handleSubmit(e)}><p>Shotguns</p></button>
           <button className="grenade-launchers" value="Grenade Launcher" type="submit" onClick={e => handleSubmit(e)}><p>Grenade Launchers</p></button>
@@ -406,10 +374,10 @@ export default function WeaponCharts(props) {
         </form>
         <div className="displayed-weapons">
           <WepList {...currentWeaponsToDisplay} />
-        </div>
+        </div> 
       </section>
       <section className="comparison-container" onClick={e => resetBlur(e)}>
-        <Comparisons value={currentWepForCombAndComp} manifest={props} averages={eachPlayerStatAverages} />
+        <Comparisons value={currentWepForComparison} manifest={props} averages={eachPlayerStatAverages} />
       </section>
     </div>
   )
