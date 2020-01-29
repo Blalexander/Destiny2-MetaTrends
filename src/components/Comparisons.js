@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {Polar} from 'react-chartjs-2';
 import MakeMyStatBars from './MakeMyStatBars';
 
@@ -41,6 +41,14 @@ function Comparisons(props) {
 
   const [compareMe, setCompareMe] = useState('');
   // setSelectedHash(props.value)
+
+  // if(props.comparisonTarget !== "") {
+  //   setCompareMe(props.comparisonTarget)
+  // }
+
+  useEffect(() => {
+    setCompareMe(props.comparisonTarget)
+  }, [])
 
   let weaponsOrganizedByType = {};
 
@@ -115,7 +123,12 @@ function Comparisons(props) {
   function CreateMySecondCompare(wepToCompare) {
     console.log(wepToCompare)
     if(wepToCompare.hashToUse === "") {
-      return null
+      return(
+        <div className="second-weapon">
+          <div className="wepNameIcon-placeholder"></div>
+          <h4 className="waiting-for-second-weapon">Select a second weapon to compare</h4>
+        </div>
+      )
     }
     else {
       let revisedWep = manifestDefs[compareMe];
@@ -186,20 +199,15 @@ function Comparisons(props) {
         return(<StatDifsConstructor key={"compareMy" + eachKey} value={eachKey} />)
       }
       else {
-        return null
+        return(<StatDifsConstructor2 key={"compareMy" + eachKey} value={eachKey} />)
       }
     })
 
 
     return(
-      <>
-        <select className="dropdown-select" value={compareMe} onChange={e => setUpComparison(e.target.value)}>
-          {dropdownOptions}
-        </select>
-        <div className="comparison-differences">
-          {statDifferences}
-        </div>
-      </>
+      <div className="comparison-differences">
+        {statDifferences}
+      </div>
     )
   }
 
@@ -220,7 +228,45 @@ function Comparisons(props) {
     } 
   }
 
+  function StatDifsConstructor2(eachKeyToCompare) {
+    console.log("2", eachKeyToCompare)
+    eachKeyToCompare = eachKeyToCompare.value
+    if(manifestDefs[compareMe] !== undefined && manifestDefs[selectedHash].playerPerformances[eachKeyToCompare] !== undefined) {
+      // console.log(eachKeyToCompare)
+      // let eachKeysHash = manifestDefs.statDefs[eachKeyToCompare].statHash;
+      if(manifestDefs[selectedHash].playerPerformances[eachKeyToCompare] > manifestDefs[compareMe].playerPerformances[eachKeyToCompare]) {
+        // console.log("LEFT", manifestDefs[selectedHash].weaponValues[eachKeysHash], manifestDefs[compareMe].weaponValues[eachKeysHash])
+        return(
+          <div className={"compared-stat-" + eachKeyToCompare + " superior-first"}>
+          </div>
+        )
+      }
+      else if(manifestDefs[selectedHash].playerPerformances[eachKeyToCompare] < manifestDefs[compareMe].playerPerformances[eachKeyToCompare]) {
+        // console.log("RIGHT", manifestDefs[selectedHash].weaponValues[eachKeysHash], manifestDefs[compareMe].weaponValues[eachKeysHash])
+        return(
+          <div className={"compared-stat-" + eachKeyToCompare + " superior-second"}>
+          </div>
+        )
+      }
+      else {
+        // console.log("NEITHER", manifestDefs[selectedHash].weaponValues[eachKeysHash], manifestDefs[compareMe].weaponValues[eachKeysHash])
+        return(
+          <div className={"compared-stat-" + eachKeyToCompare + " first-equal-second"}> ~
+          </div>
+        )
+      }
+    }
+    else {
+      // console.log("It equal to UNderFINED :(....", eachKeyToCompare)
+      return(
+        <div className={"compared-stat-" + eachKeyToCompare + " cannot-compare"}>
+        </div>
+      )
+    }
+  }
+
   function StatDifsConstructor(eachKeyToCompare) {
+    console.log(eachKeyToCompare)
     eachKeyToCompare = eachKeyToCompare.value
     if(manifestDefs[compareMe] !== undefined && manifestDefs[selectedHash].weaponValues[manifestDefs.statDefs[eachKeyToCompare].statHash] !== undefined && manifestDefs[compareMe].weaponValues[manifestDefs.statDefs[eachKeyToCompare].statHash] !== undefined) {
       // console.log(eachKeyToCompare)
@@ -242,7 +288,7 @@ function Comparisons(props) {
       else {
         // console.log("NEITHER", manifestDefs[selectedHash].weaponValues[eachKeysHash], manifestDefs[compareMe].weaponValues[eachKeysHash])
         return(
-          <div className={"compared-stat-" + eachKeyToCompare + " first-equal-second"}>
+          <div className={"compared-stat-" + eachKeyToCompare + " first-equal-second"}> ~
           </div>
         )
       }
@@ -264,9 +310,7 @@ function Comparisons(props) {
   return (
     <div className="child-comparison-container">
       <CreateMyFirstCompare hashToUse={selectedHash} />
-      <div className="between-two-comparisons">
-        <CreateMyCenter />
-      </div>
+      <CreateMyCenter />
       <CreateMySecondCompare hashToUse={compareMe} />
     </div>
   )

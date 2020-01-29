@@ -10,8 +10,11 @@ function PowerfulAndPopular(props) {
     return null;
   }
 
+  // console.log(props)
+
   const [selectedWeapon, setSelectedWeapon] = useState('');
   const [selectedHash, setSelectedHash] = useState('');
+  const [partnerHash, setPartnerHash] = useState('');
   const [unrefinedPartnerData, setUnrefinedPartnerData] = useState('');
   const [partnerStats, setPartnerStats] = useState('');
   let sortedPopCombos = [];
@@ -21,8 +24,10 @@ function PowerfulAndPopular(props) {
   let averages = props.averages;
 
 
+
   useEffect(() => {
     const fetchWeaponPartners = async findMyPartners => {
+      console.log(findMyPartners)
       setSelectedWeapon(manifestDefs[findMyPartners]);
       setSelectedHash(findMyPartners);
   
@@ -32,15 +37,17 @@ function PowerfulAndPopular(props) {
         return res.json();
       })
   
-      // console.log("RESSUUULLLTTTT: ", result);
+      console.log("RESSUUULLLTTTT: ", result);
       setUnrefinedPartnerData(result);
+      setPartnerStats(manifestDefs[props.value].playerPerformances)
     };
 
     fetchWeaponPartners(props.value);
-  }, [props])
+  }, [])
 
 
   function PowerfulCombos(createEachPartner) {
+    console.log(createEachPartner)
     // let sortedPowCombos = [];
     let hashesUsed = [];
     for(let i = 0; i < unrefinedPartnerData.length; i++) {
@@ -87,7 +94,7 @@ function PowerfulAndPopular(props) {
 
     if(createEachPartner !== undefined) {
       let powPartStep1 = highest.map((eachPart) => {
-        let keyVal = eachPart.allHashes[0][0] === selectedHash ? eachPart.allHashes[0][1] : eachPart.allHashes[0][0];
+        let keyVal = eachPart.allHashes[0][0] == selectedHash ? eachPart.allHashes[0][1] : eachPart.allHashes[0][0];
         return(<PartConstructor1 key={keyVal} value={manifestDefs[keyVal]} />)
       })
 
@@ -98,18 +105,28 @@ function PowerfulAndPopular(props) {
   }
 
   function displayCombinationStats(clickableWeaponHash) {
-    // console.log(clickableWeaponHash.target.value)
-    sortedPowCombos.forEach((eachPowPartner) => {
-      if(eachPowPartner._id[0] === clickableWeaponHash.target.value || eachPowPartner._id[1] === clickableWeaponHash.target.value) {
-        setPartnerStats(eachPowPartner)
-      }
-    })
+    clickableWeaponHash.preventDefault();
+    console.log(clickableWeaponHash.target.value, sortedPowCombos)
+    if(partnerHash !== clickableWeaponHash.target.value) {
+      setPartnerHash(clickableWeaponHash.target.value)
+      sortedPowCombos.forEach((eachPowPartner) => {
+        if(eachPowPartner._id[0] == clickableWeaponHash.target.value || eachPowPartner._id[1] == clickableWeaponHash.target.value) {
+          console.log("worked", eachPowPartner)
+          setPartnerStats(eachPowPartner)
+        }
+      })
+    }
+    else {
+      console.log("closing display")
+      setPartnerHash('')
+      setPartnerStats(manifestDefs[selectedHash].playerPerformances)
+    }
   }
 
   function PartConstructor1(powPartsStep2) {
     // console.log(powPartsStep2)
     return (
-      <button className="pow-weapon" value={powPartsStep2.value.weaponHash} onClick={e => displayCombinationStats(e)}>
+      <button className={"pow-weapon wepNameIconType t" + powPartsStep2.value.weaponTier} value={powPartsStep2.value.weaponHash} onClick={e => displayCombinationStats(e)}>
         <h3 className="pow-wep-name">{powPartsStep2.value.weaponName}</h3>
         <img src={"https://www.bungie.net" + powPartsStep2.value.weaponIcon} className="pow-wep-icon" alt="pow-wep-icon"></img>
         <h4 className="pow-wep-type">{powPartsStep2.value.weaponType}</h4>
@@ -118,6 +135,7 @@ function PowerfulAndPopular(props) {
   }
 
   function PopularCombos(createEachPartner) {
+    console.log(createEachPartner)
     let hashesUsed = [];
     for(let i = 0; i < unrefinedPartnerData.length; i++)  {  
       if(unrefinedPartnerData[i].allHashes[0].length === 2) { 
@@ -163,7 +181,7 @@ function PowerfulAndPopular(props) {
 
     if(createEachPartner !== undefined) {
       let popPartStep1 = sortedPopCombos.map((eachPart) => {
-        let keyVal = eachPart.allHashes[0][0] === selectedHash ? eachPart.allHashes[0][1] : eachPart.allHashes[0][0];
+        let keyVal = eachPart.allHashes[0][0] == selectedHash ? eachPart.allHashes[0][1] : eachPart.allHashes[0][0];
         return(<PartConstructor2 key={keyVal} value={manifestDefs[keyVal]} />)
       })
 
@@ -176,7 +194,7 @@ function PowerfulAndPopular(props) {
   function PartConstructor2(popPartsStep2) {
     // console.log(popPartsStep2)
     return (
-      <button className="pop-weapon" value={popPartsStep2.value.weaponHash} onClick={e => displayCombinationStats(e)}>
+      <button className={"pop-weapon wepNameIconType t" + popPartsStep2.value.weaponTier} value={popPartsStep2.value.weaponHash} onClick={e => displayCombinationStats(e)}>
         <h3 className="pop-wep-name">{popPartsStep2.value.weaponName}</h3>
         <img src={"https://www.bungie.net" + popPartsStep2.value.weaponIcon} className="pop-wep-icon" alt="pop-wep-icon"></img>
         <h4 className="pop-wep-type">{popPartsStep2.value.weaponType}</h4>
@@ -194,7 +212,7 @@ function PowerfulAndPopular(props) {
       let keysToMap = Object.keys(statContainer)
 
       let currentSingleOrDuoStats = keysToMap.map(eachKey => {
-        if(eachKey !== "_id" && eachKey !== "totalCount" && eachKey !== "allHashes" && eachKey !== "allKills" && eachKey !== "oppDefAvg" && eachKey !== "grenadeKills" && eachKey !== "meleeKills" && eachKey !== "abilityKills" && eachKey !== "superKills" && eachKey !== "standingAvg") {
+        if(eachKey !== "_id" && eachKey !== "totalCount" && eachKey !== "allHashes" && eachKey !== "allKills" && eachKey !== "oppDefAvg" && eachKey !== "grenadeKills" && eachKey !== "meleeKills" && eachKey !== "abilityKills" && eachKey !== "superKills" && eachKey !== "standingAvg" && eachKey !== "wepKillsAvg") {
           return(<MakeMyStatBars key={manifestDefs[selectedHash].weaponHash + eachKey} value={statContainer} stat={eachKey} mani={eachKey} avs={averages} type={manifestDefs[selectedHash].weaponType} />)
         }
         else {
@@ -211,6 +229,7 @@ function PowerfulAndPopular(props) {
         }]
       }
 
+      console.log("making the stats..")
       return(
         <div className="combo-and-pie-container">
           <div className="combo-stat-container">
@@ -227,7 +246,24 @@ function PowerfulAndPopular(props) {
         </div>)
     }
     else {
+      console.log("messed up the stats")
       return(null)
+    }
+  }
+
+  function PartnerToDisplay(displayMe) {
+    console.log(displayMe.value)
+    if(displayMe.value !== '') {
+      return (
+        <div className={"partner-to-display wepNameIconType t" + manifestDefs[displayMe.value].weaponTier}>
+          <h3 className="selected-name">{manifestDefs[displayMe.value].weaponName}</h3>
+          <img src={"https://www.bungie.net" + manifestDefs[displayMe.value].weaponIcon} className="selected-icon" alt="selected-icon"></img>
+          <h4 className="selected-type">{manifestDefs[displayMe.value].weaponType}</h4>
+        </div>
+      )
+    }
+    else {
+      return null
     }
   }
 
@@ -239,19 +275,22 @@ function PowerfulAndPopular(props) {
         className="pnp-container"
       >
         <div className="powerful-combinations">
+          <h2 className="pow-combo-header">Powerful</h2>
           <PowerfulCombos {...unrefinedPartnerData} />
         </div>
 
         <div className="current-combination">
-          <div className="current-weapon">
+          <div className={"current-weapon wepNameIconType t" + selectedWeapon.weaponTier}>
             <h3 className="selected-name">{selectedWeapon.weaponName}</h3>
             <img src={"https://www.bungie.net" + selectedWeapon.weaponIcon} className="selected-icon" alt="selected-icon"></img>
             <h4 className="selected-type">{selectedWeapon.weaponType}</h4>
           </div>
+          <PartnerToDisplay value={partnerHash} />
           <AllCurrentStats {...partnerStats} />
         </div>
 
         <div className="popular-combinations">
+          <h2 className="pop-combo-header">Popular</h2>
           <PopularCombos {...unrefinedPartnerData} />
         </div>
       </section>
@@ -259,38 +298,9 @@ function PowerfulAndPopular(props) {
   }
   else {
     return (
-      <section>Hello!</section>
+      <section>ERROR ERROR</section>
     );
   }
 }
 
 export default PowerfulAndPopular;
-
-
-
-
-// function AllCurrentStats(statContainer) {
-//   console.log(Object.keys(statContainer), manifestDefs[selectedHash])
-
-//   if(manifestDefs[selectedHash] && Object.keys(statContainer).length > 0) {
-//     let newStatContainer = Object.keys(statContainer).length === 0 ? manifestDefs[selectedHash].playerPerformances : statContainer
-    
-    // return (
-    //   <div className="current-stats">
-    //     <h3 className="current-stats-label">{manifestDefs[selectedHash].weaponName + " "} stats: </h3>
-    //     <p className="current-oppDef">Opponents Defeated: {newStatContainer.oppDefAvg.toFixed(1)}</p>
-    //     <p className="current-kills">Kills: {newStatContainer.killsAvg.toFixed(1)}</p>
-    //     <p className="current-assists">Assists: {newStatContainer.assistsAvg.toFixed(1)}</p>
-    //     <p className="current-deaths">Deaths: {newStatContainer.deathsAvg.toFixed(1)}</p>
-    //     <p className="current-kda">KDA: {((newStatContainer.killsAvg + newStatContainer.assistsAvg) / newStatContainer.deathsAvg).toFixed(1)}</p>
-    //     <p className="current-eff">Efficiency: {newStatContainer.effAvg.toFixed(1)}</p>
-    //     <p className="current-avpkill">Points per Kill: {newStatContainer.perKAvg.toFixed(1)}</p>
-    //     <p className="current-avplife">Points per Life: {newStatContainer.perLAvg.toFixed(1)}</p>
-    //     <p className="current-score">Score: {newStatContainer.scoreAvg.toFixed(1)}</p>
-    //   </div>
-    // )
-//   }
-//   else {
-//     return null
-//   }
-// }
