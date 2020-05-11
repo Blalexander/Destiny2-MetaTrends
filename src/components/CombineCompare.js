@@ -23,7 +23,7 @@ function CombineCompare(props) {
       let wepIcon = "https://www.bungie.net" + props[weaponDefinition].weaponIcon;
       if(weaponsOrganizedByType[typeToMatch] !== undefined) {
         weaponsOrganizedByType[typeToMatch].push(
-        <button value={props[weaponDefinition].weaponHash} id={"clickable" + props[weaponDefinition].weaponHash} className={"each-clickable-weapon t" + props[weaponDefinition].weaponTier} onClick={e => weaponWasClicked(e)}>
+        <button key={props[weaponDefinition].weaponHash} value={props[weaponDefinition].weaponHash} id={"clickable" + props[weaponDefinition].weaponHash} className={"each-clickable-weapon t" + props[weaponDefinition].weaponTier} onClick={e => weaponWasClicked(e)}>
           <img className="clickable-weapon-icon" src={wepIcon}></img>
           <p className="clickable-weapon-name">{nameToMatch}</p>
         </button>
@@ -137,10 +137,10 @@ function CombineCompare(props) {
 
       let weaponStats = wepStatKeys.map(eachKey => {
         if(props.statDefs[eachKey]) {
-          return(<MakeMyStatBars key={selectedHash} value={props[selectedHash]} stat={eachKey} mani={props.statDefs[eachKey].statHash} avs={props.playerAvgs} />)
+          return(<MakeMyStatBars key={selectedHash + eachKey} value={props[selectedHash]} stat={eachKey} mani={props.statDefs[eachKey].statHash} avs={props.playerAvgs} />)
         }
         else {
-          return(<MakeMyStatBars key={selectedHash} value={props[selectedHash]} stat={eachKey} mani={eachKey} avs={props.playerAvgs} />)
+          return(<MakeMyStatBars key={selectedHash + eachKey} value={props[selectedHash]} stat={eachKey} mani={eachKey} avs={props.playerAvgs} />)
         }
       })
 

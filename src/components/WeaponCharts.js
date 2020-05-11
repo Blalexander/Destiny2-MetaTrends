@@ -119,16 +119,18 @@ export default function WeaponCharts(props) {
 
       let vSockets = revisedWep.varSockets;
       // let socketItems = [];
+      let multiSocketFixer = 0;
       let wepPerks = vSockets.map(eachSocket => {
         if(eachSocket !== null) {
           if(Array.isArray(eachSocket)) {
             let multipleSockets = eachSocket.map(sock => {
+              multiSocketFixer++;
               if(testPath.socketDefs[sock] && testPath.socketDefs[sock].socketType !== "" && testPath.socketDefs[sock].socketType !== "Weapon Ornament" && !testPath.socketDefs[sock].socketType.includes('Tracker') && !testPath.socketDefs[sock].socketType.includes('Catalyst') && !testPath.socketDefs[sock].socketType.includes('Mod') && !testPath.socketDefs[sock].socketType.includes('Shader') && !testPath.socketDefs[sock].socketName.includes('Shader')) {
                 let socketIcon = "https://www.bungie.net" + testPath.socketDefs[sock].socketIcon;
                 let socketDesc = testPath.socketDefs[sock].socketDesc;
                 let socketName = testPath.socketDefs[sock].socketName;
                 return (
-                  <div className="weapon-socket">
+                  <div className="weapon-socket" key={socketIcon + multiSocketFixer}>
                     <img src={socketIcon} className="socketIcons" alt="socketIcon"></img>
                     <div className="socket-tooltip">
                       <p className="socketName">{socketName}</p>
@@ -139,7 +141,7 @@ export default function WeaponCharts(props) {
               }
             })
             return(
-              <div className="multiSockets">{multipleSockets}</div>
+              <div key={revisedWep + "multiSocket" + multiSocketFixer} className="multiSockets">{multipleSockets}</div>
             )
           }
           else {
@@ -246,8 +248,10 @@ export default function WeaponCharts(props) {
     // let testPathReceiver3 = testPathReceiver2.slice(0, 10)
     // console.log(testPathReceiver3)
 
+    let keyFixer = 0;
     const listOfWeps = testPathReceiver2.map((wepId) => {
-      return(<WepConstructor key={testPathReceiver[wepId].hash} value={testPathReceiver[wepId].hash}/>)
+      keyFixer++;
+      return(<WepConstructor key={testPathReceiver[wepId].hash + keyFixer} value={testPathReceiver[wepId].hash}/>)
     });
     // listOfWeps.reverse();
     // listOfWeps.sort();
