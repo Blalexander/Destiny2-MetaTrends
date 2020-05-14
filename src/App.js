@@ -14,8 +14,8 @@ export default function App() {
 
   useEffect(() => {
     const fetchInitialData = async () => {
-      const result = await fetch('http://localhost:8080/bungie/hope/',).then(res => {
-      // const result = await fetch('https://enigmatic-savannah-35083.herokuapp.com/bungie/hope/',).then(res => {
+      // const result = await fetch('http://localhost:8080/bungie/hope/',).then(res => {
+      const result = await fetch('https://metatrendsserver.azurewebsites.net/bungie/hope/',).then(res => {
         // document.getElementsByClassName("loading")[0].style.display = "none";
 
         return res.json()
