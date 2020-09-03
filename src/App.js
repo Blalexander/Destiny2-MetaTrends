@@ -14,8 +14,8 @@ export default function App() {
 
   useEffect(() => {
     const fetchInitialData = async () => {
-      // const result = await fetch('http://localhost:8080/bungie/hope/',).then(res => {
-      const result = await fetch('https://metatrendsserver.azurewebsites.net/bungie/hope/',).then(res => {
+      const result = await fetch('http://localhost:8080/bungie/hope/',).then(res => {
+      // const result = await fetch('https://metatrendsserver.azurewebsites.net/bungie/hope/',).then(res => {
         // document.getElementsByClassName("loading")[0].style.display = "none";
 
         return res.json()
@@ -34,6 +34,8 @@ export default function App() {
   function showCC(ev) {
     ev.preventDefault();
     WCScrollJump = document.querySelector('html').scrollTop;
+    document.querySelector('.show-charts-button').classList.remove('page-selection')
+    document.querySelector('.combine-and-compare-button').classList.add('page-selection')
     document.querySelector('html').scrollTop = CCScrollJump
     document.querySelector('.combine-and-compare-display').style.opacity = "1";
     document.querySelector('.combine-and-compare-display').style.zIndex = "1";
@@ -46,6 +48,8 @@ export default function App() {
   function showWC(ev) {
     ev.preventDefault();
     CCScrollJump = document.querySelector('html').scrollTop;
+    document.querySelector('.show-charts-button').classList.add('page-selection')
+    document.querySelector('.combine-and-compare-button').classList.remove('page-selection')
     document.querySelector('html').scrollTop = WCScrollJump
     document.querySelector('.combine-and-compare-display').style.opacity = "0";
     document.querySelector('.combine-and-compare-display').style.zIndex = "-1";
@@ -62,7 +66,7 @@ export default function App() {
         <header>
           <h1>Destiny MetaTrends</h1>
           <button className="combine-and-compare-button" onClick={e => showCC(e)}>Combine and Compare</button>
-          <button className="show-charts-button" onClick={e => showWC(e)}>Weapon Charts</button>
+          <button className="show-charts-button page-selection" onClick={e => showWC(e)}>Weapon Charts</button>
         </header>
       </section>
       <section className="dynamic-charts-display">

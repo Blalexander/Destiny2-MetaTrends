@@ -208,8 +208,17 @@ function CombineCompare(props) {
     setWeaponToCompare("");
   }
 
+  function showOptions(e) {
+    e.preventDefault();
+    console.log("CC options clicked")
+    document.querySelector('.weapon-list-parent').classList.toggle('show-options')
+  }
+
   return (
     <div className="CC-parent">
+      <form className="show-CC-options-form">
+        <button className="show-CC-options-button" type="submit" onClick={e => showOptions(e)}>Weapons To Compare</button>
+      </form>
       <DivMyWeps {...props} />
       <SelectedWep val={selectedHash} />
       <BackButton />

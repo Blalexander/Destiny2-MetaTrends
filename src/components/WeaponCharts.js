@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import MakeMyStatBars from './MakeMyStatBars';
 import {Pie} from 'react-chartjs-2';
 
@@ -43,9 +43,13 @@ export default function WeaponCharts(props) {
   // const [currentWepForCombination, setCurrentWepForCombination] = useState('');
   // const [currentWepForComparison, setCurrentWepForComparison] = useState('');
   
-
-
-  // console.log(weaponsOrganizedByType)
+  useEffect(() => {
+    // setCurrentWeaponsToDisplay(weaponsOrganizedByType["Submachine Gun"])
+    setTimeout(() => {
+      setCurrentWeaponsToDisplay(weaponsOrganizedByType["Submachine Gun"])
+      document.querySelectorAll('.temp-classholder').forEach(delayLoop(display, 400))
+    }, 500)
+  }, [props])
 
   let damageDefs = {
     "1847026933": {
@@ -283,7 +287,19 @@ export default function WeaponCharts(props) {
   function handleSubmit(e) {
     e.preventDefault();
     console.log(e.currentTarget.value)
-    let f = typeof e === 'object' && typeof e !== 'null' ? e.currentTarget.value : e
+
+    if(e.currentTarget.classList.contains('type-selection')) {
+      e.currentTarget.classList.remove('type-selection')
+    }
+    else if(!e.currentTarget.classList.contains('type-selection')) {
+      if(document.querySelector('.type-selection')) {
+        document.querySelector('.type-selection').classList.remove('type-selection')
+      }
+      e.currentTarget.classList.add('type-selection')
+    }
+
+    let f = typeof e === 'object' && typeof e !== 'null' ? e.currentTarget.value : e;
+    document.querySelector('.wep-type-selector').classList.toggle('display-types');
 
 
 
@@ -293,19 +309,28 @@ export default function WeaponCharts(props) {
     }
     else {
       setCurrentWeaponsToDisplay(weaponsOrganizedByType[f])
-      // console.log("TOGGLE ON", currentWeaponsToDisplay)
+      // console.log("TOGGLE ON", weaponsOrganizedByType[f])
 
       setTimeout(() => document.querySelectorAll('.temp-classholder').forEach(delayLoop(display, 400)), 500)
       // setCurrentWeaponsToDisplay(weaponsOrganizedByType[e.currentTarget.value])
     }
   }
 
+  function showTypes(e) {
+    e.preventDefault();
+    console.log("button pressed")
+    document.querySelector('.wep-type-selector').classList.toggle('display-types')
+  }
+
 
   return (
     <div className="body-content-container">
       <section id="weaponCharts">
+        <form className="show-wep-types-form">
+          <button className="show-wep-types-button" type="submit" onClick={e => showTypes(e)}>Filter By Type</button>
+        </form>
         <form className="wep-type-selector">
-          <button className="smgs top-row" value="Submachine Gun" type="submit" onClick={e => handleSubmit(e)}><p>SMGs</p></button>
+          <button className="smgs top-row type-selection" value="Submachine Gun" type="submit" onClick={e => handleSubmit(e)}><p>SMGs</p></button>
           <button className="autorifles top-row" value="Auto Rifle" type="submit" onClick={e => handleSubmit(e)}><p>Auto Rifles</p></button>
           <button className="pulserifles top-row" value="Pulse Rifle" type="submit" onClick={e => handleSubmit(e)}><p>Pulse Rifles</p></button>
           <button className="machineguns top-row" value="Machine Gun" type="submit" onClick={e => handleSubmit(e)}><p>Machine Guns</p></button>
