@@ -32,7 +32,8 @@ function PowerfulAndPopular(props) {
       setSelectedHash(findMyPartners);
   
       const result = await fetch(
-        `http://localhost:8080/bungie/combinations?hash=${findMyPartners}`
+        // `http://localhost:8080/bungie/combinations?hash=${findMyPartners}`
+        `https://metatrendsserver.azurewebsites.net/bungie/combinations?hash=${findMyPartners}`
       ).then(res => {
         return res.json();
       })
