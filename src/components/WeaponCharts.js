@@ -48,7 +48,7 @@ export default function WeaponCharts(props) {
     setTimeout(() => {
       setCurrentWeaponsToDisplay(weaponsOrganizedByType["Submachine Gun"])
       document.querySelectorAll('.temp-classholder').forEach(delayLoop(display, 400))
-    }, 500)
+    }, 1000)
   }, [props])
 
   let damageDefs = {
