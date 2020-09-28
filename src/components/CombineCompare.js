@@ -7,7 +7,7 @@ function CombineCompare(props) {
   if(props.statDefs === undefined) {
     return null;
   }
-  console.log(props)
+  // console.log(props)
 
   const [selectedHash, setSelectedHash] = useState('');
   const [selectedMethod, setSelectedMethod] = useState('');
@@ -24,7 +24,7 @@ function CombineCompare(props) {
       if(weaponsOrganizedByType[typeToMatch] !== undefined) {
         weaponsOrganizedByType[typeToMatch].push(
         <button key={props[weaponDefinition].weaponHash} value={props[weaponDefinition].weaponHash} id={"clickable" + props[weaponDefinition].weaponHash} className={"each-clickable-weapon t" + props[weaponDefinition].weaponTier} onClick={e => weaponWasClicked(e)}>
-          <img className="clickable-weapon-icon" src={wepIcon}></img>
+          <img className="clickable-weapon-icon" src={wepIcon} alt="wep-icon"></img>
           <p className="clickable-weapon-name">{nameToMatch}</p>
         </button>
         )
@@ -36,7 +36,7 @@ function CombineCompare(props) {
   }
 
   function collapseSection(ev) {
-    console.log(document.getElementsByClassName(ev.target.classList[0]))
+    // console.log(document.getElementsByClassName(ev.target.classList[0]))
     let sectionToCollapse = document.getElementsByClassName(ev.target.classList[0])[2]
     if(sectionToCollapse.classList.contains("collapsed")) {
       sectionToCollapse.classList.remove("collapsed")
@@ -88,7 +88,7 @@ function CombineCompare(props) {
 
   function weaponWasClicked(hashToStartCC) {
     hashToStartCC.preventDefault();
-    console.log(hashToStartCC.target.value)
+    // console.log(hashToStartCC.target.value)
 
     if(selectedMethod === "" || selectedMethod === "combine") {
       setSelectedHash(hashToStartCC.target.value)
@@ -108,16 +108,16 @@ function CombineCompare(props) {
   function makeMyKeys(typeToKey) {
     let wepStatKeys;
 
-    if(typeToKey === "Fusion Rifle") { //NEED TO BE LOOKED AT
+    if(typeToKey === "Fusion Rifle") { 
       wepStatKeys = ["Impact", "Range", "Stability", "Handling", "Reload Speed", "Aim Assistance", "Zoom", "Charge Time", "Magazine", "wepPrecKillsAvg", "killsAvg", "deathsAvg", "assistsAvg", "KaD", "effAvg", "perKAvg", "perLAvg", "scoreAvg"]
     }
     else if(typeToKey === "Grenade Launcher" || typeToKey === "Rocket Launcher") {
       wepStatKeys = ["Blast Radius", "Velocity", "Stability", "Handling", "Reload Speed", "Aim Assistance", "Zoom",  "Rounds Per Minute", "Magazine", "wepPrecKillsAvg", "killsAvg", "deathsAvg", "assistsAvg", "KaD", "effAvg", "perKAvg", "perLAvg", "scoreAvg"]
     }
-    else if(typeToKey === "Combat Bow") { //NEED TO BE LOOKED AT
+    else if(typeToKey === "Combat Bow") { 
       wepStatKeys = ["Impact", "Accuracy", "Stability", "Handling", "Reload Speed", "Aim Assistance", "Zoom", "Draw Time", "wepPrecKillsAvg", "killsAvg", "deathsAvg", "assistsAvg", "KaD", "effAvg", "perKAvg", "perLAvg", "scoreAvg"]
     }
-    else if(typeToKey === "Sword") { //NEED TO BE LOOKED AT
+    else if(typeToKey === "Sword") { 
       wepStatKeys = ["Impact", "Range", "Defense", "Efficiency", "Ammo Capacity", "Swing Speed", "wepPrecKillsAvg", "killsAvg", "deathsAvg", "assistsAvg", "KaD", "effAvg", "perKAvg", "perLAvg", "scoreAvg"]
     }
     else {
@@ -128,8 +128,8 @@ function CombineCompare(props) {
   }
 
   function SelectedWep(getMyType) {
-    if(props[getMyType.val] != undefined) {
-      console.log(getMyType.val)
+    if(props[getMyType.val] !== undefined) {
+      // console.log(getMyType.val)
       let wepIcon = "https://www.bungie.net" + props[getMyType.val].weaponIcon;
       let wepName = props[getMyType.val].weaponName;
       let wepType = props[getMyType.val].weaponType;
@@ -148,7 +148,7 @@ function CombineCompare(props) {
         <div className="clicked-weapon">
           <div className="clicked-weapon-header">
             <p>{wepName}</p>
-            <img src={wepIcon}></img>
+            <img src={wepIcon} alt="selected-wep-icon"></img>
             <p>{wepType}</p>
           </div>
           {weaponStats}
@@ -161,7 +161,7 @@ function CombineCompare(props) {
   }
 
   function CombineOrCompare(method) {
-    console.log(method)
+    // console.log(method)
     if(method.val === "" && selectedHash !== "") {
       return(
         <form className="chooseAMethod">
@@ -189,7 +189,7 @@ function CombineCompare(props) {
 
   function submitMethod(ev) {
     ev.preventDefault();
-    console.log(ev.target.value)
+    // console.log(ev.target.value)
     setSelectedMethod(ev.target.value)
   }
 
@@ -210,7 +210,7 @@ function CombineCompare(props) {
 
   function showOptions(e) {
     e.preventDefault();
-    console.log("CC options clicked")
+    // console.log("CC options clicked")
     document.querySelector('.weapon-list-parent').classList.toggle('show-options')
   }
 

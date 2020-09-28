@@ -21,7 +21,7 @@ export default function App() {
         return res.json()
       });
 
-      console.log(result);
+      // console.log(result);
       setInitialData(result);
       setPartnerData(result);
       // document.querySelector('.wep-type-selector').style.opacity = "1";

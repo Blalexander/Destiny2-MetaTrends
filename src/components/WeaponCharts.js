@@ -36,7 +36,7 @@ export default function WeaponCharts(props) {
     }
   }
 
-  console.log(weaponsOrganizedByType)
+  // console.log(weaponsOrganizedByType)
 
 
   const [currentWeaponsToDisplay, setCurrentWeaponsToDisplay] = useState('');
@@ -81,22 +81,21 @@ export default function WeaponCharts(props) {
       let revisedWepName = revisedWep.weaponName;
       let wepIcon = "https://www.bungie.net" + revisedWep.weaponIcon;
       let wepStatKeys = Object.keys(revisedWep.weaponValues);
-      // console.log(wepStatKeys) //WORK WITH THIS
       let type = revisedWep.weaponType;
       let hashedDamageType = revisedWep.damageType[0];
       let damageIcon = damageDefs[hashedDamageType].damageTypeIcon;
 
 
-      if(type === "Fusion Rifle") { //NEED TO BE LOOKED AT
+      if(type === "Fusion Rifle") {
         wepStatKeys = ["Impact", "Range", "Stability", "Handling", "Reload Speed", "Aim Assistance", "Zoom", "Charge Time", "Magazine", "wepPrecKillsAvg", "killsAvg", "deathsAvg", "assistsAvg", "KaD", "effAvg", "perKAvg", "perLAvg", "scoreAvg"]
       }
       else if(type === "Grenade Launcher" || type === "Rocket Launcher") {
         wepStatKeys = ["Blast Radius", "Velocity", "Stability", "Handling", "Reload Speed", "Aim Assistance", "Zoom",  "Rounds Per Minute", "Magazine", "wepPrecKillsAvg", "killsAvg", "deathsAvg", "assistsAvg", "KaD", "effAvg", "perKAvg", "perLAvg", "scoreAvg"]
       }
-      else if(type === "Combat Bow") { //NEED TO BE LOOKED AT
+      else if(type === "Combat Bow") {
         wepStatKeys = ["Impact", "Accuracy", "Stability", "Handling", "Reload Speed", "Aim Assistance", "Zoom", "Draw Time", "Rounds Per Minute", "wepPrecKillsAvg", "killsAvg", "deathsAvg", "assistsAvg", "KaD", "effAvg", "perKAvg", "perLAvg", "scoreAvg"]
       }
-      else if(type === "Sword") { //NEED TO BE LOOKED AT
+      else if(type === "Sword") { 
         wepStatKeys = ["Impact", "Range", "Defense", "Efficiency", "Ammo Capacity", "Swing Speed", "wepPrecKillsAvg", "killsAvg", "deathsAvg", "assistsAvg", "KaD", "effAvg", "perKAvg", "perLAvg", "scoreAvg"]
       }
       else {
@@ -143,6 +142,9 @@ export default function WeaponCharts(props) {
                   </div>
                 )
               }
+              else {
+                return null
+              }
             })
             return(
               <div key={revisedWep + "multiSocket" + multiSocketFixer} className="multiSockets">{multipleSockets}</div>
@@ -159,6 +161,9 @@ export default function WeaponCharts(props) {
               <p class="singleSockets">{eachSocket}</p>
             )
           }
+        }
+        else {
+          return null
         }
       })
 
@@ -191,8 +196,8 @@ export default function WeaponCharts(props) {
               </div>
             </div>
             <span className="bg-image-holder" backgroundimage={"https://www.bungie.net" + revisedWep.weaponScreenshot}></span>
-            <div className={"wepAttributes " + "wepAttributes" + revisedWep.weaponTier}>
-              <div className={"statsContainer " + "statsContainer" + revisedWep.weaponTier}>
+            <div className={"wepAttributes wepAttributes" + revisedWep.weaponTier}>
+              <div className={"statsContainer statsContainer" + revisedWep.weaponTier}>
                 <div className="wepStatVals">{wepStatVals}</div>
               </div>
               <div className="pie-chart">
@@ -211,7 +216,7 @@ export default function WeaponCharts(props) {
           </div>
         </div>
       )
-    }
+    } // eslint-disable-line prefer-template
     else {
       return null;
     }
@@ -286,7 +291,7 @@ export default function WeaponCharts(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(e.currentTarget.value)
+    // console.log(e.currentTarget.value)
 
     if(e.currentTarget.classList.contains('type-selection')) {
       e.currentTarget.classList.remove('type-selection')
@@ -298,7 +303,7 @@ export default function WeaponCharts(props) {
       e.currentTarget.classList.add('type-selection')
     }
 
-    let f = typeof e === 'object' && typeof e !== 'null' ? e.currentTarget.value : e;
+    let f = typeof e === 'object' && typeof e !== 'undefined' ? e.currentTarget.value : e;
     document.querySelector('.wep-type-selector').classList.toggle('display-types');
 
 
@@ -318,7 +323,7 @@ export default function WeaponCharts(props) {
 
   function showTypes(e) {
     e.preventDefault();
-    console.log("button pressed")
+    // console.log("button pressed")
     document.querySelector('.wep-type-selector').classList.toggle('display-types')
   }
 
@@ -354,13 +359,3 @@ export default function WeaponCharts(props) {
     </div>
   )
 }
-
-
-
-// return (
-//   <div id="weaponCharts">
-//     <section id="wepContainer">
-//       <WepList {...props}/>
-//     </section>
-//   </div>
-// )

@@ -12,6 +12,17 @@ The Weapon Charts section of the website is the default landing page.  It allows
 
 ## Screenshots
 
+## Landing Page
+![Screenshot1](/screenshots/dmtfinallanding.png)
+
+## Selecting a weapon for combine or compare
+![Screenshot1](/screenshots/dmtfinalcnc.png)
+
+## Viewing best combinations for the selected weapon
+![Screenshot1](/screenshots/dmtfinalcnc1.png)
+
+## Comparing one weapon directly against another
+![Screenshot1](/screenshots/dmtfinalcnc2.png)
 
 ## Created Using
 

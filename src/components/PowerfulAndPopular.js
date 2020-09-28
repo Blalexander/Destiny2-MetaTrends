@@ -27,7 +27,7 @@ function PowerfulAndPopular(props) {
 
   useEffect(() => {
     const fetchWeaponPartners = async findMyPartners => {
-      console.log(findMyPartners)
+      // console.log(findMyPartners)
       setSelectedWeapon(manifestDefs[findMyPartners]);
       setSelectedHash(findMyPartners);
   
@@ -38,7 +38,7 @@ function PowerfulAndPopular(props) {
         return res.json();
       })
   
-      console.log("RESSUUULLLTTTT: ", result);
+      // console.log("RESSUUULLLTTTT: ", result);
       setUnrefinedPartnerData(result);
       setPartnerStats(manifestDefs[props.value].playerPerformances)
     };
@@ -48,7 +48,7 @@ function PowerfulAndPopular(props) {
 
 
   function PowerfulCombos(createEachPartner) {
-    console.log(createEachPartner)
+    // console.log(createEachPartner)
     // let sortedPowCombos = [];
     let hashesUsed = [];
     for(let i = 0; i < unrefinedPartnerData.length; i++) {
@@ -95,7 +95,7 @@ function PowerfulAndPopular(props) {
 
     if(createEachPartner !== undefined) {
       let powPartStep1 = highest.map((eachPart) => {
-        let keyVal = eachPart.allHashes[0][0] == selectedHash ? eachPart.allHashes[0][1] : eachPart.allHashes[0][0];
+        let keyVal = eachPart.allHashes[0][0] === selectedHash ? eachPart.allHashes[0][1] : eachPart.allHashes[0][0];
         return(<PartConstructor1 key={keyVal} value={manifestDefs[keyVal]} />)
       })
 
@@ -107,18 +107,18 @@ function PowerfulAndPopular(props) {
 
   function displayCombinationStats(clickableWeaponHash) {
     clickableWeaponHash.preventDefault();
-    console.log(clickableWeaponHash.target.value, sortedPowCombos)
+    // console.log(clickableWeaponHash.target.value, sortedPowCombos)
     if(partnerHash !== clickableWeaponHash.target.value) {
       setPartnerHash(clickableWeaponHash.target.value)
       sortedPowCombos.forEach((eachPowPartner) => {
-        if(eachPowPartner._id[0] == clickableWeaponHash.target.value || eachPowPartner._id[1] == clickableWeaponHash.target.value) {
-          console.log("worked", eachPowPartner)
+        if(eachPowPartner._id[0] === clickableWeaponHash.target.value || eachPowPartner._id[1] === clickableWeaponHash.target.value) {
+          // console.log("worked", eachPowPartner)
           setPartnerStats(eachPowPartner)
         }
       })
     }
     else {
-      console.log("closing display")
+      // console.log("closing display")
       setPartnerHash('')
       setPartnerStats(manifestDefs[selectedHash].playerPerformances)
     }
@@ -136,7 +136,7 @@ function PowerfulAndPopular(props) {
   }
 
   function PopularCombos(createEachPartner) {
-    console.log(createEachPartner)
+    // console.log(createEachPartner)
     let hashesUsed = [];
     for(let i = 0; i < unrefinedPartnerData.length; i++)  {  
       if(unrefinedPartnerData[i].allHashes[0].length === 2) { 
@@ -150,11 +150,11 @@ function PowerfulAndPopular(props) {
 
           if(sortedPopCombos[preexistingIndex].duplicateCounter === undefined && unrefinedPartnerData[i].accountedFor !== "true") {
             sortedPopCombos[preexistingIndex].duplicateCounter = 0;
-            console.log(unrefinedPartnerData[i], i)
+            // console.log(unrefinedPartnerData[i], i)
           }
           else if(sortedPopCombos[preexistingIndex].duplicateCounter && unrefinedPartnerData[i].accountedFor !== "true") {
             sortedPopCombos[preexistingIndex].duplicateCounter++;
-            console.log(unrefinedPartnerData[i], i)
+            // console.log(unrefinedPartnerData[i], i)
           }
 
           for(let eachStat in sortedPopCombos[preexistingIndex]) {
@@ -182,7 +182,7 @@ function PowerfulAndPopular(props) {
 
     if(createEachPartner !== undefined) {
       let popPartStep1 = sortedPopCombos.map((eachPart) => {
-        let keyVal = eachPart.allHashes[0][0] == selectedHash ? eachPart.allHashes[0][1] : eachPart.allHashes[0][0];
+        let keyVal = eachPart.allHashes[0][0] === selectedHash ? eachPart.allHashes[0][1] : eachPart.allHashes[0][0];
         return(<PartConstructor2 key={keyVal} value={manifestDefs[keyVal]} />)
       })
 
@@ -207,7 +207,7 @@ function PowerfulAndPopular(props) {
 
 
   function AllCurrentStats(statContainer) {
-    console.log(statContainer)
+    // console.log(statContainer)
 
     if(manifestDefs[selectedHash]) {
       let keysToMap = Object.keys(statContainer)
@@ -230,7 +230,7 @@ function PowerfulAndPopular(props) {
         }]
       }
 
-      console.log("making the stats..")
+      // console.log("making the stats..")
       return(
         <div className="combo-and-pie-container">
           <div className="combo-stat-container">
@@ -247,13 +247,13 @@ function PowerfulAndPopular(props) {
         </div>)
     }
     else {
-      console.log("messed up the stats")
+      // console.log("messed up the stats")
       return(null)
     }
   }
 
   function PartnerToDisplay(displayMe) {
-    console.log(displayMe.value)
+    // console.log(displayMe.value)
     if(displayMe.value !== '') {
       return (
         <div className={"partner-to-display wepNameIconType t" + manifestDefs[displayMe.value].weaponTier}>

@@ -10,7 +10,7 @@ function Comparisons(props) {
     return null;
   }
 
-  console.log(props)
+  // console.log(props)
 
   let manifestDefs = props.manifest;
   let selectedHash = props.value;
@@ -66,10 +66,10 @@ function Comparisons(props) {
     }
   }
 
-  console.log(weaponsOrganizedByType)
+  // console.log(weaponsOrganizedByType)
 
   function CreateMyFirstCompare(things) {
-    console.log(things.hashToUse)
+    // console.log(things.hashToUse)
     let revisedWep = manifestDefs[selectedHash];
     let wepIcon = "https://www.bungie.net" + revisedWep.weaponIcon;
     const chartData = {
@@ -87,7 +87,7 @@ function Comparisons(props) {
     let wepStatKeys = makeMyKeys(type);
    
     // let keysToMap = Object.keys(wepStatKeys)
-    console.log(wepStatKeys)
+    // console.log(wepStatKeys)
 
     let weaponStats = wepStatKeys.map(eachKey => {
       if(manifestDefs.statDefs[eachKey]) {
@@ -121,7 +121,7 @@ function Comparisons(props) {
   }
 
   function CreateMySecondCompare(wepToCompare) {
-    console.log(wepToCompare)
+    // console.log(wepToCompare)
     if(wepToCompare.hashToUse === "") {
       return(
         <div className="second-weapon">
@@ -147,7 +147,7 @@ function Comparisons(props) {
       let wepStatKeys = makeMyKeys(type);
   
       // let keysToMap = Object.keys(wepStatKeys)
-      console.log(wepStatKeys)
+      // console.log(wepStatKeys)
   
       let weaponStats = wepStatKeys.map(eachKey => {
         if(manifestDefs.statDefs[eachKey]) {
@@ -182,15 +182,15 @@ function Comparisons(props) {
   }
 
   function CreateMyCenter() {
-    let dropdownKeys = Object.keys(manifestDefs)
-    let dropdownOptions = dropdownKeys.map(wepId => {
-      if(wepId !== "socketDefs" && wepId !== "statDefs") {
-        return(<ListItemConstructor key={wepId} value={manifestDefs[wepId]} />)
-      }
-      else {
-        return null
-      }
-    })
+    // let dropdownKeys = Object.keys(manifestDefs)
+    // let dropdownOptions = dropdownKeys.map(wepId => {
+    //   if(wepId !== "socketDefs" && wepId !== "statDefs") {
+    //     return(<ListItemConstructor key={wepId} value={manifestDefs[wepId]} />)
+    //   }
+    //   else {
+    //     return null
+    //   }
+    // })
     // console.log(dropdownOptions)
 
     let wepStatKeys = makeMyKeys(manifestDefs[selectedHash].weaponType)
@@ -211,25 +211,25 @@ function Comparisons(props) {
     )
   }
 
-  function ListItemConstructor(listItem) {
-    if(listItem.value === undefined) {
-      return (
-        <option className="eachListItem" value="Change Weapon">
-          Change Weapon
-        </option>
-      );
-    }
-    else {
-      return (
-        <option className="eachListItem" value={listItem.value.weaponHash}>
-          {listItem.value.weaponName}
-        </option>
-      );
-    } 
-  }
+  // function ListItemConstructor(listItem) {
+  //   if(listItem.value === undefined) {
+  //     return (
+  //       <option className="eachListItem" value="Change Weapon">
+  //         Change Weapon
+  //       </option>
+  //     );
+  //   }
+  //   else {
+  //     return (
+  //       <option className="eachListItem" value={listItem.value.weaponHash}>
+  //         {listItem.value.weaponName}
+  //       </option>
+  //     );
+  //   } 
+  // }
 
   function StatDifsConstructor2(eachKeyToCompare) {
-    console.log("2", eachKeyToCompare)
+    // console.log("2", eachKeyToCompare)
     eachKeyToCompare = eachKeyToCompare.value
     if(manifestDefs[compareMe] !== undefined && manifestDefs[selectedHash].playerPerformances[eachKeyToCompare] !== undefined) {
       // console.log(eachKeyToCompare)
@@ -266,7 +266,7 @@ function Comparisons(props) {
   }
 
   function StatDifsConstructor(eachKeyToCompare) {
-    console.log(eachKeyToCompare)
+    // console.log(eachKeyToCompare)
     eachKeyToCompare = eachKeyToCompare.value
     if(manifestDefs[compareMe] !== undefined && manifestDefs[selectedHash].weaponValues[manifestDefs.statDefs[eachKeyToCompare].statHash] !== undefined && manifestDefs[compareMe].weaponValues[manifestDefs.statDefs[eachKeyToCompare].statHash] !== undefined) {
       // console.log(eachKeyToCompare)
@@ -302,10 +302,10 @@ function Comparisons(props) {
     }
   }
 
-  function setUpComparison(newComparisonTarget) {
-    console.log(newComparisonTarget)
-    setCompareMe(newComparisonTarget)
-  }
+  // function setUpComparison(newComparisonTarget) {
+  //   // console.log(newComparisonTarget)
+  //   setCompareMe(newComparisonTarget)
+  // }
 
   return (
     <div className="child-comparison-container">
