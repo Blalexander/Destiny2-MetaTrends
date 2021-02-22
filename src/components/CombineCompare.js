@@ -20,11 +20,11 @@ function CombineCompare(props) {
     if(weaponDefinition !== "socketDefs" && weaponDefinition !== "statDefs") {
       let typeToMatch = props[weaponDefinition].weaponType;
       let nameToMatch = props[weaponDefinition].weaponName;
-      let wepIcon = "https://www.bungie.net" + props[weaponDefinition].weaponIcon;
+      // let wepIcon = "https://www.bungie.net" + props[weaponDefinition].weaponIcon;
       if(weaponsOrganizedByType[typeToMatch] !== undefined) {
         weaponsOrganizedByType[typeToMatch].push(
         <button key={props[weaponDefinition].weaponHash} value={props[weaponDefinition].weaponHash} id={"clickable" + props[weaponDefinition].weaponHash} className={"each-clickable-weapon t" + props[weaponDefinition].weaponTier} onClick={e => weaponWasClicked(e)}>
-          <img className="clickable-weapon-icon" src={wepIcon} alt="wep-icon"></img>
+          <img className="clickable-weapon-icon"  alt="wep-icon"></img>
           <p className="clickable-weapon-name">{nameToMatch}</p>
         </button>
         )

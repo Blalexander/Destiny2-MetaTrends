@@ -24,7 +24,7 @@ export default function App() {
       // console.log(result);
       setInitialData(result);
       setPartnerData(result);
-      // document.querySelector('.wep-type-selector').style.opacity = "1";
+      document.querySelector('.loading-text').style.opacity = "0";
       document.querySelector('.wep-type-selector').classList.add('finished-loading')
     };
 
@@ -69,6 +69,7 @@ export default function App() {
           <button className="show-charts-button page-selection" onClick={e => showWC(e)}>Weapon Charts</button>
         </header>
       </section>
+      <div className="loading-text">This may currently take up to 15 seconds to load because it's frontloading weapon data for development and testing purposes but this will soon be replaced by a much more efficient system.</div>
       <section className="dynamic-charts-display">
         <WeaponCharts  {...initialData[0]} />
       </section>

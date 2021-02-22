@@ -9,12 +9,12 @@ export default function WeaponCharts(props) {
   // if(props.socketDefs === undefined) {
   //   return null;
   // }
-  // console.log(props)
+  console.log(props)
 
 
   const testPath = props;
 
-  WepList(testPath);
+  // WepList(testPath);
 
   let labelIncrementor = 0;
 
@@ -51,14 +51,20 @@ export default function WeaponCharts(props) {
     }, 1000)
   }, [props])
 
+  console.log(currentWeaponsToDisplay)
+
   let damageDefs = {
+    "151347233": {
+      damageType: "Stasis",
+      damageTypeIcon: "https://www.bungie.net/common/destiny2_content/icons/DestinyDamageTypeDefinition_530c4c3e7981dc2aefd24fd3293482bf.png"
+    },
     "1847026933": {
       damageType: "Solar",
       damageTypeIcon: "https://www.bungie.net/common/destiny2_content/icons/DestinyDamageTypeDefinition_2a1773e10968f2d088b97c22b22bba9e.png"
     },
     "2303181850": {
       damageType: "Arc",
-      damageTypeIcon: "https://www.bungie.net/common/destiny2_content/icons/DestinyDamageTypeDefinition_9fbcfcef99f4e8a40d8762ccb556fcd4.png"
+      damageTypeIcon: "https://www.bungie.net/common/destiny2_content/icons/DestinyDamageTypeDefinition_092d066688b879c807c3b460afdd61e6.png"
     },
     "3454344768": {
       damageType: "Void",
@@ -76,6 +82,10 @@ export default function WeaponCharts(props) {
     // console.log(weaponItem) //weaponItem being sent here with twin values?
     if(weaponItem.value !== "socketDefs" && weaponItem.value !== "statDefs") {
       let revisedWep = testPath[weaponItem.value];
+      if(revisedWep.playerPerformances.standingAvg === null) {
+        console.log(revisedWep)
+        revisedWep.playerPerformances.standingAvg = 0
+      }
       let revisedWinRate = 1 - revisedWep.playerPerformances.standingAvg.toFixed(2);
       let wepId = weaponItem.value;
       let revisedWepName = revisedWep.weaponName;
@@ -292,6 +302,7 @@ export default function WeaponCharts(props) {
   function handleSubmit(e) {
     e.preventDefault();
     // console.log(e.currentTarget.value)
+    document.querySelector('html').scrollTop = 0;
 
     if(e.currentTarget.classList.contains('type-selection')) {
       e.currentTarget.classList.remove('type-selection')
